@@ -17,7 +17,7 @@ import java.sql.SQLException;
 		// Obtem conexao com o banco de dados
 		// Alterar para O TCC
 		public static Connection getConexao() throws SQLException {
-			return DriverManager.getConnection("jdbc:mysql://localhost/projetoIntegrado?user=alunos&password=alunos");
+			return DriverManager.getConnection("jdbc:mysql://127.0.0.1/TCC?user=alunos&password=alunos");
 		}
 
 	}
