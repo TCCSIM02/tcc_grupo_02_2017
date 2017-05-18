@@ -21,12 +21,4 @@ import java.sql.SQLException;
 		public static Connection getConexao() throws SQLException {
 			return DriverManager.getConnection("jdbc:mysql://127.0.0.1/TCC?user=alunos&password=alunos");
 		}
-
-	}
-
-
-
-
-
-
-
+	}	
