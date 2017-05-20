@@ -1,6 +1,6 @@
 package TO;
 
-public class TOAtendente {
+public class TOAtendente extends TOUsuario {
 	private int codAtendente;
 
 	/**

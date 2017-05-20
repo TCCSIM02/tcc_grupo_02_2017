@@ -1,6 +1,6 @@
 package TO;
 
-public class TOPaciente {
+public class TOPaciente extends TOUsuario {
 
 	private int codPaciente;
 	private String numConvenio;

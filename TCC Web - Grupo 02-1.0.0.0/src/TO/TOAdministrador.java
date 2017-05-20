@@ -1,6 +1,6 @@
 package TO;
 
-public class TOAdministrador {
+public class TOAdministrador extends TOUsuario{
 	private int codAdministrador;
 
 	/**
