@@ -3,7 +3,12 @@
  */
 package Model;
 
+import java.util.ArrayList;
 import java.util.Date;
+
+import DAO.DAOPlano;
+import DAO.DAOUnidade;
+import TO.TOPlano;
 import TO.TOUnidade;
 
 /**
@@ -309,17 +314,62 @@ public class ModelUnidade {
 	
 	public void cadastrarUnidade(){
 		
-	}
-
-	public void consultarUnidade(){
+		DAOUnidade dao = new DAOUnidade();		
+		TOUnidade toUnidade = getTO();
+		dao.cadastrarUnidade(toUnidade); 
+		this.codUnidade = toUnidade.getCodUnidade();
 		
 	}
 	
 	public void alterarUnidade(){
-		
+		DAOUnidade dao = new DAOUnidade();		
+		TOUnidade toUnidade = getTO();
+		dao.alterarUnidade(toUnidade);		
 	}
 	
 	public void excluirUnidade(){
+		DAOUnidade dao = new DAOUnidade();		
+		TOUnidade toUnidade = new TOUnidade();
+		toUnidade.setCodUnidade(codUnidade);
+		dao.excluirUnidade(toUnidade);
+	}
+	
+	public void consultarUnidadeCod() throws ClassNotFoundException  {
+		DAOUnidade dao = new DAOUnidade();	
+
+		TOUnidade toUnidade = dao.consultarPlanoCod(codUnidade);
 		
+		cel = toUnidade.getCel();
+		cep = toUnidade.getCep();
+		cidade = toUnidade.getCidade();
+		cnpj = toUnidade.getCnpj();
+		codUnidade = toUnidade.getCodUnidade();
+		dataCadastro = toUnidade.getDataCadastro();
+		endereco = toUnidade.getEndereco();
+		flagAtivo = toUnidade.getFlagAtivo();
+		logradouro = toUnidade.getLogradouro();
+		nomeFantasia = toUnidade.getNomeFantasia();
+		nomeRede = toUnidade.getNomeRede();
+		numeroEndereco = toUnidade.getNumeroEndereco();
+		pais = toUnidade.getPais();
+		razaoSocial = toUnidade.getRazaoSocial();
+		representante = toUnidade.getRepresentante();
+		tel1 = toUnidade.getTel1();
+		tel2 = toUnidade.getTel2();
+		uf = toUnidade.getUf();
+
+	}
+	
+	public ArrayList<TOUnidade> listarUnidades() throws ClassNotFoundException{
+		ArrayList<TOUnidade> lista;
+		DAOUnidade dao = new DAOUnidade();	
+		lista = dao.listarUnidades();
+		return lista;
+	}
+	public ArrayList<TOUnidade> listarUnidades(String chave) throws ClassNotFoundException{
+		ArrayList<TOUnidade> lista;
+		DAOUnidade dao = new DAOUnidade();	
+		lista = dao.listarUnidades(chave);
+		return lista;
 	}
 }

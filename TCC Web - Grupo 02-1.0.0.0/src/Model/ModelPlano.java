@@ -149,27 +149,11 @@ public class ModelPlano {
 		
 		DAOPlano dao = new DAOPlano();		
 		TOPlano toPlano = getTO();
-		dao.inserirPlano(toPlano); 
+		dao.cadastrarPlano(toPlano); 
 		this.codPlano = toPlano.getCodPlano();
 		
 	}
 	
-	/*	consulta por id	*/
-	public void consultarPlanoCod()throws ClassNotFoundException  {
-
-		DAOPlano dao = new DAOPlano();
-
-		TOPlano toPlano = dao.consultarPlanoCod(codPlano);
-
-		codPlano = toPlano.getCodPlano();	
-		nomePlano = toPlano.getNomePlano();
-		registroAns = toPlano.getRegistroAns();
-		tipoPlano = toPlano.getTipoPlano();
-		flagAtivo = toPlano.getFlagAtivo();
-		dataCadastro = toPlano.getDataCadastro();
-
-	}
-
 	public void alterarPlano(){
 		DAOPlano dao = new DAOPlano();		
 		TOPlano toPlano = getTO();
@@ -183,13 +167,28 @@ public class ModelPlano {
 		dao.excluirPlano(toPlano);
 	}
 	
-	public ArrayList<TOPlano> listarAlunos() throws ClassNotFoundException{
+	/*	consulta por id	*/
+	public void consultarPlanoCod() throws ClassNotFoundException  {
+
+		DAOPlano dao = new DAOPlano();
+
+		TOPlano toPlano = dao.consultarPlanoCod(codPlano);
+
+		codPlano = toPlano.getCodPlano();	
+		nomePlano = toPlano.getNomePlano();
+		registroAns = toPlano.getRegistroAns();
+		tipoPlano = toPlano.getTipoPlano();
+		flagAtivo = toPlano.getFlagAtivo();
+		dataCadastro = toPlano.getDataCadastro();
+	}
+	
+	public ArrayList<TOPlano> listarPlanos() throws ClassNotFoundException{
 		ArrayList<TOPlano> lista;
 		DAOPlano dao = new DAOPlano();
 		lista = dao.listarPlanos();
 		return lista;
 	}
-	public ArrayList<TOPlano> listarAlunos(String chave) throws ClassNotFoundException{
+	public ArrayList<TOPlano> listarPlanos(String chave) throws ClassNotFoundException{
 		ArrayList<TOPlano> lista;
 		DAOPlano dao = new DAOPlano();
 		lista = dao.listarPlanos(chave);
