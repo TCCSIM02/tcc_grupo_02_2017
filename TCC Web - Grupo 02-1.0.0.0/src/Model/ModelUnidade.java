@@ -6,9 +6,7 @@ package Model;
 import java.util.ArrayList;
 import java.util.Date;
 
-import DAO.DAOPlano;
 import DAO.DAOUnidade;
-import TO.TOPlano;
 import TO.TOUnidade;
 
 /**
