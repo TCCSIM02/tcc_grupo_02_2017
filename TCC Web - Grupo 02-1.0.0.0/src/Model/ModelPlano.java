@@ -3,8 +3,11 @@
  */
 package Model;
 
+import java.util.ArrayList;
 import java.util.Date;
+
 import TO.TOPlano;
+import DAO.DAOPlano;
 
 public class ModelPlano {
 
@@ -144,23 +147,52 @@ public class ModelPlano {
 	
 	public void cadastrarPlano(){
 		
+		DAOPlano dao = new DAOPlano();		
+		TOPlano toPlano = getTO();
+		dao.inserirPlano(toPlano); 
+		this.codPlano = toPlano.getCodPlano();
+		
 	}
 	
-	public void consultarPlano(){
-		
+	public void consultarPlanoCod()throws ClassNotFoundException  {
+
+		DAOPlano dao = new DAOPlano();
+
+		TOPlano toPlano = dao.consultarPlanoCod(codPlano);
+
+		codPlano = toPlano.getCodPlano();	
+		nomePlano = toPlano.getNomePlano();
+		registroAns = toPlano.getRegistroAns();
+		tipoPlano = toPlano.getTipoPlano();
+		flagAtivo = toPlano.getFlagAtivo();
+		dataCadastro = toPlano.getDataCadastro();
+
 	}
 
 	public void alterarPlano(){
-		
+		DAOPlano dao = new DAOPlano();		
+		TOPlano toPlano = getTO();
+		dao.alterarPlano(toPlano);		
 	}
 	
 	public void excluirPlano(){
-		
+		DAOPlano dao = new DAOPlano();
+		TOPlano toPlano = new TOPlano();
+		toPlano.setCodPlano(codPlano);
+		dao.excluirPlano(toPlano);
 	}
-
-
 	
-	
-	
+	public ArrayList<TOPlano> listarAlunos() throws ClassNotFoundException{
+		ArrayList<TOPlano> lista;
+		DAOPlano dao = new DAOPlano();
+		lista = dao.listarPlanos();
+		return lista;
+	}
+	public ArrayList<TOPlano> listarAlunos(String chave) throws ClassNotFoundException{
+		ArrayList<TOPlano> lista;
+		DAOPlano dao = new DAOPlano();
+		lista = dao.listarPlanos(chave);
+		return lista;
+	}	
 	
 }

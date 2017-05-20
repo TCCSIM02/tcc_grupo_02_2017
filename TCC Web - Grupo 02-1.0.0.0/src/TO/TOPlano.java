@@ -78,5 +78,5 @@ public class TOPlano {
 	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
-	
+		
 }
