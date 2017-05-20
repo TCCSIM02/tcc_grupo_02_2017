@@ -1,5 +1,7 @@
 package Model;
 
+import TO.TOEspecialidade;
+
 public class ModelEspecialidade {
 
 	private int codEspecialidade;
@@ -71,6 +73,17 @@ public class ModelEspecialidade {
 		this.descricao = descricao;
 	}
 
+	public TOEspecialidade getTO(){
+		
+		TOEspecialidade toEspecialidade = new TOEspecialidade();
+		
+		toEspecialidade.setCodEspecialidade(codEspecialidade);
+		toEspecialidade.setDescricao(descricao);
+		toEspecialidade.setFlagAtivo(descricao);
+		
+		return toEspecialidade;
+	}
+	
 	public void cadastrarEspecialidade(){
 		
 	}

@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.Date;
+import TO.TOAgendamento;
 
 public class ModelAgendamento {
 
@@ -123,6 +124,21 @@ public class ModelAgendamento {
 		this.dataHoraFim = dataHoraFim;
 	}
 
+	public TOAgendamento getTO(){
+		
+		TOAgendamento toAgendamento = new TOAgendamento();
+		
+		toAgendamento.setCodAgendamento(codAgendamento);
+		toAgendamento.setDataCadastro(dataCadastro);
+		toAgendamento.setDataHoraComeco(dataCadastro);
+		toAgendamento.setDataHoraFim(dataCadastro);
+		toAgendamento.setFlagAtivo(flagAtivo);
+		toAgendamento.setStatusAgendamento(flagAtivo);
+		
+		return toAgendamento;
+		
+	}
+	
 	public void agendarConsulta(){
 		
 	}

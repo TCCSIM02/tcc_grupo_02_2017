@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.Date;
+import TO.TOPromocao;
 
 public class ModelPromocao {
 
@@ -109,6 +110,20 @@ public class ModelPromocao {
 		this.flagAtivo = flagAtivo;
 	}
 
+	public TOPromocao getTO(){
+		
+		TOPromocao toPromocao = new TOPromocao();
+		
+		toPromocao.setCodPromocao(codPromocao);
+		toPromocao.setDataCadastro(dataCadastro);
+		toPromocao.setDataInicio(dataInicio);
+		toPromocao.setDataTermino(dataTermino);
+		toPromocao.setFlagAtivo(flagAtivo);
+		toPromocao.setValorPromocao(valorPromocao);
+		
+		return toPromocao;
+	}
+	
 	public void cadastrarPromocao(){
 		
 	}

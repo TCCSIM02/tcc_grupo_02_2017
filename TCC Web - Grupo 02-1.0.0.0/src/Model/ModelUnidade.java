@@ -4,6 +4,7 @@
 package Model;
 
 import java.util.Date;
+import TO.TOUnidade;
 
 /**
  * @author Nilton
@@ -277,6 +278,33 @@ public class ModelUnidade {
 	 */
 	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
+	}
+	
+	public TOUnidade getTO(){
+		
+		TOUnidade toUnidade = new TOUnidade();
+		
+		toUnidade.setCel(cel);
+		toUnidade.setCep(cep);
+		toUnidade.setCidade(cidade);
+		toUnidade.setCnpj(cnpj);
+		toUnidade.setCodUnidade(codUnidade);
+		toUnidade.setDataCadastro(dataCadastro);
+		toUnidade.setEndereco(endereco);
+		toUnidade.setFlagAtivo(flagAtivo);
+		toUnidade.setLogradouro(logradouro);
+		toUnidade.setNomeFantasia(nomeFantasia);
+		toUnidade.setNomeRede(nomeRede);
+		toUnidade.setNumeroEndereco(numeroEndereco);
+		toUnidade.setPais(pais);
+		toUnidade.setRazaoSocial(razaoSocial);
+		toUnidade.setRepresentante(representante);
+		toUnidade.setTel1(tel1);
+		toUnidade.setTel2(tel2);
+		toUnidade.setUf(uf);
+		
+		return toUnidade;
+		
 	}
 	
 	public void cadastrarUnidade(){

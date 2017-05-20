@@ -4,6 +4,7 @@
 package Model;
 
 import java.util.Date;
+import TO.TOPlano;
 
 public class ModelPlano {
 
@@ -126,6 +127,21 @@ public class ModelPlano {
 		this.dataCadastro = dataCadastro;
 	}
 
+	public TOPlano getTO(){
+		
+		TOPlano toPlano = new TOPlano();
+		
+		toPlano.setCodPlano(codPlano);
+		toPlano.setDataCadastro(dataCadastro);
+		toPlano.setFlagAtivo(flagAtivo);
+		toPlano.setNomePlano(nomePlano);
+		toPlano.setRegistroAns(registroAns);
+		toPlano.setTipoPlano(flagAtivo);
+
+		
+		return toPlano;
+	}
+	
 	public void cadastrarPlano(){
 		
 	}

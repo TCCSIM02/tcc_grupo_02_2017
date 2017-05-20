@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.Date;
+import TO.TOConsulta;
 
 public class ModelConsulta {
 
@@ -122,6 +123,21 @@ public class ModelConsulta {
 	 */
 	public void setValorConsulta(double valorConsulta) {
 		this.valorConsulta = valorConsulta;
+	}
+	
+	public TOConsulta getTO(){
+		
+		TOConsulta toConsulta = new TOConsulta();
+		
+		toConsulta.setCodConsulta(codConsulta);
+		toConsulta.setDataHoraConsultaFinal(dataHoraConsultaFinal);
+		toConsulta.setDataHoraConsultaInicio(dataHoraConsultaFinal);
+		toConsulta.setDiagnostico(diagnostico);
+		toConsulta.setStatusConsulta(diagnostico);
+		toConsulta.setValorConsulta(valorConsulta);
+		
+		return toConsulta;
+		
 	}
 
 	public void cadastrarConsulta(){

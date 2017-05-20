@@ -4,6 +4,7 @@
 package Model;
 
 import java.util.Date;
+import TO.TOAdministrador;
 
 public class ModelAdministrador extends ModelUsuario{
 
@@ -61,7 +62,7 @@ public class ModelAdministrador extends ModelUsuario{
 	public void setCodAdministrador(int codAdministrador) {
 		this.codAdministrador = codAdministrador;
 	}
-
+	
 	public void cadastrarAdminstrador(){
 		
 	}

@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.Date;
+import TO.TOReceituario;
 
 public class ModelReceituario {
 
@@ -154,6 +155,22 @@ public class ModelReceituario {
 	 */
 	public void setDataValidade(Date dataValidade) {
 		this.dataValidade = dataValidade;
+	}
+	
+	public TOReceituario getTO(){
+		
+		TOReceituario toReceituario = new TOReceituario();
+		
+		toReceituario.setCodReceituario(codReceituario);
+		toReceituario.setDataValidade(dataValidade);
+		toReceituario.setDescricaoReceita(descricaoReceita);
+		toReceituario.setDuracao(duracao);
+		toReceituario.setFlagAtivo(flagAtivo);
+		toReceituario.setPeriodo(periodo);
+		toReceituario.setQuantidadeDoses(quantidadeDoses);
+		toReceituario.setRecomendacoes(recomendacoes);
+		
+		return toReceituario;
 	}
 
 	public void cadastrarReceituario(){
