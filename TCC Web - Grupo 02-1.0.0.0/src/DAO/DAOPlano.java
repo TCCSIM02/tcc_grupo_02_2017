@@ -154,7 +154,7 @@ public class DAOPlano {
 					lista.add(toPlano);
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				e.printStackTrace(); 
 			}
 		} catch (SQLException e1) {
 			System.out.print(e1.getStackTrace());

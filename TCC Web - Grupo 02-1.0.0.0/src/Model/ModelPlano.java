@@ -154,6 +154,7 @@ public class ModelPlano {
 		
 	}
 	
+	/*	consulta por id	*/
 	public void consultarPlanoCod()throws ClassNotFoundException  {
 
 		DAOPlano dao = new DAOPlano();
