@@ -1,0 +1,22 @@
+1 - Fazer download no link 
+http://ftp.unicamp.br/pub/apache/tomcat/tomcat-8/v8.0.44/bin/apache-tomcat-
+8.0.44.exe
+
+2 - Instalar o exe
+
+3 - Depois de instalado abri o eclipse na workspace do TCC
+
+4 - Na barra de menu, ir em Windows > Show View > Servers
+
+5 - Clicar com o botão direito em qualquer lugar da aba que abri e clicar em "new" > "server"
+
+6 - Quando abrir a tela, abrir Apache e selecionar Tomcat v8.0 server e depois clicar em next
+
+7 - selecionar a pasta onde o tomcat foi instalado e clicar em next
+
+8 - mover o projeto do tcc para o lado direito e clicar em Finish.
+
+/********/
+EM CASO DE ERROS NAS CLASSE DO PACOTE COMMAND OU CONTROLER NOS IMPORTS "javax.servlet"
+	9 - ir em build path > add external jars > "pasta de instalação do tomcat" / no meu caso C:\Program Files\Apache Software Foundation\Tomcat 8.0\lib > selecionar todos os jars e adicionar
+
