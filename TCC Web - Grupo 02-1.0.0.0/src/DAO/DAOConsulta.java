@@ -99,7 +99,7 @@ public class DAOConsulta{
 		return toConsulta;
 	}
 	
-	public ArrayList<TOConsulta> listarPromocoes(){
+	public ArrayList<TOConsulta> listarConsultas(){
 		TOConsulta toConsulta;
 		ArrayList<TOConsulta> lista = new ArrayList<>();
 		String sqlSelect = "select * from tcc.consulta ";

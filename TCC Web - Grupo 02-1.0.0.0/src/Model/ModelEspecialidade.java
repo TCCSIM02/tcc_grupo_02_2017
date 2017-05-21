@@ -1,6 +1,16 @@
 package Model;
 
+import java.util.ArrayList;
+
+import DAO.DAOEspecialidade;
+import DAO.DAOEspecialidade;
+import DAO.DAOEspecialidade;
+import DAO.DAOPlano;
 import TO.TOEspecialidade;
+import TO.TOEspecialidade;
+import TO.TOEspecialidade;
+import TO.TOPlano;
+
 
 public class ModelEspecialidade {
 
@@ -77,24 +87,39 @@ public class ModelEspecialidade {
 		
 		toEspecialidade.setCodEspecialidade(codEspecialidade);
 		toEspecialidade.setDescricao(descricao);
-		toEspecialidade.setFlagAtivo(descricao);
+		toEspecialidade.setFlagAtivo(flagAtivo);
 		
 		return toEspecialidade;
 	}
 	
 	public void cadastrarEspecialidade(){
-		
+		DAOEspecialidade dao = new DAOEspecialidade();		
+		TOEspecialidade toEspecialidade = getTO();
+		dao.cadastrarEspecialidade(toEspecialidade); 
+		this.codEspecialidade = toEspecialidade.getCodEspecialidade();
 	}
 
-	public void alterarEspecialidade(){
+	public void consultarEspecialidadeCod(){
+		DAOEspecialidade dao = new DAOEspecialidade();	
+		TOEspecialidade toEspecialidade = dao.consultarEspecialidadeCod(codEspecialidade);
 		
+		codEspecialidade = toEspecialidade.getCodEspecialidade();
+		descricao =  toEspecialidade.getDescricao();
+		flagAtivo = toEspecialidade.getFlagAtivo();
 	}
 	
-	public void consultarEspecialidade(){
-		
+	public ArrayList<TOEspecialidade> listarEspecialidades() throws ClassNotFoundException{
+		ArrayList<TOEspecialidade> lista;
+		DAOEspecialidade dao = new DAOEspecialidade();
+		lista = dao.listarEspecialidades();
+		return lista;
 	}
 	
-	public void excluirEspecialidade(){
-		
-	}
+	public ArrayList<TOEspecialidade> listarEspecialidades(String chave) throws ClassNotFoundException{
+		ArrayList<TOEspecialidade> lista;
+		DAOEspecialidade dao = new DAOEspecialidade();
+		lista = dao.listarEspecialidades(chave);
+		return lista;
+	}	
+
 }
