@@ -1,31 +1,42 @@
 package DAO;
 
 import ConnectionFactory.FabricaConexao;
-
 import TO.TOPlano;
+
+
 
 
 import java.sql.Connection; 
 import java.sql.PreparedStatement; 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList; 
+import java.util.Date;
 
 public class DAOPlano {
 
 	public void cadastrarPlano(TOPlano toPlano){
-		String sqlInsert = "INSERT INTO tcc.plano (nomePlano,registroAns,tipoPlano,flagAtivo,dataCadastro) VALUES (?,?,?,?,?)";
+		String sqlInsert = "INSERT INTO tcc.plano (nomePlano,registroAns,tipoPlano,flagAtivo,dataCadastro) VALUES (?,?,?,?,current_timestamp())";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
 
+			java.util.Date dataUtil = new java.util.Date();
+			//SimpleDateFormat inputdate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
+			//String strDate = inputdate.format(dataUtil);
+			
+			//long longDate = Long.valueOf(strDate);
+			
+			java.sql.Date dataSql = new java.sql.Date(dataUtil.getTime());
+			//java.sql.Date dataSql = new java.sql.Date(longDate);
+						
 			stm.setString(1,toPlano.getNomePlano());
 			stm.setString(2,toPlano.getRegistroAns());
 			stm.setString(3,toPlano.getTipoPlano());
 			stm.setString(4,toPlano.getFlagAtivo());
-			stm.setDate(5,(java.sql.Date) toPlano.getDataCadastro());
-
+			//stm.setDate(5,dataSql);
 			
 			stm.execute();
 			
