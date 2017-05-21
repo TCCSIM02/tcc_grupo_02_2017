@@ -24,7 +24,6 @@ public class ModelConsulta {
 	 */
 	public ModelConsulta(int codConsulta, Date dataHoraConsultaInicio, Date dataHoraConsultaFinal, String diagnostico,
 			String statusConsulta, double valorConsulta) {
-		super();
 		this.codConsulta = codConsulta;
 		this.dataHoraConsultaInicio = dataHoraConsultaInicio;
 		this.dataHoraConsultaFinal = dataHoraConsultaFinal;
@@ -37,7 +36,6 @@ public class ModelConsulta {
 	 * @param codConsulta
 	 */
 	public ModelConsulta(int codConsulta) {
-		super();
 		this.codConsulta = codConsulta;
 	}
 
@@ -133,7 +131,7 @@ public class ModelConsulta {
 		toConsulta.setDataHoraConsultaFinal(dataHoraConsultaFinal);
 		toConsulta.setDataHoraConsultaInicio(dataHoraConsultaFinal);
 		toConsulta.setDiagnostico(diagnostico);
-		toConsulta.setStatusConsulta(diagnostico);
+		toConsulta.setStatusConsulta(statusConsulta);
 		toConsulta.setValorConsulta(valorConsulta);
 		
 		return toConsulta;
