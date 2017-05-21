@@ -12,7 +12,7 @@ import ConnectionFactory.FabricaConexao;
 public class DAOUnidade {
 	
 	public void cadastrarUnidade(TOUnidade toUnidade){
-		String sqlInsert = "INSERT INTO tcc.unidade (razaoSocial,nomeFantasia,cNPJ,nomeRede,endereco,logradouro,cEP,cidade,uF,pais,representante,tel1,tel2,cel,flagAtivo,dataCadastro) VALUES VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sqlInsert = "INSERT INTO tcc.unidade (razaoSocial,nomeFantasia,cNPJ,nomeRede,endereco,logradouro,cEP,cidade,uF,pais,representante,tel1,tel2,cel,flagAtivo,dataCadastro) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
@@ -92,7 +92,7 @@ public class DAOUnidade {
 		}		
 	}
 	
-	public TOUnidade consultarPlanoCod(int codUnidadeBusca){
+	public TOUnidade consultarUnidadeCod(int codUnidadeBusca){
 		TOUnidade toUnidade = new TOUnidade();
 		toUnidade.setCodUnidade(codUnidadeBusca);
 		String sqlSelect = "SELECT razaoSocial, nomeFantasia, cNPJ, nomeRede, endereco, logradouro, cEP, cidade, uF, pais, representante, tel1, tel2, cel, flagAtivo, dataCadastro FROM tcc.unidade where codUnidade = ?";
@@ -174,7 +174,7 @@ public class DAOUnidade {
 	public ArrayList<TOUnidade> listarUnidades(String chave){
 		TOUnidade toUnidade;
 		ArrayList<TOUnidade> lista = new ArrayList<>();
-		String sqlSelect = "SELECT * from toUnidade where upper(nomeFantasia) like '?'";
+		String sqlSelect = "SELECT * from  tcc.unidade where upper(nomeFantasia) like '?'";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {

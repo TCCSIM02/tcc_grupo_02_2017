@@ -1,6 +1,9 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.Date;
+
+import DAO.DAOPromocao;
 import TO.TOPromocao;
 
 public class ModelPromocao {
@@ -125,18 +128,42 @@ public class ModelPromocao {
 	}
 	
 	public void cadastrarPromocao(){
-		
-	}
-
-	public void consultarPromocao(){
-		
+		DAOPromocao dao = new DAOPromocao();		
+		TOPromocao toPromocao = getTO();
+		dao.cadastrarPromocao(toPromocao); 
+		this.codPromocao = toPromocao.getCodPromocao();
 	}
 	
 	public void alterarPromocao(){
-		
+		DAOPromocao dao = new DAOPromocao();		
+		TOPromocao toPromocao = getTO();
+		dao.alterarPromocao(toPromocao);		
 	}
 	
 	public void excluirPromocao(){
+		DAOPromocao dao = new DAOPromocao();		
+		TOPromocao toPromocao = new TOPromocao();
+		toPromocao.setCodPromocao(codPromocao);
+		dao.excluirPromocao(toPromocao);
+	}
+	
+	public void consultarPromocaoCod(){
+		DAOPromocao dao = new DAOPromocao();	
+		TOPromocao toPromocao = dao.consultarPromocaoCod(codPromocao);
 		
+		codPromocao = toPromocao.getCodPromocao();
+		dataCadastro = toPromocao.getDataCadastro();
+		dataInicio = toPromocao.getDataInicio();
+		dataTermino = toPromocao.getDataTermino();
+		flagAtivo = toPromocao.getFlagAtivo();
+		valorPromocao = toPromocao.getValorPromocao();
+
+	}
+	
+	public ArrayList<TOPromocao> listarPromocoes() throws ClassNotFoundException{
+		ArrayList<TOPromocao> lista;
+		DAOPromocao dao = new DAOPromocao();
+		lista = dao.listarPromocoes();
+		return lista;
 	}
 }

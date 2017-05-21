@@ -335,7 +335,7 @@ public class ModelUnidade {
 	public void consultarUnidadeCod() throws ClassNotFoundException  {
 		DAOUnidade dao = new DAOUnidade();	
 
-		TOUnidade toUnidade = dao.consultarPlanoCod(codUnidade);
+		TOUnidade toUnidade = dao.consultarUnidadeCod(codUnidade);
 		
 		cel = toUnidade.getCel();
 		cep = toUnidade.getCep();
