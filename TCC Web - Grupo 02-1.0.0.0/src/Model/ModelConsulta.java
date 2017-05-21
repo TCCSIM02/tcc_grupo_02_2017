@@ -1,6 +1,8 @@
 package Model;
 
 import java.util.Date;
+
+import DAO.DAOConsulta;
 import TO.TOConsulta;
 
 public class ModelConsulta {
@@ -139,18 +141,36 @@ public class ModelConsulta {
 	}
 
 	public void cadastrarConsulta(){
-		
+		DAOConsulta dao = new DAOConsulta();		
+		TOConsulta toConsulta = getTO();
+		dao.cadastrarConsulta(toConsulta); 
+		this.codConsulta = toConsulta.getCodConsulta();
 	}
 
-	public void consultarConsulta(){
-		
-	}
-	
 	public void alterarConsulta(){
-		
+		DAOConsulta dao = new DAOConsulta();		
+		TOConsulta toConsulta = getTO();
+		dao.alterarConsulta(toConsulta);	
 	}
 	
 	public void excluirConsulta(){
-		
+		DAOConsulta dao = new DAOConsulta();		
+		TOConsulta toConsulta = new TOConsulta();
+		toConsulta.setCodConsulta(codConsulta);
+		dao.excluirConsulta(toConsulta);
 	}
+	
+
+	public void consultarConsultaCod(){
+		DAOConsulta dao = new DAOConsulta();	
+		TOConsulta toConsulta = dao.consultarConsultaCod(codConsulta);
+		
+		codConsulta = toConsulta.getCodConsulta();
+		dataHoraConsultaFinal =  toConsulta.getDataHoraConsultaFinal();
+		dataHoraConsultaInicio = toConsulta.getDataHoraConsultaInicio();
+		diagnostico = toConsulta.getDiagnostico();
+		statusConsulta = toConsulta.getStatusConsulta();
+		valorConsulta = toConsulta.getValorConsulta();
+	}
+	
 }

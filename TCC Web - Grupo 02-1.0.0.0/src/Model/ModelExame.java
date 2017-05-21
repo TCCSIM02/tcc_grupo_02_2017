@@ -16,7 +16,6 @@ public class ModelExame {
 	 * @param resultadoExame
 	 */
 	public ModelExame(int codExame, double valorExame, String descricao, File resultadoExame) {
-		super();
 		this.codExame = codExame;
 		this.valorExame = valorExame;
 		this.descricao = descricao;
@@ -27,7 +26,6 @@ public class ModelExame {
 	 * @param codExame
 	 */
 	public ModelExame(int codExame) {
-		super();
 		this.codExame = codExame;
 	}
 

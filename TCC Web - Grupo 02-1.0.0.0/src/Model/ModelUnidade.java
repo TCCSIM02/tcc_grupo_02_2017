@@ -41,7 +41,6 @@ public class ModelUnidade {
 	 * @param codUnidade
 	 */
 	public ModelUnidade(int codUnidade) {
-		super();
 		this.codUnidade = codUnidade;
 	}
 

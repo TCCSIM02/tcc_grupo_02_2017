@@ -15,7 +15,6 @@ public class ModelEspecialidade {
 	 * @param codEspecialidade
 	 */
 	public ModelEspecialidade(int codEspecialidade) {
-		super();
 		this.codEspecialidade = codEspecialidade;
 	}
 	
@@ -25,7 +24,6 @@ public class ModelEspecialidade {
 	 * @param descricao
 	 */
 	public ModelEspecialidade(int codEspecialidade, String flagAtivo, String descricao) {
-		super();
 		this.codEspecialidade = codEspecialidade;
 		this.flagAtivo = flagAtivo;
 		this.descricao = descricao;

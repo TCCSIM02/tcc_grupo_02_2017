@@ -25,7 +25,6 @@ public class ModelPromocao {
 	 */
 	public ModelPromocao(int codPromocao, double valorPromocao, Date dataInicio, Date dataTermino, Date dataCadastro,
 			String flagAtivo) {
-		super();
 		this.codPromocao = codPromocao;
 		this.valorPromocao = valorPromocao;
 		this.dataInicio = dataInicio;
@@ -37,7 +36,6 @@ public class ModelPromocao {
 	 * @param codPromocao
 	 */
 	public ModelPromocao(int codPromocao) {
-		super();
 		this.codPromocao = codPromocao;
 	}
 	/**

@@ -18,7 +18,6 @@ public class ModelReceituario {
 	 * @param codReceituario
 	 */
 	public ModelReceituario(int codReceituario) {
-		super();
 		this.codReceituario = codReceituario;
 	}
 
@@ -34,7 +33,6 @@ public class ModelReceituario {
 	 */
 	public ModelReceituario(int codReceituario, double quantidadeDoses, String descricaoReceita, String recomendacoes,
 			String periodo, String duracao, String flagAtivo, Date dataValidade) {
-		super();
 		this.codReceituario = codReceituario;
 		this.quantidadeDoses = quantidadeDoses;
 		this.descricaoReceita = descricaoReceita;

@@ -23,7 +23,6 @@ public class ModelAgendamento {
 	 */
 	public ModelAgendamento(int codAgendamento, String statusAgendamento, String flagAtivo, Date dataCadastro,
 			Date dataHoraComeco, Date dataHoraFim) {
-		super();
 		this.codAgendamento = codAgendamento;
 		this.statusAgendamento = statusAgendamento;
 		this.flagAtivo = flagAtivo;
@@ -36,7 +35,6 @@ public class ModelAgendamento {
 	 * @param codAgendamento
 	 */
 	public ModelAgendamento(int codAgendamento) {
-		super();
 		this.codAgendamento = codAgendamento;
 	}
 

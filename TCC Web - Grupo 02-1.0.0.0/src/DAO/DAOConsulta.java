@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import ConnectionFactory.FabricaConexao;
 import TO.TOConsulta;
 
-public class DAOConsulta {
+public class DAOConsulta{
 	public void cadastrarConsulta(TOConsulta toConsulta){
 		String sqlInsert = "INSERT INTO tcc.consulta ( statusConsulta,diagnostico,dataConsultaEntrada,dataConsultaSaida,valorConsulta)VALUES (?,?,?,?,?)";
 		// usando o try with resources do Java 7, que fecha o que abriu
