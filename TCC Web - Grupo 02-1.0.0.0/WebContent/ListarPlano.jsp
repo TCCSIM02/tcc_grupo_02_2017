@@ -31,7 +31,7 @@
 				<div class="modal-body">Deseja realmente excluir este plano?</div>
 				<div class="modal-footer">
 					<form action="controller.do" method="post">
-						<input type="hidden" name="id" id="id_excluir" />
+						<input type="hidden" name="id" id="id_excluir"/>
 						<button type="submit" class="btn btn-primary" name="command" value="ExcluirPlano">Sim</button>
 						<button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
 					</form>
@@ -102,7 +102,7 @@
 							   <td class="actions">
                                                 <a class="btn btn-success btn-xs" href="controller.do?command=VisualizarPlano&id=${to.codPlano}">Visualizar</a>
                                                 <a class="btn btn-warning btn-xs" href="controller.do?command=EditarPlano&id=${to.codPlano}">Editar</a>
-                                                <button id="btn${to.codPlano}%>" type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal" data-cliente="${to.codPlano}">Excluir</button>
+                                                <button id="btn${to.codPlano}" type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal" data-cliente="${to.codPlano}">Excluir</button>
                                             </td>
                                         </tr>
                             </c:forEach>

@@ -31,7 +31,7 @@
 				</div>
 				<div class="modal-footer">
 					<form action="controller.do" method="post">
-						<input type="hidden" name="id" value="${planoTO.id }" />
+						<input type="hidden" name="id" value="${planoTO.codPlano }" />
 						<button type="submit" class="btn btn-primary" name="command" value="ExcluirCliente">Sim</button>
 						<button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
 					</form>
@@ -46,7 +46,7 @@
 
 	<!-- Container Principal -->
 	<div id="main" class="container">
-		<h3 class="page-header">Visualizar Plano #${planoTO.id}</h3>
+		<h3 class="page-header">Visualizar Plano #${planoTO.codPlano}</h3>
 
 
 		<div class="row">
@@ -95,7 +95,7 @@
 		</div>
 		<div id="actions" class="row">
 			<div class="col-md-12">
-				<a href="controller.do?command=EditarPlano&id=${planoTO.id }"
+				<a href="controller.do?command=EditarPlano&id=${planoTO.codPlano }"
 					class="btn btn-primary">Editar</a> <a href="#"
 					class="btn btn-danger" data-toggle="modal"
 					data-target="#delete-modal">Excluir</a> <a

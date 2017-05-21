@@ -23,13 +23,13 @@
 	<div id="main" class="container">
 		<h3 class="page-header">
 			
-			Alterar Plano #${planoTO.id}</h3>
+			Alterar Plano #${planoTO.codPlano}</h3>
 			
 					
 		<!-- Formulario para alteração de clientes -->
 		<form action="controller.do" method="post">
 			<!-- area de campos do form -->
-			<input type="hidden" name="id" value="${planoTO.id }" />
+			<input type="hidden" name="id" value="${planoTO.codPlano }" />
 			
 			<div class="row">
 				<div class="form-group col-md-12">

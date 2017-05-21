@@ -43,5 +43,11 @@ public class ServletController extends HttpServlet {
 		doExecute(request, response);
 		
 	}
+	
+	/*protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		doExecute(request, response);
+		
+	}*/
 
 }
