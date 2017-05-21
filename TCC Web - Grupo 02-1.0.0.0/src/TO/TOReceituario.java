@@ -6,7 +6,7 @@ public class TOReceituario {
 	private int codReceituario;
 	private double quantidadeDoses;
 	private String descricaoReceita, recomendacoes, periodo, duracao, flagAtivo;
-	private Date dataValidade;
+	private Date dataLimite;
 	/**
 	 * @return the codReceituario
 	 */
@@ -50,10 +50,10 @@ public class TOReceituario {
 		return flagAtivo;
 	}
 	/**
-	 * @return the dataValidade
+	 * @return the dataLimite
 	 */
 	public Date getDataValidade() {
-		return dataValidade;
+		return dataLimite;
 	}
 	/**
 	 * @param codReceituario the codReceituario to set
@@ -98,9 +98,9 @@ public class TOReceituario {
 		this.flagAtivo = flagAtivo;
 	}
 	/**
-	 * @param dataValidade the dataValidade to set
+	 * @param dataLimite the dataLimite to set
 	 */
-	public void setDataValidade(Date dataValidade) {
-		this.dataValidade = dataValidade;
+	public void setDataValidade(Date dataLimite) {
+		this.dataLimite = dataLimite;
 	}
 }

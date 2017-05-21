@@ -8,7 +8,7 @@ public class ModelReceituario {
 	private int codReceituario;
 	private double quantidadeDoses;
 	private String descricaoReceita, recomendacoes, periodo, duracao, flagAtivo;
-	private Date dataValidade;
+	private Date dataLimite;
 	
 	public ModelReceituario() {
 		// TODO Auto-generated constructor stub
@@ -29,10 +29,10 @@ public class ModelReceituario {
 	 * @param periodo
 	 * @param duracao
 	 * @param flagAtivo
-	 * @param dataValidade
+	 * @param dataLimite
 	 */
 	public ModelReceituario(int codReceituario, double quantidadeDoses, String descricaoReceita, String recomendacoes,
-			String periodo, String duracao, String flagAtivo, Date dataValidade) {
+			String periodo, String duracao, String flagAtivo, Date dataLimite) {
 		this.codReceituario = codReceituario;
 		this.quantidadeDoses = quantidadeDoses;
 		this.descricaoReceita = descricaoReceita;
@@ -40,7 +40,7 @@ public class ModelReceituario {
 		this.periodo = periodo;
 		this.duracao = duracao;
 		this.flagAtivo = flagAtivo;
-		this.dataValidade = dataValidade;
+		this.dataLimite = dataLimite;
 	}
 
 	/**
@@ -93,10 +93,10 @@ public class ModelReceituario {
 	}
 
 	/**
-	 * @return the dataValidade
+	 * @return the dataLimite
 	 */
 	public Date getDataValidade() {
-		return dataValidade;
+		return dataLimite;
 	}
 
 	/**
@@ -149,10 +149,10 @@ public class ModelReceituario {
 	}
 
 	/**
-	 * @param dataValidade the dataValidade to set
+	 * @param dataLimite the dataLimite to set
 	 */
-	public void setDataValidade(Date dataValidade) {
-		this.dataValidade = dataValidade;
+	public void setDataValidade(Date dataLimite) {
+		this.dataLimite = dataLimite;
 	}
 	
 	public TOReceituario getTO(){
@@ -160,7 +160,7 @@ public class ModelReceituario {
 		TOReceituario toReceituario = new TOReceituario();
 		
 		toReceituario.setCodReceituario(codReceituario);
-		toReceituario.setDataValidade(dataValidade);
+		toReceituario.setDataValidade(dataLimite);
 		toReceituario.setDescricaoReceita(descricaoReceita);
 		toReceituario.setDuracao(duracao);
 		toReceituario.setFlagAtivo(flagAtivo);
