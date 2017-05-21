@@ -29,7 +29,6 @@ public class ModelPlano {
 	 */
 	public ModelPlano(int codPlano, String nomePlano, String registroAns, String tipoPlano, String flagAtivo,
 			Date dataCadastro) {
-		super();
 		this.codPlano = codPlano;
 		this.nomePlano = nomePlano;
 		this.registroAns = registroAns;
@@ -42,7 +41,6 @@ public class ModelPlano {
 	 * @param codPlano
 	 */
 	public ModelPlano(int codPlano) {
-		super();
 		this.codPlano = codPlano;
 	}
 
