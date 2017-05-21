@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import DAO.DAOConsulta;
-import DAO.DAOConsulta;
 import TO.TOConsulta;
-import TO.TOConsulta;
+
 
 public class ModelConsulta {
 

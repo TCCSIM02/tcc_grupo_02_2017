@@ -3,13 +3,8 @@ package Model;
 import java.util.ArrayList;
 
 import DAO.DAOEspecialidade;
-import DAO.DAOEspecialidade;
-import DAO.DAOEspecialidade;
-import DAO.DAOPlano;
 import TO.TOEspecialidade;
-import TO.TOEspecialidade;
-import TO.TOEspecialidade;
-import TO.TOPlano;
+
 
 
 public class ModelEspecialidade {
