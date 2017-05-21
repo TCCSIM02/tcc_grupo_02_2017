@@ -16,8 +16,6 @@
 </head>	
 
 <body>
-    <!-- Barra superior com os menus de navegaÃ§Ã£o -->
-	<c:import url="Menu.jsp"/>
 	<!-- Modal -->
 	<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog"
 		aria-labelledby="modalLabel">
