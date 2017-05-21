@@ -137,7 +137,7 @@ public class ModelPlano {
 		toPlano.setFlagAtivo(flagAtivo);
 		toPlano.setNomePlano(nomePlano);
 		toPlano.setRegistroAns(registroAns);
-		toPlano.setTipoPlano(flagAtivo);
+		toPlano.setTipoPlano(tipoPlano);
 
 		
 		return toPlano;

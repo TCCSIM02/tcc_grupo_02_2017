@@ -112,13 +112,13 @@ public class DAOPlano {
 			try (ResultSet rs = stm.executeQuery();) {
 				while(rs.next()) {
 					toPlano = new TOPlano();
-					
+								
 					toPlano.setCodPlano(rs.getInt("codPlano"));
-					toPlano.setDataCadastro(rs.getDate("nomePlano"));
-					toPlano.setFlagAtivo(rs.getString("registroAns")); 
-					toPlano.setNomePlano(rs.getString("tipoPlano"));								
-					toPlano.setRegistroAns(rs.getString("flagAtivo"));
-					toPlano.setTipoPlano(rs.getString("dataCadastro"));
+					toPlano.setNomePlano(rs.getString("nomePlano"));
+					toPlano.setRegistroAns(rs.getString("registroAns")); 
+					toPlano.setTipoPlano(rs.getString("tipoPlano"));								
+					toPlano.setFlagAtivo(rs.getString("flagAtivo"));
+					toPlano.setDataCadastro(rs.getDate("dataCadastro"));
 									
 					lista.add(toPlano);
 				}
@@ -144,11 +144,11 @@ public class DAOPlano {
 					toPlano = new TOPlano();
 					
 					toPlano.setCodPlano(rs.getInt("codPlano"));
-					toPlano.setDataCadastro(rs.getDate("nomePlano"));
-					toPlano.setFlagAtivo(rs.getString("registroAns")); 
-					toPlano.setNomePlano(rs.getString("tipoPlano"));								
-					toPlano.setRegistroAns(rs.getString("flagAtivo"));
-					toPlano.setTipoPlano(rs.getString("dataCadastro"));
+					toPlano.setNomePlano(rs.getString("nomePlano"));
+					toPlano.setRegistroAns(rs.getString("registroAns")); 
+					toPlano.setTipoPlano(rs.getString("tipoPlano"));								
+					toPlano.setFlagAtivo(rs.getString("flagAtivo"));
+					toPlano.setDataCadastro(rs.getDate("dataCadastro"));
 									
 					lista.add(toPlano);
 				}

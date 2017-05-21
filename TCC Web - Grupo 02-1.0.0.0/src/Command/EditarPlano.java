@@ -1,21 +1,18 @@
 package Command;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import Command.Command;
 import Model.ModelPlano;
-import TO.TOPlano;
 
-public class VisualizarPlano implements Command {
+public class EditarPlano implements Command{
 	
 	@Override
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		String pCodPlano = request.getParameter("codPlano");
 		String pNomePlano = request.getParameter("nomePlano");
 		String pRegistroAns = request.getParameter("registroAns");
@@ -29,6 +26,7 @@ public class VisualizarPlano implements Command {
 		} catch (NumberFormatException e) {
 
 		}
+
 		/*ALTERAR ESSE NULL AQUI*/
 		ModelPlano modelPlano = new ModelPlano(id,pNomePlano,pRegistroAns,pTipoPlano, pFlagAtivo, null);
 		RequestDispatcher view = null;
@@ -36,26 +34,15 @@ public class VisualizarPlano implements Command {
 		try {
 			modelPlano.consultarPlanoCod();
 		} catch (ClassNotFoundException e) {
+		
 			e.printStackTrace();
 		}
-		request.setAttribute("planoTO",modelPlano.getTO() );
-		view = request.getRequestDispatcher("VisualizarPlano.jsp");
+			
+		request.setAttribute("planoTO", modelPlano.getTO());
+		view = request.getRequestDispatcher("AlterarPlano.jsp");
+		
 		view.forward(request, response);
 
 	}
-	
-	public int busca(ModelPlano modelPlano, ArrayList<TOPlano> lista) {
-		TOPlano toPlano;
-		for(int i = 0; i < lista.size(); i++){
-			toPlano = lista.get(i);
-			if(toPlano.getCodPlano() == modelPlano.getCodPlano()){
-				return i;
-			}
-		}
-		return -1;
-	}
-
-	
-	
 
 }
