@@ -17,7 +17,7 @@ import java.util.Date;
 public class DAOPlano {
 
 	public void cadastrarPlano(TOPlano toPlano){
-		String sqlInsert = "INSERT INTO tcc.plano (nomePlano,registroAns,tipoPlano,flagAtivo,dataCadastro) VALUES (?,?,?,?,current_timestamp())";
+		String sqlInsert = "INSERT INTO tcc.plano (nomePlano,registroAns,tipoPlano,flagAtivo,dataCadastro) VALUES (?,?,?,1,current_timestamp())";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
@@ -35,7 +35,7 @@ public class DAOPlano {
 			stm.setString(1,toPlano.getNomePlano());
 			stm.setString(2,toPlano.getRegistroAns());
 			stm.setString(3,toPlano.getTipoPlano());
-			stm.setString(4,toPlano.getFlagAtivo());
+			//stm.setString(4,toPlano.getFlagAtivo());
 			//stm.setDate(5,dataSql);
 			
 			stm.execute();
