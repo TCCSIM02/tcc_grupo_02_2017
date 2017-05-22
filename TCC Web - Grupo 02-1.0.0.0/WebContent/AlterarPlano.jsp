@@ -29,7 +29,7 @@
 		<!-- Formulario para alteração de clientes -->
 		<form action="controller.do" method="post">
 			<!-- area de campos do form -->
-			<input type="hidden" name="codPlano" id="codPlano" value="${planoTO.codPlano}" />
+			<input type="hidden" name="codPlano" id="codPlano" value="${planoTO.codPlano}" /> 
 			
 			<div class="row">
 				<div class="form-group col-md-12">
