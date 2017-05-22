@@ -63,7 +63,6 @@
 				</div>
 			</div>
 
-
 			<div class="row">
 				<div class="form-group col-md-12">
 					<label for="dataCadastro">Data Cadastro</label> <input type="text"
@@ -72,7 +71,6 @@
 				</div>
 			</div>
 
-			
 			<div id="actions" class="row">
 				<div class="col-md-12">
 					<button type="submit" class="btn btn-primary" name="command" value="AlterarPlano">Salvar</button>
