@@ -45,6 +45,13 @@ public class AlterarPlano implements Command {
 		lista.remove(pos);
 		lista.add(pos, modelPlano.getTO());
 		
+		try {
+			lista = modelPlano.listarPlanos();
+		} catch (ClassNotFoundException e) {
+			
+			e.printStackTrace();
+		}
+		
 		session.setAttribute("lista", lista);
 		request.setAttribute("planoTO", modelPlano.getTO());
 		view = request.getRequestDispatcher("VisualizarPlano.jsp");
