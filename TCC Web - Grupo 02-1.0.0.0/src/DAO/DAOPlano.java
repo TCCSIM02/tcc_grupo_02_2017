@@ -54,7 +54,7 @@ public class DAOPlano {
 	}
 	
 	public void alterarPlano(TOPlano toPlano){
-		String sqlUpdate = "UPDATE tcc.plano SET nomePlano = ?, registroAns = ?, tipoPlano = ?, flagAtivo = ?, WHERE codPlano = ?";
+		String sqlUpdate = "UPDATE tcc.plano SET nomePlano = ?, registroAns = ?, tipoPlano = ?, flagAtivo = ? WHERE codPlano = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 			PreparedStatement stm = conn.prepareStatement(sqlUpdate);) {
