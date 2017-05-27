@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>TCC - grupo 02 SI</title>
+  <meta name="description" content="mobile first, app, web app, responsive, admin dashboard, flat, flat ui">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">	
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/font.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/plugin.css">
+	<link rel="stylesheet" href="css/landing.css">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+</head>
+<body>
+  <!-- header -->
+	<header id="header" class="navbar">
+    <ul class="nav navbar-nav navbar-avatar pull-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">            
+          <span class="hidden-xs-only">André Luiz</span>
+          <span class="thumb-small avatar inline"><img src="images/avatar.jpg" alt="Mika Sokeil" class="img-circle"></span>
+          <b class="caret hidden-xs-only"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Configurações</a></li>
+          <li><a href="#">Perfil</a></li>
+          <li><a href="#"><span class="badge bg-danger pull-right">3</span>Notificações</a></li>
+          <li class="divider"></li>
+          <li><a href="docs.html">Ajuda</a></li>
+          <li><a href="signin.html">Sair</a></li>
+        </ul>
+      </li>
+    </ul>
+    <a class="navbar-brand" href="#" style="font-family: 'Ubuntu', sans-serif;">TCC</a>
+    <ul class="nav navbar-nav hidden-xs">
+      <li class="dropdown shift" data-toggle="shift:appendTo" data-target=".nav-primary .nav">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cog icon-xlarge visible-xs visible-xs-inline"></i>Configurações <b class="caret hidden-sm-only"></b></a>
+      </li>
+    </ul>
+    <form class="navbar-form pull-left shift" action="" data-toggle="shift:appendTo" data-target=".nav-primary">
+      <i class="icon-search text-muted"></i>
+      <input type="text" class="input-sm form-control" placeholder="Pesquisar">
+    </form>
+	</header>
+  <!-- / header -->
+  <!-- nav -->
+  <nav id="nav" class="nav-primary hidden-xs nav-vertical">
+    <ul class="nav" data-spy="affix" data-offset-top="50">
+	<li class="dropdown-submenu">
+        <a href="index_unidades.html"><i class="icon-home icon-xlarge"></i><span>Unidades</span></a>
+      </li>
+	  <li class="active">
+        <a href="index_planos.html"><i class="icon-briefcase icon-xlarge"></i><span>Planos</span></a>
+      </li>
+	  <li class="dropdown-submenu">
+        <a href="index_promocoes.html"><i class="icon-usd icon-xlarge"></i><span>Promoções</span></a>
+      </li>
+	  <li class="dropdown-submenu">
+        <a href="index_funcionarios.html"><i class="icon-user icon-xlarge"></i><span>Funcionários</span></a>
+      </li>
+      <li class="dropdown-submenu"><a href="index_consulta.html"><i class="icon-user-md icon-xlarge"></i><span>Consulta</span></a></li>
+      <li class="dropdown-submenu">
+        <a href="index_agendamento.html"><i class="icon-calendar icon-xlarge"></i><span>Agendamento</span></a>
+      </li>
+      <li class="dropdown-submenu">
+        <a href="index_exame.html"><i class="icon-file icon-xlarge"></i><span>Exame</span></a>
+      </li>
+      <li><a href="index_receituario.html"><i class="icon-edit icon-xlarge"></i><span>Receituário</span></a></li>
+    </ul>
+  </nav>
+  <!-- / nav -->
+<section id="content">
+    <section class="main padder">
+      <div class="clearfix">
+        <h4><i class="icon-table"></i>Pesquisar Planos</h4>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <section class="panel">
+            <header class="panel-heading">
+				Planos
+            </header>
+            <div class="panel-body">
+              <div class="row text-small">
+                <div class="col-sm-4 m-b-mini">
+                  <select class="input-sm inline form-control" style="width:130px">
+                    <option value="0">Visualizar</option>
+                    <option value="1">Alterar</option>
+                    <option value="3">Exportar</option>
+                  </select>
+                  <button class="btn btn-sm btn-white">Aplicar</button>   
+                  <a href="cadastrar_planos.html" class="btn btn-sm btn-white">Cadastrar novo plano</a>	     				  
+                </div>
+                <div class="col-sm-4 m-b-mini">
+                  <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-sm btn-white active">
+                      <input type="radio" name="options" id="option1"> Dia
+                    </label>
+                    <label class="btn btn-sm btn-white">
+                      <input type="radio" name="options" id="option2"> Mês
+                    </label>
+                    <label class="btn btn-sm btn-white">
+                      <input type="radio" name="options" id="option2"> Ano
+                    </label>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="input-group">
+                    <input type="text" class="input-sm form-control" placeholder="Pesquisar" value="Plano" >
+                    <span class="input-group-btn">
+                      <button class="btn btn-sm btn-white" type="button">Buscar</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-striped b-t text-small">
+                <thead>
+                  <tr>
+                    <th width="20"><input type="checkbox"></th>
+					<th width="45">Id</th>
+                    <th class="th-sortable" data-toggle="class">Plano
+                      <span class="th-sort">
+                        <i class="icon-sort-down text"></i>
+                        <i class="icon-sort-up text-active"></i>
+                        <i class="icon-sort"></i>
+                      </span>
+                    </th>
+                    <th>Registro ANS</th>
+                    <th>Tipo plano</th>
+                    <th width="30">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><input type="checkbox" name="post[]" value="2"></td>
+					<td>10</td>
+                    <td>Plano I</td>
+                    <td>3847239</td>
+                    <td>Cobre 60% das Unidades</td>
+                    <td>
+                      <a href="#" data-toggle="class"><i class="icon-ok icon-large text-success text-active"></i><i class="icon-remove icon-large text-danger text"></i></a>					
+                      
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" name="post[]" value="3"></td>
+                    <td>12</td>		
+					<td>Plano II</td>
+                    <td>3095904</td>
+                    <td>Cobre 80% das Unidades</td>
+                    <td>
+						<a href="#" class="active" data-toggle="class"><i class="icon-ok icon-large text-success text-active"></i><i class="icon-remove icon-large text-danger text"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" name="post[]" value="4"></td>
+					<td>13</td>					
+                    <td>Plano III</td>
+                    <td>83749287</td>
+                    <td>Cobre 100% das Unidades</td>
+                    <td>
+                      <a href="#" class="active" data-toggle="class"><i class="icon-ok icon-large text-success text-active"></i><i class="icon-remove icon-large text-danger text"></i></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <footer class="panel-footer">
+              <div class="row">
+				<div class="col-sm-4 text-center"></div>
+                <div class="col-sm-3 text-center">
+                  <small class="text-muted inline m-t-small m-b-small">mostrando 10-20 de 43 itens</small>
+                </div>
+                <div class="col-sm-5 text-right text-center-sm">                
+                  <ul class="pagination pagination-small m-t-none m-b-none">
+                    <li><a href="#"><i class="icon-chevron-left"></i></a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#"><i class="icon-chevron-right"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </footer>
+          </section>
+        </div>
+        
+      </div>
+    </section>
+  </section>
+  <!-- .modal -->
+  <div id="modal" class="modal fade">
+    <form class="m-b-none">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+            <h4 class="modal-title" id="myModalLabel">Post your first idea</h4>
+          </div>
+          <div class="modal-body">          
+            <div class="block">
+              <label class="control-label">Title</label>
+              <input type="text" class="form-control" placeholder="Post title">
+            </div>
+            <div class="block">
+              <label class="control-label">Content</label>
+              <textarea class="form-control" placeholder="Content" rows="5"></textarea>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"> Share with all memebers of first
+              </label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Save</button>
+            <button type="button" class="btn btn-sm btn-primary" data-loading-text="Publishing...">Publish</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div>
+    </form>
+  </div>
+  <!-- / .modal -->
+  <!-- footer -->
+  <footer id="footer">
+    <div class="text-center padder clearfix">
+      <p>
+        <small>&copy; TCC - Grupo 2</small><br><br>
+      </p>
+    </div>
+  </footer>
+  <a href="#" class="hide slide-nav-block" data-toggle="class:slide-nav slide-nav-left" data-target="body"></a>
+  <!-- / footer -->
+	<script src="js/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="js/bootstrap.js"></script>
+  <!-- app -->
+  <script src="js/app.js"></script>
+  <script src="js/app.plugin.js"></script>
+  <script src="js/app.data.js"></script>
+
+</body>
+</html>
