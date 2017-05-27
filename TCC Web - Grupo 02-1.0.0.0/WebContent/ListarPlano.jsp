@@ -1,91 +1,87 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html lang="pt-br">
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Buscar Planos</title>
-
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/style2.css" rel="stylesheet">
-
-</head>	
-
+  	<meta charset="utf-8">
+  	<title>TCC - grupo 02 SI</title>
+  	<meta name="description" content="mobile first, app, web app, responsive, admin dashboard, flat, flat ui">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">	
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/font.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/plugin.css">
+	<link rel="stylesheet" href="css/landing.css">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+</head>
 <body>
-	<!-- Modal -->
-	<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog"
-		aria-labelledby="modalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Fechar">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title" id="modalLabel">Excluir Plano</h4>
-				</div>
-				<div class="modal-body">Deseja realmente excluir este plano?</div>
-				<div class="modal-footer">
-					<form action="controller.do" method="post">
-						<input type="hidden" name="id" id="id_excluir"/>
-						<button type="submit" class="btn btn-primary" name="command" value="ExcluirPlano">Sim</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- /.modal -->
+	
+	<!-- Header -->
+	<c:import url="Header.jsp" />
+	
+	<!-- Menu de navegação do Administrador -->
+	<c:import url="MenuAdministrador.jsp" />
+		
+	<section id="content">
+    <section class="main padder">
+      <div class="clearfix">
+        <h4><i class="icon-table"></i>Pesquisar Planos</h4>
+      </div>
 
-
-	<!-- Container Principal -->
-	<div id="main" class="container-fluid">
-		<form action="controller.do" method="post">
-			<div id="top" class="row">
-				<div class="col-md-3">
-					<h2>Planos</h2>
-				</div>
-
-				<div class="col-md-6">
-					<div class="input-group h2">
-						<input name="data[search]" class="form-control" id="search"
-							type="text"
-							placeholder="Pesquisar Planos (deixe vazio para trazer todos)">
-						<span class="input-group-btn">
-							<button class="btn btn-primary" type="submit" name="command" value="ListarPlanoBuscar">
-								<span class="glyphicon glyphicon-search"></span>
-							</button>
-						</span>
-					</div>
-				</div>
-
-				<div class="col-md-3">
-					<a href="CriarPlano.jsp" class="btn btn-primary pull-right h2">Novo
-						Plano</a>
-				</div> 
-			</div>
-			<!-- /#top -->
-		</form>
-		<hr />
-		<c:if test="${not empty lista}">
+      <div class="row">
+        <div class="col-lg-12">
+          <section class="panel">
+            <header class="panel-heading">
+				Planos
+            </header>
+            <div class="panel-body">
+              <div class="row text-small">
+                <div class="col-sm-4 m-b-mini">
+                  <select class="input-sm inline form-control" style="width:130px">
+                    <option value="0">Visualizar</option>
+                    <option value="1">Alterar</option>
+                    <option value="3">Exportar</option>
+                  </select>
+                  <button class="btn btn-sm btn-white">Aplicar</button>   
+                  <a href="CriarPlano.jsp" class="btn btn-sm btn-white">Cadastrar novo plano</a>	     				  
+                </div>
+                
+                
+                <div class="col-sm-4 m-b-mini">
+					<!-- para que a pesquisa fique lá no cano -->
+                </div>
+                
+                
+                <div class="col-sm-4">
+                  <div class="input-group">
+                    <input type="text" class="input-sm form-control" placeholder="Pesquisar" value="Plano" >
+                    <span class="input-group-btn">
+                      <button class="btn btn-sm btn-white" type="button">Buscar</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+           
+            <c:if test="${not empty lista}">
 			<div id="list" class="row">
 
 				<div class="table-responsive col-md-12">
 					<table class="table table-striped" cellspacing="0" cellpadding="0">
 						<thead>
 							<tr>
-								<th>CÃ³digo</th>
+								<th>Código</th>
 								<th>Nome</th>
 								<th>Registro ANS</th>
 								<th>Tipo</th>
 								<th>Flag Ativo</th>
 								<th>Data cadastro</th>
 
-								<th class="actions">AÃ§Ãµes</th>
+								<th class="actions">Ações</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -116,7 +112,7 @@
 
                 <div id="bottom" class="row">
                     <div class="col-md-12">
-                        <!-- paginaÃ§Ã£o ainda nÃ£o foi implementada -->
+                        <!-- paginação ainda não foi implementada -->
                         <ul class="pagination">
                             <li class="disabled"><a>&lt; Anterior</a>
                             </li>
@@ -126,17 +122,66 @@
                             </li>
                             <li><a href="#">3</a>
                             </li>
-                            <li class="next"><a href="#" rel="next">PrÃ³ximo &gt;</a>
+                            <li class="next"><a href="#" rel="next">Próximo &gt;</a>
                             </li>
                         </ul>
                         <!-- /.pagination -->
                     </div>
                 </div>
                 </c:if>
-                <!-- /#bottom -->
-            </div>
-            <!-- /#main -->
-            <script src="js/jquery.min.js"></script>
+            <footer class="panel-footer">
+              <div class="row">
+				<div class="col-sm-4 text-center"></div>
+                <div class="col-sm-3 text-center">
+                  <small class="text-muted inline m-t-small m-b-small">mostrando 10-20 de 43 itens</small>
+                </div>
+                <div class="col-sm-5 text-right text-center-sm">                
+                  <ul class="pagination pagination-small m-t-none m-b-none">
+                    <li><a href="#"><i class="icon-chevron-left"></i></a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#"><i class="icon-chevron-right"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </footer>
+          </section>
+        </div>
+        
+      </div>
+    </section>
+  </section>
+  
+  
+  		<!-- Modal -->
+	<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog"
+		aria-labelledby="modalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Fechar">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="modalLabel">Excluir Plano</h4>
+				</div>
+				<div class="modal-body">Deseja realmente excluir este plano?</div>
+				<div class="modal-footer">
+					<form action="controller.do" method="post">
+						<input type="hidden" name="id" id="id_excluir"/>
+						<button type="submit" class="btn btn-primary" name="command" value="ExcluirPlano">Sim</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /.modal -->
+  
+              <script src="js/jquery.min.js"></script>
             <script src="js/bootstrap.min.js"></script>
             <script type="text/javascript">
                 $("#delete-modal").on('show.bs.modal', function(event) {
@@ -145,6 +190,15 @@
                     $("#id_excluir").val(recipient);
                 });
             </script>
-        </body>
-
-        </html>
+	
+	
+	
+	
+	
+	
+	<!-- Footer -->
+	<c:import url="Footer.jsp" />
+	
+	
+</body>
+</html>

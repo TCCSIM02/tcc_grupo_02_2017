@@ -26,9 +26,6 @@
 	<!-- Menu de navegação do Administrador -->
 	<c:import url="MenuAdministrador.jsp" />
 	
-	
-	
-	
 	<!-- Footer -->
 	<c:import url="Footer.jsp" />
 	

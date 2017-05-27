@@ -1,88 +1,106 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html lang="pt-br">
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Criar Planos</title>
-
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+  	<meta charset="utf-8">
+  	<title>TCC - grupo 02 SI</title>
+  	<meta name="description" content="mobile first, app, web app, responsive, admin dashboard, flat, flat ui">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">	
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/font.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/plugin.css">
+	<link rel="stylesheet" href="css/landing.css">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 </head>
-
-
 <body>
- 
- <!-- Barra superior com os menus de navegaÃ§Ã£o -->
-	<c:import url="Menu.jsp"/>
 	
-
-	<!-- Container Principal -->
-	<div id="main" class="container">
-		<h3 class="page-header">Incluir Plano</h3>
-		<!-- Formulario para inclusao de clientes -->
-		<form action="controller.do" method="post">
-
-			<!-- area de campos do form -->
-
-
-			<div class="row">
-				<div class="form-group col-md-12">
-					<label for="nomePlano">Nome</label> <input type="text"
-						class="form-control" name="nomePlano" id="nomePlano" required
-						maxlength="100" placeholder="nome do plano">
-				</div>
+	<!-- Header -->
+	<c:import url="Header.jsp" />
+	
+	<!-- Menu de navegação do Administrador -->
+	<c:import url="MenuAdministrador.jsp" />
+	
+	
+	<section id="content">
+		
+		<section class="main padder">
+		  
+			<div class="clearfix">
+				<h4><i class="icon-edit"></i>Cadastrar plano</h4>
 			</div>
-
-			<div class="row">
-				<div class="form-group col-md-12">
-					<label for="registroAns">Registro ANS</label> <input type="text"
-						class="form-control" name="registroAns" id="registroAns" required
-						maxlength="100" placeholder="registro Ans">
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="form-group col-md-12">
-					<label for="tipoPlano">Tipo</label> <input type="text"
-						class="form-control" name="tipoPlano" id="tipoPlano" required
-						maxlength="100" placeholder="tipo do plano">
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="form-group col-md-12">
-					<label for="flagAtivo">Flag Ativo</label> <input type="text" class="form-control"
-						name="flagAtivo" id="flagAtivo" maxlength="100" placeholder="Flag Ativo">
-				</div>
-			</div>
-
-
-			<div class="row">
-				<div class="form-group col-md-12">
-					<label for="dataCadastro">Data Cadastro</label> <input type="text"
-						class="form-control" name="dataCadastro" id="dataCadastro" maxlength="100"
-						placeholder="Data Cadastro">
-				</div>
-			</div>
-
-			<hr />
-			<div id="actions" class="row">
-				<div class="col-md-12">
-
-					<button type="submit" class="btn btn-primary" name="command" value="CriarPlano">Inserir</button>
-
-					<a href="index.html" class="btn btn-default">Cancelar</a>
-
-				</div>
-			</div>
-		</form>
-	</div>
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+		  
+		  <div class="row">
+			<div class="col-sm-12">
+				<section class="panel">
+					<div class="panel-body">
+					 
+						<form class="form-horizontal" action="controller.do" method="post" data-validate="parsley">      
+						
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Nome do Plano</label>
+								<div class="col-lg-6">
+									<input type="text" class="form-control" name="nomePlano" id="nomePlano" required
+									maxlength="100" placeholder="nome do plano" size="16">
+								</div>				  
+							</div>
+							
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Registro ANS</label>
+								<div class="col-lg-6">
+									<input type="text" class="form-control" name="registroAns" id="registroAns" required
+									maxlength="100" placeholder="registro Ans" size="16">
+								</div>				  
+							</div>
+							
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Tipo plano</label>
+								<div class="col-lg-6">
+									<input type="text" class="form-control" name="tipoPlano" id="tipoPlano" required
+									maxlength="100" placeholder="tipo do plano" size="16">
+								</div>				  
+							</div>
+							
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Flag ativo</label>
+								<div class="col-lg-6">
+									<input type="text" class="form-control" name="flagAtivo" id="flagAtivo"
+									maxlength="100" placeholder="Flag Ativo" size="16">
+								</div>				  
+							</div>
+							
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Data cadastro</label>
+								<div class="col-lg-6">
+									<input type="text" class="form-control" name="dataCadastro" id="dataCadastro"
+									maxlength="100" placeholder="Data Cadastro" size="16">
+								</div>				  
+							</div>
+						
+								
+							<div class="form-group">
+							  <div class="col-lg-9 col-lg-offset-3">                      
+								<a href="ListarPlano.jsp" class="btn btn-white">Cancelar</a>
+								<button name="command" value="CriarPlano" type="submit" class="btn btn-primary">Cadastrar</button>
+							  </div>
+							</div>
+							
+						</form>				  
+					</div>
+				</section>
+			</div>  
+		</div>
+	</section>
+	
+	
+	<!-- Footer -->
+	<c:import url="Footer.jsp" />
+	
+	
 </body>
-
 </html>

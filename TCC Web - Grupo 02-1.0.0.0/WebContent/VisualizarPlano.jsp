@@ -1,49 +1,32 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html lang="pt-br">
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Visualizar Planos</title>
-
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
+  	<meta charset="utf-8">
+  	<title>TCC - grupo 02 SI</title>
+  	<meta name="description" content="mobile first, app, web app, responsive, admin dashboard, flat, flat ui">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">	
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/font.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/plugin.css">
+	<link rel="stylesheet" href="css/landing.css">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 </head>
-
 <body>
-	<!-- Modal -->
-	<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog"
-		aria-labelledby="modalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Fechar">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title" id="modalLabel">Excluir Plano</h4>
-				</div>
-				<div class="modal-body">Deseja realmente excluir este plano?
-				</div>
-				<div class="modal-footer">
-					<form action="controller.do" method="post">
-						<input type="hidden" name="id" value="${planoTO.codPlano }" />
-						<button type="submit" class="btn btn-primary" name="command" value="ExcluirCliente">Sim</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- /.modal -->
-
-	<!-- Barra superior com os menus de navegaÃ§Ã£o -->
-	<c:import url="Menu.jsp" />
-
+	
+	<!-- Header -->
+	<c:import url="Header.jsp" />
+	
+	<!-- Menu de navegação do Administrador -->
+	<c:import url="MenuAdministrador.jsp" />
+	
+	
 	<!-- Container Principal -->
 	<div id="main" class="container">
 		<h3 class="page-header">Visualizar Plano #${planoTO.codPlano}</h3>
@@ -103,8 +86,13 @@
 			</div>
 		</div>
 	</div>
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+	
+	
+	
+	
+	<!-- Footer -->
+	<c:import url="Footer.jsp" />
+	
+	
 </body>
-
 </html>
