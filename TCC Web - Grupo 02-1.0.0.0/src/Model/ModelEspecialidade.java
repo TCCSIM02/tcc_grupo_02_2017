@@ -94,7 +94,8 @@ public class ModelEspecialidade {
 		this.codEspecialidade = toEspecialidade.getCodEspecialidade();
 	}
 
-	public void consultarEspecialidadeCod(){
+	public void consultarEspecialidadeCod()throws ClassNotFoundException {
+		
 		DAOEspecialidade dao = new DAOEspecialidade();	
 		TOEspecialidade toEspecialidade = dao.consultarEspecialidadeCod(codEspecialidade);
 		

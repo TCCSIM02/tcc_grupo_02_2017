@@ -12,7 +12,7 @@ import ConnectionFactory.FabricaConexao;
 public class DAOUnidade {
 	
 	public void cadastrarUnidade(TOUnidade toUnidade){
-		String sqlInsert = "INSERT INTO tcc.unidade (razaoSocial,nomeFantasia,cNPJ,nomeRede,endereco,logradouro,cEP,cidade,uF,pais,representante,tel1,tel2,cel,flagAtivo,dataCadastro) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sqlInsert = "INSERT INTO tcc.unidade (razaoSocial,nomeFantasia,cNPJ,nomeRede,endereco,cEP,cidade,uF,pais,representante,tel1,tel2,cel,flagAtivo,dataCadastro) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,1,current_timestamp())";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
@@ -22,17 +22,14 @@ public class DAOUnidade {
 			stm.setString(3,toUnidade.getCnpj());
 			stm.setString(4,toUnidade.getNomeRede());
 			stm.setString(5,toUnidade.getEndereco());
-			stm.setString(6,toUnidade.getLogradouro());
-			stm.setString(7,toUnidade.getCep());
-			stm.setString(8,toUnidade.getCidade());
-			stm.setString(9,toUnidade.getUf());
-			stm.setString(10,toUnidade.getPais());
-			stm.setString(11,toUnidade.getRepresentante());
-			stm.setString(12,toUnidade.getTel1());
-			stm.setString(13,toUnidade.getTel2());
-			stm.setString(14,toUnidade.getCel());
-			stm.setString(15,toUnidade.getFlagAtivo());
-			stm.setDate(16,(java.sql.Date) toUnidade.getDataCadastro());			
+			stm.setString(6,toUnidade.getCep());
+			stm.setString(7,toUnidade.getCidade());
+			stm.setString(8,toUnidade.getUf());
+			stm.setString(9,toUnidade.getPais());
+			stm.setString(10,toUnidade.getRepresentante());
+			stm.setString(11,toUnidade.getTel1());
+			stm.setString(12,toUnidade.getTel2());
+			stm.setString(13,toUnidade.getCel());		
 
 			stm.execute();
 			
@@ -50,7 +47,7 @@ public class DAOUnidade {
 	}
 	
 	public void alterarUnidade(TOUnidade toUnidade){
-		String sqlUpdate = "UPDATE tcc.unidade SET razaoSocial = ? nomeFantasia = ? cNPJ = ? nomeRede = ? endereco = ? logradouro = ? cEP = ? cidade = ? uF = ? pais = ? representante = ? tel1 = ? tel2 = ? cel = ? flagAtivo = ? WHERE codUnidade = ?";
+		String sqlUpdate = "UPDATE tcc.unidade SET razaoSocial = ? nomeFantasia = ? cNPJ = ? nomeRede = ? endereco = ? cEP = ? cidade = ? uF = ? pais = ? representante = ? tel1 = ? tel2 = ? cel = ? flagAtivo = ? WHERE codUnidade = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 			PreparedStatement stm = conn.prepareStatement(sqlUpdate);) {
@@ -60,17 +57,16 @@ public class DAOUnidade {
 			stm.setString(3,toUnidade.getCnpj());
 			stm.setString(4,toUnidade.getNomeRede());
 			stm.setString(5,toUnidade.getEndereco());
-			stm.setString(6,toUnidade.getLogradouro());
-			stm.setString(7,toUnidade.getCep());
-			stm.setString(8,toUnidade.getCidade());
-			stm.setString(9,toUnidade.getUf());
-			stm.setString(10,toUnidade.getPais());
-			stm.setString(11,toUnidade.getRepresentante());
-			stm.setString(12,toUnidade.getTel1());
-			stm.setString(13,toUnidade.getTel2());
-			stm.setString(14,toUnidade.getCel());
-			stm.setString(15,toUnidade.getFlagAtivo());
-			stm.setInt(16,toUnidade.getCodUnidade());	
+			stm.setString(6,toUnidade.getCep());
+			stm.setString(7,toUnidade.getCidade());
+			stm.setString(8,toUnidade.getUf());
+			stm.setString(9,toUnidade.getPais());
+			stm.setString(10,toUnidade.getRepresentante());
+			stm.setString(11,toUnidade.getTel1());
+			stm.setString(12,toUnidade.getTel2());
+			stm.setString(13,toUnidade.getCel());
+			stm.setString(14,toUnidade.getFlagAtivo());
+			stm.setInt(15,toUnidade.getCodUnidade());	
 			
 			stm.execute();
 		} catch (Exception e) {
@@ -95,7 +91,7 @@ public class DAOUnidade {
 	public TOUnidade consultarUnidadeCod(int codUnidadeBusca){
 		TOUnidade toUnidade = new TOUnidade();
 		toUnidade.setCodUnidade(codUnidadeBusca);
-		String sqlSelect = "SELECT razaoSocial, nomeFantasia, cNPJ, nomeRede, endereco, logradouro, cEP, cidade, uF, pais, representante, tel1, tel2, cel, flagAtivo, dataCadastro FROM tcc.unidade where codUnidade = ?";
+		String sqlSelect = "SELECT * FROM tcc.unidade where codUnidade = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -109,7 +105,6 @@ public class DAOUnidade {
 					toUnidade.setCnpj(rs.getString("cNPJ"));
 					toUnidade.setNomeRede(rs.getString("nomeRede"));
 					toUnidade.setEndereco(rs.getString("endereco"));
-					toUnidade.setLogradouro(rs.getString("logradouro"));
 					toUnidade.setCep(rs.getString("cEP"));
 					toUnidade.setCidade(rs.getString("cidade"));
 					toUnidade.setUf(rs.getString("uF"));
@@ -148,7 +143,6 @@ public class DAOUnidade {
 					toUnidade.setCnpj(rs.getString("cNPJ"));
 					toUnidade.setNomeRede(rs.getString("nomeRede"));
 					toUnidade.setEndereco(rs.getString("endereco"));
-					toUnidade.setLogradouro(rs.getString("logradouro"));
 					toUnidade.setCep(rs.getString("cEP"));
 					toUnidade.setCidade(rs.getString("cidade"));
 					toUnidade.setUf(rs.getString("uF"));
@@ -189,7 +183,6 @@ public class DAOUnidade {
 					toUnidade.setCnpj(rs.getString("cNPJ"));
 					toUnidade.setNomeRede(rs.getString("nomeRede"));
 					toUnidade.setEndereco(rs.getString("endereco"));
-					toUnidade.setLogradouro(rs.getString("logradouro"));
 					toUnidade.setCep(rs.getString("cEP"));
 					toUnidade.setCidade(rs.getString("cidade"));
 					toUnidade.setUf(rs.getString("uF"));

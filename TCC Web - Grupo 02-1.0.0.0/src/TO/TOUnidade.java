@@ -3,8 +3,8 @@ package TO;
 import java.util.Date;
 
 public class TOUnidade {
-	private int codUnidade, numeroEndereco;
-	private String razaoSocial, nomeFantasia, cnpj, nomeRede, endereco, logradouro, cep, cidade, uf, pais, representante, tel1, tel2, cel, flagAtivo;
+	private int codUnidade;
+	private String razaoSocial, nomeFantasia, cnpj, nomeRede, endereco, cep, cidade, uf, pais, representante, tel1, tel2, cel, flagAtivo;
 	private Date dataCadastro;
 	/**
 	 * @return the codUnidade
@@ -12,12 +12,7 @@ public class TOUnidade {
 	public int getCodUnidade() {
 		return codUnidade;
 	}
-	/**
-	 * @return the numeroEndereco
-	 */
-	public int getNumeroEndereco() {
-		return numeroEndereco;
-	}
+
 	/**
 	 * @return the razaoSocial
 	 */
@@ -47,12 +42,6 @@ public class TOUnidade {
 	 */
 	public String getEndereco() {
 		return endereco;
-	}
-	/**
-	 * @return the logradouro
-	 */
-	public String getLogradouro() {
-		return logradouro;
 	}
 	/**
 	 * @return the cep
@@ -121,12 +110,6 @@ public class TOUnidade {
 		this.codUnidade = codUnidade;
 	}
 	/**
-	 * @param numeroEndereco the numeroEndereco to set
-	 */
-	public void setNumeroEndereco(int numeroEndereco) {
-		this.numeroEndereco = numeroEndereco;
-	}
-	/**
 	 * @param razaoSocial the razaoSocial to set
 	 */
 	public void setRazaoSocial(String razaoSocial) {
@@ -155,12 +138,6 @@ public class TOUnidade {
 	 */
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
-	}
-	/**
-	 * @param logradouro the logradouro to set
-	 */
-	public void setLogradouro(String logradouro) {
-		this.logradouro = logradouro;
 	}
 	/**
 	 * @param cep the cep to set
