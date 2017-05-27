@@ -12,7 +12,7 @@ import ConnectionFactory.FabricaConexao;
 public class DAOUnidade {
 	
 	public void cadastrarUnidade(TOUnidade toUnidade){
-		String sqlInsert = "INSERT INTO tcc.unidade (razaoSocial,nomeFantasia,cNPJ,nomeRede,endereco,logradouro,cEP,cidade,uF,pais,representante,tel1,tel2,cel,flagAtivo,dataCadastro) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sqlInsert = "INSERT INTO tcc.unidade (razaoSocial,nomeFantasia,cNPJ,nomeRede,endereco,logradouro,cEP,cidade,uF,pais,representante,tel1,tel2,cel,flagAtivo,dataCadastro) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,1,current_timestamp())";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
@@ -30,9 +30,7 @@ public class DAOUnidade {
 			stm.setString(11,toUnidade.getRepresentante());
 			stm.setString(12,toUnidade.getTel1());
 			stm.setString(13,toUnidade.getTel2());
-			stm.setString(14,toUnidade.getCel());
-			stm.setString(15,toUnidade.getFlagAtivo());
-			stm.setDate(16,(java.sql.Date) toUnidade.getDataCadastro());			
+			stm.setString(14,toUnidade.getCel());		
 
 			stm.execute();
 			
