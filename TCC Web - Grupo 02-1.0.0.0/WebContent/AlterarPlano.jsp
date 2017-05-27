@@ -32,7 +32,7 @@
 		<section class="main padder">
 		  
 			<div class="clearfix">
-				<h4><i class="icon-edit"></i>Alterar plano</h4>
+				<h4><i class="icon-edit"></i>Alterar planos</h4>
 			</div>
 		  
 		  <div class="row">
