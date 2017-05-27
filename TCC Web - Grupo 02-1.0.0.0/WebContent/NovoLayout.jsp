@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/font.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style2.css">
 	<link rel="stylesheet" href="css/plugin.css">
 	<link rel="stylesheet" href="css/landing.css">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
