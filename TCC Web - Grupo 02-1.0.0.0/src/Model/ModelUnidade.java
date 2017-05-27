@@ -15,26 +15,57 @@ import TO.TOUnidade;
  */
 public class ModelUnidade {
 
-	private int codUnidade, numeroEndereco;
-	/**
-	 * @return the numeroEndereco
-	 */
-	public int getNumeroEndereco() {
-		return numeroEndereco;
-	}
-
-	/**
-	 * @param numeroEndereco the numeroEndereco to set
-	 */
-	public void setNumeroEndereco(int numeroEndereco) {
-		this.numeroEndereco = numeroEndereco;
-	}
-
-	private String razaoSocial, nomeFantasia, cnpj, nomeRede, endereco, logradouro, cep, cidade, uf, pais, representante, tel1, tel2, cel, flagAtivo;
+	private int codUnidade;
+	private String razaoSocial, nomeFantasia, cnpj, nomeRede, endereco, cep, cidade, uf, pais, representante, tel1, tel2, cel, flagAtivo;
 	private Date dataCadastro;
-	
+
 	public ModelUnidade() {
 		// TODO Auto-generated constructor stub
+	}
+
+	
+	
+	/**
+	 * @param codUnidade
+	 * @param numeroEndereco
+	 * @param razaoSocial
+	 * @param nomeFantasia
+	 * @param cnpj
+	 * @param nomeRede
+	 * @param endereco
+	 * @param logradouro
+	 * @param cep
+	 * @param cidade
+	 * @param uf
+	 * @param pais
+	 * @param representante
+	 * @param tel1
+	 * @param tel2
+	 * @param cel
+	 * @param flagAtivo
+	 * @param dataCadastro
+	 */
+	public ModelUnidade(int codUnidade, String razaoSocial,
+			String nomeFantasia, String cnpj, String nomeRede, String endereco,
+			String cep, String cidade, String uf,
+			String pais, String representante, String tel1, String tel2,
+			String cel, String flagAtivo, Date dataCadastro) {
+		this.codUnidade = codUnidade;
+		this.razaoSocial = razaoSocial;
+		this.nomeFantasia = nomeFantasia;
+		this.cnpj = cnpj;
+		this.nomeRede = nomeRede;
+		this.endereco = endereco;
+		this.cep = cep;
+		this.cidade = cidade;
+		this.uf = uf;
+		this.pais = pais;
+		this.representante = representante;
+		this.tel1 = tel1;
+		this.tel2 = tel2;
+		this.cel = cel;
+		this.flagAtivo = flagAtivo;
+		this.dataCadastro = dataCadastro;
 	}
 
 	/**
@@ -84,13 +115,6 @@ public class ModelUnidade {
 	 */
 	public String getEndereco() {
 		return endereco;
-	}
-
-	/**
-	 * @return the logradouro
-	 */
-	public String getLogradouro() {
-		return logradouro;
 	}
 
 	/**
@@ -208,9 +232,7 @@ public class ModelUnidade {
 	/**
 	 * @param logradouro the logradouro to set
 	 */
-	public void setLogradouro(String logradouro) {
-		this.logradouro = logradouro;
-	}
+
 
 	/**
 	 * @param cep the cep to set
@@ -294,10 +316,8 @@ public class ModelUnidade {
 		toUnidade.setDataCadastro(dataCadastro);
 		toUnidade.setEndereco(endereco);
 		toUnidade.setFlagAtivo(flagAtivo);
-		toUnidade.setLogradouro(logradouro);
 		toUnidade.setNomeFantasia(nomeFantasia);
 		toUnidade.setNomeRede(nomeRede);
-		toUnidade.setNumeroEndereco(numeroEndereco);
 		toUnidade.setPais(pais);
 		toUnidade.setRazaoSocial(razaoSocial);
 		toUnidade.setRepresentante(representante);
@@ -344,10 +364,8 @@ public class ModelUnidade {
 		dataCadastro = toUnidade.getDataCadastro();
 		endereco = toUnidade.getEndereco();
 		flagAtivo = toUnidade.getFlagAtivo();
-		logradouro = toUnidade.getLogradouro();
 		nomeFantasia = toUnidade.getNomeFantasia();
 		nomeRede = toUnidade.getNomeRede();
-		numeroEndereco = toUnidade.getNumeroEndereco();
 		pais = toUnidade.getPais();
 		razaoSocial = toUnidade.getRazaoSocial();
 		representante = toUnidade.getRepresentante();
