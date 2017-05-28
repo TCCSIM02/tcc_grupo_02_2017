@@ -190,11 +190,7 @@
         var recipient = button.data('cliente');
         $("#id_excluir").val(recipient);
     });
-    </script>
-	
-	
-	
-	
+    </script>	
 	
 	
 	<!-- Footer -->

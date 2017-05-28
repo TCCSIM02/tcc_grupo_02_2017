@@ -19,31 +19,6 @@
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 </head>
 <body>
-
-	<!-- Modal -->
-	<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog"
-		aria-labelledby="modalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Fechar">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title" id="modalLabel">Excluir Plano</h4>
-				</div>
-				<div class="modal-body">Deseja realmente excluir este plano?</div>
-				<div class="modal-footer">
-					<form action="controller.do" method="post">
-						<input type="hidden" name="id" id="id_excluir"/>
-						<button type="submit" class="btn btn-primary" name="command" value="ExcluirPlano">Sim</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- /.modal -->
 	
 	<!-- Header -->
 	<c:import url="Header.jsp" />
@@ -103,7 +78,7 @@
 		</div>
 		<div id="actions" class="row">
 			<div class="col-md-12">
-				<a href="controller.do?command=EditarPlano&id=${planoTO.codPlano }"
+				<a href="controller.do?command=EditarPlano&id=${planoTO.codPlano}"
 					class="btn btn-primary">Editar</a> <a href="#"
 					class="btn btn-danger" data-toggle="modal"
 					data-target="#delete-modal">Excluir</a> <a
@@ -111,6 +86,37 @@
 			</div>
 		</div>
 	</div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+	<!-- Modal -->
+	<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog"
+		aria-labelledby="modalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Fechar">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="modalLabel">Excluir Plano</h4>
+				</div>
+				<div class="modal-body">Deseja realmente excluir este plano?</div>
+				<div class="modal-footer">
+					<form action="controller.do" method="post">
+						<input type="hidden" name="id" value="${planoTO.codPlano}"/>
+						<button type="submit" class="btn btn-primary" name="command" value="ExcluirPlano">Sim</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /.modal -->
+
+
+
 
 	<!-- Footer -->
 	<c:import url="Footer.jsp" />
