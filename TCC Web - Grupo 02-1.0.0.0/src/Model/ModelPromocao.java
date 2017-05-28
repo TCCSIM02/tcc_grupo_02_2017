@@ -145,7 +145,7 @@ public class ModelPromocao {
 		dao.excluirPromocao(toPromocao);
 	}
 	
-	public void consultarPromocaoCod(){
+	public void consultarPromocaoCod() throws ClassNotFoundException{
 		DAOPromocao dao = new DAOPromocao();	
 		TOPromocao toPromocao = dao.consultarPromocaoCod(codPromocao);
 		
