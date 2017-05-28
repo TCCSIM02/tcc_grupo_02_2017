@@ -97,7 +97,7 @@ public class DAOConsulta{
 			System.out.print(e1.getStackTrace());
 		}
 		return toConsulta;
-	}
+	}  
 	
 	public ArrayList<TOConsulta> listarConsultas(){
 		TOConsulta toConsulta;

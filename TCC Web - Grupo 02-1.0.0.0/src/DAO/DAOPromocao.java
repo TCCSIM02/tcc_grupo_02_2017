@@ -124,7 +124,7 @@ public class DAOPromocao {
 			System.out.print(e1.getStackTrace());
 		}
 		return lista;
-	}
+	}   
 	
 	/*public ArrayList<TOPromocao> toPromocao(String chave){
 		TOPromocao toPromocao;
@@ -156,5 +156,5 @@ public class DAOPromocao {
 		return lista;
 	}
 	*/
-
+   
 }
