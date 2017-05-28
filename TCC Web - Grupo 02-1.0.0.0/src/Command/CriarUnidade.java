@@ -54,6 +54,14 @@ public class CriarUnidade implements Command{
 		modelUnidade.cadastrarUnidade();
 		ArrayList<TOUnidade> lista = new ArrayList<>();
 		lista.add(modelUnidade.getTO());
+		
+		try {
+			lista = modelUnidade.listarUnidades();
+		} catch (ClassNotFoundException e) {
+			
+			e.printStackTrace();
+		}
+		
 		session.setAttribute("lista", lista);
 		RequestDispatcher view = request.getRequestDispatcher("ListarUnidade.jsp");
 		view.forward(request, response);

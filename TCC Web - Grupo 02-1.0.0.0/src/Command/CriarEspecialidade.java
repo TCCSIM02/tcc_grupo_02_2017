@@ -37,7 +37,16 @@ public class CriarEspecialidade implements Command {
 		
 		modelEspecialidade.cadastrarEspecialidade();
 		ArrayList<TOEspecialidade> lista = new ArrayList<>();
+		
 		lista.add(modelEspecialidade.getTO());
+		
+		try {
+			lista = modelEspecialidade.listarEspecialidades();
+		} catch (ClassNotFoundException e) {
+			
+			e.printStackTrace();
+		}
+		
 		session.setAttribute("lista", lista);
 		RequestDispatcher view = request.getRequestDispatcher("ListarEspecialidade.jsp");
 		view.forward(request, response);
