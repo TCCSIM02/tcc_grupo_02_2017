@@ -66,6 +66,7 @@
 								</div>				  
 							</div>
 							
+							<!--
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Flag ativo</label>
 								<div class="col-lg-6">
@@ -81,7 +82,7 @@
 									maxlength="100" placeholder="Data Cadastro" size="16">
 								</div>				  
 							</div>
-						
+							-->
 								
 							<div class="form-group">
 							  <div class="col-lg-9 col-lg-offset-3">                      

@@ -76,6 +76,7 @@
 								</div>				  
 							</div>
 							
+							<!--
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Data cadastro</label>
 								<div class="col-lg-6">
@@ -83,7 +84,7 @@
 									maxlength="100" placeholder="Data Cadastro" size="16"value="${planoTO.dataCadastro}">
 								</div>				  
 							</div>
-						
+							-->
 								
 							<div class="form-group">
 							  <div class="col-lg-9 col-lg-offset-3"> 

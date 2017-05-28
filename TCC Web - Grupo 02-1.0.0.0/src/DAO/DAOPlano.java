@@ -62,7 +62,7 @@ public class DAOPlano {
 			stm.setString(1,toPlano.getNomePlano());
 			stm.setString(2,toPlano.getRegistroAns());
 			stm.setString(3,toPlano.getTipoPlano());
-			stm.setString(4,toPlano.getFlagAtivo());
+			stm.setInt(4,Integer.parseInt(toPlano.getFlagAtivo()));
 			stm.setInt(5,toPlano.getCodPlano());
 			
 			stm.execute();
@@ -116,7 +116,7 @@ public class DAOPlano {
 	public ArrayList<TOPlano> listarPlanos(){
 		TOPlano toPlano;
 		ArrayList<TOPlano> lista = new ArrayList<>();
-		String sqlSelect = "SELECT codPlano, nomePlano, registroAns, tipoPlano, flagAtivo, dataCadastro FROM tcc.plano";
+		String sqlSelect = "SELECT codPlano, nomePlano, registroAns, tipoPlano, flagAtivo, dataCadastro FROM tcc.plano order by codPlano desc";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -145,7 +145,7 @@ public class DAOPlano {
 	public ArrayList<TOPlano> listarPlanos(String chave){
 		TOPlano toPlano;
 		ArrayList<TOPlano> lista = new ArrayList<>();
-		String sqlSelect = "SELECT codPlano, nomePlano, registroAns, tipoPlano, flagAtivo, dataCadastro FROM tcc.plano where upper(nomePlano) like '?'";
+		String sqlSelect = "SELECT codPlano, nomePlano, registroAns, tipoPlano, flagAtivo, dataCadastro FROM tcc.plano where upper(nomePlano) like '?' order by codPlano desc";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
