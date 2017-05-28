@@ -72,7 +72,7 @@ public class DAOPlano {
 	}
 	
 	public void excluirPlano(TOPlano toPlano){
-		String sqlDelete = "DELETE FROM tcc.plano WHERE codPlano =?";
+		String sqlDelete = "DELETE FROM tcc.plano WHERE codPlano = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlDelete);) {

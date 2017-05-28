@@ -120,12 +120,12 @@
 							<td>${to.flagAtivo}</td>
 							<td>${to.dataCadastro}</td>
 							
-							   <td class="actions">
-                                                <a class="btn btn-success btn-xs" href="controller.do?command=VisualizarPlano&id=${to.codPlano}">Visualizar</a>
-                                                <a class="btn btn-warning btn-xs" href="controller.do?command=EditarPlano&id=${to.codPlano}">Editar</a>
-                                                <button id="btn${to.codPlano}" type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal" data-cliente="${to.codPlano}">Excluir</button>
-                                            </td>
-                                        </tr>
+								<td class="actions">
+                                        <a class="btn btn-success btn-xs" href="controller.do?command=VisualizarPlano&id=${to.codPlano}">Visualizar</a>
+                                        <a class="btn btn-warning btn-xs" href="controller.do?command=EditarPlano&id=${to.codPlano}">Editar</a>
+                                    	<button id="btn${to.codPlano}" type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal" data-cliente="${to.codPlano}">Excluir</button>
+                                	</td>
+                            	</tr>
                             </c:forEach>
 
                             </tbody>
@@ -183,7 +183,7 @@
   
 
   
-              <script src="js/jquery.min.js"></script>
+            <script src="js/jquery.min.js"></script>
             <script src="js/bootstrap.min.js"></script>
             <script type="text/javascript">
                 $("#delete-modal").on('show.bs.modal', function(event) {
