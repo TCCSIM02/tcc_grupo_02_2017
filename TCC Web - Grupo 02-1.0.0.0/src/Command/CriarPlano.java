@@ -39,13 +39,19 @@ public class CriarPlano implements Command {
 		HttpSession session = request.getSession();
 		
 		modelPlano.cadastrarPlano();
-		ArrayList<TOPlano> lista = new ArrayList<>();
-		lista.add(modelPlano.getTO());
-		session.setAttribute("lista", lista);
+		ArrayList<TOPlano> lista = new ArrayList<>(); 
+		try {
+			lista = modelPlano.listarPlanos();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//lista.add(modelPlano.getTO());
+		
+		session.setAttribute("lista", lista);		
 		RequestDispatcher view = request.getRequestDispatcher("ListarPlano.jsp");
 		view.forward(request, response);
 		
-	
 
 	}
 

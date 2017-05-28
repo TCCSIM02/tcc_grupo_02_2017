@@ -21,7 +21,6 @@ public class ListarEspecialidadeReiniciar implements Command{
 				.getRequestDispatcher("ListarEspecialidade.jsp");
 		dispatcher.forward(request, response);
 
-
 	}
 	
 

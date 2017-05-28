@@ -38,11 +38,18 @@ public class ExcluirPlano implements Command {
 		
 		modelPlano.excluirPlano();
 		
-		
 		@SuppressWarnings("unchecked")
 		ArrayList<TOPlano> lista = (ArrayList<TOPlano>)session.getAttribute("lista");
-		
+				
 		lista.remove(busca(modelPlano, lista));
+		
+		try {
+			lista = modelPlano.listarPlanos();
+		} catch (ClassNotFoundException e) {
+			
+			e.printStackTrace();
+		}
+		
 		session.setAttribute("lista", lista);
 		
 		view = request.getRequestDispatcher("ListarPlano.jsp");

@@ -9,7 +9,7 @@
         <a href="index_unidades.html"><i class="icon-home icon-xlarge"></i><span>Unidades</span></a>
       </li>
 	  <li class="active">
-        <a href="index_planos.html"><i class="icon-briefcase icon-xlarge"></i><span>Planos</span></a>
+        <a href="controller.do?command=ListarPlanoBuscar"><i class="icon-briefcase icon-xlarge"></i><span>Planos</span></a>
       </li>
 	  <li class="dropdown-submenu">
         <a href="index_promocoes.html"><i class="icon-usd icon-xlarge"></i><span>Promoções</span></a>
