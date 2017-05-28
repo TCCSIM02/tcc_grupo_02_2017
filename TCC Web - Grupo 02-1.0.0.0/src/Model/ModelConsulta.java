@@ -163,7 +163,7 @@ public class ModelConsulta {
 	}
 	
 
-	public void consultarConsultaCod(){
+	public void consultarConsultaCod() throws ClassNotFoundException{
 		DAOConsulta dao = new DAOConsulta();	
 		TOConsulta toConsulta = dao.consultarConsultaCod(codConsulta);
 		
