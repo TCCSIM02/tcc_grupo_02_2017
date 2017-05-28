@@ -111,10 +111,7 @@
 			</div>
 		</div>
 	</div>
-	
-	
-	
-	
+
 	<!-- Footer -->
 	<c:import url="Footer.jsp" />
 	
