@@ -65,7 +65,7 @@ public class DAOUnidade {
 			stm.setString(11,toUnidade.getTel1());
 			stm.setString(12,toUnidade.getTel2());
 			stm.setString(13,toUnidade.getCel());
-			stm.setString(14,toUnidade.getFlagAtivo());
+			stm.setInt(14,Integer.parseInt(toUnidade.getFlagAtivo()));
 			stm.setInt(15,toUnidade.getCodUnidade());	
 			
 			stm.execute();

@@ -13,7 +13,7 @@ import TO.TOPromocao;
 public class DAOPromocao {
 	
 	public void cadastrarPromocao(TOPromocao toPromocao){
-		String sqlInsert = "INSERT INTO tcc.promocao (valorPromocao,dataInicio,dataTermino,flagAtivo,dataCadastro) VALUES (?,?,?,?,?)";
+		String sqlInsert = "INSERT INTO tcc.promocao (valorPromocao,dataInicio,dataTermino,flagAtivo,dataCadastro) VALUES (?,?,?,1,current_timestamp())";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
@@ -21,8 +21,6 @@ public class DAOPromocao {
 			stm.setDouble(1,toPromocao.getValorPromocao());
 			stm.setDate(2,(Date) toPromocao.getDataInicio());
 			stm.setDate(3,(Date) toPromocao.getDataTermino());
-			stm.setString(4,toPromocao.getFlagAtivo());
-			stm.setDate(5,(Date) toPromocao.getDataCadastro());
 
 			stm.execute();
 			
@@ -48,7 +46,7 @@ public class DAOPromocao {
 			stm.setDouble(1,toPromocao.getValorPromocao());
 			stm.setDate(2,(Date) toPromocao.getDataInicio());
 			stm.setDate(3,(Date) toPromocao.getDataTermino());
-			stm.setString(4,toPromocao.getFlagAtivo());
+			stm.setInt(4,Integer.parseInt(toPromocao.getFlagAtivo()));
 			stm.setInt(5,toPromocao.getCodPromocao());
 			
 			stm.execute();

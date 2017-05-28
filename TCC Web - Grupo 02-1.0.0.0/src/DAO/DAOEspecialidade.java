@@ -11,13 +11,13 @@ import TO.TOEspecialidade;
 public class DAOEspecialidade {
 	
 	public void cadastrarEspecialidade(TOEspecialidade toEspecialidade){
-		String sqlInsert = "INSERT INTO tcc.especialidade (descricao,flagAtivo)VALUES (?,?)";
+		String sqlInsert = "INSERT INTO tcc.especialidade (descricao,flagAtivo)VALUES (?,1)";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 			PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
 
 			stm.setString(1,toEspecialidade.getDescricao());
-			stm.setString(2,toEspecialidade.getFlagAtivo());			
+			stm.setInt(2,Integer.parseInt(toEspecialidade.getFlagAtivo()));			
 
 			stm.execute();
 			
