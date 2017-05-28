@@ -25,7 +25,9 @@ public class ExcluirPlano implements Command {
 		String pDataCadastro = request.getParameter("dataCadastro");
 
 		int id = -1;
-		System.out.println("Codigo: "+pCodPlano );
+		System.out.println("id: "+pCodPlano );
+		System.out.println("CodPlano: "+request.getParameter("codPlano"));
+		
 		System.out.println("Nome Plano: "+pNomePlano );
 		try {
 			id = Integer.parseInt(pCodPlano);
