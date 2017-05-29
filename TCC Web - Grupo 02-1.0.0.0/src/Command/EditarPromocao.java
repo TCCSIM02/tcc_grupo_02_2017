@@ -47,7 +47,7 @@ public class EditarPromocao implements Command{
 		view = request.getRequestDispatcher("AlterarPromocao.jsp");
 		
 		view.forward(request, response);
-
+    
 	}
 
 }
