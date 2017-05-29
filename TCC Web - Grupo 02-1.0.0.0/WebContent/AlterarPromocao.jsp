@@ -76,6 +76,8 @@
 								</div>				  
 							</div>
 							
+							<input type="hidden" name="dataCadastro" id="dataCadastro" value="${planoTO.dataCadastro}"/>
+														
 							<div class="form-group">
 							  <div class="col-lg-9 col-lg-offset-3"> 
 								<a href="ListarPromocao.jsp" class="btn btn-white">Cancelar</a>
