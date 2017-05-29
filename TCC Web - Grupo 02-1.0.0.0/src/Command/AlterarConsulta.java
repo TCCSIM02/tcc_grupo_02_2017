@@ -25,6 +25,10 @@ public class AlterarConsulta implements Command {
 		String pStatusConsulta          =	request.getParameter("statusConsulta");          
 		String pValorConsulta			=	request.getParameter("valorConsulta");	
 
+		System.out.println("Cod a: " + pCodConsulta);
+		System.out.println("id a: " + request.getParameter("id"));
+		
+		
 		int id = -1;
 		try {
 			id = Integer.parseInt(pCodConsulta);
@@ -34,8 +38,7 @@ public class AlterarConsulta implements Command {
 
 		/*ALTERAR ESSE NULL AQUI*/
 		/*ALTERAR ESSE NULL AQUI*/
-		ModelConsulta modelConsulta = new ModelConsulta(id, null /*new Date(pDataHoraConsultaFinal)*/, null /* new Date(pDataHoraConsultaInicio)*/,  pDiagnostico,
-				pStatusConsulta,  Double.parseDouble(pValorConsulta));
+		ModelConsulta modelConsulta = new ModelConsulta(id);
 		
 		RequestDispatcher view = null;
 		HttpSession session = request.getSession();

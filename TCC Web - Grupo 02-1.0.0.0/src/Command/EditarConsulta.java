@@ -14,12 +14,16 @@ public class EditarConsulta implements Command{
 	@Override
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String pCodConsulta             =	request.getParameter("codConsulta");             
+		String pCodConsulta             =	request.getParameter("id");             
 		String pDataHoraConsultaFinal   =	request.getParameter("dataHoraConsultaFinal");   
 		String pDataHoraConsultaInicio  =	request.getParameter("dataHoraConsultaInicio");  
 		String pDiagnostico             =	request.getParameter("diagnostico");             
 		String pStatusConsulta          =	request.getParameter("statusConsulta");          
 		String pValorConsulta			=	request.getParameter("valorConsulta");	
+		
+		
+		System.out.println("Cod: " + pCodConsulta);
+		System.out.println("id: " + request.getParameter("id"));
 		
 		int id = -1;
 		try {
@@ -29,8 +33,7 @@ public class EditarConsulta implements Command{
 		}
 
 		/*ALTERAR ESSE NULL AQUI*/
-		ModelConsulta modelConsulta = new ModelConsulta(id, null /*new Date(pDataHoraConsultaFinal)*/, null /* new Date(pDataHoraConsultaInicio)*/,  pDiagnostico,
-				pStatusConsulta,  Double.parseDouble(pValorConsulta));
+		ModelConsulta modelConsulta = new ModelConsulta(id);
 		RequestDispatcher view = null;
 		
 		try {
