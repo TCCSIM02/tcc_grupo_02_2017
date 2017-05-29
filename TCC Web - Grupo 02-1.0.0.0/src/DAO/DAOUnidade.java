@@ -75,7 +75,7 @@ public class DAOUnidade {
 	}
 	
 	public void excluirUnidade(TOUnidade toUnidade){
-		String sqlDelete = "DELETE FROM tcc.unidade WHERE codPlano =?";
+		String sqlDelete = "DELETE FROM tcc.unidade WHERE codUnidade =?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlDelete);) {
