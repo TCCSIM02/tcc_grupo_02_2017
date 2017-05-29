@@ -20,7 +20,7 @@
 </head>
 <body>
 	
-	<!-- Header aa -->
+	<!-- Header -->
 	<c:import url="Header.jsp" />
 	
 	<!-- Menu de navegação do Administrador -->
