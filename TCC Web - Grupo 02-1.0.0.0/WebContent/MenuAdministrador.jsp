@@ -6,7 +6,7 @@
   <nav id="nav" class="nav-primary hidden-xs nav-vertical">
     <ul class="nav" data-spy="affix" data-offset-top="50">
 	<li class="dropdown-submenu">
-        <a href="index_unidades.html"><i class="icon-home icon-xlarge"></i><span>Unidades</span></a>
+        <a href="controller.do?command=ListarUnidadeBuscar"><i class="icon-home icon-xlarge"></i><span>Unidades</span></a>
       </li>
 	  <li class="active">
         <a href="controller.do?command=ListarPlanoBuscar"><i class="icon-briefcase icon-xlarge"></i><span>Planos</span></a>

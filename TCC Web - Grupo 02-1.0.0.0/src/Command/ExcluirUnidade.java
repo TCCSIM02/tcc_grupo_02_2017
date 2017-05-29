@@ -17,11 +17,12 @@ public class ExcluirUnidade implements Command {
 	@Override
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+	       
+		String pCodUnidade      = request.getParameter("id"); 
 		String pCel             = request.getParameter("cel");          
 		String pCep             = request.getParameter("cep");          
 		String pCidade          = request.getParameter("cidade");        
-		String pCnpj            = request.getParameter("cnpj");       
-		String pCodUnidade      = request.getParameter("codUnidade");    
+		String pCnpj            = request.getParameter("cnpj");   
 		String pDataCadastro    = request.getParameter("dataCadastro");  
 		String pEndereco        = request.getParameter("endereco");      
 		String pFlagAtivo       = request.getParameter("flagAtivo");        
