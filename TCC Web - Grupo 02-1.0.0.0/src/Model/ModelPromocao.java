@@ -3,7 +3,9 @@ package Model;
 import java.util.ArrayList;
 import java.util.Date;
 
+import DAO.DAOPlano;
 import DAO.DAOPromocao;
+import TO.TOPlano;
 import TO.TOPromocao;
 
 public class ModelPromocao {
@@ -164,4 +166,11 @@ public class ModelPromocao {
 		lista = dao.listarPromocoes();
 		return lista;
 	}
+	
+	public ArrayList<TOPromocao> listarPromocoes(String chave) throws ClassNotFoundException{
+		ArrayList<TOPromocao> lista;
+		DAOPromocao dao = new DAOPromocao();
+		lista = dao.listarPromocoes(chave);
+		return lista;
+	}	
 }

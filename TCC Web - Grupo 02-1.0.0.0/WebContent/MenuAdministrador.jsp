@@ -12,7 +12,7 @@
         <a href="controller.do?command=ListarPlanoBuscar"><i class="icon-briefcase icon-xlarge"></i><span>Planos</span></a>
       </li>
 	  <li class="dropdown-submenu">
-        <a href="index_promocoes.html"><i class="icon-usd icon-xlarge"></i><span>Promoções</span></a>
+        <a href="controller.do?command=ListarPromocaoBuscar"><i class="icon-usd icon-xlarge"></i><span>Promoções</span></a>
       </li>
 	  <li class="dropdown-submenu">
         <a href="index_funcionarios.html"><i class="icon-user icon-xlarge"></i><span>Funcionários</span></a>

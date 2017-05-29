@@ -29,13 +29,13 @@ public class ListarPromocaoBuscar implements Command {
 
 		if (chave != null && chave.length() > 0) {
 
-			/*try {
+			try {
 				lista = modelPromocao.listarPromocoes(chave);
 			} catch (ClassNotFoundException e) {
 				
 				e.printStackTrace();
 			}
-			*/
+			
 		} else {
 
 			try {

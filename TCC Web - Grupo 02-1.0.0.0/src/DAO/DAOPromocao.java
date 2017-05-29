@@ -126,7 +126,7 @@ public class DAOPromocao {
 		return lista;
 	}   
 	
-	/*public ArrayList<TOPromocao> toPromocao(String chave){
+	public ArrayList<TOPromocao> listarPromocoes(String chave){
 		TOPromocao toPromocao;
 		ArrayList<TOPromocao> lista = new ArrayList<>();
 		String sqlSelect = "SELECT * from tcc.promocao where upper(nomeFantasia) like '?'";
@@ -155,6 +155,6 @@ public class DAOPromocao {
 		}
 		return lista;
 	}
-	*/
+	
    
 }
