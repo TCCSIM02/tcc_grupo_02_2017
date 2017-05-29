@@ -12,7 +12,7 @@ import TO.TOExame;
 public class DAOExame {
 	
 	public void cadastrarExame(TOExame toExame){
-		String sqlInsert = "INSERT INTO tcc.exame (descricao, resultado, valorExame) VALUES (?,?,?)";
+		String sqlInsert = "INSERT INTO tcc.exame (descricao, resultadoExame, valorExame) VALUES (?,?,?)";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {		
@@ -37,7 +37,7 @@ public class DAOExame {
 	}
 
 	public void alterarExame(TOExame toExame){
-		String sqlUpdate = "UPDATE tcc.exame SET descricao = ?, resultado = ?, valorExame = ? WHERE codExame = ?";
+		String sqlUpdate = "UPDATE tcc.exame SET descricao = ?, resultadoExame = ?, valorExame = ? WHERE codExame = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 			PreparedStatement stm = conn.prepareStatement(sqlUpdate);) {
@@ -69,7 +69,7 @@ public class DAOExame {
 	public TOExame consultarExameCod(int codExameBusca){
 		TOExame toExame = new TOExame();
 		toExame.setCodExame(codExameBusca);
-		String sqlSelect = "SELECT descricao, resultado, valorExame, FROM tcc.exame where codExame = ?";
+		String sqlSelect = "SELECT descricao, resultadoExame, valorExame, FROM tcc.exame where codExame = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -79,7 +79,7 @@ public class DAOExame {
 					
 					//toExame.setCodExame(rs.getInt("codExame"));
 					toExame.setDescricao(rs.getString("descricao"));
-					toExame.setResultadoExame(rs.getString("resultado")); 
+					toExame.setResultadoExame(rs.getString("resultadoExame")); 
 					toExame.setValorExame(rs.getDouble("valorEcame"));
 					
 				}
@@ -96,7 +96,7 @@ public class DAOExame {
 	public ArrayList<TOExame> listarExames(){
 		TOExame toExame;
 		ArrayList<TOExame> lista = new ArrayList<>();
-		String sqlSelect = "SELECT codExame, descricao, resultado, valorExame FROM tcc.exame order by codExame desc";
+		String sqlSelect = "SELECT codExame, descricao, resultadoExame, valorExame FROM tcc.exame order by codExame desc";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -106,7 +106,7 @@ public class DAOExame {
 								
 					toExame.setCodExame(rs.getInt("codExame"));
 					toExame.setDescricao(rs.getString("descricao"));
-					toExame.setResultadoExame(rs.getString("resultado")); 
+					toExame.setResultadoExame(rs.getString("resultadoExame")); 
 					toExame.setValorExame(rs.getDouble("valorExame"));
 									
 					lista.add(toExame);
@@ -124,7 +124,7 @@ public class DAOExame {
 	public ArrayList<TOExame> listarExames(String chave){
 		TOExame toExame;
 		ArrayList<TOExame> lista = new ArrayList<>();
-		String sqlSelect = "SELECT codExame, descricao, resultado, valorExame FROM tcc.exame where upper(descricao) like '?' order by codExame desc";
+		String sqlSelect = "SELECT codExame, descricao, resultadoExame, valorExame FROM tcc.exame where upper(descricao) like '?' order by codExame desc";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -135,7 +135,7 @@ public class DAOExame {
 					
 					toExame.setCodExame(rs.getInt("codExame"));
 					toExame.setDescricao(rs.getString("descricao"));
-					toExame.setResultadoExame(rs.getString("resultado")); 
+					toExame.setResultadoExame(rs.getString("resultadoExame")); 
 					toExame.setValorExame(rs.getDouble("valorExame"));
 									
 					lista.add(toExame);

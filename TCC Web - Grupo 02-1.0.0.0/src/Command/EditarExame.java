@@ -27,7 +27,7 @@ public class EditarExame implements Command {
 		}
 
 		/*ALTERAR ESSE NULL AQUI*/
-		ModelExame modelExame = new ModelExame(id, Double.parseDouble(pValorExame),pDescricao, pResultadoExame);
+		ModelExame modelExame = new ModelExame(id, 0.0,pDescricao, pResultadoExame);
 		RequestDispatcher view = null;
 		
 		try {

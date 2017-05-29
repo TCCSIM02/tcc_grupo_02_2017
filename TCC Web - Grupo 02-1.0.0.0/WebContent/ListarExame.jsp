@@ -114,7 +114,7 @@
 						<tr>
 							<td>${to.codExame}</td>
 							<td>${to.descricao}</td>
-							<td>${to.resultado}</td>
+							<td>${to.resultadoExame}</td>
 							<td>${to.valorExame}</td>
 							
 							   <td class="actions">

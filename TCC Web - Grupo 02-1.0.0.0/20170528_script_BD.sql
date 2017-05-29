@@ -312,7 +312,7 @@ CREATE TABLE IF NOT EXISTS `TCC`.`Exame` (
   `codMedico` INT NULL COMMENT 'Codigo do medico responsavel no Exame',
   `codConsulta` INT NULL COMMENT 'Codigo da consulta relacionada a promocao',
   `descricao` VARCHAR(500) NOT NULL COMMENT 'Descricao do Exame',
-  `resultado` VARCHAR(100) NOT NULL COMMENT 'Resultado do Exame',
+  `resultadoExame` VARCHAR(100) NOT NULL COMMENT 'Resultado do Exame',
   `valorExame` VARCHAR(45) NOT NULL COMMENT 'Valor do exame',
   PRIMARY KEY (`codExame`),
   INDEX `codPaciente_idx` (`codPaciente` ASC),
