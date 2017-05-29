@@ -17,7 +17,9 @@
 	  <li class="dropdown-submenu">
         <a href="index_funcionarios.html"><i class="icon-user icon-xlarge"></i><span>Funcionários</span></a>
       </li>
-      <li class="dropdown-submenu"><a href="index_consulta.html"><i class="icon-user-md icon-xlarge"></i><span>Consulta</span></a></li>
+      <li class="dropdown-submenu">
+      	<a href="controller.do?command=ListarConsultaBuscar"><i class="icon-user-md icon-xlarge">
+      	</i><span>Consulta</span></a></li>
       <li class="dropdown-submenu">
         <a href="index_agendamento.html"><i class="icon-calendar icon-xlarge"></i><span>Agendamento</span></a>
       </li>

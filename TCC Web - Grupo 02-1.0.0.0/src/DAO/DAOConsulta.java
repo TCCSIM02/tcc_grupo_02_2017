@@ -12,7 +12,7 @@ import TO.TOConsulta;
 
 public class DAOConsulta{
 	public void cadastrarConsulta(TOConsulta toConsulta){
-		String sqlInsert = "INSERT INTO tcc.consulta ( statusConsulta,diagnostico,dataConsultaEntrada,dataConsultaSaida,valorConsulta)VALUES (?,?,?,?,?)";
+		String sqlInsert = "INSERT INTO tcc.consulta ( statusConsulta,diagnostico,dataConsultaInicio,dataConsultaFim,valorConsulta)VALUES (?,?,?,?,?)";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
@@ -39,7 +39,7 @@ public class DAOConsulta{
 	}
 	
 	public void alterarConsulta(TOConsulta toConsulta){
-		String sqlUpdate = "UPDATE tcc.consulta SET statusConsulta = ?, diagnostico = ?, dataConsultaEntrada = ?, dataConsultaSaida = ?, valorConsulta = ? WHERE codConsulta = ?";
+		String sqlUpdate = "UPDATE tcc.consulta SET statusConsulta = ?, diagnostico = ?, dataConsultaInicio = ?, dataConsultaFim = ?, valorConsulta = ? WHERE codConsulta = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 			PreparedStatement stm = conn.prepareStatement(sqlUpdate);) {
@@ -85,8 +85,8 @@ public class DAOConsulta{
 					//toConsulta.setCodConsulta(codConsultaBusca);
 					toConsulta.setStatusConsulta(rs.getString("statusConsulta"));
 					toConsulta.setDiagnostico(rs.getString("diagnostico"));
-					toConsulta.setDataHoraConsultaInicio(rs.getDate("dataConsultaEntrada"));
-					toConsulta.setDataHoraConsultaFinal(rs.getDate("dataConsultaSaida"));
+					toConsulta.setDataHoraConsultaInicio(rs.getDate("dataConsultaInicio"));
+					toConsulta.setDataHoraConsultaFinal(rs.getDate("dataConsultaFim"));
 					toConsulta.setValorConsulta(rs.getDouble("valorConsulta"));
 					
 				}
@@ -113,8 +113,8 @@ public class DAOConsulta{
 					toConsulta.setCodConsulta(rs.getInt("codConsulta"));
 					toConsulta.setStatusConsulta(rs.getString("statusConsulta"));
 					toConsulta.setDiagnostico(rs.getString("diagnostico"));
-					toConsulta.setDataHoraConsultaInicio(rs.getDate("dataConsultaEntrada"));
-					toConsulta.setDataHoraConsultaFinal(rs.getDate("dataConsultaSaida"));
+					toConsulta.setDataHoraConsultaInicio(rs.getDate("dataConsultaInicio"));
+					toConsulta.setDataHoraConsultaFinal(rs.getDate("dataConsultaFim"));
 					toConsulta.setValorConsulta(rs.getDouble("valorConsulta"));
 					
 					lista.add(toConsulta);
