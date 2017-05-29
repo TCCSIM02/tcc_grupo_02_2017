@@ -17,7 +17,7 @@ public class ExcluirPromocao implements Command {
 	@Override
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String pCodPromocao		=	request.getParameter("codPromocao");             
+		String pCodPromocao		=	request.getParameter("id");             
 		String pDataCadastro    =	request.getParameter("dataCadastro");   
 		String pDataInicio      =	request.getParameter("dataInicio");  
 		String pDataTermino     =	request.getParameter("dataTermino");             
@@ -34,8 +34,7 @@ public class ExcluirPromocao implements Command {
 		}
 
 		/*ALTERAR ESSE NULL AQUI*/
-		ModelPromocao modelPromocao = new ModelPromocao(id, Double.parseDouble(pValorPromocao), null /*new Date(pDataInicio)*/, null /*new Date(pDataCadastro)*/, null,
-				pFlagAtivo);
+		ModelPromocao modelPromocao = new ModelPromocao(id);
 		RequestDispatcher view = null;
 		HttpSession session = request.getSession();
 		
