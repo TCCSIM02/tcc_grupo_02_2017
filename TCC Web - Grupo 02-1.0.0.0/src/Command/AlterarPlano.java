@@ -18,7 +18,7 @@ public class AlterarPlano implements Command {
 	@Override
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String pCodPlano = request.getParameter("codPlano");/*AJUSTADO*/
+		String pCodPlano = request.getParameter("codPlano");
 		String pNomePlano = request.getParameter("nomePlano");
 		String pRegistroAns = request.getParameter("registroAns");
 		String pTipoPlano = request.getParameter("tipoPlano");

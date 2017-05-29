@@ -1,13 +1,17 @@
 package Model;
 
-import java.io.File;
+
+
+import java.util.ArrayList;
+
+import DAO.DAOExame;
+import TO.TOExame;
 
 public class ModelExame {
 
 	private int codExame;
 	private double valorExame;
-	private String descricao;
-	private File resultadoExame;
+	private String descricao, resultadoExame;
 	
 	/**
 	 * @param codExame
@@ -15,7 +19,7 @@ public class ModelExame {
 	 * @param descricao
 	 * @param resultadoExame
 	 */
-	public ModelExame(int codExame, double valorExame, String descricao, File resultadoExame) {
+	public ModelExame(int codExame, double valorExame, String descricao, String resultadoExame) {
 		this.codExame = codExame;
 		this.valorExame = valorExame;
 		this.descricao = descricao;
@@ -57,7 +61,7 @@ public class ModelExame {
 	/**
 	 * @return the resultadoExame
 	 */
-	public File getResultadoExame() {
+	public String getResultadoExame() {
 		return resultadoExame;
 	}
 
@@ -85,16 +89,71 @@ public class ModelExame {
 	/**
 	 * @param resultadoExame the resultadoExame to set
 	 */
-	public void setResultadoExame(File resultadoExame) {
+	public void setResultadoExame(String resultadoExame) {
 		this.resultadoExame = resultadoExame;
+	}
+	
+	public TOExame getTO(){
+		
+		TOExame toExame = new TOExame();
+		
+		toExame.setCodExame(codExame);
+		toExame.setDescricao(descricao);
+		toExame.setResultadoExame(resultadoExame);
+		toExame.setValorExame(valorExame);
+		
+		return toExame;
 	}
 	
 	public void cadastrarExame(){
 		
+		DAOExame dao = new DAOExame();		
+		TOExame toExame = getTO();
+		dao.cadastrarExame(toExame); 
+		this.codExame = toExame.getCodExame();
+		
+	}
+	
+	public void alterarExame(){
+		DAOExame dao = new DAOExame();		
+		TOExame toExame = getTO();
+		dao.alterarExame(toExame);		
 	}
 	
 	public void excluirExame(){
-	
+		DAOExame dao = new DAOExame();
+		TOExame toExame = new TOExame();
+		toExame.setCodExame(codExame);
+		dao.excluirExame(toExame);
 	}
+	
+	/*	consulta por id	*/
+	public void consultarExameCod() throws ClassNotFoundException  {
+
+		DAOExame dao = new DAOExame();
+
+		TOExame toExame = dao.consultarExameCod(codExame);
+
+		codExame = toExame.getCodExame();	
+		descricao = toExame.getDescricao();
+		resultadoExame = toExame.getResultadoExame();
+		valorExame = toExame.getValorExame();
+	}
+	
+	public ArrayList<TOExame> listarExames() throws ClassNotFoundException{
+		ArrayList<TOExame> lista;
+		DAOExame dao = new DAOExame();
+		lista = dao.listarExames();
+		return lista;
+	}
+	public ArrayList<TOExame> listarExames(String chave) throws ClassNotFoundException{
+		ArrayList<TOExame> lista;
+		DAOExame dao = new DAOExame();
+		lista = dao.listarExames(chave);
+		return lista;
+	}	
+
+	
+	
 
 }

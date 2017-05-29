@@ -73,7 +73,7 @@
                     <option value="3">Exportar</option>
                   </select>
                   <button class="btn btn-sm btn-white">Aplicar</button>   
-                  <a href="CriarPlano.jsp" class="btn btn-sm btn-white">Novo exame</a>	     				  
+                  <a href="CriarExame.jsp" class="btn btn-sm btn-white">Novo exame</a>	     				  
                 </div>
                 
                 

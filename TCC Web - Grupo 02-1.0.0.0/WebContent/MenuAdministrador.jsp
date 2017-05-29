@@ -24,7 +24,7 @@
         <a href="index_agendamento.html"><i class="icon-calendar icon-xlarge"></i><span>Agendamento</span></a>
       </li>
       <li class="dropdown-submenu">
-        <a href="index_exame.html"><i class="icon-file icon-xlarge"></i><span>Exame</span></a>
+        <a href="controller.do?command=ListarExameBuscar"><i class="icon-file icon-xlarge"></i><span>Exame</span></a>
       </li>
       <li><a href="index_receituario.html"><i class="icon-edit icon-xlarge"></i><span>Receituário</span></a></li>
     </ul>

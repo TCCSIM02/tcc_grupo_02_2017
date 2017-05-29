@@ -1,13 +1,11 @@
 package TO;
 
-import java.io.File;
 
 public class TOExame {
 
 	private int codExame;
 	private double valorExame;
-	private String descricao;
-	private File resultadoExame;
+	private String descricao, resultadoExame;
 	/**
 	 * @return the codExame
 	 */
@@ -29,7 +27,7 @@ public class TOExame {
 	/**
 	 * @return the resultadoExame
 	 */
-	public File getResultadoExame() {
+	public String getResultadoExame() {
 		return resultadoExame;
 	}
 	/**
@@ -53,7 +51,7 @@ public class TOExame {
 	/**
 	 * @param resultadoExame the resultadoExame to set
 	 */
-	public void setResultadoExame(File resultadoExame) {
+	public void setResultadoExame(String resultadoExame) {
 		this.resultadoExame = resultadoExame;
 	}
 		
