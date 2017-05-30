@@ -69,7 +69,7 @@ public class DAOExame {
 	public TOExame consultarExameCod(int codExameBusca){
 		TOExame toExame = new TOExame();
 		toExame.setCodExame(codExameBusca);
-		String sqlSelect = "SELECT descricao, resultadoExame, valorExame, FROM tcc.exame where codExame = ?";
+		String sqlSelect = "SELECT descricao, resultadoExame, valorExame FROM tcc.exame where codExame = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -80,7 +80,7 @@ public class DAOExame {
 					//toExame.setCodExame(rs.getInt("codExame"));
 					toExame.setDescricao(rs.getString("descricao"));
 					toExame.setResultadoExame(rs.getString("resultadoExame")); 
-					toExame.setValorExame(rs.getDouble("valorEcame"));
+					toExame.setValorExame(rs.getDouble("valorExame"));
 					
 				}
 			} catch (SQLException e) {

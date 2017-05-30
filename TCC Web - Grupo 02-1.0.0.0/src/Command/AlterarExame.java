@@ -29,7 +29,7 @@ public class AlterarExame implements Command {
 
 		}
 		
-		ModelExame modelExame = new ModelExame(id, Double.parseDouble(pValorExame),pDescricao, pResultadoExame);
+		ModelExame modelExame = new ModelExame(id, 0.0,pDescricao, pResultadoExame);
 		RequestDispatcher view = null;
 		HttpSession session = request.getSession();
 		

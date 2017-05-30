@@ -28,7 +28,7 @@ public class VisualizarExame implements Command {
 		} catch (NumberFormatException e) {
 
 		}
-		ModelExame modelExame = new ModelExame(id, Double.parseDouble(pValorExame),pDescricao, pResultadoExame);
+		ModelExame modelExame = new ModelExame(id, 0.0,pDescricao, pResultadoExame);
 		RequestDispatcher view = null;
 		
 		try {
