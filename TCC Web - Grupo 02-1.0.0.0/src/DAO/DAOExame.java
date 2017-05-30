@@ -45,6 +45,7 @@ public class DAOExame {
 			stm.setString(1,toExame.getDescricao());
 			stm.setString(2,toExame.getResultadoExame());
 			stm.setDouble(3,toExame.getValorExame());
+			stm.setInt(4,toExame.getCodExame());
 			
 			stm.execute();
 		} catch (Exception e) {
