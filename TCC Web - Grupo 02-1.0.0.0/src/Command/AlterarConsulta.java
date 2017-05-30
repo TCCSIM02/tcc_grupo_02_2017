@@ -2,6 +2,7 @@ package Command;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -38,7 +39,8 @@ public class AlterarConsulta implements Command {
 
 		/*ALTERAR ESSE NULL AQUI*/
 		/*ALTERAR ESSE NULL AQUI*/
-		ModelConsulta modelConsulta = new ModelConsulta(id);
+		ModelConsulta modelConsulta = new ModelConsulta(id, null, null, pDiagnostico,
+				pStatusConsulta, Double.parseDouble(pValorConsulta));
 		
 		RequestDispatcher view = null;
 		HttpSession session = request.getSession();

@@ -48,7 +48,8 @@ public class DAOConsulta{
 			stm.setString(2,toConsulta.getDiagnostico());			
 			stm.setDate(3,(Date) toConsulta.getDataHoraConsultaInicio());
 			stm.setDate(4,(Date) toConsulta.getDataHoraConsultaFinal());
-			stm.setInt(5,toConsulta.getCodConsulta());
+			stm.setDouble(5,toConsulta.getValorConsulta());			
+			stm.setInt(6,toConsulta.getCodConsulta());
 			
 			stm.execute();
 		} catch (Exception e) {
