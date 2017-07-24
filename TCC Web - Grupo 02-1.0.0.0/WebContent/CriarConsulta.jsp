@@ -46,7 +46,7 @@
 								<label class="col-lg-3 control-label">Status</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="statusConsulta" id="statusConsulta" required
-									maxlength="100" placeholder="agendada" size="16">
+									maxlength="45" placeholder="agendada" size="16">
 								</div>				  
 							</div>
 							
@@ -54,7 +54,7 @@
 								<label class="col-lg-3 control-label">Diagnóstico</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="diagnostico" id="diagnostico" required
-									maxlength="100" placeholder="não consultado" size="16">
+									maxlength="200" placeholder="não consultado" size="16">
 								</div>				  
 							</div>
 							
@@ -62,7 +62,7 @@
 								<label class="col-lg-3 control-label">Data de inicio</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="dataHoraConsultaInicio" id="dataHoraConsultaInicio" required
-									maxlength="100" placeholder="01/01/1900 00:00" size="16">
+									maxlength="10" placeholder="01/01/1900 00:00" size="16">
 								</div>				  
 							</div>
 							
@@ -70,7 +70,7 @@
 								<label class="col-lg-3 control-label">Data de conclusão</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="dataHoraConsultaFinal" id="dataHoraConsultaFinal" required
-									maxlength="100" placeholder="31/12/2000 00:00" size="16">
+									maxlength="10" placeholder="31/12/2000 00:00" size="16">
 								</div>				  
 							</div>
 							
@@ -78,7 +78,7 @@
 								<label class="col-lg-3 control-label">Valor</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="valorConsulta" id="valorConsulta" required
-									maxlength="100" placeholder="00,00" size="16">
+									maxlength="45" placeholder="00,00" size="16">
 								</div>				  
 							</div>
 							<!--

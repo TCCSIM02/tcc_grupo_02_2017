@@ -46,7 +46,7 @@
 								<label class="col-lg-3 control-label">Nome do Plano</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="nomePlano" id="nomePlano" required
-									maxlength="100" placeholder="nome do plano" size="16">
+									maxlength="45" placeholder="nome do plano" size="16">
 								</div>				  
 							</div>
 							
@@ -54,7 +54,7 @@
 								<label class="col-lg-3 control-label">Registro ANS</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="registroAns" id="registroAns" required
-									maxlength="100" placeholder="registro Ans" size="16">
+									maxlength="45" placeholder="registro Ans" size="16">
 								</div>				  
 							</div>
 							
@@ -62,7 +62,7 @@
 								<label class="col-lg-3 control-label">Tipo plano</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="tipoPlano" id="tipoPlano" required
-									maxlength="100" placeholder="tipo do plano" size="16">
+									maxlength="45" placeholder="tipo do plano" size="16">
 								</div>				  
 							</div>
 							

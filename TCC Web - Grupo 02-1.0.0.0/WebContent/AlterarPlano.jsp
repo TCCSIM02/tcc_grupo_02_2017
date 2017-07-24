@@ -48,7 +48,7 @@
 								<label class="col-lg-3 control-label">Nome do Plano</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="nomePlano" id="nomePlano" required
-									maxlength="100" placeholder="nome do plano" size="16" value="${planoTO.nomePlano}">
+									maxlength="45" placeholder="nome do plano" size="16" value="${planoTO.nomePlano}">
 								</div>				  
 							</div>
 							
@@ -56,7 +56,7 @@
 								<label class="col-lg-3 control-label">Registro ANS</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="registroAns" id="registroAns" required
-									maxlength="100" placeholder="registro Ans" size="16" value="${planoTO.registroAns}">
+									maxlength="45" placeholder="registro Ans" size="16" value="${planoTO.registroAns}">
 								</div>				  
 							</div>
 							
@@ -64,7 +64,7 @@
 								<label class="col-lg-3 control-label">Tipo plano</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="tipoPlano" id="tipoPlano" required
-									maxlength="100" placeholder="tipo do plano" size="16" value="${planoTO.tipoPlano}">
+									maxlength="45" placeholder="tipo do plano" size="16" value="${planoTO.tipoPlano}">
 								</div>				  
 							</div>
 							
@@ -72,7 +72,7 @@
 								<label class="col-lg-3 control-label">Flag ativo</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="flagAtivo" id="flagAtivo"
-									maxlength="100" placeholder="Flag Ativo" size="16" value="${planoTO.flagAtivo}">
+									maxlength="1" placeholder="Flag Ativo" size="16" value="${planoTO.flagAtivo}">
 								</div>				  
 							</div>
 							

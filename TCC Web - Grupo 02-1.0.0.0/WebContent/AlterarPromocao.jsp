@@ -48,7 +48,7 @@
 								<label class="col-lg-3 control-label">Valor</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="valorPromocao" id="valorPromocao" required
-									maxlength="100" placeholder="00,00" value="${promocaoTO.valorPromocao}">
+									maxlength="10" placeholder="00,00" value="${promocaoTO.valorPromocao}">
 								</div>				  
 							</div>
 							
@@ -56,7 +56,7 @@
 								<label class="col-lg-3 control-label">Data de inicio</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="dataInicio" id="dataInicio" required
-									maxlength="100" placeholder="01/01/1900" value="${promocaoTO.dataInicio}">
+									maxlength="10" placeholder="01/01/1900" value="${promocaoTO.dataInicio}">
 								</div>				  
 							</div>
 							
@@ -64,7 +64,7 @@
 								<label class="col-lg-3 control-label">Data de término</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="dataTermino" id="dataTermino" required
-									maxlength="100" placeholder="31/12/1900" value="${promocaoTO.dataTermino}">
+									maxlength="10" placeholder="31/12/1900" value="${promocaoTO.dataTermino}">
 								</div>				  
 							</div>
 							
@@ -72,7 +72,7 @@
 								<label class="col-lg-3 control-label">Flag ativo</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="flagAtivo" id="flagAtivo"
-									maxlength="100" placeholder="Flag Ativo" size="1" value="${promocaoTO.flagAtivo}">
+									maxlength="1" placeholder="Flag Ativo" size="1" value="${promocaoTO.flagAtivo}">
 								</div>				  
 							</div>
 							
