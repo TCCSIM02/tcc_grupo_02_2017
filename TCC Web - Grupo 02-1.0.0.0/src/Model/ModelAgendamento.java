@@ -1,6 +1,8 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.Date;
+
 import TO.TOAgendamento;
 
 public class ModelAgendamento {
@@ -144,4 +146,31 @@ public class ModelAgendamento {
 	public void cancelarConsulta(){
 		
 	}
+
+	public void cadastrarAgendamento() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public ArrayList<TOAgendamento> listarAgendamentos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void alterarAgendamento() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void consultarAgendamentoCod() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void excluirAgendamento() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 }
