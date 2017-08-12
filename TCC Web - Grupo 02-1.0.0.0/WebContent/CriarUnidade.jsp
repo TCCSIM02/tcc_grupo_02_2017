@@ -11,6 +11,13 @@
   	<meta name="description" content="mobile first, app, web app, responsive, admin dashboard, flat, flat ui">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">	
 	<link rel="stylesheet" href="css/bootstrap.css">
+	
+	<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>	
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://pages.mailmkt.netshoes.com.br/mask/"></script>	
+	
+
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/font.css">
 	<link rel="stylesheet" href="css/style.css">
@@ -19,6 +26,16 @@
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 </head>
 <body>
+	
+	
+	<script>
+		<!-- Formata os campos -->
+		$(document).ready(function(){
+			$('#tel1').mask('(00) 0000-0000');
+			$('#tel2').mask('(00) 0000-0000');
+			$('#cel').mask('(00) 0000-0000');
+		});
+	</script>
 	
 	<!-- Header -->
 	<c:import url="Header.jsp" />
@@ -184,7 +201,10 @@
 	
 	<!-- Footer -->
 	<c:import url="Footer.jsp" />
+
+
 	
 	
 </body>
+
 </html>
