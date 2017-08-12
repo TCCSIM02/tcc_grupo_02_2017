@@ -35,7 +35,7 @@ public class CriarConsulta implements Command {
 
 		/*ALTERAR ESSE NULL AQUI*/
 		ModelConsulta modelConsulta = new ModelConsulta(id, null /*new Date(pDataHoraConsultaFinal)*/, null /* new Date(pDataHoraConsultaInicio)*/,  pDiagnostico,
-				pStatusConsulta,  Double.parseDouble(pValorConsulta));
+				pStatusConsulta,  Double.parseDouble(pValorConsulta.replace(",",".")));
 	
 		HttpSession session = request.getSession();
 		
@@ -52,7 +52,5 @@ public class CriarConsulta implements Command {
 		session.setAttribute("lista", lista);		
 		RequestDispatcher view = request.getRequestDispatcher("ListarConsulta.jsp");
 		view.forward(request, response);
-
 	}
-
 }
