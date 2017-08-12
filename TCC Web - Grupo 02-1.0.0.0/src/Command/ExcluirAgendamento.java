@@ -57,7 +57,6 @@ public class ExcluirAgendamento implements Command{
 		
 		view.forward(request, response);
 		
-		
 	}
 	
 	public int busca(ModelAgendamento modelAgendamento, ArrayList<TOAgendamento> lista) {
