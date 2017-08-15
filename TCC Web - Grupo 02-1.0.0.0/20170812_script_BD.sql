@@ -1,7 +1,7 @@
 DROP SCHEMA IF EXISTS `TCC` ;
 CREATE SCHEMA IF NOT EXISTS `TCC` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `TCC` ;
-
+/* ATUALIZACAO 15-08-2017 */
 -- -----------------------------------------------------
 -- Table `TCC`.`Unidade`
 -- -----------------------------------------------------
