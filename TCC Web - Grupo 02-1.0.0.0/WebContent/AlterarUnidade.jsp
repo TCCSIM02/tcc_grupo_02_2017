@@ -185,7 +185,17 @@
 	
 	<!-- Footer -->
 	<c:import url="Footer.jsp" />
-	
+    
+    <script>
+        <!-- Formata os campos -->
+        $(document).ready(function(){
+        	$('#tel1').mask('(00) 0000-0000');
+        	$('#tel2').mask('(00) 0000-0000');
+        	$('#cel').mask('(00) 0000-0000');
+			$('#cnpj').mask('00.000.000/0000-00');
+			$('#cep').mask('00000-000');			
+        });
+    </script>
 	
 </body>
 </html>

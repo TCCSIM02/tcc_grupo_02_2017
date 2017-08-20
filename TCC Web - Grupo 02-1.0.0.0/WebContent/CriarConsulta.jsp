@@ -61,7 +61,7 @@
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Data de inicio</label>
 								<div class="col-lg-6">
-									<input type="text" class="form-control" name="dataHoraConsultaInicio" id="dataHoraConsultaInicio" required
+									<input type="date" class="form-control" name="dataHoraConsultaInicio" id="dataHoraConsultaInicio" required
 									maxlength="10" placeholder="01/01/1900 00:00" size="16">
 								</div>				  
 							</div>
@@ -69,7 +69,7 @@
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Data de conclusão</label>
 								<div class="col-lg-6">
-									<input type="text" class="form-control" name="dataHoraConsultaFinal" id="dataHoraConsultaFinal" required
+									<input type="date" class="form-control" name="dataHoraConsultaFinal" id="dataHoraConsultaFinal" required
 									maxlength="10" placeholder="31/12/2000 00:00" size="16">
 								</div>				  
 							</div>
@@ -116,7 +116,6 @@
 	
 	<!-- Footer -->
 	<c:import url="Footer.jsp" />
-	
 	
 </body>
 </html>
