@@ -12,7 +12,6 @@ public class ModelMedico extends ModelUsuario{
 	}
 
 	/**
-	 * @param codUsuario
 	 * @param numeroEndereco
 	 * @param dataCadastro
 	 * @param nome
@@ -33,7 +32,7 @@ public class ModelMedico extends ModelUsuario{
 	public ModelMedico(int codUsuario, int numeroEndereco, Date dataCadastro, String nome, String cpf,
 			String dataNascimento, String estadoCivil, String nacionalidade, String logradouro, String cep,
 			String cidade, String uf, String pais, String tel1, String tel2, String cel, String flagAtivo) {
-		super(codUsuario, numeroEndereco, dataCadastro, nome, cpf, dataNascimento, estadoCivil, nacionalidade, logradouro, cep,
+		super(numeroEndereco, dataCadastro, nome, cpf, dataNascimento, estadoCivil, nacionalidade, logradouro, cep,
 				cidade, uf, pais, tel1, tel2, cel, flagAtivo);
 		// TODO Auto-generated constructor stub
 	}

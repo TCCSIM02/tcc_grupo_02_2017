@@ -4,15 +4,9 @@ import java.util.Date;
 
 public class TOUsuario {
 
-	private int codUsuario, numeroEndereco;
+	private int numeroEndereco;
 	private Date dataCadastro;
 	private String nome, cpf, dataNascimento, estadoCivil, nacionalidade, logradouro, cep, cidade, uf, pais, tel1, tel2, cel, flagAtivo;
-	/**
-	 * @return the codUsuario
-	 */
-	public int getCodUsuario() {
-		return codUsuario;
-	}
 	/**
 	 * @return the numeroEndereco
 	 */
@@ -109,12 +103,7 @@ public class TOUsuario {
 	public String getFlagAtivo() {
 		return flagAtivo;
 	}
-	/**
-	 * @param codUsuario the codUsuario to set
-	 */
-	public void setCodUsuario(int codUsuario) {
-		this.codUsuario = codUsuario;
-	}
+
 	/**
 	 * @param numeroEndereco the numeroEndereco to set
 	 */

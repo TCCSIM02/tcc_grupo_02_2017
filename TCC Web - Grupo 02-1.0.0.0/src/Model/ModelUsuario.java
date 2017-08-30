@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class ModelUsuario {
 
-	private int codUsuario, numeroEndereco;
+	private int numeroEndereco;
 	private Date dataCadastro;
 	private String nome, cpf, dataNascimento, estadoCivil, nacionalidade, logradouro, cep, cidade, uf, pais, tel1, tel2, cel, flagAtivo;
 	
@@ -19,7 +19,6 @@ public class ModelUsuario {
 	}
 
 	/**
-	 * @param codUsuario
 	 * @param numeroEndereco
 	 * @param dataCadastro
 	 * @param nome
@@ -37,11 +36,10 @@ public class ModelUsuario {
 	 * @param cel
 	 * @param flagAtivo
 	 */
-	public ModelUsuario(int codUsuario, int numeroEndereco, Date dataCadastro, String nome, String cpf,
+	public ModelUsuario(int numeroEndereco, Date dataCadastro, String nome, String cpf,
 			String dataNascimento, String estadoCivil, String nacionalidade, String logradouro, String cep,
 			String cidade, String uf, String pais, String tel1, String tel2, String cel, String flagAtivo) {
 		super();
-		this.codUsuario = codUsuario;
 		this.numeroEndereco = numeroEndereco;
 		this.dataCadastro = dataCadastro;
 		this.nome = nome;
@@ -59,22 +57,6 @@ public class ModelUsuario {
 		this.cel = cel;
 		this.flagAtivo = flagAtivo;
 	}
-
-	/**
-	 * @param codUsuario
-	 */
-	public ModelUsuario(int codUsuario) {
-		super();
-		this.codUsuario = codUsuario;
-	}
-
-	/**
-	 * @return the codUsuario
-	 */
-	public int getCodUsuario() {
-		return codUsuario;
-	}
-
 	/**
 	 * @return the numeroEndereco
 	 */
@@ -185,13 +167,6 @@ public class ModelUsuario {
 	 */
 	public String getFlagAtivo() {
 		return flagAtivo;
-	}
-
-	/**
-	 * @param codUsuario the codUsuario to set
-	 */
-	public void setCodUsuario(int codUsuario) {
-		this.codUsuario = codUsuario;
 	}
 
 	/**
