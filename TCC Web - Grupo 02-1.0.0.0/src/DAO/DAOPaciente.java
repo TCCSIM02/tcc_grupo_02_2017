@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import ConnectionFactory.FabricaConexao;
 import TO.TOPaciente;
+import TO.TOPlano;
 
 public class DAOPaciente {
 
@@ -85,7 +86,7 @@ public class DAOPaciente {
 					toPaciente.setNumeroEndereco(rs.getString("numeroEndereco"));	
 					toPaciente.setDataCadastro(rs.getDate("dataCadastro"));
 					toPaciente.setNome(rs.getString("nomePaciente"));	
-					toPaciente.setCpf(rs.getString("cPF"))	;
+					toPaciente.setCpf(rs.getString("cPF"));
 					toPaciente.setDataNascimento(rs.getString("dataNascimento"));
 					toPaciente.setEstadoCivil(rs.getString("estadoCivil")	);
 					toPaciente.setNacionalidade(rs.getString("nacionalidade"));
@@ -100,6 +101,7 @@ public class DAOPaciente {
 					toPaciente.setFlagAtivo(rs.getString("flagAtivo"));
 					toPaciente.setCodPaciente(rs.getInt("codPaciente"));
 					toPaciente.setNumConvenio(rs.getString("numConvenio"));
+					toPaciente.setEmail(rs.getString("email"));
 									
 					lista.add(toPaciente);
 				}
@@ -110,5 +112,84 @@ public class DAOPaciente {
 			System.out.print(e1.getStackTrace());
 		}
 		return lista;
-	}	
+	}
+	
+	
+	
+	public void alterarPaciente(TOPaciente toPaciente){
+		String sqlUpdate = "UPDATE tcc.paciente SET numeroEndereco = ?, numConvenio = ?, nomePaciente = ?, cPF = ?, dataNascimento = ?, email = ?, estadoCivil = ?, nacionalidade = ?, endereco = ?, cEP = ?, cidade = ?, uF = ?, pais = ?, tel1 = ?, tel2 = ?, cel = ?, dataCadastro = ? WHERE codPaciente = ?";
+		// usando o try with resources do Java 7, que fecha o que abriu
+		try (Connection conn = FabricaConexao.getConexao(); 
+			PreparedStatement stm = conn.prepareStatement(sqlUpdate);) {		
+			
+			stm.setString(1,toPaciente.getNumeroEndereco() );
+			stm.setString(2,toPaciente.getNumConvenio());
+			//stm.setDate(2,toPaciente.getDataCadastro() ) ;
+			stm.setString(3,toPaciente.getNome());
+			stm.setString(4,toPaciente.getCpf());
+			stm.setString(5,toPaciente.getDataNascimento() );
+			stm.setString(6,toPaciente.getEmail()) ;
+			stm.setString(7,toPaciente.getEstadoCivil()) ;
+			stm.setString(8,toPaciente.getNacionalidade());
+			stm.setString(9,toPaciente.getEndereco());
+			stm.setString(10,toPaciente.getCep()) ;
+			stm.setString(11,toPaciente.getCidade() );
+			stm.setString(12,toPaciente.getUf()) ;
+			stm.setString(13,toPaciente.getPais() );
+			stm.setString(14,toPaciente.getTel1()); 
+			stm.setString(15,toPaciente.getTel2()); 
+			stm.setString(16,toPaciente.getCel()) ;
+			
+			
+			stm.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	public void excluirPaciente(TOPaciente toPaciente){
+		String sqlDelete = "DELETE FROM tcc.paciente WHERE codPaciente = ?";
+		// usando o try with resources do Java 7, que fecha o que abriu
+		try (Connection conn = FabricaConexao.getConexao(); 
+				PreparedStatement stm = conn.prepareStatement(sqlDelete);) {
+			
+			stm.setInt(1, toPaciente.getCodPaciente());
+			
+			stm.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	public TOPaciente consultarPacienteCod(int codPacienteBusca){
+		TOPaciente toPaciente = new TOPaciente();
+		toPaciente.setCodPaciente(codPacienteBusca);
+		String sqlSelect = "SELECT nomePlano, registroAns, tipoPlano, flagAtivo, dataCadastro FROM tcc.plano where codPlano = ?";
+		// usando o try with resources do Java 7, que fecha o que abriu
+		try (Connection conn = FabricaConexao.getConexao(); 
+				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
+			stm.setInt(1, codPacienteBusca);
+			try (ResultSet rs = stm.executeQuery();) {
+				if (rs.next()) {
+					
+					//toPlano.setCodPlano(rs.getInt("codPlano"));
+					toPaciente.setNumeroEndereco(rs.getString("NumeroEnderec"));
+				
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (SQLException e1) {
+			System.out.print(e1.getStackTrace());
+		}
+		return toPaciente;
+	}
+	
+	
+	
+	
 }
