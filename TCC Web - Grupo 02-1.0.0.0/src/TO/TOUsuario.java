@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class TOUsuario {
 
-	private Date dataCadastro;
-	private String numeroEndereco, email, nome, cpf, dataNascimento, estadoCivil, nacionalidade, endereco, cep, cidade, uf, pais, tel1, tel2, cel, flagAtivo;
+	private Date dataCadastro, dataNascimento;
+	private String numeroEndereco, email, nome, cpf, estadoCivil, nacionalidade, endereco, cep, cidade, uf, pais, tel1, tel2, cel, flagAtivo;
 	/**
 	 * @return the email
 	 */
@@ -45,7 +45,7 @@ public class TOUsuario {
 	/**
 	 * @return the dataNascimento
 	 */
-	public String getDataNascimento() {
+	public Date getDataNascimento() {
 		return dataNascimento;
 	}
 	/**
@@ -140,7 +140,7 @@ public class TOUsuario {
 	/**
 	 * @param dataNascimento the dataNascimento to set
 	 */
-	public void setDataNascimento(String dataNascimento) {
+	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 	/**

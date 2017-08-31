@@ -35,7 +35,7 @@ public class ModelMedico extends ModelUsuario{
 	 * @param cro
 	 */
 	public ModelMedico(String numeroEndereco, Date dataCadastro, String nome,
-			String cpf, String dataNascimento, String estadoCivil, String email,
+			String cpf, Date dataNascimento, String estadoCivil, String email,
 			String nacionalidade, String endereco, String logradouro, String cep, String cidade,
 			String uf, String pais, String tel1, String tel2, String cel,
 			String flagAtivo, int codMedico, String crm, String cro) {

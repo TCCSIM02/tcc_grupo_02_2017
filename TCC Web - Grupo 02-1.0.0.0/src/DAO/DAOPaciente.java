@@ -38,7 +38,7 @@ public class DAOPaciente {
 			//stm.setDate(2,toPaciente.getDataCadastro() ) ;
 			stm.setString(3,toPaciente.getNome());
 			stm.setString(4,toPaciente.getCpf());
-			stm.setString(5,toPaciente.getDataNascimento() );
+			stm.setDate(5,toPaciente.getDataNascimento() );
 			stm.setString(6,toPaciente.getEmail()) ;
 			stm.setString(7,toPaciente.getEstadoCivil()) ;
 			stm.setString(8,toPaciente.getNacionalidade());
@@ -177,7 +177,27 @@ public class DAOPaciente {
 				if (rs.next()) {
 					
 					//toPlano.setCodPlano(rs.getInt("codPlano"));
-					toPaciente.setNumeroEndereco(rs.getString("NumeroEnderec"));
+					toPaciente.setNumeroEndereco(rs.getString("numeroEndereco"));
+					toPaciente.setDataCadastro(rs.getDate("dataCadastro"));
+					toPaciente.setNome(rs.getString("nomePaciente"));
+					toPaciente.setCpf(rs.getString("cPF"));
+					toPaciente.setDataNascimento(rs.getDate("dataNascimento"));
+					toPaciente.setNumeroEndereco(rs.getString("estadoCivil"));
+					toPaciente.setNumeroEndereco(rs.getString("nacionalidade"));
+					toPaciente.setNumeroEndereco(rs.getString("endereco"));
+					toPaciente.setNumeroEndereco(rs.getString("cEP"));
+					toPaciente.setNumeroEndereco(rs.getString("cidade"));
+					toPaciente.setNumeroEndereco(rs.getString("uF"));
+					toPaciente.setNumeroEndereco(rs.getString("pais"));
+					toPaciente.setNumeroEndereco(rs.getString("tel1"));
+					toPaciente.setNumeroEndereco(rs.getString("tel2"));
+					toPaciente.setNumeroEndereco(rs.getString("cel"));
+					toPaciente.setNumeroEndereco(rs.getString("flagAtivo"));
+					toPaciente.setNumeroEndereco(rs.getString("codPaciente"));
+					toPaciente.setNumeroEndereco(rs.getString("numConvenio"));
+					toPaciente.setNumeroEndereco(rs.getString("codPaciente"));
+					toPaciente.setNumeroEndereco(rs.getString("email"));
+					
 				
 				}
 			} catch (SQLException e) {

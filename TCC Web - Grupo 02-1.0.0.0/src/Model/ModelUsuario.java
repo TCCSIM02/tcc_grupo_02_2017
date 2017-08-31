@@ -1,6 +1,3 @@
-/*	
- * 16/05/2017 - Nilton Filho - Criação da classe 
- */
 package Model;
 
 import java.util.ArrayList;
@@ -12,8 +9,8 @@ import TO.TOPaciente;
 public class ModelUsuario {
 
 	private String numeroEndereco;
-	private Date dataCadastro;
-	private String nome, email, cpf, dataNascimento, estadoCivil, nacionalidade, endereco, cep, cidade, uf, pais, tel1, tel2, cel, flagAtivo;
+	private Date dataCadastro, dataNascimento;
+	private String nome, email, cpf, estadoCivil, nacionalidade, endereco, cep, cidade, uf, pais, tel1, tel2, cel, flagAtivo;
 	
 	/* Possiveis mudanças */
 	private String nivelUsuario , senha, nomeLogin;
@@ -24,7 +21,7 @@ public class ModelUsuario {
 
 
 	public ModelUsuario(String numeroEndereco, Date dataCadastro, String nome, String cpf,
-			String dataNascimento, String estadoCivil, String email, String nacionalidade, String endereco, String cep,
+			Date dataNascimento, String estadoCivil, String email, String nacionalidade, String endereco, String cep,
 			String cidade, String uf, String pais, String tel1, String tel2, String cel, String flagAtivo) {
 		super();
 		this.numeroEndereco = numeroEndereco;
@@ -90,7 +87,7 @@ public class ModelUsuario {
 	/**
 	 * @return the dataNascimento
 	 */
-	public String getDataNascimento() {
+	public Date getDataNascimento() {
 		return dataNascimento;
 	}
 
@@ -202,7 +199,7 @@ public class ModelUsuario {
 	/**
 	 * @param dataNascimento the dataNascimento to set
 	 */
-	public void setDataNascimento(String dataNascimento) {
+	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 

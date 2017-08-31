@@ -11,7 +11,7 @@ public class ModelAdministrador extends ModelUsuario{
 	}
 
 	public ModelAdministrador(String numeroEndereco, Date dataCadastro,
-			String nome, String cpf, String dataNascimento, String estadoCivil, String email,
+			String nome, String cpf, Date dataNascimento, String estadoCivil, String email,
 			String nacionalidade, String endereco, String cep, String cidade,
 			String uf, String pais, String tel1, String tel2, String cel,
 			String flagAtivo, int codAdministrador) {
