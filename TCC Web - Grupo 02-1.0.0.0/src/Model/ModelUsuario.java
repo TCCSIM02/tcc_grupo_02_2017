@@ -22,24 +22,7 @@ public class ModelUsuario {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param numeroEndereco
-	 * @param dataCadastro
-	 * @param nome
-	 * @param cpf
-	 * @param dataNascimento
-	 * @param estadoCivil
-	 * @param nacionalidade
-	 * @param endereco
-	 * @param cep
-	 * @param cidade
-	 * @param uf
-	 * @param pais
-	 * @param tel1
-	 * @param tel2
-	 * @param cel
-	 * @param flagAtivo
-	 */
+
 	public ModelUsuario(String numeroEndereco, Date dataCadastro, String nome, String cpf,
 			String dataNascimento, String estadoCivil, String email, String nacionalidade, String endereco, String cep,
 			String cidade, String uf, String pais, String tel1, String tel2, String cel, String flagAtivo) {

@@ -9,33 +9,14 @@ public class ModelAdministrador extends ModelUsuario{
 	public ModelAdministrador() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	/**
-	 * @param numeroEndereco
-	 * @param dataCadastro
-	 * @param nome
-	 * @param cpf
-	 * @param dataNascimento
-	 * @param estadoCivil
-	 * @param nacionalidade
-	 * @param logradouro
-	 * @param cep
-	 * @param cidade
-	 * @param uf
-	 * @param pais
-	 * @param tel1
-	 * @param tel2
-	 * @param cel
-	 * @param flagAtivo
-	 * @param codAdministrador
-	 */
-	public ModelAdministrador(int numeroEndereco, Date dataCadastro,
-			String nome, String cpf, String dataNascimento, String estadoCivil,
-			String nacionalidade, String logradouro, String cep, String cidade,
+
+	public ModelAdministrador(String numeroEndereco, Date dataCadastro,
+			String nome, String cpf, String dataNascimento, String estadoCivil, String email,
+			String nacionalidade, String endereco, String cep, String cidade,
 			String uf, String pais, String tel1, String tel2, String cel,
 			String flagAtivo, int codAdministrador) {
 		super(numeroEndereco, dataCadastro, nome, cpf, dataNascimento,
-				estadoCivil, nacionalidade, logradouro, cep, cidade, uf, pais,
+				estadoCivil, email, nacionalidade, endereco, cep, cidade, uf, pais,
 				tel1, tel2, cel, flagAtivo);
 		this.codAdministrador = codAdministrador;
 	}

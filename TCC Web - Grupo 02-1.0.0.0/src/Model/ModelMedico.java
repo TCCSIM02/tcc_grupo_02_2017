@@ -34,13 +34,13 @@ public class ModelMedico extends ModelUsuario{
 	 * @param crm
 	 * @param cro
 	 */
-	public ModelMedico(int numeroEndereco, Date dataCadastro, String nome,
-			String cpf, String dataNascimento, String estadoCivil,
-			String nacionalidade, String logradouro, String cep, String cidade,
+	public ModelMedico(String numeroEndereco, Date dataCadastro, String nome,
+			String cpf, String dataNascimento, String estadoCivil, String email,
+			String nacionalidade, String endereco, String logradouro, String cep, String cidade,
 			String uf, String pais, String tel1, String tel2, String cel,
 			String flagAtivo, int codMedico, String crm, String cro) {
 		super(numeroEndereco, dataCadastro, nome, cpf, dataNascimento,
-				estadoCivil, nacionalidade, logradouro, cep, cidade, uf, pais,
+				estadoCivil, email, nacionalidade, endereco, cep, cidade, uf, pais,
 				tel1, tel2, cel, flagAtivo);
 		this.codMedico = codMedico;
 		this.crm = crm;
