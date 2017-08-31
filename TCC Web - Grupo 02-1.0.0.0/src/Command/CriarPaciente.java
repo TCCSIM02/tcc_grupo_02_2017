@@ -63,7 +63,7 @@ public class CriarPaciente implements Command {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		lista.add(modelPaciente.getTO());
+		//lista.add(modelPaciente.getTO());
 		
 		session.setAttribute("lista", lista);		
 		RequestDispatcher view = request.getRequestDispatcher("ListarPaciente.jsp");
