@@ -11,12 +11,12 @@ import TO.TOPaciente;
 
 public class ModelUsuario {
 
-	private int numeroEndereco;
+	private String numeroEndereco;
 	private Date dataCadastro;
-	private String nome, cpf, dataNascimento, estadoCivil, nacionalidade, endereco, cep, cidade, uf, pais, tel1, tel2, cel, flagAtivo;
+	private String nome, email, cpf, dataNascimento, estadoCivil, nacionalidade, endereco, cep, cidade, uf, pais, tel1, tel2, cel, flagAtivo;
 	
 	/* Possiveis mudanças */
-	private String nivelUsuario, email, senha, nomeLogin;
+	private String nivelUsuario , senha, nomeLogin;
 	
 	public ModelUsuario() {
 		// TODO Auto-generated constructor stub
@@ -40,8 +40,8 @@ public class ModelUsuario {
 	 * @param cel
 	 * @param flagAtivo
 	 */
-	public ModelUsuario(int numeroEndereco, Date dataCadastro, String nome, String cpf,
-			String dataNascimento, String estadoCivil, String nacionalidade, String endereco, String cep,
+	public ModelUsuario(String numeroEndereco, Date dataCadastro, String nome, String cpf,
+			String dataNascimento, String estadoCivil, String email, String nacionalidade, String endereco, String cep,
 			String cidade, String uf, String pais, String tel1, String tel2, String cel, String flagAtivo) {
 		super();
 		this.numeroEndereco = numeroEndereco;
@@ -60,11 +60,26 @@ public class ModelUsuario {
 		this.tel2 = tel2;
 		this.cel = cel;
 		this.flagAtivo = flagAtivo;
+		this.email = email;
 	}
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	/**
 	 * @return the numeroEndereco
 	 */
-	public int getNumeroEndereco() {
+	public String getNumeroEndereco() {
 		return numeroEndereco;
 	}
 
@@ -176,7 +191,7 @@ public class ModelUsuario {
 	/**
 	 * @param numeroEndereco the numeroEndereco to set
 	 */
-	public void setNumeroEndereco(int numeroEndereco) {
+	public void setNumeroEndereco(String numeroEndereco) {
 		this.numeroEndereco = numeroEndereco;
 	}
 

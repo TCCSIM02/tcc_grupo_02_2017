@@ -47,13 +47,13 @@ public class ModelPaciente extends ModelUsuario{
 	 * @param codPaciente
 	 * @param numConvenio
 	 */
-	public ModelPaciente(int numeroEndereco, Date dataCadastro, String nome,
-			String cpf, String dataNascimento, String estadoCivil,
+	public ModelPaciente(String numeroEndereco, Date dataCadastro, String nome,
+			String cpf, String dataNascimento, String estadoCivil, String email,
 			String nacionalidade, String endereco, String cep, String cidade,
 			String uf, String pais, String tel1, String tel2, String cel,
 			String flagAtivo, int codPaciente, String numConvenio) {
 		super(numeroEndereco, dataCadastro, nome, cpf, dataNascimento,
-				estadoCivil, nacionalidade, endereco, cep, cidade, uf, pais,
+				estadoCivil, email, nacionalidade, endereco, cep, cidade, uf, pais,
 				tel1, tel2, cel, flagAtivo);
 		this.codPaciente = codPaciente;
 		this.numConvenio = numConvenio;
@@ -106,6 +106,7 @@ public class ModelPaciente extends ModelUsuario{
 		toPaciente.setCpf(super.getCpf());
 		toPaciente.setDataNascimento(super.getDataNascimento()) ;
 		toPaciente.setEstadoCivil(super.getEstadoCivil()) ;
+		toPaciente.setEmail(super.getEmail()) ;
 		toPaciente.setNacionalidade(super.getNacionalidade());
 		toPaciente.setEndereco(super.getEndereco());
 		toPaciente.setCep(super.getCep()) ;
@@ -121,7 +122,7 @@ public class ModelPaciente extends ModelUsuario{
 		toPaciente.setCodPaciente(getCodPaciente());
 		toPaciente.setNumConvenio(getNumConvenio());
 		
-		return null;
+		return toPaciente;
 	}
 
 	public void cadastrarPaciente(){

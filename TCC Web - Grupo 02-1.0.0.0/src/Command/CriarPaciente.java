@@ -23,9 +23,10 @@ public class CriarPaciente implements Command {
 		String pNome 			= request.getParameter("nome");	
 		String pCpf 			= request.getParameter("cpf");
 		String pDataNascimento 	= request.getParameter("dataNascimento");
+		String pEmail			= request.getParameter("email");
 		String pEstadoCivil		= request.getParameter("estadoCivil");
 		String pNacionalidade 	= request.getParameter("nacionalidade");
-		String pLogradouro 		= request.getParameter("logradouro");
+		String pLogradouro 		= request.getParameter("endereco");
 		String pCep 			= request.getParameter("cep");
 		String pCidade 			= request.getParameter("cidade");
 		String pUf 				= request.getParameter("uf");				
@@ -46,11 +47,11 @@ public class CriarPaciente implements Command {
 
 		/*ALTERAR ESSE NULL AQUI*/
 		ModelPaciente modelPaciente = new ModelPaciente(
-				Integer.parseInt(pNumeroEndereco), null, pNome,
-				pCpf,  null,  pEstadoCivil,
+				pNumeroEndereco, null, pNome,
+				pCpf,  null,  pEstadoCivil, pEmail,
 				pNacionalidade,  pLogradouro, pCep,  pCidade,
 				pUf,  pPais,  pTel1,  pTel2,  pCel,
-				pFlagAtivo, Integer.parseInt(pCodPaciente),  pNumConvenio);
+				pFlagAtivo, id,  pNumConvenio);
 	
 		HttpSession session = request.getSession();
 		

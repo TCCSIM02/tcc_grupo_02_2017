@@ -4,9 +4,8 @@ import java.util.Date;
 
 public class TOUsuario {
 
-	private int numeroEndereco;
 	private Date dataCadastro;
-	private String email, nome, cpf, dataNascimento, estadoCivil, nacionalidade, endereco, cep, cidade, uf, pais, tel1, tel2, cel, flagAtivo;
+	private String numeroEndereco, email, nome, cpf, dataNascimento, estadoCivil, nacionalidade, endereco, cep, cidade, uf, pais, tel1, tel2, cel, flagAtivo;
 	/**
 	 * @return the email
 	 */
@@ -22,7 +21,7 @@ public class TOUsuario {
 	/**
 	 * @return the numeroEndereco
 	 */
-	public int getNumeroEndereco() {
+	public String getNumeroEndereco() {
 		return numeroEndereco;
 	}
 	/**
@@ -117,7 +116,7 @@ public class TOUsuario {
 	/**
 	 * @param numeroEndereco the numeroEndereco to set
 	 */
-	public void setNumeroEndereco(int numeroEndereco) {
+	public void setNumeroEndereco(String numeroEndereco) {
 		this.numeroEndereco = numeroEndereco;
 	}
 	/**

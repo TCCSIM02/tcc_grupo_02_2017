@@ -57,7 +57,7 @@
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Nome paciente</label>
 								<div class="col-lg-6">
-									<input type="text" class="form-control" name="nomePaciente" id="nomePaciente" required
+									<input type="text" class="form-control" name="nome" id="nome" required
 									maxlength="65" placeholder="nome do paciente" size="16">
 								</div>				  
 							</div>
@@ -65,7 +65,7 @@
 							<div class="form-group">
 								<label class="col-lg-3 control-label">CPF</label>
 								<div class="col-lg-6">
-									<input type="text" class="form-control" name="cPF" id="cPF" required
+									<input type="text" class="form-control" name="cpf" id="cpf" required
 									maxlength="14" placeholder="cpf" size="16">
 								</div>				  
 							</div>
@@ -111,9 +111,17 @@
 							</div>
 							
 							<div class="form-group">
+								<label class="col-lg-3 control-label">Número</label>
+								<div class="col-lg-6">
+									<input type="text" class="form-control" name="numeroEndereco" id="numeroEndereco" required
+									maxlength="200" placeholder="número" size="16">
+								</div>				  
+							</div>
+							
+							<div class="form-group">
 								<label class="col-lg-3 control-label">CEP</label>
 								<div class="col-lg-6">
-									<input type="text" class="form-control" name="cEP" id="cEP" required
+									<input type="text" class="form-control" name="cep" id="cep" required
 									maxlength="9" placeholder="cep" size="16">
 								</div>				  
 							</div>
@@ -121,8 +129,16 @@
 							<div class="form-group">
 								<label class="col-lg-3 control-label">UF</label>
 								<div class="col-lg-6">
-									<input type="text" class="form-control" name="uF" id="uF" required
+									<input type="text" class="form-control" name="uf" id="uf" required
 									maxlength="2" placeholder="uf" size="16">
+								</div>				  
+							</div>
+							
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Cidade</label>
+								<div class="col-lg-6">
+									<input type="text" class="form-control" name="cidade" id="cidade" required
+									maxlength="9" placeholder="cep" size="16">
 								</div>				  
 							</div>
 							

@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import ConnectionFactory.FabricaConexao;
 import TO.TOPaciente;
-import TO.TOPaciente;
 
 public class DAOPaciente {
 
@@ -17,7 +16,7 @@ public class DAOPaciente {
 	}
 	
 	public void cadastrarPaciente(TOPaciente toPaciente){
-		String sqlInsert = "INSERT INTO tcc.paciente(codLogin,numConvenio,nomePaciente,cPF,dataNascimento,email,estadoCivil,nacionalidade,endereco,cEP,uF,pais,tel1,tel2,cel,flagAtivo,dataCadastro) VALUES (?,current_timestamp(),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sqlInsert = "INSERT INTO tcc.paciente(numeroEndereco,numConvenio,nomePaciente,cPF,dataNascimento,email,estadoCivil,nacionalidade,endereco,cEP,cidade,uF,pais,tel1,tel2,cel,dataCadastro) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,current_timestamp())";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
@@ -33,27 +32,27 @@ public class DAOPaciente {
 			//java.sql.Date dataSql = new java.sql.Date(longDate);
 						
 			
-			stm.setInt(1,toPaciente.getNumeroEndereco() );
+			stm.setString(1,toPaciente.getNumeroEndereco() );
+			stm.setString(2,toPaciente.getNumConvenio());
 			//stm.setDate(2,toPaciente.getDataCadastro() ) ;
-			stm.setString(2,toPaciente.getNome());
-			stm.setString(3,toPaciente.getCpf());
-			stm.setString(4,toPaciente.getDataNascimento() );
-			stm.setString(5,toPaciente.getEstadoCivil()) ;
-			stm.setString(6,toPaciente.getNacionalidade());
-			stm.setString(7,toPaciente.getEndereco());
-			stm.setString(8,toPaciente.getCep()) ;
-			stm.setString(9,toPaciente.getCidade() );
-			stm.setString(10,toPaciente.getUf()) ;
-			stm.setString(11,toPaciente.getPais() );
-			stm.setString(12,toPaciente.getTel1()); 
-			stm.setString(13,toPaciente.getTel2()); 
-			stm.setString(14,toPaciente.getCel()) ;
-			stm.setString(15,"1");
+			stm.setString(3,toPaciente.getNome());
+			stm.setString(4,toPaciente.getCpf());
+			stm.setString(5,toPaciente.getDataNascimento() );
+			stm.setString(6,toPaciente.getEmail()) ;
+			stm.setString(7,toPaciente.getEstadoCivil()) ;
+			stm.setString(8,toPaciente.getNacionalidade());
+			stm.setString(9,toPaciente.getEndereco());
+			stm.setString(10,toPaciente.getCep()) ;
+			stm.setString(11,toPaciente.getCidade() );
+			stm.setString(12,toPaciente.getUf()) ;
+			stm.setString(13,toPaciente.getPais() );
+			stm.setString(14,toPaciente.getTel1()); 
+			stm.setString(15,toPaciente.getTel2()); 
+			stm.setString(16,toPaciente.getCel()) ;
+			//stm.setString(15,"1");
 			
 			/*TOPaciente*/
-			stm.setInt(16,toPaciente.getCodPaciente());
-			stm.setString(17,toPaciente.getNumConvenio());
-			
+	
 			//stm.setString(4,toPaciente.getFlagAtivo());
 			//stm.setDate(5,dataSql);
 			
@@ -83,7 +82,7 @@ public class DAOPaciente {
 				while(rs.next()) {
 					toPaciente = new TOPaciente();
 								
-					toPaciente.setNumeroEndereco(rs.getInt("numeroEndereco"));	
+					toPaciente.setNumeroEndereco(rs.getString("numeroEndereco"));	
 					toPaciente.setDataCadastro(rs.getDate("dataCadastro"));
 					toPaciente.setNome(rs.getString("nomePaciente"));	
 					toPaciente.setCpf(rs.getString("cPF"))	;
