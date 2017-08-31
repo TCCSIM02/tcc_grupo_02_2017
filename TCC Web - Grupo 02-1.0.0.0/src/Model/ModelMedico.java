@@ -11,6 +11,8 @@ public class ModelMedico extends ModelUsuario{
 		// TODO Auto-generated constructor stub
 	}
 
+
+	
 	/**
 	 * @param numeroEndereco
 	 * @param dataCadastro
@@ -28,14 +30,24 @@ public class ModelMedico extends ModelUsuario{
 	 * @param tel2
 	 * @param cel
 	 * @param flagAtivo
+	 * @param codMedico
+	 * @param crm
+	 * @param cro
 	 */
-	public ModelMedico(int codUsuario, int numeroEndereco, Date dataCadastro, String nome, String cpf,
-			String dataNascimento, String estadoCivil, String nacionalidade, String logradouro, String cep,
-			String cidade, String uf, String pais, String tel1, String tel2, String cel, String flagAtivo) {
-		super(numeroEndereco, dataCadastro, nome, cpf, dataNascimento, estadoCivil, nacionalidade, logradouro, cep,
-				cidade, uf, pais, tel1, tel2, cel, flagAtivo);
-		// TODO Auto-generated constructor stub
+	public ModelMedico(int numeroEndereco, Date dataCadastro, String nome,
+			String cpf, String dataNascimento, String estadoCivil,
+			String nacionalidade, String logradouro, String cep, String cidade,
+			String uf, String pais, String tel1, String tel2, String cel,
+			String flagAtivo, int codMedico, String crm, String cro) {
+		super(numeroEndereco, dataCadastro, nome, cpf, dataNascimento,
+				estadoCivil, nacionalidade, logradouro, cep, cidade, uf, pais,
+				tel1, tel2, cel, flagAtivo);
+		this.codMedico = codMedico;
+		this.crm = crm;
+		this.cro = cro;
 	}
+
+
 
 	/**
 	 * @param codMedico
