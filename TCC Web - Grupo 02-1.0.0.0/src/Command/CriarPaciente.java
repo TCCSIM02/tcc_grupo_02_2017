@@ -47,7 +47,7 @@ public class CriarPaciente implements Command {
 		/*ALTERAR ESSE NULL AQUI*/
 		ModelPaciente modelPaciente = new ModelPaciente(
 				Integer.parseInt(pNumeroEndereco), null, pNome,
-				pCpf,  pDataNascimento,  pEstadoCivil,
+				pCpf,  null,  pEstadoCivil,
 				pNacionalidade,  pLogradouro, pCep,  pCidade,
 				pUf,  pPais,  pTel1,  pTel2,  pCel,
 				pFlagAtivo, Integer.parseInt(pCodPaciente),  pNumConvenio);
@@ -56,13 +56,13 @@ public class CriarPaciente implements Command {
 		
 		modelPaciente.cadastrarPaciente();
 		ArrayList<TOPaciente> lista = new ArrayList<>(); 
-		/*try {
+		try {
 			lista = modelPaciente.listarPacientes();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
-		//lista.add(modelPaciente.getTO());
+		}
+		lista.add(modelPaciente.getTO());
 		
 		session.setAttribute("lista", lista);		
 		RequestDispatcher view = request.getRequestDispatcher("ListarPaciente.jsp");

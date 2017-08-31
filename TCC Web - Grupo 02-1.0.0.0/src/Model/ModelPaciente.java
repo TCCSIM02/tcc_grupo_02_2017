@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import DAO.DAOPaciente;
@@ -48,11 +49,11 @@ public class ModelPaciente extends ModelUsuario{
 	 */
 	public ModelPaciente(int numeroEndereco, Date dataCadastro, String nome,
 			String cpf, String dataNascimento, String estadoCivil,
-			String nacionalidade, String logradouro, String cep, String cidade,
+			String nacionalidade, String endereco, String cep, String cidade,
 			String uf, String pais, String tel1, String tel2, String cel,
 			String flagAtivo, int codPaciente, String numConvenio) {
 		super(numeroEndereco, dataCadastro, nome, cpf, dataNascimento,
-				estadoCivil, nacionalidade, logradouro, cep, cidade, uf, pais,
+				estadoCivil, nacionalidade, endereco, cep, cidade, uf, pais,
 				tel1, tel2, cel, flagAtivo);
 		this.codPaciente = codPaciente;
 		this.numConvenio = numConvenio;
@@ -106,7 +107,7 @@ public class ModelPaciente extends ModelUsuario{
 		toPaciente.setDataNascimento(super.getDataNascimento()) ;
 		toPaciente.setEstadoCivil(super.getEstadoCivil()) ;
 		toPaciente.setNacionalidade(super.getNacionalidade());
-		toPaciente.setLogradouro(super.getLogradouro());
+		toPaciente.setEndereco(super.getEndereco());
 		toPaciente.setCep(super.getCep()) ;
 		toPaciente.setCidade(super.getCidade()) ;
 		toPaciente.setUf(super.getUf()) ;
@@ -142,5 +143,12 @@ public class ModelPaciente extends ModelUsuario{
 	
 	public void excluirPaciente(){
 		
+	}
+	
+	public ArrayList<TOPaciente> listarPacientes() throws ClassNotFoundException{
+		ArrayList<TOPaciente> lista;
+		DAOPaciente dao = new DAOPaciente();
+		lista = dao.listarPacientes();
+		return lista;
 	}
 }

@@ -6,7 +6,19 @@ public class TOUsuario {
 
 	private int numeroEndereco;
 	private Date dataCadastro;
-	private String nome, cpf, dataNascimento, estadoCivil, nacionalidade, logradouro, cep, cidade, uf, pais, tel1, tel2, cel, flagAtivo;
+	private String email, nome, cpf, dataNascimento, estadoCivil, nacionalidade, endereco, cep, cidade, uf, pais, tel1, tel2, cel, flagAtivo;
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+	/**
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	/**
 	 * @return the numeroEndereco
 	 */
@@ -52,9 +64,7 @@ public class TOUsuario {
 	/**
 	 * @return the logradouro
 	 */
-	public String getLogradouro() {
-		return logradouro;
-	}
+
 	/**
 	 * @return the cep
 	 */
@@ -146,11 +156,18 @@ public class TOUsuario {
 	public void setNacionalidade(String nacionalidade) {
 		this.nacionalidade = nacionalidade;
 	}
+
 	/**
-	 * @param logradouro the logradouro to set
+	 * @return the endereco
 	 */
-	public void setLogradouro(String logradouro) {
-		this.logradouro = logradouro;
+	public String getEndereco() {
+		return endereco;
+	}
+	/**
+	 * @param endereco the endereco to set
+	 */
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 	/**
 	 * @param cep the cep to set

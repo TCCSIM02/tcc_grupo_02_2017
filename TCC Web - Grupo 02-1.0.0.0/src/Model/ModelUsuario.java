@@ -3,13 +3,17 @@
  */
 package Model;
 
+import java.util.ArrayList;
 import java.util.Date;
+
+import DAO.DAOPaciente;
+import TO.TOPaciente;
 
 public class ModelUsuario {
 
 	private int numeroEndereco;
 	private Date dataCadastro;
-	private String nome, cpf, dataNascimento, estadoCivil, nacionalidade, logradouro, cep, cidade, uf, pais, tel1, tel2, cel, flagAtivo;
+	private String nome, cpf, dataNascimento, estadoCivil, nacionalidade, endereco, cep, cidade, uf, pais, tel1, tel2, cel, flagAtivo;
 	
 	/* Possiveis mudanças */
 	private String nivelUsuario, email, senha, nomeLogin;
@@ -26,7 +30,7 @@ public class ModelUsuario {
 	 * @param dataNascimento
 	 * @param estadoCivil
 	 * @param nacionalidade
-	 * @param logradouro
+	 * @param endereco
 	 * @param cep
 	 * @param cidade
 	 * @param uf
@@ -37,7 +41,7 @@ public class ModelUsuario {
 	 * @param flagAtivo
 	 */
 	public ModelUsuario(int numeroEndereco, Date dataCadastro, String nome, String cpf,
-			String dataNascimento, String estadoCivil, String nacionalidade, String logradouro, String cep,
+			String dataNascimento, String estadoCivil, String nacionalidade, String endereco, String cep,
 			String cidade, String uf, String pais, String tel1, String tel2, String cel, String flagAtivo) {
 		super();
 		this.numeroEndereco = numeroEndereco;
@@ -47,7 +51,7 @@ public class ModelUsuario {
 		this.dataNascimento = dataNascimento;
 		this.estadoCivil = estadoCivil;
 		this.nacionalidade = nacionalidade;
-		this.logradouro = logradouro;
+		this.endereco = endereco;
 		this.cep = cep;
 		this.cidade = cidade;
 		this.uf = uf;
@@ -107,10 +111,10 @@ public class ModelUsuario {
 	}
 
 	/**
-	 * @return the logradouro
+	 * @return the endereco
 	 */
-	public String getLogradouro() {
-		return logradouro;
+	public String getEndereco() {
+		return endereco;
 	}
 
 	/**
@@ -219,10 +223,10 @@ public class ModelUsuario {
 	}
 
 	/**
-	 * @param logradouro the logradouro to set
+	 * @param endereco the endereco to set
 	 */
-	public void setLogradouro(String logradouro) {
-		this.logradouro = logradouro;
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 
 	/**
@@ -285,4 +289,5 @@ public class ModelUsuario {
 	public void alterarNivelUsuario(){
 		
 	}
+	
 }
