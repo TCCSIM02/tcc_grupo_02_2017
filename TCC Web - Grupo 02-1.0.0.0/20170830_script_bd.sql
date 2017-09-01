@@ -167,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `TCC`.`Paciente` (
   `numeroEndereco` VARCHAR(200) NOT NULL COMMENT 'numero Endereco do Paciente',
   `cEP` VARCHAR(9) NOT NULL COMMENT 'CEP de residencia do paciente',
   `uF` VARCHAR(2) NOT NULL COMMENT 'UF de residencia do paciente',
-  `cidade` VARCHAR(2) NOT NULL COMMENT 'cidade de residencia do paciente',
+  `cidade` VARCHAR(50) NOT NULL COMMENT 'cidade de residencia do paciente',
   `pais` VARCHAR(20) NOT NULL COMMENT 'Pais de residencia do paciente',
   `tel1` VARCHAR(15) NOT NULL COMMENT 'Telefone 1 (principal) de contato do Paciente',
   `tel2` VARCHAR(15) NULL COMMENT 'Telefone 2 de contato do Paciente',

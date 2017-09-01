@@ -1,6 +1,8 @@
 package Command;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -44,11 +46,20 @@ public class CriarPaciente implements Command {
 		} catch (NumberFormatException e) {
 
 		}
+		
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		java.sql.Date dataNasc = null;
+		try {
+			dataNasc = new java.sql.Date(format.parse(pDataNascimento).getTime());
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 		/*ALTERAR ESSE NULL AQUI*/
 		ModelPaciente modelPaciente = new ModelPaciente(
 				pNumeroEndereco, null, pNome,
-				pCpf,  null,  pEstadoCivil, pEmail,
+				pCpf, dataNasc,  pEstadoCivil, pEmail,
 				pNacionalidade,  pLogradouro, pCep,  pCidade,
 				pUf,  pPais,  pTel1,  pTel2,  pCel,
 				pFlagAtivo, id,  pNumConvenio);

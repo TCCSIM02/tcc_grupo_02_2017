@@ -1,6 +1,7 @@
 package DAO;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -38,7 +39,7 @@ public class DAOPaciente {
 			//stm.setDate(2,toPaciente.getDataCadastro() ) ;
 			stm.setString(3,toPaciente.getNome());
 			stm.setString(4,toPaciente.getCpf());
-			stm.setDate(5,toPaciente.getDataNascimento() );
+			stm.setDate(5,(Date) toPaciente.getDataNascimento() );
 			stm.setString(6,toPaciente.getEmail()) ;
 			stm.setString(7,toPaciente.getEstadoCivil()) ;
 			stm.setString(8,toPaciente.getNacionalidade());
@@ -87,7 +88,7 @@ public class DAOPaciente {
 					toPaciente.setDataCadastro(rs.getDate("dataCadastro"));
 					toPaciente.setNome(rs.getString("nomePaciente"));	
 					toPaciente.setCpf(rs.getString("cPF"));
-					toPaciente.setDataNascimento(rs.getString("dataNascimento"));
+					toPaciente.setDataNascimento(rs.getDate("dataNascimento"));
 					toPaciente.setEstadoCivil(rs.getString("estadoCivil")	);
 					toPaciente.setNacionalidade(rs.getString("nacionalidade"));
 					toPaciente.setEndereco(rs.getString("endereco"));	
@@ -127,7 +128,7 @@ public class DAOPaciente {
 			//stm.setDate(2,toPaciente.getDataCadastro() ) ;
 			stm.setString(3,toPaciente.getNome());
 			stm.setString(4,toPaciente.getCpf());
-			stm.setString(5,toPaciente.getDataNascimento() );
+			stm.setDate(5,(Date) toPaciente.getDataNascimento() );
 			stm.setString(6,toPaciente.getEmail()) ;
 			stm.setString(7,toPaciente.getEstadoCivil()) ;
 			stm.setString(8,toPaciente.getNacionalidade());

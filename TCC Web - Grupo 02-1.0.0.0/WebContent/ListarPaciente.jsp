@@ -104,10 +104,10 @@
 								<th>Código paciente</th>
 								<th>Nome paciente</th>
 								<th>CPF</th>
-								<th>Data Nascimento</th>
+								<!-- <th>Data Nascimento</th>-->
 								<th>Data Cadastro</th>
 								<th>Email</th>
-								<th>Estado Cívil</th>
+								<!-- <th>Estado Cívil</th>
 								<th>Nacionalidade</th>
 								<th>Endereço</th>
 								<th>Número</th>
@@ -117,8 +117,8 @@
 								<th>País</th>
 								<th>Telefone Principal</th>
 								<th>Telefone Opcional</th>
-								<th>Celular</th>
-								<th>Flag ativo</th>
+								<th>Celular</th>-->
+								<th>Flag ativo</th> 
 								<th class="actions">Ações</th>
 							</tr>
 						</thead>
@@ -130,10 +130,10 @@
 							<td>${to.codPaciente}</td>
 							<td>${to.nome}</td>
 							<td>${to.cpf}</td>
-							<td>${to.dataNascimento}</td>
+							<!-- <td>${to.dataNascimento}</td>-->
 							<td>${to.dataCadastro}</td>
 							<td>${to.email}</td>
-							<td>${to.estadoCivil}</td>
+							<!-- <td>${to.estadoCivil}</td>
 							<td>${to.nacionalidade}</td>
 							<td>${to.endereco}</td>
 							<td>${to.numeroEndereco}</td>
@@ -143,7 +143,7 @@
 							<td>${to.pais}</td>
 							<td>${to.tel1}</td>
 							<td>${to.tel2}</td>
-							<td>${to.cel}</td>
+							<td>${to.cel}</td>-->
 							<td>${to.flagAtivo}</td>
 							
 							   <td class="actions">
