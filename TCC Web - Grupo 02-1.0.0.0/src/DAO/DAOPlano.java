@@ -141,7 +141,8 @@ public class DAOPlano {
 		}
 		return lista;
 	}
-	
+
+
 	public ArrayList<TOPlano> listarPlanos(String chave){
 		TOPlano toPlano;
 		ArrayList<TOPlano> lista = new ArrayList<>();

@@ -12,10 +12,6 @@ import TO.TOPaciente;
 import TO.TOPlano;
 
 public class DAOPaciente {
-
-	public DAOPaciente(){
-		
-	}
 	
 	public void cadastrarPaciente(TOPaciente toPaciente){
 		String sqlInsert = "INSERT INTO tcc.paciente(numeroEndereco,numConvenio,nomePaciente,cPF,dataNascimento,email,estadoCivil,nacionalidade,endereco,cEP,cidade,uF,pais,tel1,tel2,cel,dataCadastro) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,current_timestamp())";
@@ -73,47 +69,7 @@ public class DAOPaciente {
 		}
 	}
 	
-	public ArrayList<TOPaciente> listarPacientes(){
-		TOPaciente toPaciente;
-		ArrayList<TOPaciente> lista = new ArrayList<>();
-		String sqlSelect = "SELECT * FROM tcc.paciente order by codPaciente desc";
-		// usando o try with resources do Java 7, que fecha o que abriu
-		try (Connection conn = FabricaConexao.getConexao(); 
-				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
-			try (ResultSet rs = stm.executeQuery();) {
-				while(rs.next()) {
-					toPaciente = new TOPaciente();
-								
-					toPaciente.setNumeroEndereco(rs.getString("numeroEndereco"));	
-					toPaciente.setDataCadastro(rs.getDate("dataCadastro"));
-					toPaciente.setNome(rs.getString("nomePaciente"));	
-					toPaciente.setCpf(rs.getString("cPF"));
-					toPaciente.setDataNascimento(rs.getDate("dataNascimento"));
-					toPaciente.setEstadoCivil(rs.getString("estadoCivil")	);
-					toPaciente.setNacionalidade(rs.getString("nacionalidade"));
-					toPaciente.setEndereco(rs.getString("endereco"));	
-					toPaciente.setCep(rs.getString("cEP"));	
-					toPaciente.setCidade(rs.getString("cidade"));	
-					toPaciente.setUf(rs.getString("uF"));	
-					toPaciente.setPais(rs.getString("pais")	);
-					toPaciente.setTel1(rs.getString("tel1"));
-					toPaciente.setTel2(rs.getString("tel2"));
-					toPaciente.setCel(rs.getString("cel"));
-					toPaciente.setFlagAtivo(rs.getString("flagAtivo"));
-					toPaciente.setCodPaciente(rs.getInt("codPaciente"));
-					toPaciente.setNumConvenio(rs.getString("numConvenio"));
-					toPaciente.setEmail(rs.getString("email"));
-									
-					lista.add(toPaciente);
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		} catch (SQLException e1) {
-			System.out.print(e1.getStackTrace());
-		}
-		return lista;
-	}
+	
 	
 	
 	
@@ -169,7 +125,7 @@ public class DAOPaciente {
 	public TOPaciente consultarPacienteCod(int codPacienteBusca){
 		TOPaciente toPaciente = new TOPaciente();
 		toPaciente.setCodPaciente(codPacienteBusca);
-		String sqlSelect = "SELECT nomePlano, registroAns, tipoPlano, flagAtivo, dataCadastro FROM tcc.plano where codPlano = ?";
+		String sqlSelect = "SELECT * FROM tcc.paciente where codPaciente = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -177,27 +133,25 @@ public class DAOPaciente {
 			try (ResultSet rs = stm.executeQuery();) {
 				if (rs.next()) {
 					
-					//toPlano.setCodPlano(rs.getInt("codPlano"));
+					//toPaciente.setCodPaciente(rs.getInt("codPaciente"));
 					toPaciente.setNumeroEndereco(rs.getString("numeroEndereco"));
 					toPaciente.setDataCadastro(rs.getDate("dataCadastro"));
 					toPaciente.setNome(rs.getString("nomePaciente"));
 					toPaciente.setCpf(rs.getString("cPF"));
 					toPaciente.setDataNascimento(rs.getDate("dataNascimento"));
-					toPaciente.setNumeroEndereco(rs.getString("estadoCivil"));
-					toPaciente.setNumeroEndereco(rs.getString("nacionalidade"));
-					toPaciente.setNumeroEndereco(rs.getString("endereco"));
-					toPaciente.setNumeroEndereco(rs.getString("cEP"));
-					toPaciente.setNumeroEndereco(rs.getString("cidade"));
-					toPaciente.setNumeroEndereco(rs.getString("uF"));
-					toPaciente.setNumeroEndereco(rs.getString("pais"));
-					toPaciente.setNumeroEndereco(rs.getString("tel1"));
-					toPaciente.setNumeroEndereco(rs.getString("tel2"));
-					toPaciente.setNumeroEndereco(rs.getString("cel"));
-					toPaciente.setNumeroEndereco(rs.getString("flagAtivo"));
-					toPaciente.setNumeroEndereco(rs.getString("codPaciente"));
-					toPaciente.setNumeroEndereco(rs.getString("numConvenio"));
-					toPaciente.setNumeroEndereco(rs.getString("codPaciente"));
-					toPaciente.setNumeroEndereco(rs.getString("email"));
+					toPaciente.setEstadoCivil(rs.getString("estadoCivil"));
+					toPaciente.setNacionalidade(rs.getString("nacionalidade"));
+					toPaciente.setEndereco(rs.getString("endereco"));
+					toPaciente.setCep(rs.getString("cEP"));
+					toPaciente.setCidade(rs.getString("cidade"));
+					toPaciente.setUf(rs.getString("uF"));
+					toPaciente.setPais(rs.getString("pais"));
+					toPaciente.setTel1(rs.getString("tel1"));
+					toPaciente.setTel2(rs.getString("tel2"));
+					toPaciente.setCel(rs.getString("cel"));
+					toPaciente.setFlagAtivo(rs.getString("flagAtivo"));
+					toPaciente.setNumConvenio(rs.getString("numConvenio"));
+					toPaciente.setEmail(rs.getString("email"));
 					
 				
 				}
@@ -209,6 +163,93 @@ public class DAOPaciente {
 		}
 		return toPaciente;
 	}
+	
+	public ArrayList<TOPaciente> listarPacientes(){
+		TOPaciente toPaciente;
+		ArrayList<TOPaciente> lista = new ArrayList<>();
+		String sqlSelect = "SELECT * FROM tcc.paciente order by codPaciente desc";
+		// usando o try with resources do Java 7, que fecha o que abriu
+		try (Connection conn = FabricaConexao.getConexao(); 
+				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
+			try (ResultSet rs = stm.executeQuery();) {
+				while(rs.next()) {
+					toPaciente = new TOPaciente();
+								
+					toPaciente.setCodPaciente(rs.getInt("codPaciente"));
+					toPaciente.setNumeroEndereco(rs.getString("numeroEndereco"));
+					toPaciente.setDataCadastro(rs.getDate("dataCadastro"));
+					toPaciente.setNome(rs.getString("nomePaciente"));
+					toPaciente.setCpf(rs.getString("cPF"));
+					toPaciente.setDataNascimento(rs.getDate("dataNascimento"));
+					toPaciente.setEstadoCivil(rs.getString("estadoCivil"));
+					toPaciente.setNacionalidade(rs.getString("nacionalidade"));
+					toPaciente.setEndereco(rs.getString("endereco"));
+					toPaciente.setCep(rs.getString("cEP"));
+					toPaciente.setCidade(rs.getString("cidade"));
+					toPaciente.setUf(rs.getString("uF"));
+					toPaciente.setPais(rs.getString("pais"));
+					toPaciente.setTel1(rs.getString("tel1"));
+					toPaciente.setTel2(rs.getString("tel2"));
+					toPaciente.setCel(rs.getString("cel"));
+					toPaciente.setFlagAtivo(rs.getString("flagAtivo"));
+					toPaciente.setNumConvenio(rs.getString("numConvenio"));
+					toPaciente.setEmail(rs.getString("email"));
+									
+					lista.add(toPaciente);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (SQLException e1) {
+			System.out.print(e1.getStackTrace());
+		}
+		return lista;
+	}
+	
+	
+	public ArrayList<TOPaciente> listarPaciente(String chave){
+		TOPaciente toPaciente;
+		ArrayList<TOPaciente> lista = new ArrayList<>();
+							
+		String sqlSelect = "SELECT * from  tcc.paciente where upper(nomePaciente) like '?'";
+		// usando o try with resources do Java 7, que fecha o que abriu
+		try (Connection conn = FabricaConexao.getConexao(); 
+				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
+				stm.setString(1, "%" + chave.toUpperCase() + "%");
+			try (ResultSet rs = stm.executeQuery();) {
+				while(rs.next()) {
+					toPaciente = new TOPaciente();
+					
+					toPaciente.setCodPaciente(rs.getInt("codPaciente"));
+					toPaciente.setNumeroEndereco(rs.getString("numeroEndereco"));
+					toPaciente.setDataCadastro(rs.getDate("dataCadastro"));
+					toPaciente.setNome(rs.getString("nomePaciente"));
+					toPaciente.setCpf(rs.getString("cPF"));
+					toPaciente.setDataNascimento(rs.getDate("dataNascimento"));
+					toPaciente.setEstadoCivil(rs.getString("estadoCivil"));
+					toPaciente.setNacionalidade(rs.getString("nacionalidade"));
+					toPaciente.setEndereco(rs.getString("endereco"));
+					toPaciente.setCep(rs.getString("cEP"));
+					toPaciente.setCidade(rs.getString("cidade"));
+					toPaciente.setUf(rs.getString("uF"));
+					toPaciente.setPais(rs.getString("pais"));
+					toPaciente.setTel1(rs.getString("tel1"));
+					toPaciente.setTel2(rs.getString("tel2"));
+					toPaciente.setCel(rs.getString("cel"));
+					toPaciente.setFlagAtivo(rs.getString("flagAtivo"));
+					toPaciente.setNumConvenio(rs.getString("numConvenio"));
+					toPaciente.setEmail(rs.getString("email"));
+									
+					lista.add(toPaciente);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace(); 
+			}
+		} catch (SQLException e1) {
+			System.out.print(e1.getStackTrace());
+		}
+		return lista;
+	}	
 	
 	
 	
