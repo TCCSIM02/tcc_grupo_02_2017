@@ -132,7 +132,7 @@
 							<td>${to.nome}</td>
 							<td>${to.cpf}</td>
 							<!-- <td>${to.dataNascimento}</td>-->
-							<td><fmt:formatDate pattern="dd/MM/yyyy" value="${to.dataCadastro}" /></td>
+							<td><fmt:formatDate pattern="dd/MM/yyyy HH:mm:ss" value="${to.dataCadastro}" /></td>
 							<td>${to.email}</td>
 							<!-- <td>${to.estadoCivil}</td>
 							<td>${to.nacionalidade}</td>
