@@ -2,6 +2,7 @@ DROP SCHEMA IF EXISTS `TCC` ;
 CREATE SCHEMA IF NOT EXISTS `TCC` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `TCC` ;
 /* ATUALIZACAO 30-08-2017 - criação dos campos cidade e numeroEndereco na tabela Paciente*/
+/* ATUALIZACAO 08-09-2017 - Criacao de inserts para a tabela nivel de usuario*/
 -- -----------------------------------------------------
 -- Table `TCC`.`Unidade`
 -- -----------------------------------------------------
@@ -588,5 +589,10 @@ ENGINE = InnoDB;
 
 INSERT INTO `TCC`.`Plano` ( `nomePlano`, `registroAns`, `tipoPlano`, `flagAtivo`, `dataCadastro`)
 VALUES ('Dix100', 12355648, 'Premium', 1, '2017-05-20 00:00:00');
+
+insert into tcc.nivelusuario (codNivel,nomeNivel,flagAtivo,dataCadastro) values (1,'Médico',1,current_timestamp());
+insert into tcc.nivelusuario (codNivel,nomeNivel,flagAtivo,dataCadastro) values (2,'Paciente',1,current_timestamp());
+insert into tcc.nivelusuario (codNivel,nomeNivel,flagAtivo,dataCadastro) values (3,'Atendente',1,current_timestamp());
+insert into tcc.nivelusuario (codNivel,nomeNivel,flagAtivo,dataCadastro) values (4,'Administrador',1,current_timestamp());
 
 SELECT * FROM Tcc.Plano;
