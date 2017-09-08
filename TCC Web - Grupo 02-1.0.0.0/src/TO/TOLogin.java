@@ -5,7 +5,19 @@ import java.util.Date;
 public class TOLogin {
 
 	public int codLogin;
-	public String nomeLogin, email, senha, flagAtivo;
+	public String nomeLogin, email, senha, flagAtivo,senhaCriptografada;
+	/**
+	 * @return the senhaCriptografada
+	 */
+	public String getSenhaCriptografada() {
+		return senhaCriptografada;
+	}
+	/**
+	 * @param senhaCriptografada the senhaCriptografada to set
+	 */
+	public void setSenhaCriptografada(String senhaCriptografada) {
+		this.senhaCriptografada = senhaCriptografada;
+	}
 	public Date dataCadastro;
 	/**
 	 * @return the codLogin

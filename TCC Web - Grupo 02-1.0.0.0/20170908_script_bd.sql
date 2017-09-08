@@ -3,6 +3,7 @@ CREATE SCHEMA IF NOT EXISTS `TCC` DEFAULT CHARACTER SET utf8 COLLATE utf8_genera
 USE `TCC` ;
 /* ATUALIZACAO 30-08-2017 - criação dos campos cidade e numeroEndereco na tabela Paciente*/
 /* ATUALIZACAO 08-09-2017 - Criacao de inserts para a tabela nivel de usuario*/
+/* ATUALIZACAO 08-09-2017 - Alteracao de limite do tamanho campo senha na tabela login*/
 -- -----------------------------------------------------
 -- Table `TCC`.`Unidade`
 -- -----------------------------------------------------
@@ -52,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `TCC`.`Login` (
   `codLogin` INT NOT NULL AUTO_INCREMENT COMMENT 'Chave PrimÃ¡ria',
   `codNivel` INT NULL COMMENT 'Codigo do nivel para este o codigo de login',
   `nomeLogin` VARCHAR(20) NOT NULL COMMENT 'Nome de login que vai ser utilizado para entrar no software',
-  `senha` VARCHAR(12) NOT NULL COMMENT 'Senha que vai ser utilizada para entrar no software',
+  `senha` VARCHAR(255) NOT NULL COMMENT 'Senha que vai ser utilizada para entrar no software',
   `flagAtivo` BIT NULL DEFAULT 1 COMMENT 'Indicador se o login esta ativo',
   `dataCadastro` DATETIME NOT NULL COMMENT 'Data que o login foi cadastrado',
   PRIMARY KEY (`codLogin`),

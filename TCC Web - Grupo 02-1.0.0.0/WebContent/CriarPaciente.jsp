@@ -42,9 +42,23 @@
 					 
 						<form class="form-horizontal" action="controller.do" method="post" data-validate="parsley">      
 						
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Nome de usuário</label>
+								<div class="col-lg-6">
+									<input type="text" class="form-control" name="nomeLogin" id="nomeLogin" required
+									maxlength="20" placeholder="número do cônvenio" size="16">
+								</div>				  
+							</div>
 							
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Senha</label>
+								<div class="col-lg-6">
+									<input type="password" class="form-control" name="senha" id="senha" required
+									maxlength="65" placeholder="nome do paciente" size="16">
+								</div>				  
+							</div>
 							
-							
+				
 							
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Número do Convênio</label>

@@ -11,6 +11,7 @@ import TO.TOPlano;
 public class ModelPaciente extends ModelUsuario{
 
 	private int codPaciente;
+	public int codLoginCadastrado;
 	private String numConvenio;
 	
 	public ModelPaciente() {
@@ -59,6 +60,7 @@ public class ModelPaciente extends ModelUsuario{
 		this.numConvenio = numConvenio;
 	}
 
+	
 	/**
 	 * @param codPaciente
 	 */
@@ -129,7 +131,7 @@ public class ModelPaciente extends ModelUsuario{
 		
 		DAOPaciente dao = new DAOPaciente();		
 		TOPaciente toPaciente = getTO();
-		dao.cadastrarPaciente(toPaciente); 
+		dao.cadastrarPaciente(toPaciente,codLoginCadastrado); 
 		this.codPaciente = toPaciente.getCodPaciente();
 		
 	}

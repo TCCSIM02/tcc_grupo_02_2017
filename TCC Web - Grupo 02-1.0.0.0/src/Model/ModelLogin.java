@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import DAO.DAOLogin;
+import DAO.DAOLogin;
+import TO.TOLogin;
+import TO.TOLogin;
 import TO.TOLogin;
 
 public class ModelLogin {
@@ -36,6 +39,18 @@ public class ModelLogin {
 		this.senha = senha;
 		this.flagAtivo = flagAtivo;
 		this.dataCadastro = dataCadastro;
+	}
+	
+	/**
+	 * @param nomeLogin
+	 * @param senha
+	 * @param email
+	 */
+	public ModelLogin(String nomeLogin, String email, String senha) {
+		super();
+		this.nomeLogin = nomeLogin;
+		this.senha = senha;
+		this.email = email;
 	}
 
 	/**
@@ -122,6 +137,20 @@ public class ModelLogin {
 		this.dataCadastro = dataCadastro;
 	}
 	
+	public TOLogin getTO() throws NoSuchAlgorithmException, UnsupportedEncodingException{
+		
+		TOLogin toLogin = new TOLogin();
+		
+		toLogin.setCodLogin(codLogin);
+		toLogin.setDataCadastro(dataCadastro);
+		toLogin.setFlagAtivo(flagAtivo);
+		toLogin.setNomeLogin(nomeLogin);
+		toLogin.setEmail(email);
+		toLogin.setSenhaCriptografada(getSenhaCriptografada());
+		
+		return toLogin;
+	}
+	
 	public String getSenhaCriptografada() throws NoSuchAlgorithmException, UnsupportedEncodingException{
 		
 		MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
@@ -137,6 +166,24 @@ public class ModelLogin {
 		System.out.print(senhaCriptografada);
 		
 		return senhaCriptografada;
+	}
+	
+	public void cadastrarLogin() throws NoSuchAlgorithmException, UnsupportedEncodingException{
+		
+		DAOLogin dao = new DAOLogin();		
+		TOLogin toLogin = getTO();
+		dao.cadastrarLogin(toLogin);
+		this.codLogin = toLogin.getCodLogin();
+		
+	}
+	
+	public int getCodLoginCadastrado() throws NoSuchAlgorithmException, UnsupportedEncodingException{
+		
+		DAOLogin dao = new DAOLogin();		
+		TOLogin toLogin = getTO();
+		
+		return dao.getUltimoCodLogin(toLogin);
+		
 	}
 		
 }

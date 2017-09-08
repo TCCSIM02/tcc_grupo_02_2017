@@ -69,6 +69,63 @@ public class DAOPaciente {
 		}
 	}
 	
+	/**/
+	public void cadastrarPaciente(TOPaciente toPaciente, int codLoginCadastrado){
+		String sqlInsert = "INSERT INTO tcc.paciente(numeroEndereco,numConvenio,nomePaciente,cPF,dataNascimento,email,estadoCivil,nacionalidade,endereco,cEP,cidade,uF,pais,tel1,tel2,cel,dataCadastro,codLogin) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,current_timestamp(),?)";
+		// usando o try with resources do Java 7, que fecha o que abriu
+		try (Connection conn = FabricaConexao.getConexao(); 
+				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
+
+			java.util.Date dataUtil = new java.util.Date();
+			//SimpleDateFormat inputdate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
+			//String strDate = inputdate.format(dataUtil);
+			
+			//long longDate = Long.valueOf(strDate);
+			
+			java.sql.Date dataSql = new java.sql.Date(dataUtil.getTime());
+			//java.sql.Date dataSql = new java.sql.Date(longDate);
+						
+			
+			stm.setString(1,toPaciente.getNumeroEndereco() );
+			stm.setString(2,toPaciente.getNumConvenio());
+			//stm.setDate(2,toPaciente.getDataCadastro() ) ;
+			stm.setString(3,toPaciente.getNome());
+			stm.setString(4,toPaciente.getCpf());
+			stm.setDate(5,(Date) toPaciente.getDataNascimento() );
+			stm.setString(6,toPaciente.getEmail()) ;
+			stm.setString(7,toPaciente.getEstadoCivil()) ;
+			stm.setString(8,toPaciente.getNacionalidade());
+			stm.setString(9,toPaciente.getEndereco());
+			stm.setString(10,toPaciente.getCep()) ;
+			stm.setString(11,toPaciente.getCidade() );
+			stm.setString(12,toPaciente.getUf()) ;
+			stm.setString(13,toPaciente.getPais() );
+			stm.setString(14,toPaciente.getTel1()); 
+			stm.setString(15,toPaciente.getTel2()); 
+			stm.setString(16,toPaciente.getCel()) ;
+			stm.setInt(17,codLoginCadastrado) ;
+			//stm.setString(15,"1");
+			
+			/*TOPaciente*/
+	
+			//stm.setString(4,toPaciente.getFlagAtivo());
+			//stm.setDate(5,dataSql);
+			
+			stm.execute();
+			
+			String sqlSelect = "SELECT LAST_INSERT_ID()";
+			
+			try(PreparedStatement stm1 = conn.prepareStatement(sqlSelect);
+					ResultSet rs = stm1.executeQuery();){
+					if(rs.next()){
+						toPaciente.setCodPaciente(rs.getInt(1));
+					}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	
 	
