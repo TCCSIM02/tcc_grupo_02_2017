@@ -28,26 +28,6 @@ public class ModelPaciente extends ModelUsuario{
 		this.numConvenio = numConvenio;
 	}
 
-	/**
-	 * @param numeroEndereco
-	 * @param dataCadastro
-	 * @param nome
-	 * @param cpf
-	 * @param dataNascimento
-	 * @param estadoCivil
-	 * @param nacionalidade
-	 * @param logradouro
-	 * @param cep
-	 * @param cidade
-	 * @param uf
-	 * @param pais
-	 * @param tel1
-	 * @param tel2
-	 * @param cel
-	 * @param flagAtivo
-	 * @param codPaciente
-	 * @param numConvenio
-	 */
 	public ModelPaciente(String numeroEndereco, Date dataCadastro, String nome,
 			String cpf, Date dataNascimento, String estadoCivil, String email,
 			String nacionalidade, String endereco, String cep, String cidade,
@@ -60,39 +40,28 @@ public class ModelPaciente extends ModelUsuario{
 		this.numConvenio = numConvenio;
 	}
 
-	
-	/**
-	 * @param codPaciente
-	 */
+
 	public ModelPaciente(int codPaciente) {
 		super();
 		this.codPaciente = codPaciente;
 	}
 
-	/**
-	 * @return the codPaciente
-	 */
+
 	public int getCodPaciente() {
 		return codPaciente;
 	}
 
-	/**
-	 * @return the numConvenio
-	 */
+
 	public String getNumConvenio() {
 		return numConvenio;
 	}
 
-	/**
-	 * @param codPaciente the codPaciente to set
-	 */
+
 	public void setCodPaciente(int codPaciente) {
 		this.codPaciente = codPaciente;
 	}
 
-	/**
-	 * @param numConvenio the numConvenio to set
-	 */
+
 	public void setNumConvenio(String numConvenio) {
 		this.numConvenio = numConvenio;
 	}
