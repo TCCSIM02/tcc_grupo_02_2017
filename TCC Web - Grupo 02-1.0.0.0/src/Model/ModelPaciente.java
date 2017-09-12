@@ -106,16 +106,47 @@ public class ModelPaciente extends ModelUsuario{
 	}
 
 	public void alterarPaciente(){
-		
+		DAOPaciente dao = new DAOPaciente();		
+		TOPaciente toPaciente = getTO();
+		dao.alterarPaciente(toPaciente);
 	}
-	
-	public void consultarPaciente(){
-		
-	}
-	
+
 	public void excluirPaciente(){
+		DAOPaciente dao = new DAOPaciente();
+		TOPaciente toPaciente = new TOPaciente();
+		toPaciente.setCodPaciente(codPaciente);
+		dao.excluirPaciente(toPaciente);
+	}
+	
+	public void consultarPacienteCod() throws ClassNotFoundException  {
+
+		DAOPaciente dao = new DAOPaciente();
+
+		TOPaciente toPaciente = dao.consultarPacienteCod(codPaciente);
+
+		codPaciente = toPaciente.getCodPaciente();
+		numConvenio = toPaciente.getNumConvenio();
+		super.setNumeroEndereco(toPaciente.getNumeroEndereco()); 
+		super.setDataCadastro(toPaciente.getDataCadastro());
+		super.setNome(toPaciente.getNome());
+		super.setCpf(toPaciente.getCpf());
+		super.setDataNascimento(toPaciente.getDataNascimento());
+		super.setEstadoCivil(toPaciente.getEstadoCivil());
+		super.setEmail(toPaciente.getEmail());
+		super.setNacionalidade(toPaciente.getNacionalidade());
+		super.setEndereco(toPaciente.getEndereco());
+		super.setCep(toPaciente.getCel());
+		super.setCidade(toPaciente.getCidade());
+		super.setUf(toPaciente.getUf());
+		super.setPais(toPaciente.getPais());
+		super.setTel1(toPaciente.getTel1());
+		super.setTel2(toPaciente.getTel2());
+		super.setCel(toPaciente.getCel());
+		super.setFlagAtivo(toPaciente.getFlagAtivo());
+		
 		
 	}
+	
 	
 	public ArrayList<TOPaciente> listarPacientes() throws ClassNotFoundException{
 		ArrayList<TOPaciente> lista;
@@ -123,4 +154,12 @@ public class ModelPaciente extends ModelUsuario{
 		lista = dao.listarPacientes();
 		return lista;
 	}
+	
+	public ArrayList<TOPaciente> listarPaciente(String chave) throws ClassNotFoundException{
+		ArrayList<TOPaciente> lista;
+		DAOPaciente dao = new DAOPaciente();
+		lista = dao.listarPaciente(chave);
+		return lista;
+	}	
+	
 }
