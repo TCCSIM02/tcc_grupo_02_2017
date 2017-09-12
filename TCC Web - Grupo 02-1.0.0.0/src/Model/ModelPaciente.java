@@ -155,7 +155,7 @@ public class ModelPaciente extends ModelUsuario{
 		return lista;
 	}
 	
-	public ArrayList<TOPaciente> listarPaciente(String chave) throws ClassNotFoundException{
+	public ArrayList<TOPaciente> listarPacientes(String chave) throws ClassNotFoundException{
 		ArrayList<TOPaciente> lista;
 		DAOPaciente dao = new DAOPaciente();
 		lista = dao.listarPaciente(chave);
