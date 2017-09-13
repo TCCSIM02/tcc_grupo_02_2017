@@ -92,7 +92,7 @@ public class ModelPaciente extends ModelUsuario{
 		/*TOPaciente*/
 		toPaciente.setCodPaciente(getCodPaciente());
 		toPaciente.setNumConvenio(getNumConvenio());
-		
+
 		return toPaciente;
 	}
 
@@ -143,8 +143,7 @@ public class ModelPaciente extends ModelUsuario{
 		super.setTel2(toPaciente.getTel2());
 		super.setCel(toPaciente.getCel());
 		super.setFlagAtivo(toPaciente.getFlagAtivo());
-		
-		
+	
 	}
 	
 	

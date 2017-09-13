@@ -131,7 +131,7 @@ public class DAOPaciente {
 	
 	
 	public void alterarPaciente(TOPaciente toPaciente){
-		String sqlUpdate = "UPDATE tcc.paciente SET numeroEndereco = ?, numConvenio = ?, nomePaciente = ?, cPF = ?, dataNascimento = ?, email = ?, estadoCivil = ?, nacionalidade = ?, endereco = ?, cEP = ?, cidade = ?, uF = ?, pais = ?, tel1 = ?, tel2 = ?, cel = ?, dataCadastro = ? WHERE codPaciente = ?";
+		String sqlUpdate = "UPDATE tcc.paciente SET numeroEndereco = ?, numConvenio = ?, nomePaciente = ?, cPF = ?, dataNascimento = ?, email = ?, estadoCivil = ?, nacionalidade = ?, endereco = ?, cEP = ?, cidade = ?, uF = ?, pais = ?, tel1 = ?, tel2 = ?, cel = ? WHERE codPaciente = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 			PreparedStatement stm = conn.prepareStatement(sqlUpdate);) {		
@@ -152,7 +152,8 @@ public class DAOPaciente {
 			stm.setString(13,toPaciente.getPais() );
 			stm.setString(14,toPaciente.getTel1()); 
 			stm.setString(15,toPaciente.getTel2()); 
-			stm.setString(16,toPaciente.getCel()) ;
+			stm.setString(16,toPaciente.getCel());
+			stm.setInt(17,toPaciente.getCodPaciente());
 			
 			
 			stm.execute();
@@ -209,8 +210,6 @@ public class DAOPaciente {
 					toPaciente.setFlagAtivo(rs.getString("flagAtivo"));
 					toPaciente.setNumConvenio(rs.getString("numConvenio"));
 					toPaciente.setEmail(rs.getString("email"));
-					
-				
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();

@@ -49,6 +49,7 @@ public class EditarPaciente implements Command{
 		
 		try {
 			modelPaciente.consultarPacienteCod();
+			
 		} catch (ClassNotFoundException e) {
 		
 			e.printStackTrace();
