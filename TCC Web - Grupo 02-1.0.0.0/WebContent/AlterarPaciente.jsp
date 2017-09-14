@@ -17,6 +17,76 @@
 	<link rel="stylesheet" href="css/plugin.css">
 	<link rel="stylesheet" href="css/landing.css">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+	<!-- Adicionando Javascript -->
+	<script type="text/javascript" >
+
+		function limpa_formulário_cep() {
+				//Limpa valores do formulário de cep.
+				document.getElementById('endereco').value=("");
+				document.getElementById('cidade').value=("");
+				document.getElementById('uf').value=("");
+				document.getElementById('pais').value=("");
+		}
+
+		function meu_callback(conteudo) {
+			if (!("erro" in conteudo)) {
+				//Atualiza os campos com os valores.
+				document.getElementById('endereco').value=(conteudo.logradouro);
+				document.getElementById('cidade').value=(conteudo.localidade);
+				document.getElementById('uf').value=(conteudo.uf);
+				document.getElementById('pais').value="Brasil";
+			} //end if.
+			else {
+				//CEP não Encontrado.
+				limpa_formulário_cep();
+				alert("CEP não encontrado.");
+			}
+		}
+			
+		function pesquisacep(valor) {
+
+			//Nova variável "cep" somente com dígitos.
+			var cep = valor.replace(/\D/g, '');
+
+			//Verifica se campo cep possui valor informado.
+			if (cep != "") {
+
+				//Expressão regular para validar o CEP.
+				var validacep = /^[0-9]{8}$/;
+
+				//Valida o formato do CEP.
+				if(validacep.test(cep)) {
+
+					//Preenche os campos com "..." enquanto consulta webservice.
+					document.getElementById('endereco').value="...";
+					document.getElementById('cidade').value="...";
+					document.getElementById('uf').value="...";
+					document.getElementById('pais').value="...";
+
+					//Cria um elemento javascript.
+					var script = document.createElement('script');
+
+					//Sincroniza com o callback.
+					script.src = '//viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+
+					//Insere script no documento e carrega o conteúdo.
+					document.body.appendChild(script);
+
+				} //end if.
+				else {
+					//cep é inválido.
+					limpa_formulário_cep();
+					alert("Formato de CEP inválido.");
+				}
+			} //end if.
+			else {
+				//cep sem valor, limpa formulário.
+				limpa_formulário_cep();
+			}
+		};
+
+	</script>
+	
 </head>
 <body>
 	
@@ -102,43 +172,29 @@
 								</div>				  
 							</div>
 							
+
+							<div class="form-group">
+								<label class="col-lg-3 control-label">CEP</label>
+								<div class="col-lg-6">
+									<input type="text" class="form-control" name="cep" id="cep" required onblur="pesquisacep(this.value);"
+									maxlength="9" placeholder="cep" size="16" value="${pacienteTO.cep}">
+								</div>				  
+							</div>
+
+
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Endereço</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="endereco" id="endereco" required
-									maxlength="200" placeholder="endereco" size="16"  value="${pacienteTO.endereco}">
+									maxlength="200" placeholder="endereco" size="16" readonly="true" value="${pacienteTO.endereco}">
 								</div>				  
 							</div>
-							
-							<div class="form-group">
-								<label class="col-lg-3 control-label">Número</label>
-								<div class="col-lg-6">
-									<input type="text" class="form-control" name="numeroEndereco" id="numeroEndereco" required
-									maxlength="200" placeholder="número" size="16"  value="${pacienteTO.numeroEndereco}">
-								</div>				  
-							</div>
-							
-							<div class="form-group">
-								<label class="col-lg-3 control-label">CEP</label>
-								<div class="col-lg-6">
-									<input type="text" class="form-control" name="cep" id="cep" required
-									maxlength="9" placeholder="cep" size="16"  value="${pacienteTO.cep}">
-								</div>				  
-							</div>
-							
-							<div class="form-group">
-								<label class="col-lg-3 control-label">UF</label>
-								<div class="col-lg-6">
-									<input type="text" class="form-control" name="uf" id="uf" required
-									maxlength="2" placeholder="uf" size="16"  value="${pacienteTO.uf}">
-								</div>				  
-							</div>
-							
+
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Cidade</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="cidade" id="cidade" required
-									maxlength="9" placeholder="cep" size="16"  value="${pacienteTO.cidade}">
+									maxlength="9" placeholder="cep" size="16" readonly="true" value="${pacienteTO.cidade}">
 								</div>				  
 							</div>
 							
@@ -146,9 +202,28 @@
 								<label class="col-lg-3 control-label">País</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="pais" id="pais" required
-									maxlength="20" placeholder="país" size="16"  value="${pacienteTO.pais}">
+									maxlength="20" placeholder="país" size="16" readonly="true" value="${pacienteTO.pais}">
 								</div>				  
 							</div>
+							
+							<div class="form-group">
+								<label class="col-lg-3 control-label">UF</label>
+								<div class="col-lg-6">
+									<input type="text" class="form-control" name="uf" id="uf" required
+									maxlength="2" placeholder="uf" size="16" readonly="true" value="${pacienteTO.uf}">
+								</div>				  
+							</div>
+							
+							
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Número</label>
+								<div class="col-lg-6">
+									<input type="text" class="form-control" name="numeroEndereco" id="numeroEndereco" required
+									maxlength="200" placeholder="número" size="16" value="${pacienteTO.numeroEndereco}">
+								</div>				  
+							</div>					
+							
+							
 							
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Telefone Principal</label>
