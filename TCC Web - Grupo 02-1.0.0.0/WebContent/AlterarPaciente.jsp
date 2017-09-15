@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%> 
     
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
@@ -20,8 +20,8 @@
 	<!-- Adicionando Javascript -->
 	<script type="text/javascript" >
 
-		function limpa_formul·rio_cep() {
-				//Limpa valores do formul·rio de cep.
+		function limpa_formul√°rio_cep() {
+				//Limpa valores do formul√°rio de cep.
 				document.getElementById('endereco').value=("");
 				document.getElementById('cidade').value=("");
 				document.getElementById('uf').value=("");
@@ -37,21 +37,21 @@
 				document.getElementById('pais').value="Brasil";
 			} //end if.
 			else {
-				//CEP n„o Encontrado.
-				limpa_formul·rio_cep();
-				alert("CEP n„o encontrado.");
+				//CEP n√£o Encontrado.
+				limpa_formul√°rio_cep();
+				alert("CEP n√£o encontrado.");
 			}
 		}
 			
 		function pesquisacep(valor) {
 
-			//Nova vari·vel "cep" somente com dÌgitos.
+			//Nova vari√°vel "cep" somente com d√≠gitos.
 			var cep = valor.replace(/\D/g, '');
 
 			//Verifica se campo cep possui valor informado.
 			if (cep != "") {
 
-				//Express„o regular para validar o CEP.
+				//Express√£o regular para validar o CEP.
 				var validacep = /^[0-9]{8}$/;
 
 				//Valida o formato do CEP.
@@ -69,19 +69,19 @@
 					//Sincroniza com o callback.
 					script.src = '//viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
 
-					//Insere script no documento e carrega o conte˙do.
+					//Insere script no documento e carrega o conte√∫do.
 					document.body.appendChild(script);
 
 				} //end if.
 				else {
-					//cep È inv·lido.
-					limpa_formul·rio_cep();
-					alert("Formato de CEP inv·lido.");
+					//cep √© inv√°lido.
+					limpa_formul√°rio_cep();
+					alert("Formato de CEP inv√°lido.");
 				}
 			} //end if.
 			else {
-				//cep sem valor, limpa formul·rio.
-				limpa_formul·rio_cep();
+				//cep sem valor, limpa formul√°rio.
+				limpa_formul√°rio_cep();
 			}
 		};
 
@@ -93,7 +93,7 @@
 	<!-- Header -->
 	<c:import url="Header.jsp" />
 	
-	<!-- Menu de navegaÁ„o do Administrador -->
+	<!-- Menu de navega√ß√£o do Administrador -->
 	<c:import url="MenuAdministrador.jsp" />
 	
 	
@@ -117,10 +117,10 @@
 				
 							
 							<div class="form-group">
-								<label class="col-lg-3 control-label">N˙mero do ConvÍnio</label>
+								<label class="col-lg-3 control-label">N√∫mero do Conv√™nio</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="numConvenio" id="numConvenio" required
-									maxlength="20" placeholder="n˙mero do cÙnvenio" size="16" value="${pacienteTO.numConvenio}">
+									maxlength="20" placeholder="n√∫mero do c√¥nvenio" size="16" value="${pacienteTO.numConvenio}">
 								</div>				  
 							</div>
 							
@@ -157,7 +157,7 @@
 							</div>
 							
 							<div class="form-group">
-								<label class="col-lg-3 control-label">Estado CÌvil</label>
+								<label class="col-lg-3 control-label">Estado C√≠vil</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="estadoCivil" id="estadoCivil" 
 									maxlength="20" placeholder="estado civil" size="16"  value="${pacienteTO.estadoCivil}">
@@ -183,7 +183,7 @@
 
 
 							<div class="form-group">
-								<label class="col-lg-3 control-label">EndereÁo</label>
+								<label class="col-lg-3 control-label">Endere√ßo</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="endereco" id="endereco" required
 									maxlength="200" placeholder="endereco" size="16" readonly="true" value="${pacienteTO.endereco}">
@@ -199,10 +199,10 @@
 							</div>
 							
 							<div class="form-group">
-								<label class="col-lg-3 control-label">PaÌs</label>
+								<label class="col-lg-3 control-label">Pa√≠s</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="pais" id="pais" required
-									maxlength="20" placeholder="paÌs" size="16" readonly="true" value="${pacienteTO.pais}">
+									maxlength="20" placeholder="pa√≠s" size="16" readonly="true" value="${pacienteTO.pais}">
 								</div>				  
 							</div>
 							
@@ -216,10 +216,10 @@
 							
 							
 							<div class="form-group">
-								<label class="col-lg-3 control-label">N˙mero</label>
+								<label class="col-lg-3 control-label">N√∫mero</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="numeroEndereco" id="numeroEndereco" required
-									maxlength="200" placeholder="n˙mero" size="16" value="${pacienteTO.numeroEndereco}">
+									maxlength="200" placeholder="n√∫mero" size="16" value="${pacienteTO.numeroEndereco}">
 								</div>				  
 							</div>					
 							

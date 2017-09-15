@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%> 
     
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
@@ -23,7 +23,7 @@
 	<!-- Header -->
 	<c:import url="Header.jsp" />
 	
-	<!-- Menu de navegação do Administrador -->
+	<!-- Menu de navegaÃ§Ã£o do Administrador -->
 	<c:import url="MenuAdministrador.jsp" />
 	
 	
@@ -43,10 +43,10 @@
 						<form class="form-horizontal" action="controller.do" method="post" data-validate="parsley">      
 						
 							<div class="form-group">
-								<label class="col-lg-3 control-label">Descrição</label>
+								<label class="col-lg-3 control-label">DescriÃ§Ã£o</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="descricao" id="descricao" required
-									maxlength="500" placeholder="descrição do exame" size="16">
+									maxlength="500" placeholder="descriÃ§Ã£o do exame" size="16">
 								</div>				  
 							</div>
 							

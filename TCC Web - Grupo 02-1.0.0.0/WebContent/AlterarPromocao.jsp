@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%> 
     
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
@@ -23,7 +23,7 @@
 	<!-- Header -->
 	<c:import url="Header.jsp" />
 	
-	<!-- Menu de navegação do Administrador -->
+	<!-- Menu de navegaÃ§Ã£o do Administrador -->
 	<c:import url="MenuAdministrador.jsp" />
 	
 	
@@ -32,7 +32,7 @@
 		<section class="main padder">
 		  
 			<div class="clearfix">
-				<h4><i class="icon-edit"></i>Alterar promoções</h4>
+				<h4><i class="icon-edit"></i>Alterar promoÃ§Ãµes</h4>
 			</div>
 		  
 		  <div class="row">
@@ -61,7 +61,7 @@
 							</div>
 							
 							<div class="form-group">
-								<label class="col-lg-3 control-label">Data de término</label>
+								<label class="col-lg-3 control-label">Data de tÃ©rmino</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="dataTermino" id="dataTermino" required
 									maxlength="10" placeholder="31/12/1900" value="${promocaoTO.dataTermino}">

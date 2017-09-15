@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%> 
     
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
@@ -23,7 +23,7 @@
 	<!-- Header -->
 	<c:import url="Header.jsp" />
 	
-	<!-- Menu de navegação do Administrador -->
+	<!-- Menu de navegaÃ§Ã£o do Administrador -->
 	<c:import url="MenuAdministrador.jsp" />
 	
 	
@@ -42,7 +42,7 @@
 
 			<div class="col-md-6">
 				<p>
-					<strong>Diagnóstico</strong>
+					<strong>DiagnÃ³stico</strong>
 				</p>
 				<p>${consultaTO.diagnostico}</p>
 			</div>

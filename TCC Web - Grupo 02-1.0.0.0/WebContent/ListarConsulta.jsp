@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%> 
     
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
@@ -48,7 +48,7 @@
 	<!-- Header -->
 	<c:import url="Header.jsp" />
 	
-	<!-- Menu de navegação do Administrador -->
+	<!-- Menu de navegaÃ§Ã£o do Administrador -->
 	<c:import url="MenuAdministrador.jsp" />
 		
 	<section id="content">
@@ -78,7 +78,7 @@
                 
                 
                 <div class="col-sm-4 m-b-mini">
-					<!-- para que a pesquisa fique lá no cano -->
+					<!-- para que a pesquisa fique lÃ¡ no cano -->
                 </div>
                 
                 
@@ -100,14 +100,14 @@
 					<table class="table table-striped" cellspacing="0" cellpadding="0">
 						<thead>
 							<tr>
-								<th>Código</th>
+								<th>CÃ³digo</th>
 								<th>Status</th>
-								<th>Diagnóstico</th>
+								<th>DiagnÃ³stico</th>
 								<th>Data inicio da consulta</th>
 								<th>Data fim da consulta </th>
 								<th>Valor da consulta</th>
 
-								<th class="actions">Ações</th>
+								<th class="actions">AÃ§Ãµes</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -138,7 +138,7 @@
 
                 <div id="bottom" class="row">
                     <div class="col-md-12">
-                        <!-- paginação ainda não foi implementada -->
+                        <!-- paginaÃ§Ã£o ainda nÃ£o foi implementada -->
                         <ul class="pagination">
                             <li class="disabled"><a>&lt; Anterior</a>
                             </li>
@@ -148,7 +148,7 @@
                             </li>
                             <li><a href="#">3</a>
                             </li>
-                            <li class="next"><a href="#" rel="next">Próximo &gt;</a>
+                            <li class="next"><a href="#" rel="next">PrÃ³ximo &gt;</a>
                             </li>
                         </ul>
                         <!-- /.pagination -->

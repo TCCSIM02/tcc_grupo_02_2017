@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%> 
     
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
@@ -34,7 +34,7 @@
 	            </header>
 	            <form action="index.html" class="panel-body">
 	              <div class="block">
-	                <label class="control-label">Nome de usu·rio</label>
+	                <label class="control-label">Nome de usu√°rio</label>
 	                <input type="text" placeholder="TccDoc" class="form-control">
 	              </div>
 	              <div class="block">

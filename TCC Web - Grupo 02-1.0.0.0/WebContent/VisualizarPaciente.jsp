@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%> 
     
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
@@ -23,7 +23,7 @@
 	<!-- Header -->
 	<c:import url="Header.jsp" />
 	
-	<!-- Menu de navegação do Administrador -->
+	<!-- Menu de navegaÃ§Ã£o do Administrador -->
 	<c:import url="MenuAdministrador.jsp" />
 	
 	
@@ -36,7 +36,7 @@
 
 			<div class="col-md-6">
 				<p>
-					<strong>Número do Convênio</strong>
+					<strong>NÃºmero do ConvÃªnio</strong>
 				</p>
 				<p>${pacienteTO.numConvenio}</p>
 			</div>
@@ -71,7 +71,7 @@
 			
 			<div class="col-md-6">
 				<p>
-					<strong>Estado Cívil</strong>
+					<strong>Estado CÃ­vil</strong>
 				</p>
 				<p>${pacienteTO.estadoCivil}</p>
 			</div>
@@ -85,14 +85,14 @@
 			
 			<div class="col-md-6">
 				<p>
-					<strong>Endereço</strong>
+					<strong>EndereÃ§o</strong>
 				</p>
 				<p>${pacienteTO.endereco}</p>
 			</div>
 			
 			<div class="col-md-6">
 				<p>
-					<strong>Número</strong>
+					<strong>NÃºmero</strong>
 				</p>
 				<p>${pacienteTO.numeroEndereco}</p>
 			</div>
@@ -120,7 +120,7 @@
 			
 			<div class="col-md-6">
 				<p>
-					<strong>País</strong>
+					<strong>PaÃ­s</strong>
 				</p>
 				<p>${pacienteTO.pais}</p>
 			</div>

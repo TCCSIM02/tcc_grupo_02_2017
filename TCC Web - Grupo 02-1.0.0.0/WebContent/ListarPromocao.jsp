@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%> 
     
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
@@ -30,9 +30,9 @@
 						aria-label="Fechar">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title" id="modalLabel">Excluir Promoção</h4>
+					<h4 class="modal-title" id="modalLabel">Excluir PromoÃ§Ã£o</h4>
 				</div>
-				<div class="modal-body">Deseja realmente excluir esta promoção?</div>
+				<div class="modal-body">Deseja realmente excluir esta promoÃ§Ã£o?</div>
 				<div class="modal-footer">
 					<form action="controller.do" method="post">
 						<input type="hidden" name="id" id="id_excluir"/>
@@ -48,21 +48,21 @@
 	<!-- Header -->
 	<c:import url="Header.jsp" />
 	
-	<!-- Menu de navegação do Administrador -->
+	<!-- Menu de navegaÃ§Ã£o do Administrador -->
 	<c:import url="MenuAdministrador.jsp" />
 		
 	<section id="content">
     <section class="main padder">
       
 	  <div class="clearfix">
-        <h4><i class="icon-table"></i>Pesquisar Promoções</h4>
+        <h4><i class="icon-table"></i>Pesquisar PromoÃ§Ãµes</h4>
       </div>
 
       <div class="row">
         <div class="col-lg-12">
           <section class="panel">
             <header class="panel-heading">
-				Promoções
+				PromoÃ§Ãµes
             </header>
             <div class="panel-body">
               <div class="row text-small">
@@ -73,18 +73,18 @@
                     <option value="3">Exportar</option>
                   </select>
                   <button class="btn btn-sm btn-white">Aplicar</button>   
-                  <a href="CriarPromocao.jsp" class="btn btn-sm btn-white">Cadastrar nova promoção</a>	     				  
+                  <a href="CriarPromocao.jsp" class="btn btn-sm btn-white">Cadastrar nova promoÃ§Ã£o</a>	     				  
                 </div>
                 
                 
                 <div class="col-sm-4 m-b-mini">
-					<!-- para que a pesquisa fique lá no cano -->
+					<!-- para que a pesquisa fique lÃ¡ no cano -->
                 </div>
                 
                 
                 <div class="col-sm-4">
                   <div class="input-group">
-                    <input type="text" class="input-sm form-control" placeholder="Pesquisar" value="Promoção" >
+                    <input type="text" class="input-sm form-control" placeholder="Pesquisar" value="PromoÃ§Ã£o" >
                     <span class="input-group-btn">
                       <button class="btn btn-sm btn-white" type="button">Buscar</button>
                     </span>
@@ -100,14 +100,14 @@
 					<table class="table table-striped" cellspacing="0" cellpadding="0">
 						<thead>
 							<tr>
-								<th>Código</th>
+								<th>CÃ³digo</th>
 								<th>Valor</th>
 								<th>Data de inicio</th>
-								<th>Data de término</th>
+								<th>Data de tÃ©rmino</th>
 								<th>Flag Ativo</th>
 								<th>Data cadastro</th>
 
-								<th class="actions">Ações</th>
+								<th class="actions">AÃ§Ãµes</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -138,7 +138,7 @@
 
                 <div id="bottom" class="row">
                     <div class="col-md-12">
-                        <!-- paginação ainda não foi implementada -->
+                        <!-- paginaÃ§Ã£o ainda nÃ£o foi implementada -->
                         <ul class="pagination">
                             <li class="disabled"><a>&lt; Anterior</a>
                             </li>
@@ -148,7 +148,7 @@
                             </li>
                             <li><a href="#">3</a>
                             </li>
-                            <li class="next"><a href="#" rel="next">Próximo &gt;</a>
+                            <li class="next"><a href="#" rel="next">PrÃ³ximo &gt;</a>
                             </li>
                         </ul>
                         <!-- /.pagination -->

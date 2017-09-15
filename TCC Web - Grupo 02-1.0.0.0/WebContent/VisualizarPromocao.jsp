@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%> 
     
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
@@ -23,13 +23,13 @@
 	<!-- Header aa -->
 	<c:import url="Header.jsp" />
 	
-	<!-- Menu de navegação do Administrador -->
+	<!-- Menu de navegaÃ§Ã£o do Administrador -->
 	<c:import url="MenuAdministrador.jsp" />
 	
 	
 	<!-- Container Principal -->
 	<div id="main" class="container">
-		<h3 class="page-header">Visualizar Promoção #${promocaoTO.codPromocao}</h3>
+		<h3 class="page-header">Visualizar PromoÃ§Ã£o #${promocaoTO.codPromocao}</h3>
 
 
 		<div class="row">
@@ -54,7 +54,7 @@
 
 			<div class="col-md-6">
 				<p>
-					<strong>Data de término</strong>
+					<strong>Data de tÃ©rmino</strong>
 				</p>
 				<p>${promocaoTO.dataTermino}</p>
 			</div>

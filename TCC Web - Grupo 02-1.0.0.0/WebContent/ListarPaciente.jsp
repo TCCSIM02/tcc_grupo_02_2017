@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%> 
     
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -49,7 +49,7 @@
 	<!-- Header -->
 	<c:import url="Header.jsp" />
 	
-	<!-- Menu de navegação do Administrador -->
+	<!-- Menu de navegaÃ§Ã£o do Administrador -->
 	<c:import url="MenuAdministrador.jsp" />
 		
 	<section id="content">
@@ -79,7 +79,7 @@
                 
                 
                 <div class="col-sm-4 m-b-mini">
-					<!-- para que a pesquisa fique lá no cano -->
+					<!-- para que a pesquisa fique lÃ¡ no cano -->
                 </div>
                 
                 
@@ -101,26 +101,26 @@
 					<table class="table table-striped" cellspacing="0" cellpadding="0">
 						<thead>
 							<tr>
-								<th>Número do Convênio</th>
-								<th>Código paciente</th>
+								<th>NÃºmero do ConvÃªnio</th>
+								<th>CÃ³digo paciente</th>
 								<th>Nome paciente</th>
 								<th>CPF</th>
 								<!-- <th>Data Nascimento</th>-->
 								<th>Data Cadastro</th>
 								<th>Email</th>
-								<!-- <th>Estado Cívil</th>
+								<!-- <th>Estado CÃ­vil</th>
 								<th>Nacionalidade</th>
-								<th>Endereço</th>
-								<th>Número</th>
+								<th>EndereÃ§o</th>
+								<th>NÃºmero</th>
 								<th>CEP</th>
 								<th>UF</th>
 								<th>Cidade</th>
-								<th>País</th>
+								<th>PaÃ­s</th>
 								<th>Telefone Principal</th>
 								<th>Telefone Opcional</th>
 								<th>Celular</th>-->
 								<th>Flag ativo</th> 
-								<th class="actions">Ações</th>
+								<th class="actions">AÃ§Ãµes</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -164,7 +164,7 @@
 
                 <div id="bottom" class="row">
                     <div class="col-md-12">
-                        <!-- paginação ainda não foi implementada -->
+                        <!-- paginaÃ§Ã£o ainda nÃ£o foi implementada -->
                         <ul class="pagination">
                             <li class="disabled"><a>&lt; Anterior</a>
                             </li>
@@ -174,7 +174,7 @@
                             </li>
                             <li><a href="#">3</a>
                             </li>
-                            <li class="next"><a href="#" rel="next">Próximo &gt;</a>
+                            <li class="next"><a href="#" rel="next">PrÃ³ximo &gt;</a>
                             </li>
                         </ul>
                         <!-- /.pagination -->

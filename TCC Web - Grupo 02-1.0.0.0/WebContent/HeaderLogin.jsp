@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%> 
  <!-- header -->
   <header id="header" class="navbar bg bg-black">
     <a href="docs.html" class="btn btn-link pull-right m-t-mini"><i class="icon-question icon-xlarge text-default"></i></a>

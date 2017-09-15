@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%> 
     
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
@@ -23,7 +23,7 @@
 	<!-- Header -->
 	<c:import url="Header.jsp" />
 	
-	<!-- Menu de navegaÁ„o do Administrador -->
+	<!-- Menu de navega√ß√£o do Administrador -->
 	<c:import url="MenuAdministrador.jsp" />
 	
 	
@@ -51,10 +51,10 @@
 							</div>
 							
 							<div class="form-group">
-								<label class="col-lg-3 control-label">DiagnÛstico</label>
+								<label class="col-lg-3 control-label">Diagn√≥stico</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="diagnostico" id="diagnostico" required
-									maxlength="200" placeholder="n„o consultado" size="16">
+									maxlength="200" placeholder="n√£o consultado" size="16">
 								</div>				  
 							</div>
 							
@@ -67,7 +67,7 @@
 							</div>
 							
 							<div class="form-group">
-								<label class="col-lg-3 control-label">Data de conclus„o</label>
+								<label class="col-lg-3 control-label">Data de conclus√£o</label>
 								<div class="col-lg-6">
 									<input type="date" class="form-control" name="dataHoraConsultaFinal" id="dataHoraConsultaFinal" required
 									maxlength="10" placeholder="31/12/2000 00:00" size="16">

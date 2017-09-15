@@ -1,5 +1,5 @@
-	<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-		pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%> 
 		
 		<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 		
@@ -23,7 +23,7 @@
 		<!-- Header -->
 		<c:import url="Header.jsp" />
 		
-		<!-- Menu de navegaÁ„o do Administrador -->
+		<!-- Menu de navega√ß√£o do Administrador -->
 		<c:import url="MenuAdministrador.jsp" />
 		
 		
@@ -35,7 +35,7 @@
 			<div class="row">
 				<div class="col-md-6">
 					<p>
-						<strong>Raz„o social</strong>
+						<strong>Raz√£o social</strong>
 					</p>
 					<p>${unidadeTO.razaoSocial}</p>
 				</div>			
@@ -63,7 +63,7 @@
 			
 				<div class="col-md-6">
 					<p>
-						<strong>EndereÁo</strong>
+						<strong>Endere√ßo</strong>
 					</p>
 					<p>${unidadeTO.endereco}</p>
 				</div>			
@@ -92,7 +92,7 @@
 			
 				<div class="col-md-6">
 					<p>
-						<strong>PaÌs</strong>
+						<strong>Pa√≠s</strong>
 					</p>
 					<p>${unidadeTO.pais}</p>
 				</div>			
