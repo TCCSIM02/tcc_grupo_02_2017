@@ -106,7 +106,7 @@ public class DAOPaciente {
 			stm.setString(16,toPaciente.getCel()) ;
 			stm.setInt(17,codLoginCadastrado) ;
 			//stm.setString(15,"1");
-			
+			System.out.println(toPaciente.getCidade());
 			/*TOPaciente*/
 	
 			//stm.setString(4,toPaciente.getFlagAtivo());
