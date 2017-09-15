@@ -135,7 +135,7 @@ public class ModelPaciente extends ModelUsuario{
 		super.setEmail(toPaciente.getEmail());
 		super.setNacionalidade(toPaciente.getNacionalidade());
 		super.setEndereco(toPaciente.getEndereco());
-		super.setCep(toPaciente.getCel());
+		super.setCep(toPaciente.getCep());
 		super.setCidade(toPaciente.getCidade());
 		super.setUf(toPaciente.getUf());
 		super.setPais(toPaciente.getPais());
