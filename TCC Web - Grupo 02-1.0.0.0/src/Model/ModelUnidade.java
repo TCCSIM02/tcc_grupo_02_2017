@@ -9,47 +9,22 @@ import java.util.Date;
 import DAO.DAOUnidade;
 import TO.TOUnidade;
 
-/**
- * @author Nilton
- *
- */
 public class ModelUnidade {
 
 	private int codUnidade;
-	private String razaoSocial, nomeFantasia, cnpj, nomeRede, endereco, cep, cidade, uf, pais, representante, tel1, tel2, cel, flagAtivo;
+	private String razaoSocial, nomeFantasia, cnpj, nomeRede, endereco, cep, cidade, uf, pais, numeroEndereco, representante, tel1, tel2, cel, flagAtivo;
 	private Date dataCadastro;
+	private Double latitude, longitude;
 
 	public ModelUnidade() {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-	
-	/**
-	 * @param codUnidade
-	 * @param numeroEndereco
-	 * @param razaoSocial
-	 * @param nomeFantasia
-	 * @param cnpj
-	 * @param nomeRede
-	 * @param endereco
-	 * @param logradouro
-	 * @param cep
-	 * @param cidade
-	 * @param uf
-	 * @param pais
-	 * @param representante
-	 * @param tel1
-	 * @param tel2
-	 * @param cel
-	 * @param flagAtivo
-	 * @param dataCadastro
-	 */
 	public ModelUnidade(int codUnidade, String razaoSocial,
 			String nomeFantasia, String cnpj, String nomeRede, String endereco,
 			String cep, String cidade, String uf,
-			String pais, String representante, String tel1, String tel2,
-			String cel, String flagAtivo, Date dataCadastro) {
+			String pais, String numeroEndereco, String representante, String tel1, String tel2,
+			String cel, String flagAtivo, Date dataCadastro, Double latitude, Double longitude) {
 		this.codUnidade = codUnidade;
 		this.razaoSocial = razaoSocial;
 		this.nomeFantasia = nomeFantasia;
@@ -60,12 +35,15 @@ public class ModelUnidade {
 		this.cidade = cidade;
 		this.uf = uf;
 		this.pais = pais;
+		this.numeroEndereco = numeroEndereco;
 		this.representante = representante;
 		this.tel1 = tel1;
 		this.tel2 = tel2;
 		this.cel = cel;
 		this.flagAtivo = flagAtivo;
 		this.dataCadastro = dataCadastro;
+		this.latitude = latitude;
+		this.longitude = longitude;
 	}
 
 	/**
@@ -144,6 +122,10 @@ public class ModelUnidade {
 	public String getPais() {
 		return pais;
 	}
+	
+	public String getNumeroEndereco() {
+		return numeroEndereco;
+	}
 
 	/**
 	 * @return the representante
@@ -185,6 +167,14 @@ public class ModelUnidade {
 	 */
 	public Date getDataCadastro() {
 		return dataCadastro;
+	}
+	
+	public Double getLatitude() {
+		return latitude;
+	}
+	
+	public Double getLongitude() {
+		return longitude;
 	}
 
 	/**
@@ -261,6 +251,11 @@ public class ModelUnidade {
 	public void setPais(String pais) {
 		this.pais = pais;
 	}
+	
+	public void setNumeroEndereco(String numeroEndereco) {
+		this.numeroEndereco = numeroEndereco;
+	}
+	
 
 	/**
 	 * @param representante the representante to set
@@ -304,6 +299,14 @@ public class ModelUnidade {
 		this.dataCadastro = dataCadastro;
 	}
 	
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+	}
+	
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
+	}
+	
 	public TOUnidade getTO(){
 		
 		TOUnidade toUnidade = new TOUnidade();
@@ -319,11 +322,14 @@ public class ModelUnidade {
 		toUnidade.setNomeFantasia(nomeFantasia);
 		toUnidade.setNomeRede(nomeRede);
 		toUnidade.setPais(pais);
+		toUnidade.setNumeroEndereco(numeroEndereco);
 		toUnidade.setRazaoSocial(razaoSocial);
 		toUnidade.setRepresentante(representante);
 		toUnidade.setTel1(tel1);
 		toUnidade.setTel2(tel2);
 		toUnidade.setUf(uf);
+		toUnidade.setLatitude(latitude);
+		toUnidade.setLongitude(longitude);
 		
 		return toUnidade;
 		
@@ -367,11 +373,14 @@ public class ModelUnidade {
 		nomeFantasia = toUnidade.getNomeFantasia();
 		nomeRede = toUnidade.getNomeRede();
 		pais = toUnidade.getPais();
+		numeroEndereco = toUnidade.getNumeroEndereco();
 		razaoSocial = toUnidade.getRazaoSocial();
 		representante = toUnidade.getRepresentante();
 		tel1 = toUnidade.getTel1();
 		tel2 = toUnidade.getTel2();
 		uf = toUnidade.getUf();
+		latitude = toUnidade.getLatitude();
+		longitude = toUnidade.getLongitude();
 
 	}
 	

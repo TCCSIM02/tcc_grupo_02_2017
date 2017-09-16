@@ -20,8 +20,7 @@
 		<link rel="stylesheet" href="css/landing.css">
 		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
-		<title>ViaCEP Webservice</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 
 		<!-- Adicionando Javascript -->
 		<script type="text/javascript" >
@@ -282,8 +281,19 @@
 		</section>
 	</section>
 	  
-		<!-- Footer -->
+	<!-- Footer -->
 	<c:import url="Footer.jsp" />
+    
+    <script>
+        <!-- Formata os campos -->
+        $(document).ready(function(){
+        	$('#tel1').mask('(00) 0000-0000');
+        	$('#tel2').mask('(00) 0000-0000');
+        	$('#cel').mask('(00) 0000-0000');
+			$('#cnpj').mask('00.000.000/0000-00');
+			$('#cep').mask('00000-000');			
+        });
+    </script>
 
 	</body>
 

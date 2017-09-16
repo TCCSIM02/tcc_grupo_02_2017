@@ -1,9 +1,10 @@
 DROP SCHEMA IF EXISTS `TCC` ;
 CREATE SCHEMA IF NOT EXISTS `TCC` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `TCC` ;
-/* ATUALIZACAO 30-08-2017 - cria��o dos campos cidade e numeroEndereco na tabela Paciente*/
+/* ATUALIZACAO 30-08-2017 - criação dos campos cidade e numeroEndereco na tabela Paciente*/
 /* ATUALIZACAO 08-09-2017 - Criacao de inserts para a tabela nivel de usuario*/
 /* ATUALIZACAO 08-09-2017 - Alteracao de limite do tamanho campo senha na tabela login*/
+/* ATUALIZACAO 16-09-2017 - criação dos campos numeroEndereco, latitude e longitude na tabela Unidade*/
 -- -----------------------------------------------------
 -- Table `TCC`.`Unidade`
 -- -----------------------------------------------------
@@ -20,6 +21,9 @@ CREATE TABLE IF NOT EXISTS `TCC`.`Unidade` (
   `cidade` VARCHAR(50) NOT NULL COMMENT 'Cidade onde esta localizada a unidade',
   `uF` VARCHAR(2) NOT NULL COMMENT 'UF onde esta localizada a unidade',
   `pais` VARCHAR(20) NOT NULL COMMENT 'Pais onde esta localizada a unidade',
+  `numeroEndereco` VARCHAR(200) NOT NULL COMMENT 'numero Endereco da unidade',
+  `latitude` FLOAT NULL COMMENT 'latitude do Endereco da unidade',
+  `longitude` FLOAT NULL COMMENT 'latitude do Endereco da unidade',
   `representante` VARCHAR(45) NOT NULL COMMENT 'Nome do representante da unidade',
   `tel1` VARCHAR(15) NOT NULL COMMENT 'Telefone 1 (Principal) da unidade',
   `tel2` VARCHAR(15) NULL COMMENT 'Telefone secundario da unidade',
@@ -38,7 +42,7 @@ DROP TABLE IF EXISTS `TCC`.`NivelUsuario` ;
 CREATE TABLE IF NOT EXISTS `TCC`.`NivelUsuario` (
   `codNivel` INT NOT NULL AUTO_INCREMENT COMMENT 'Chave Primaria',
   `nomeNivel` VARCHAR(45) NOT NULL COMMENT 'Nome do nivel de permissao do usuario',
-  `flagAtivo` BIT NULL DEFAULT 1 COMMENT 'Indicador se nivel de usuario está ativo.',
+  `flagAtivo` BIT NULL DEFAULT 1 COMMENT 'Indicador se nivel de usuario estÃ¡ ativo.',
   `dataCadastro` DATETIME NOT NULL COMMENT 'Data de cadastro do Nivel de usuario',
   PRIMARY KEY (`codNivel`))
 ENGINE = InnoDB;
@@ -50,7 +54,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `TCC`.`Login` ;
 
 CREATE TABLE IF NOT EXISTS `TCC`.`Login` (
-  `codLogin` INT NOT NULL AUTO_INCREMENT COMMENT 'Chave Primária',
+  `codLogin` INT NOT NULL AUTO_INCREMENT COMMENT 'Chave PrimÃ¡ria',
   `codNivel` INT NULL COMMENT 'Codigo do nivel para este o codigo de login',
   `nomeLogin` VARCHAR(20) NOT NULL COMMENT 'Nome de login que vai ser utilizado para entrar no software',
   `senha` VARCHAR(255) NOT NULL COMMENT 'Senha que vai ser utilizada para entrar no software',
@@ -394,7 +398,7 @@ CREATE TABLE IF NOT EXISTS `TCC`.`PreTriagem` (
   `antecedentesPessoais` VARCHAR(100) NOT NULL COMMENT 'Se existem doencas cronicas na familia',
   `flagAtivo` BIT NULL DEFAULT 1 COMMENT 'Indicador se a pre-triagem esta ativa.',
   `dataCadastro` DATETIME NOT NULL COMMENT 'Data de cadastro da pre-triagem',
-  `tipoSanguineo` VARCHAR(3) NULL COMMENT 'Tipo Sanguíneo do paciente',
+  `tipoSanguineo` VARCHAR(3) NULL COMMENT 'Tipo SanguÃ­neo do paciente',
   PRIMARY KEY (`codPreTriagem`),
   INDEX `codPaciente_idx` (`codPaciente` ASC),
   CONSTRAINT `codPaciente_codPreTriagem`
@@ -591,9 +595,9 @@ ENGINE = InnoDB;
 INSERT INTO `TCC`.`Plano` ( `nomePlano`, `registroAns`, `tipoPlano`, `flagAtivo`, `dataCadastro`)
 VALUES ('Dix100', 12355648, 'Premium', 1, '2017-05-20 00:00:00');
 
-insert into tcc.nivelusuario (codNivel,nomeNivel,flagAtivo,dataCadastro) values (1,'M�dico',1,current_timestamp());
+insert into tcc.nivelusuario (codNivel,nomeNivel,flagAtivo,dataCadastro) values (1,'Médico',1,current_timestamp());
 insert into tcc.nivelusuario (codNivel,nomeNivel,flagAtivo,dataCadastro) values (2,'Paciente',1,current_timestamp());
 insert into tcc.nivelusuario (codNivel,nomeNivel,flagAtivo,dataCadastro) values (3,'Atendente',1,current_timestamp());
 insert into tcc.nivelusuario (codNivel,nomeNivel,flagAtivo,dataCadastro) values (4,'Administrador',1,current_timestamp());
 
-SELECT * FROM Tcc.Plano;
+SELECT * FROM Tcc.Unidade;

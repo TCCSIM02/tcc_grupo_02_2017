@@ -31,12 +31,15 @@ public class AlterarUnidade implements Command {
 		String pFlagAtivo       = request.getParameter("flagAtivo");        
 		String pNomeFantasia    = request.getParameter("nomeFantasia");    
 		String pNomeRede        = request.getParameter("nomeRede");       
-		String pPais            = request.getParameter("pais");           
+		String pPais            = request.getParameter("pais");  
+		String pNumeroEndereco  = request.getParameter("numeroEndereco");  
 		String pRazaoSocial     = request.getParameter("razaoSocial");     
 		String pRepresentante   = request.getParameter("representante");   
 		String pTel1            = request.getParameter("tel1");            
 		String pTel2            = request.getParameter("tel2");           
-		String pUf				= request.getParameter("uf");	
+		String pUf				= request.getParameter("uf");
+		String pLatitude		= request.getParameter("latitude");
+		String pLongitude		= request.getParameter("longitude");
 		
 		int id = -1;
 		try {
@@ -45,12 +48,22 @@ public class AlterarUnidade implements Command {
 
 		}
 		
+		Double latitude = 0.0;
+		Double longitude = 0.0;
+		
+		try {
+			latitude = Double.parseDouble(pLatitude);
+			longitude = Double.parseDouble(pLongitude);
+		} catch (NumberFormatException e){
+						
+		}
+		
 		/*ALTERAR ESSE NULL AQUI*/
 		ModelUnidade modelUnidade = new ModelUnidade( id, pRazaoSocial,
 				pNomeFantasia,  pCnpj,  pNomeRede,  pEndereco,
 				pCep,  pCidade,  pUf,
-				pPais,  pRepresentante,  pTel1,  pTel2,
-				pCel,  pFlagAtivo, null /*new Date(pDataCadastro)*/);
+				pPais, pNumeroEndereco,  pRepresentante,  pTel1,  pTel2,
+				pCel,  pFlagAtivo, null /*new Date(pDataCadastro)*/, latitude, longitude);
 		RequestDispatcher view = null;
 		HttpSession session = request.getSession();
 		

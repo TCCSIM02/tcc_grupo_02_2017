@@ -4,11 +4,10 @@ import java.util.Date;
 
 public class TOUnidade {
 	private int codUnidade;
-	private String razaoSocial, nomeFantasia, cnpj, nomeRede, endereco, cep, cidade, uf, pais, representante, tel1, tel2, cel, flagAtivo;
+	private String razaoSocial, nomeFantasia, cnpj, nomeRede, endereco, cep, cidade, uf, pais, numeroEndereco, representante, tel1, tel2, cel, flagAtivo;
 	private Date dataCadastro;
-	/**
-	 * @return the codUnidade
-	 */
+	private Double latitude, longitude;
+	
 	public int getCodUnidade() {
 		return codUnidade;
 	}
@@ -67,6 +66,11 @@ public class TOUnidade {
 	public String getPais() {
 		return pais;
 	}
+	
+	public String getNumeroEndereco() {
+		return numeroEndereco;
+	}
+	
 	/**
 	 * @return the representante
 	 */
@@ -103,6 +107,15 @@ public class TOUnidade {
 	public Date getDataCadastro() {
 		return dataCadastro;
 	}
+	
+	public Double getLatitude() {
+		return latitude;
+	}
+	
+	public Double getLongitude() {
+		return longitude;
+	}
+	
 	/**
 	 * @param codUnidade the codUnidade to set
 	 */
@@ -163,6 +176,10 @@ public class TOUnidade {
 	public void setPais(String pais) {
 		this.pais = pais;
 	}
+	
+	public void setNumeroEndereco(String numeroEndereco) {
+		this.numeroEndereco = numeroEndereco;
+	}
 	/**
 	 * @param representante the representante to set
 	 */
@@ -198,6 +215,14 @@ public class TOUnidade {
 	 */
 	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
+	}
+	
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+	}
+
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
 	}
 
 }

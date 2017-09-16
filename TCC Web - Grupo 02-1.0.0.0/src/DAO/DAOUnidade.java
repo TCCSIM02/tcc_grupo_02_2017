@@ -12,7 +12,7 @@ import ConnectionFactory.FabricaConexao;
 public class DAOUnidade {
 	
 	public void cadastrarUnidade(TOUnidade toUnidade){
-		String sqlInsert = "INSERT INTO tcc.unidade (razaoSocial,nomeFantasia,cNPJ,nomeRede,endereco,cEP,cidade,uF,pais,representante,tel1,tel2,cel,flagAtivo,dataCadastro) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,1,current_timestamp())";
+		String sqlInsert = "INSERT INTO tcc.unidade (razaoSocial,nomeFantasia,cNPJ,nomeRede,endereco,cEP,cidade,uF,pais,numeroEndereco,representante,tel1,tel2,cel,flagAtivo,dataCadastro,latitude,longitude) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,1,current_timestamp(),?,?)";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
@@ -26,10 +26,13 @@ public class DAOUnidade {
 			stm.setString(7,toUnidade.getCidade());
 			stm.setString(8,toUnidade.getUf());
 			stm.setString(9,toUnidade.getPais());
-			stm.setString(10,toUnidade.getRepresentante());
-			stm.setString(11,toUnidade.getTel1());
-			stm.setString(12,toUnidade.getTel2());
-			stm.setString(13,toUnidade.getCel());		
+			stm.setString(10,toUnidade.getNumeroEndereco());
+			stm.setString(11,toUnidade.getRepresentante());
+			stm.setString(12,toUnidade.getTel1());
+			stm.setString(13,toUnidade.getTel2());
+			stm.setString(14,toUnidade.getCel());
+			stm.setDouble(15,toUnidade.getLatitude());	
+			stm.setDouble(16,toUnidade.getLongitude());	
 
 			stm.execute();
 			
@@ -47,7 +50,7 @@ public class DAOUnidade {
 	}
 	
 	public void alterarUnidade(TOUnidade toUnidade){
-		String sqlUpdate = "UPDATE tcc.unidade SET razaoSocial = ? nomeFantasia = ? cNPJ = ? nomeRede = ? endereco = ? cEP = ? cidade = ? uF = ? pais = ? representante = ? tel1 = ? tel2 = ? cel = ? flagAtivo = ? WHERE codUnidade = ?";
+		String sqlUpdate = "UPDATE tcc.unidade SET razaoSocial = ?, nomeFantasia = ?, cNPJ = ?, nomeRede = ?, endereco = ?, cEP = ?, cidade = ?, uF = ?, pais = ?, numeroEndereco = ?, representante = ?, tel1 = ?, tel2 = ?, cel = ?, flagAtivo = ?, latitude = ?, longitude = ? WHERE codUnidade = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 			PreparedStatement stm = conn.prepareStatement(sqlUpdate);) {
@@ -61,12 +64,15 @@ public class DAOUnidade {
 			stm.setString(7,toUnidade.getCidade());
 			stm.setString(8,toUnidade.getUf());
 			stm.setString(9,toUnidade.getPais());
-			stm.setString(10,toUnidade.getRepresentante());
-			stm.setString(11,toUnidade.getTel1());
-			stm.setString(12,toUnidade.getTel2());
-			stm.setString(13,toUnidade.getCel());
-			stm.setInt(14,Integer.parseInt(toUnidade.getFlagAtivo()));
-			stm.setInt(15,toUnidade.getCodUnidade());	
+			stm.setString(10,toUnidade.getNumeroEndereco());
+			stm.setString(11,toUnidade.getRepresentante());
+			stm.setString(12,toUnidade.getTel1());
+			stm.setString(13,toUnidade.getTel2());
+			stm.setString(14,toUnidade.getCel());
+			stm.setInt(15,Integer.parseInt(toUnidade.getFlagAtivo()));
+			stm.setDouble(16,toUnidade.getLatitude());
+			stm.setDouble(17,toUnidade.getLongitude());
+			stm.setInt(18,toUnidade.getCodUnidade());	
 			
 			stm.execute();
 		} catch (Exception e) {
@@ -109,12 +115,15 @@ public class DAOUnidade {
 					toUnidade.setCidade(rs.getString("cidade"));
 					toUnidade.setUf(rs.getString("uF"));
 					toUnidade.setPais(rs.getString("pais"));
+					toUnidade.setNumeroEndereco(rs.getString("numeroEndereco"));
 					toUnidade.setRepresentante(rs.getString("representante"));
 					toUnidade.setTel1(rs.getString("tel1"));
 					toUnidade.setTel2(rs.getString("tel2"));
 					toUnidade.setCel(rs.getString("cel"));
 					toUnidade.setFlagAtivo(rs.getString("flagAtivo"));
 					toUnidade.setDataCadastro(rs.getDate("dataCadastro"));	
+					toUnidade.setLatitude(rs.getDouble("latitude"));	
+					toUnidade.setLongitude(rs.getDouble("longitude"));	
 					
 				}
 			} catch (SQLException e) {
@@ -147,12 +156,15 @@ public class DAOUnidade {
 					toUnidade.setCidade(rs.getString("cidade"));
 					toUnidade.setUf(rs.getString("uF"));
 					toUnidade.setPais(rs.getString("pais"));
+					toUnidade.setNumeroEndereco(rs.getString("numeroEndereco"));
 					toUnidade.setRepresentante(rs.getString("representante"));
 					toUnidade.setTel1(rs.getString("tel1"));
 					toUnidade.setTel2(rs.getString("tel2"));
 					toUnidade.setCel(rs.getString("cel"));
 					toUnidade.setFlagAtivo(rs.getString("flagAtivo"));
-					toUnidade.setDataCadastro(rs.getDate("dataCadastro"));	
+					toUnidade.setDataCadastro(rs.getDate("dataCadastro"));					
+					toUnidade.setLatitude(rs.getDouble("latitude"));	
+					toUnidade.setLongitude(rs.getDouble("longitude"));	
 					
 					lista.add(toUnidade);
 				}
@@ -187,12 +199,15 @@ public class DAOUnidade {
 					toUnidade.setCidade(rs.getString("cidade"));
 					toUnidade.setUf(rs.getString("uF"));
 					toUnidade.setPais(rs.getString("pais"));
+					toUnidade.setNumeroEndereco(rs.getString("numeroEndereco"));
 					toUnidade.setRepresentante(rs.getString("representante"));
 					toUnidade.setTel1(rs.getString("tel1"));
 					toUnidade.setTel2(rs.getString("tel2"));
 					toUnidade.setCel(rs.getString("cel"));
 					toUnidade.setFlagAtivo(rs.getString("flagAtivo"));
-					toUnidade.setDataCadastro(rs.getDate("dataCadastro"));	
+					toUnidade.setDataCadastro(rs.getDate("dataCadastro"));					
+					toUnidade.setLatitude(rs.getDouble("latitude"));	
+					toUnidade.setLongitude(rs.getDouble("longitude"));	
 					
 					lista.add(toUnidade);
 				}
