@@ -9,7 +9,9 @@
   	<meta charset="utf-8">
   	<title>TCC - grupo 02 SI</title>
   	<meta name="description" content="mobile first, app, web app, responsive, admin dashboard, flat, flat ui">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link href='js/fullcalendar/fullcalendar.min.css' rel='stylesheet' />
+	<link href='js/fullcalendar/fullcalendar.print.min.css' rel='stylesheet' media='print' />	
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/font.css">
@@ -17,6 +19,7 @@
 	<link rel="stylesheet" href="css/plugin.css">
 	<link rel="stylesheet" href="css/landing.css">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+	
 	
 </head>
 <body>
@@ -30,19 +33,20 @@
 	<section id="content" class="content-sidebar bg-white">
 	    <!-- .sidebar -->
 	    <aside class="sidebar bg-lighter padder clearfix">
+	    
 	      <h5>Arraste para um novo agendamento</h5>
 	      <div class="line"></div>
-	      <div id="myEvents" class="pillbox clearfix m-b no-border no-padder">
-	        <ul>
-	          <li class="label bg-inverse">Novo agendamento</li>
-	          <li class="label bg-success">Novo agendamento</li>
-	          <li class="label bg-warning">Novo agendamento</li>
-	          <li class="label bg-danger">Novo agendamento</li>
-	          <li class="label bg-info">Novo agendamento</li>
-	          <li class="label bg-primary">Novo agendamento</li>
-	          <li class="label bg-default">Novo agendamento</li>
-	        </ul>
-	      </div>
+			 	<div id='external-events'>
+					<div class='fc-event'>My Event 1</div>
+					<div class='fc-event'>My Event 2</div>
+					<div class='fc-event'>My Event 3</div>
+					<div class='fc-event'>My Event 4</div>
+					<div class='fc-event'>My Event 5</div>
+					<p>
+						<input type='checkbox' id='drop-remove' />
+						<label for='drop-remove'>remove after drop</label>
+					</p>
+				</div>
 	      <div class="line"></div>
 	    </aside>
 	    <!-- /.sidebar -->
@@ -69,6 +73,8 @@
 	<script src="js/jquery-ui-1.10.3.custom.min.js" cache="false"></script>
 	<script src="js/jquery.ui.touch-punch.min.js" cache="false"></script>
 	<script src="js/fullcalendar/fullcalendar.min.js" cache="false"></script>
+	<script src='js/fullcalendar/lib/moment.min.js'></script>
+	<script src='js/fullcalendar/locale-all.js'></script>
 	<!-- Sparkline Chart -->
 	<script src="js/charts/sparkline/jquery.sparkline.min.js"></script>
 	<!-- Easy Pie Chart -->
@@ -79,14 +85,62 @@
 	<script src="js/app.plugin.js"></script>
 	<script src="js/app.data.js"></script>
 	
-	<script type="text/javascript">	
-	    $('#fc-agendamento').fullCalendar({
+	<script type="text/javascript">
+
+		$(document).ready(function() {
 	
-	        dayClick: function(date, jsEvent, view) { 
-	            alert('Clicked on: ' + date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear());  
-	        },
+			var initialLocaleCode = 'pt-br';
+			
+			/* initialize the external events
+			-----------------------------------------------------------------*/
 	
-	    });
+			$('#external-events .fc-event').each(function() {
+	
+				// store data so the calendar knows to render an event upon drop
+				$(this).data('event', {
+					title: $.trim($(this).text()), // use the element's text as the event title
+					stick: true // maintain when user navigates (see docs on the renderEvent method)
+				});
+	
+				// make the event draggable using jQuery UI
+				$(this).draggable({
+					zIndex: 999,
+					revert: true,      // will cause the event to go back to its
+					revertDuration: 0  //  original position after the drag
+				});
+	
+			});
+	
+	
+			/* initialize the calendar
+			-----------------------------------------------------------------*/
+	
+			$('#fc-agendamento').fullCalendar({
+					header: {
+						left: 'prev,next today',
+						center: 'title',
+						right: 'month,agendaWeek,agendaDay'
+					},
+					editable: true,
+					droppable: true, // this allows things to be dropped onto the calendar
+					drop: function() {
+						// is the "remove after drop" checkbox checked?
+						if ($('#drop-remove').is(':checked')) {
+							// if so, remove the element from the "Draggable Events" list
+							$(this).remove();
+						}
+					}
+				});
+	
+			// when the selected option changes, dynamically change the calendar option
+			$('#locale-selector').on('change', function() {
+				if (this.value) {
+					$('fc-agendamento').fullCalendar('option', 'locale', initialLocaleCode);
+				}
+			});
+	
+		});
+	
 	</script>
 	
 </body>
