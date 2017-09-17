@@ -138,6 +138,9 @@
 						// if so, remove the element from the "Draggable Events" list
 						$(this).remove();
 					}
+				},
+				events: {
+					url: 'json/events.json'
 				}
 			});
 		});
