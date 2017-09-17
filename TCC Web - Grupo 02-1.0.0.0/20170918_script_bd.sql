@@ -6,6 +6,7 @@ USE `TCC` ;
 /* ATUALIZACAO 08-09-2017 - Alteracao de limite do tamanho campo senha na tabela login*/
 /* ATUALIZACAO 16-09-2017 - criaÃ§Ã£o dos campos numeroEndereco, latitude e longitude na tabela Unidade*/
 /* ATUALIZACAO 17-09-2017 - criação do campo numeroEndereco nas tabelas Medico, atendente e administrador*/
+/* ATUALIZACAO 18-09-2017 - alteracao do campo latitude longide para DECIMAL(11, 8)*/
 -- -----------------------------------------------------
 -- Table `TCC`.`Unidade`
 -- -----------------------------------------------------
@@ -23,8 +24,8 @@ CREATE TABLE IF NOT EXISTS `TCC`.`Unidade` (
   `uF` VARCHAR(2) NOT NULL COMMENT 'UF onde esta localizada a unidade',
   `pais` VARCHAR(20) NOT NULL COMMENT 'Pais onde esta localizada a unidade',
   `numeroEndereco` VARCHAR(200) NOT NULL COMMENT 'numero Endereco da unidade',
-  `latitude` FLOAT NULL COMMENT 'latitude do Endereco da unidade',
-  `longitude` FLOAT NULL COMMENT 'latitude do Endereco da unidade',
+  `latitude` DECIMAL(11, 8) NULL COMMENT 'latitude do Endereco da unidade',
+  `longitude` DECIMAL(11, 8) NULL COMMENT 'latitude do Endereco da unidade',
   `representante` VARCHAR(45) NOT NULL COMMENT 'Nome do representante da unidade',
   `tel1` VARCHAR(15) NOT NULL COMMENT 'Telefone 1 (Principal) da unidade',
   `tel2` VARCHAR(15) NULL COMMENT 'Telefone secundario da unidade',

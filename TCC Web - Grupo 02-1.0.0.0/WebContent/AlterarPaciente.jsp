@@ -229,7 +229,7 @@
 								<label class="col-lg-3 control-label">Telefone Principal</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="tel1" id="tel1" required
-									maxlength="15" placeholder="telefone principal" size="16"  value="${pacienteTO.tel1}">
+									maxlength="16" placeholder="telefone principal" size="16"  value="${pacienteTO.tel1}">
 								</div>				  
 							</div>
 							
@@ -237,7 +237,7 @@
 								<label class="col-lg-3 control-label">Telefone Opcional</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="tel2" id="tel2" 
-									maxlength="15" placeholder="telefone opcional" size="16"  value="${pacienteTO.tel2}">
+									maxlength="16" placeholder="telefone opcional" size="16"  value="${pacienteTO.tel2}">
 								</div>				  
 							</div>
 							
@@ -245,7 +245,7 @@
 								<label class="col-lg-3 control-label">Celular</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="cel" id="cel" 
-									maxlength="15" placeholder="telefone opcional" size="16" value="${pacienteTO.cel}">
+									maxlength="16" placeholder="telefone opcional" size="16" value="${pacienteTO.cel}">
 								</div>				  
 								
 							<div class="form-group">

@@ -252,7 +252,7 @@
 									<label class="col-lg-3 control-label">Telefone Principal</label>
 									<div class="col-lg-6">
 										<input type="text" class="form-control" name="tel1" id="tel1" required
-										maxlength="15" placeholder="telefone principal" size="16">
+										maxlength="16" placeholder="telefone principal" size="16">
 									</div>				  
 								</div>
 								
@@ -260,7 +260,7 @@
 									<label class="col-lg-3 control-label">Telefone Opcional</label>
 									<div class="col-lg-6">
 										<input type="text" class="form-control" name="tel2" id="tel2" 
-										maxlength="15" placeholder="telefone opcional" size="16">
+										maxlength="16" placeholder="telefone opcional" size="16">
 									</div>				  
 								</div>
 								
@@ -268,7 +268,7 @@
 									<label class="col-lg-3 control-label">Celular</label>
 									<div class="col-lg-6">
 										<input type="text" class="form-control" name="cel" id="cel" 
-										maxlength="15" placeholder="telefone opcional" size="16">
+										maxlength="16" placeholder="telefone opcional" size="16">
 									</div>				  
 								</div>						
 						
@@ -293,9 +293,9 @@
     <script>
         <!-- Formata os campos -->
         $(document).ready(function(){
-        	$('#tel1').mask('(00) 0000-0000');
-        	$('#tel2').mask('(00) 0000-0000');
-        	$('#cel').mask('(00) 0000-0000');
+        	$('#tel1').mask('(00) 00000-0000');
+        	$('#tel2').mask('(00) 00000-0000');
+        	$('#cel').mask('(00) 00000-0000');
 			$('#cnpj').mask('00.000.000/0000-00');
 			$('#cep').mask('00000-000');			
         });
