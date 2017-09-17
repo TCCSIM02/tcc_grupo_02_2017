@@ -144,17 +144,16 @@
 					center : 'title',
 					right : 'month,agendaWeek,agendaDay'
 				},
-				 eventClick: function(calEvent, jsEvent, view) {
-					 	
-					 	//alert('Clicked on: ' + date.format());
-				        alert('Event: ' + calEvent.title);
-				        alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-				        alert('View: ' + view.name);
-						
-				        // change the border color just for fun
-				        $(this).css('border-color', 'red');
-						
-				    },
+				eventClick: function (calEvent, jsEvent, view) {
+				    var topLayer = $(jsEvent.currentTarget).closest("tbody");
+				    topLayer.hide(); //hide the entire event layer (makes it work with multiple events)
+				    var dayElement = document.elementFromPoint(jsEvent.pageX, jsEvent.pageY); //get the element under the cursor (should be a day cell)
+				    topLayer.show();
+				    alert($(dayElement).data("date"));
+				    
+				    // abrir pagina de cadastro 
+				    window.open('CriarAgendamento.jsp?eventDate='+$(dayElement).data("date"),"_self");
+				},
 				locale : initialLocaleCode,
 				editable : true,
 				droppable : true, // this allows things to be dropped onto the calendar

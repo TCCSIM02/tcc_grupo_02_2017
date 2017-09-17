@@ -19,78 +19,25 @@
 		<link rel="stylesheet" href="css/plugin.css">
 		<link rel="stylesheet" href="css/landing.css">
 		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-
-
-
-		<!-- Adicionando Javascript -->
+		
 		<script type="text/javascript" >
 
-			function limpa_formulário_cep() {
-					//Limpa valores do formulário de cep.
-					document.getElementById('endereco').value=("");
-					document.getElementById('cidade').value=("");
-					document.getElementById('uf').value=("");
-					document.getElementById('pais').value=("");
+			function carregaData() {	
+				alert("carregou");
+			    var query = location.search.slice(1);
+			    var partes = query.split('&');
+			    var data = {};
+			    partes.forEach(function (parte) {
+			        var chaveValor = parte.split('=');
+			        var chave = chaveValor[0];
+			        var valor = chaveValor[1];
+			        data[chave] = valor;
+			    });
+			    			
+			    document.getElementById('dataInicio').value=(data["eventDate"]);
 			}
-
-			function meu_callback(conteudo) {
-				if (!("erro" in conteudo)) {
-					//Atualiza os campos com os valores.
-					document.getElementById('endereco').value=(conteudo.logradouro);
-					document.getElementById('cidade').value=(conteudo.localidade);
-					document.getElementById('uf').value=(conteudo.uf);
-					document.getElementById('pais').value="Brasil";
-				} //end if.
-				else {
-					//CEP não Encontrado.
-					limpa_formulário_cep();
-					alert("CEP não encontrado.");
-				}
-			}
-				
-			function pesquisacep(valor) {
-
-				//Nova variável "cep" somente com dígitos.
-				var cep = valor.replace(/\D/g, '');
-
-				//Verifica se campo cep possui valor informado.
-				if (cep != "") {
-
-					//Expressão regular para validar o CEP.
-					var validacep = /^[0-9]{8}$/;
-
-					//Valida o formato do CEP.
-					if(validacep.test(cep)) {
-
-						//Preenche os campos com "..." enquanto consulta webservice.
-						document.getElementById('endereco').value="...";
-						document.getElementById('cidade').value="...";
-						document.getElementById('uf').value="...";
-						document.getElementById('pais').value="...";
-
-						//Cria um elemento javascript.
-						var script = document.createElement('script');
-
-						//Sincroniza com o callback.
-						script.src = '//viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
-
-						//Insere script no documento e carrega o conteúdo.
-						document.body.appendChild(script);
-
-					} //end if.
-					else {
-						//cep é inválido.
-						limpa_formulário_cep();
-						alert("Formato de CEP inválido.");
-					}
-				} //end if.
-				else {
-					//cep sem valor, limpa formulário.
-					limpa_formulário_cep();
-				}
-			};
-
-		</script>
+	</script>
+		
 	</head>
 
 	<body>
@@ -139,8 +86,8 @@
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Médico</label>
 									<div class="col-lg-6">
-										<input type="text" class="form-control" name="endereco" id="endereco" required
-										maxlength="200" placeholder="" size="16" readonly="true" value="Cardiologista - Nilton Pereira - CARREGADO DA TELA ANTERIOR">
+										<input type="text" class="form-control" name="medico" id="medico" required
+										maxlength="200" placeholder="" size="16" readonly="true" value="">
 									</div>				  
 								</div>
 
@@ -164,11 +111,11 @@
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Inicio</label>
 									<div class="col-lg-4">
-										<input type="date" class="form-control" name="horaComeco" id="horaComeco" required
+										<input type="date" class="form-control" name="dataInicio" id="dataInicio" required
 										maxlength="11" placeholder="data de nascimento" size="16">
 									</div>	
 									<div class="col-lg-2">
-										<input type="time" class="form-control" name="horaFim" id="horaFim" required
+										<input type="time" class="form-control" name="horaInicio" id="horaInicio" required
 										maxlength="5" placeholder="data de nascimento" size="16">
 									</div>				  
 								</div>
@@ -176,7 +123,7 @@
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Fim</label>
 									<div class="col-lg-4">
-										<input type="date" class="form-control" name="horaComeco" id="horaComeco" required
+										<input type="date" class="form-control" name="dataFim" id="dataFim" required 
 										maxlength="11" placeholder="data de nascimento" size="16">
 									</div>	
 									<div class="col-lg-2">
@@ -219,6 +166,25 @@
 	  
 	<!-- Footer -->
 	<c:import url="Footer.jsp" />
+	
+	<script type="text/javascript" >
+
+		//window.onload = function() {
+		/*$(document).ready(function() {	
+			alert("carregou");
+		    var query = location.search.slice(1);
+		    var partes = query.split('&');
+		    var data = {};
+		    partes.forEach(function (parte) {
+		        var chaveValor = parte.split('=');
+		        var chave = chaveValor[0];
+		        var valor = chaveValor[1];
+		        data[chave] = valor;
+		    });
+		    			
+		    document.getElementById('dataInicio').value=(data["eventDate"]);
+		});*/
+	</script>
     
 	</body>
 
