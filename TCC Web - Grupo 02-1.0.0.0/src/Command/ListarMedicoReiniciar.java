@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class ListarPacienteReiniciar implements Command {
-	
+public class ListarMedicoReiniciar implements Command {
+
 	@Override
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
@@ -17,11 +17,10 @@ public class ListarPacienteReiniciar implements Command {
 		session.setAttribute("lista", null);
 
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("ListarPaciente.jsp");
+				.getRequestDispatcher("ListarMedico.jsp");
 		dispatcher.forward(request, response);
 
 
 	}
 	
-
 }

@@ -1,42 +1,24 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.Date;
+
+import DAO.DAOMedico;
+import TO.TOMedico;
 
 public class ModelMedico extends ModelUsuario{
 
 	private int codMedico;
+	public int codLoginCadastrado;
 	private String crm, cro;
 	
 	public ModelMedico() {
 		// TODO Auto-generated constructor stub
 	}
 
-
-	
-	/**
-	 * @param numeroEndereco
-	 * @param dataCadastro
-	 * @param nome
-	 * @param cpf
-	 * @param dataNascimento
-	 * @param estadoCivil
-	 * @param nacionalidade
-	 * @param logradouro
-	 * @param cep
-	 * @param cidade
-	 * @param uf
-	 * @param pais
-	 * @param tel1
-	 * @param tel2
-	 * @param cel
-	 * @param flagAtivo
-	 * @param codMedico
-	 * @param crm
-	 * @param cro
-	 */
 	public ModelMedico(String numeroEndereco, Date dataCadastro, String nome,
 			String cpf, Date dataNascimento, String estadoCivil, String email,
-			String nacionalidade, String endereco, String logradouro, String cep, String cidade,
+			String nacionalidade, String endereco, String cep, String cidade,
 			String uf, String pais, String tel1, String tel2, String cel,
 			String flagAtivo, int codMedico, String crm, String cro) {
 		super(numeroEndereco, dataCadastro, nome, cpf, dataNascimento,
@@ -47,13 +29,6 @@ public class ModelMedico extends ModelUsuario{
 		this.cro = cro;
 	}
 
-
-
-	/**
-	 * @param codMedico
-	 * @param crm
-	 * @param cro
-	 */
 	public ModelMedico(int codMedico, String crm, String cro) {
 		super();
 		this.codMedico = codMedico;
@@ -61,69 +36,139 @@ public class ModelMedico extends ModelUsuario{
 		this.cro = cro;
 	}
 
-	/**
-	 * @param codMedico
-	 */
 	public ModelMedico(int codMedico) {
 		super();
 		this.codMedico = codMedico;
 	}
 
-	/**
-	 * @return the codMedico
-	 */
 	public int getCodMedico() {
 		return codMedico;
 	}
 
-	/**
-	 * @return the crm
-	 */
+
 	public String getCrm() {
 		return crm;
 	}
 
-	/**
-	 * @return the cro
-	 */
+
 	public String getCro() {
 		return cro;
 	}
 
-	/**
-	 * @param codMedico the codMedico to set
-	 */
+
 	public void setCodMedico(int codMedico) {
 		this.codMedico = codMedico;
 	}
 
-	/**
-	 * @param crm the crm to set
-	 */
+
 	public void setCrm(String crm) {
 		this.crm = crm;
 	}
 
-	/**
-	 * @param cro the cro to set
-	 */
+
 	public void setCro(String cro) {
 		this.cro = cro;
 	}
+	
+	
+	public TOMedico getTO(){
+		
+		TOMedico toMedico = new TOMedico();
+		
+		/*TOUsuario*/
+		toMedico.setNumeroEndereco(super.getNumeroEndereco()) ;
+		toMedico.setDataCadastro(super.getDataCadastro())  ;
+		toMedico.setNome(super.getNome());
+		toMedico.setCpf(super.getCpf());
+		toMedico.setDataNascimento(super.getDataNascimento()) ;
+		toMedico.setEstadoCivil(super.getEstadoCivil()) ;
+		toMedico.setEmail(super.getEmail()) ;
+		toMedico.setNacionalidade(super.getNacionalidade());
+		toMedico.setEndereco(super.getEndereco());
+		toMedico.setCep(super.getCep()) ;
+		toMedico.setCidade(super.getCidade()) ;
+		toMedico.setUf(super.getUf()) ;
+		toMedico.setPais(super.getPais()) ;
+		toMedico.setTel1(super.getTel1()); 
+		toMedico.setTel2(super.getTel2()); 
+		toMedico.setCel(super.getCel()) ;
+		toMedico.setFlagAtivo(super.getFlagAtivo());
+		
+		/*TOMedico*/
+		toMedico.setCodMedico(codMedico);
+		toMedico.setCrm(crm);
+		toMedico.setCro(cro);
+
+		return toMedico;
+	}
+
 
 	public void cadastrarMedico(){
+		
+		DAOMedico dao = new DAOMedico();		
+		TOMedico toMedico = getTO();
+		dao.cadastrarMedico(toMedico,codLoginCadastrado); 
+		this.codMedico = toMedico.getCodMedico();
 		
 	}
 
 	public void alterarMedico(){
-		
+		DAOMedico dao = new DAOMedico();		
+		TOMedico toMedico = getTO();
+		dao.alterarMedico(toMedico);
 	}
-	
-	public void consultarMedico(){
-		
-	}
-	
+
 	public void excluirMedico(){
-		
+		DAOMedico dao = new DAOMedico();
+		TOMedico toMedico = new TOMedico();
+		toMedico.setCodMedico(codMedico);
+		dao.excluirMedico(toMedico);
 	}
+	
+	public void consultarMedicoCod() throws ClassNotFoundException  {
+
+		DAOMedico dao = new DAOMedico();
+
+		TOMedico toMedico = dao.consultarMedicoCod(codMedico);
+
+		codMedico = toMedico.getCodMedico();
+		crm = toMedico.getCrm();
+		cro = toMedico.getCro();
+		super.setNumeroEndereco(toMedico.getNumeroEndereco()); 
+		super.setDataCadastro(toMedico.getDataCadastro());
+		super.setNome(toMedico.getNome());
+		super.setCpf(toMedico.getCpf());
+		super.setDataNascimento(toMedico.getDataNascimento());
+		super.setEstadoCivil(toMedico.getEstadoCivil());
+		super.setEmail(toMedico.getEmail());
+		super.setNacionalidade(toMedico.getNacionalidade());
+		super.setEndereco(toMedico.getEndereco());
+		super.setCep(toMedico.getCep());
+		super.setCidade(toMedico.getCidade());
+		super.setUf(toMedico.getUf());
+		super.setPais(toMedico.getPais());
+		super.setTel1(toMedico.getTel1());
+		super.setTel2(toMedico.getTel2());
+		super.setCel(toMedico.getCel());
+		super.setFlagAtivo(toMedico.getFlagAtivo());
+	
+	}
+	
+	
+	public ArrayList<TOMedico> listarMedicos() throws ClassNotFoundException{
+		ArrayList<TOMedico> lista;
+		DAOMedico dao = new DAOMedico();
+		lista = dao.listarMedicos();
+		return lista;
+	}
+	
+	public ArrayList<TOMedico> listarMedicos(String chave) throws ClassNotFoundException{
+		ArrayList<TOMedico> lista;
+		DAOMedico dao = new DAOMedico();
+		lista = dao.listarMedico(chave);
+		return lista;
+	}	
+	
+	
+	
 }

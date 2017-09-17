@@ -1,22 +1,25 @@
 package Command;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Model.ModelPaciente;
-import Model.ModelPlano;
+import Model.ModelMedico;
+import TO.TOMedico;
 
-public class EditarPaciente implements Command{
 
+public class VisualizarMedico implements Command {
+	
 	@Override
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		String pCodPaciente = request.getParameter("id");
-		String pNumConvenio = request.getParameter("numConvenio");
+		String pCodMedico = request.getParameter("id");
+		String pCrm = request.getParameter("crm");
+		String pCro = request.getParameter("cro");
 		String pNumeroEndereco = request.getParameter("numeroEndereco");
 		String pDataCadastro = request.getParameter("dataCadastro");
 		String pNome = request.getParameter("nome");
@@ -37,27 +40,37 @@ public class EditarPaciente implements Command{
 		
 		int id = -1;
 		try {
-			id = Integer.parseInt(pCodPaciente);
+			id = Integer.parseInt(pCodMedico);
 		} catch (NumberFormatException e) {
 
 		}
 		
-		ModelPaciente modelPaciente = new ModelPaciente(pNumeroEndereco,null,pNome,pCpf,null,pEstadoCivil,pEmail,pNacionalidade,pEndereco,
-				pCep,pCidade,pUf,pPais,pTel1,pTel2,pCel,pFlagAtivo,id,pNumConvenio);
+		/*ALTERAR ESSE NULL AQUI*/
+		ModelMedico modelMedico = new ModelMedico(pNumeroEndereco,null,pNome,pCpf,null,pEstadoCivil,pEmail,pNacionalidade,pEndereco,
+				pCep,pCidade,pUf,pPais,pTel1,pTel2,pCel,pFlagAtivo,id,pCrm, pCro);
 		RequestDispatcher view = null;
 		
 		try {
-			modelPaciente.consultarPacienteCod();
-			
+			modelMedico.consultarMedicoCod();
 		} catch (ClassNotFoundException e) {
-		
 			e.printStackTrace();
 		}
-			
-		request.setAttribute("pacienteTO", modelPaciente.getTO());
-		view = request.getRequestDispatcher("AlterarPaciente.jsp");
-		
+		request.setAttribute("medicoTO",modelMedico.getTO() );
+		view = request.getRequestDispatcher("VisualizarMedico.jsp");
 		view.forward(request, response);
 		
 	}
+	
+	
+	public int busca(ModelMedico modelMedico, ArrayList<TOMedico> lista) {
+		TOMedico toMedico;
+		for(int i = 0; i < lista.size(); i++){
+			toMedico = lista.get(i);
+			if(toMedico.getCodMedico() == modelMedico.getCodMedico()){
+				return i;
+			}
+		}
+		return -1;
+	}
+	
 }
