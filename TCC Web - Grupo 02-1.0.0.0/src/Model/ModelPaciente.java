@@ -18,10 +18,6 @@ public class ModelPaciente extends ModelUsuario{
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param codPaciente
-	 * @param numConvenio
-	 */
 	public ModelPaciente(int codPaciente, String numConvenio) {
 		super();
 		this.codPaciente = codPaciente;
