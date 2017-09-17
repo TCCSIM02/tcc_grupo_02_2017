@@ -15,18 +15,18 @@
         <a href="controller.do?command=ListarPromocaoBuscar"><i class="icon-usd icon-xlarge"></i><span>Promoções</span></a>
       </li>
 	  <li class="dropdown-submenu">
-        <a href="index_funcionarios.html"><i class="icon-user icon-xlarge"></i><span>Funcionários</span></a>
+        <a href="IndexFuncionarios.jsp"><i class="icon-user icon-xlarge"></i><span>Funcionários</span></a>
       </li>
       <li class="dropdown-submenu">
       	<a href="controller.do?command=ListarConsultaBuscar"><i class="icon-user-md icon-xlarge">
       	</i><span>Consulta</span></a></li>
       <li class="dropdown-submenu">
-        <a href="index_agendamento.html"><i class="icon-calendar icon-xlarge"></i><span>Agendamento</span></a>
+        <a href="IndexAgendamento.jsp"><i class="icon-calendar icon-xlarge"></i><span>Agendamento</span></a>
       </li>
       <li class="dropdown-submenu">
         <a href="controller.do?command=ListarExameBuscar"><i class="icon-file icon-xlarge"></i><span>Exame</span></a>
       </li>
-      <li><a href="index_receituario.html"><i class="icon-edit icon-xlarge"></i><span>Receituário</span></a></li>
+      <li><a href="IndexReceituario.jsp"><i class="icon-edit icon-xlarge"></i><span>Receituário</span></a></li>
     </ul>
   </nav>
   <!-- / nav -->
