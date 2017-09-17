@@ -23,7 +23,7 @@
 		<script type="text/javascript" >
 
 			function carregaData() {	
-				alert("carregou");
+				//alert("carregou");
 			    var query = location.search.slice(1);
 			    var partes = query.split('&');
 			    var data = {};
@@ -36,11 +36,12 @@
 			    			
 			    document.getElementById('dataInicio').value=(data["eventDate"]);
 			}
+			
 	</script>
 		
 	</head>
 
-	<body>
+	<body onload="carregaData()">
 
 		<!-- Header -->
 	<c:import url="Header.jsp" />
@@ -111,8 +112,8 @@
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Inicio</label>
 									<div class="col-lg-4">
-										<input type="date" class="form-control" name="dataInicio" id="dataInicio" required
-										maxlength="11" placeholder="data de nascimento" size="16">
+										<input onload="carregaData()" type="date" class="form-control" name="dataInicio" id="dataInicio" required
+										maxlength="11" placeholder="data de nascimento" size="16" value="${strDataInicioHidden}">
 									</div>	
 									<div class="col-lg-2">
 										<input type="time" class="form-control" name="horaInicio" id="horaInicio" required
@@ -166,26 +167,7 @@
 	  
 	<!-- Footer -->
 	<c:import url="Footer.jsp" />
-	
-	<script type="text/javascript" >
-
-		//window.onload = function() {
-		/*$(document).ready(function() {	
-			alert("carregou");
-		    var query = location.search.slice(1);
-		    var partes = query.split('&');
-		    var data = {};
-		    partes.forEach(function (parte) {
-		        var chaveValor = parte.split('=');
-		        var chave = chaveValor[0];
-		        var valor = chaveValor[1];
-		        data[chave] = valor;
-		    });
-		    			
-		    document.getElementById('dataInicio').value=(data["eventDate"]);
-		});*/
-	</script>
-    
+	    
 	</body>
 
 </html>

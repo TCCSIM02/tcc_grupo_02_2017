@@ -149,7 +149,7 @@
 				    topLayer.hide(); //hide the entire event layer (makes it work with multiple events)
 				    var dayElement = document.elementFromPoint(jsEvent.pageX, jsEvent.pageY); //get the element under the cursor (should be a day cell)
 				    topLayer.show();
-				    alert($(dayElement).data("date"));
+				    //alert($(dayElement).data("date"));
 				    
 				    // abrir pagina de cadastro 
 				    window.open('CriarAgendamento.jsp?eventDate='+$(dayElement).data("date"),"_self");
