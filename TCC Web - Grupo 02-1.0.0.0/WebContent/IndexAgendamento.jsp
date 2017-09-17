@@ -144,6 +144,17 @@
 					center : 'title',
 					right : 'month,agendaWeek,agendaDay'
 				},
+				 eventClick: function(calEvent, jsEvent, view) {
+					 	
+					 	//alert('Clicked on: ' + date.format());
+				        alert('Event: ' + calEvent.title);
+				        alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+				        alert('View: ' + view.name);
+						
+				        // change the border color just for fun
+				        $(this).css('border-color', 'red');
+						
+				    },
 				locale : initialLocaleCode,
 				editable : true,
 				droppable : true, // this allows things to be dropped onto the calendar
@@ -158,6 +169,7 @@
 					url: 'json/events.json'
 				}
 			});
+			
 		});
 	</script>
 
