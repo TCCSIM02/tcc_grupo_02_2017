@@ -287,9 +287,37 @@
     <script>
         <!-- Formata os campos -->
         $(document).ready(function(){
-        	$('#tel1').mask('(00) 00000-0000');
-        	$('#tel2').mask('(00) 00000-0000');
-        	$('#cel').mask('(00) 00000-0000');
+        	//$('#tel1').mask('(00) 00000-0000');
+        	//$('#tel2').mask('(00) 00000-0000');
+        	//$('#cel').mask('(00) 00000-0000');
+             	
+        	$('#tel1').mask('(00) 0000-00009');
+        	$('#tel1').blur(function(event) {
+        	   if($(this).val().length == 15){ // Celular com 9 dígitos + 2 dígitos DDD e 4 da máscara
+        	      $('#tel1').mask('(00) 00000-0009');
+        	   } else {
+        	      $('#tel1').mask('(00) 0000-00009');
+        	   }
+        	});
+        	
+        	$('#tel2').mask('(00) 0000-00009');
+        	$('#tel2').blur(function(event) {
+        	   if($(this).val().length == 15){ // Celular com 9 dígitos + 2 dígitos DDD e 4 da máscara
+        	      $('#tel2').mask('(00) 00000-0009');
+        	   } else {
+        	      $('#tel2').mask('(00) 0000-00009');
+        	   }
+        	});
+         	
+        	$('#cel').mask('(00) 0000-00009');
+        	$('#cel').blur(function(event) {
+        	   if($(this).val().length == 15){ // Celular com 9 dígitos + 2 dígitos DDD e 4 da máscara
+        	      $('#cel').mask('(00) 00000-0009');
+        	   } else {
+        	      $('#cel').mask('(00) 0000-00009');
+        	   }
+        	}); 
+        	
 			$('#cnpj').mask('00.000.000/0000-00');
 			$('#cep').mask('00000-000');			
         });
