@@ -36,23 +36,24 @@
 	    
 	      <h5>Arraste para um novo agendamento</h5>
 	      <div class="line"></div>
-			 	<div id='external-events'>
-					<div class='fc-event'>My Event 1</div>
-					<div class='fc-event'>My Event 2</div>
-					<div class='fc-event'>My Event 3</div>
-					<div class='fc-event'>My Event 4</div>
-					<div class='fc-event'>My Event 5</div>
-					<p>
-						<input type='checkbox' id='drop-remove' />
-						<label for='drop-remove'>remove after drop</label>
-					</p>
-				</div>
+			 <div id="external-events" class="pillbox clearfix m-b no-border no-padder">
+		        <ul>
+		          <li class="fc-event">Novo agendamento</li>
+		          <li class="fc-event">Novo agendamento</li>
+		          <li class="fc-event">Novo agendamento</li>
+		          <li class="fc-event">Novo agendamento</li>
+		          <li class="fc-event">Novo agendamento</li>
+		          <li class="fc-event">Novo agendamento</li>
+		          <li class="fc-event">Novo agendamento</li>
+		        </ul>
+		      </div>
 	      <div class="line"></div>
 	    </aside>
 	    <!-- /.sidebar -->
 	    <!-- .main -->
 	    <section class="main">
 	      <div class="" id="fc-agendamento">
+	      	
 			
 	      </div>
 	    </section>
@@ -61,86 +62,85 @@
 	
 
 	
+
+	 <!-- footer -->
+	  <footer id="footer">
+	    <div class="text-center padder clearfix">
+	      <p>
+	        <small>&copy; TCC - Grupo 2</small><br><br>
+	      </p>
+	    </div>
+	  </footer>
+	  <a href="#" class="hide slide-nav-block" data-toggle="class:slide-nav slide-nav-left" data-target="body"></a>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  <script src="https://pages.mailmkt.netshoes.com.br/mask/"></script>
+	  
+	  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	  <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+	  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	  
 	<!-- Footer -->
-	<c:import url="Footer.jsp" />
-	
-	<script src="js/jquery.min.js"></script>
-	<!-- Bootstrap -->
-	<script src="js/bootstrap.js"></script>
-	
+		
 	<script src="js/fuelux/fuelux.js"></script>
+	
 	<!-- fullcalendar -->
-	<script src="js/jquery-ui-1.10.3.custom.min.js" cache="false"></script>
-	<script src="js/jquery.ui.touch-punch.min.js" cache="false"></script>
-	<script src="js/fullcalendar/fullcalendar.min.js" cache="false"></script>
+
 	<script src='js/fullcalendar/lib/moment.min.js'></script>
+	<script src='js/fullcalendar/lib/jquery.min.js'></script>
+	<script src='js/fullcalendar/lib/jquery-ui.min.js'></script>
+	<script src="js/fullcalendar/fullcalendar.min.js" cache="false"></script>
 	<script src='js/fullcalendar/locale-all.js'></script>
-	<!-- Sparkline Chart -->
-	<script src="js/charts/sparkline/jquery.sparkline.min.js"></script>
-	<!-- Easy Pie Chart -->
-	<script src="js/charts/easypiechart/jquery.easy-pie-chart.js"></script>
-	
-	<!-- app -->
-	<script src="js/app.js"></script>
-	<script src="js/app.plugin.js"></script>
-	<script src="js/app.data.js"></script>
-	
+
 	<script type="text/javascript">
 
+
 		$(document).ready(function() {
-	
+
 			var initialLocaleCode = 'pt-br';
-			
+
 			/* initialize the external events
 			-----------------------------------------------------------------*/
-	
+
 			$('#external-events .fc-event').each(function() {
-	
+
 				// store data so the calendar knows to render an event upon drop
 				$(this).data('event', {
-					title: $.trim($(this).text()), // use the element's text as the event title
-					stick: true // maintain when user navigates (see docs on the renderEvent method)
+					title : $.trim($(this).text()), // use the element's text as the event title
+					stick : true
+				// maintain when user navigates (see docs on the renderEvent method)
 				});
-	
+
 				// make the event draggable using jQuery UI
 				$(this).draggable({
-					zIndex: 999,
-					revert: true,      // will cause the event to go back to its
-					revertDuration: 0  //  original position after the drag
+					zIndex : 999,
+					revert : true, // will cause the event to go back to its
+					revertDuration : 0
+				//  original position after the drag
 				});
-	
+
 			});
-	
-	
+
 			/* initialize the calendar
 			-----------------------------------------------------------------*/
-	
+
 			$('#fc-agendamento').fullCalendar({
-					header: {
-						left: 'prev,next today',
-						center: 'title',
-						right: 'month,agendaWeek,agendaDay'
-					},
-					editable: true,
-					droppable: true, // this allows things to be dropped onto the calendar
-					drop: function() {
-						// is the "remove after drop" checkbox checked?
-						if ($('#drop-remove').is(':checked')) {
-							// if so, remove the element from the "Draggable Events" list
-							$(this).remove();
-						}
+				header : {
+					left : 'prev,next today',
+					center : 'title',
+					right : 'month,agendaWeek,agendaDay'
+				},
+				locale : initialLocaleCode,
+				editable : true,
+				droppable : true, // this allows things to be dropped onto the calendar
+				drop : function() {
+					// is the "remove after drop" checkbox checked?
+					if ($('#drop-remove').is(':checked')) {
+						// if so, remove the element from the "Draggable Events" list
+						$(this).remove();
 					}
-				});
-	
-			// when the selected option changes, dynamically change the calendar option
-			$('#locale-selector').on('change', function() {
-				if (this.value) {
-					$('fc-agendamento').fullCalendar('option', 'locale', initialLocaleCode);
 				}
 			});
-	
 		});
-	
 	</script>
 	
 </body>
