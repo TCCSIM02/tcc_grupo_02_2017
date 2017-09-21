@@ -20,26 +20,15 @@
 		<link rel="stylesheet" href="css/landing.css">
 		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 		
-		<script type="text/javascript" >
 
-			function carregaData() {	
-				//alert("carregou");
-			    var query = location.search.slice(1);
-			    var partes = query.split('&');
-			    var data = {};
-			    partes.forEach(function (parte) {
-			        var chaveValor = parte.split('=');
-			        var chave = chaveValor[0];
-			        var valor = chaveValor[1];
-			        data[chave] = valor;
-			    });
-			    			
-			    document.getElementById('dataInicio').value=(data["eventDate"]);
-			}
-			
-	</script>
 		
 	</head>
+
+	    <%
+       		String data="";
+			data = request.getParameter("eventDate");
+		%>
+
 
 	<body onload="carregaData()">
 
@@ -47,7 +36,7 @@
 	<c:import url="Header.jsp" />
 
 	<!-- Menu de navegação do Administrador -->
-	<c:import url="MenuAdministrador.jsp" />
+	<c:import url="MenuAdministrador.jsp?pagina=agendamento" />
 
 	<section id="content">
 		
@@ -112,14 +101,16 @@
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Inicio</label>
 									<div class="col-lg-4">
-										<input onload="carregaData()" type="date" class="form-control" name="dataInicio" id="dataInicio" required
-										maxlength="11" placeholder="data de nascimento" size="16" value="${strDataInicioHidden}">
+										<input  type="date" class="form-control" name="dataInicio" id="dataInicio" required
+										maxlength="11" placeholder="data de nascimento" size="16" value="<%=data%>">
 									</div>	
 									<div class="col-lg-2">
 										<input type="time" class="form-control" name="horaInicio" id="horaInicio" required
 										maxlength="5" placeholder="data de nascimento" size="16">
 									</div>				  
 								</div>
+								
+
 								
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Fim</label>
@@ -164,6 +155,28 @@
 			</div>
 		</section>
 	</section>
+
+	  	
+	<script type="text/javascript" >
+	/*
+			function carregaData() {	
+				//alert("carregou");
+			    var query = location.search.slice(1);
+			    var partes = query.split('&');
+			    var data = {};
+			    partes.forEach(function (parte) {
+			        var chaveValor = parte.split('=');
+			        var chave = chaveValor[0];
+			        var valor = chaveValor[1];
+			        data[chave] = valor;
+			    });
+			    			
+			    document.getElementById('dataInicio').value=(data["eventDate"]);
+			}
+	*/
+			
+	</script>
+	  
 	  
 	<!-- Footer -->
 	<c:import url="Footer.jsp" />

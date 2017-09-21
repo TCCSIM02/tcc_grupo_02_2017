@@ -38,7 +38,7 @@
 	<c:import url="Header.jsp" />
 
 	<!-- Menu de navegação do Administrador -->
-	<c:import url="MenuAdministrador.jsp" />
+	<c:import url="MenuAdministrador.jsp?pagina=agendamento" />
 
 	<section id="content" class="content-sidebar bg-white"> <!-- .sidebar -->
 	<aside class="sidebar bg-lighter padder clearfix">
@@ -78,8 +78,7 @@
 	<footer id="footer">
 	<div class="text-center padder clearfix">
 		<p>
-			<small>&copy; TCC - Grupo 2</small><br>
-			<br>
+			<small>&copy; TCC - Grupo 2</small><br> <br>
 		</p>
 	</div>
 	</footer>
@@ -107,69 +106,75 @@
 	<script src='js/fullcalendar/locale-all.js'></script>
 
 	<script type="text/javascript">
+		$(document).ready(
+				function() {
 
+					var initialLocaleCode = 'pt-br';
 
-		$(document).ready(function() {
+					/* initialize the external events
+					-----------------------------------------------------------------*/
 
-			var initialLocaleCode = 'pt-br';
+					$('#external-events .fc-event').each(function() {
 
-			/* initialize the external events
-			-----------------------------------------------------------------*/
+						// store data so the calendar knows to render an event upon drop
+						$(this).data('event', {
+							title : $.trim($(this).text()), // use the element's text as the event title
+							stick : true
+						// maintain when user navigates (see docs on the renderEvent method)
+						});
 
-			$('#external-events .fc-event').each(function() {
+						// make the event draggable using jQuery UI
+						$(this).draggable({
+							zIndex : 999,
+							revert : true, // will cause the event to go back to its
+							revertDuration : 0
+						//  original position after the drag
+						});
 
-				// store data so the calendar knows to render an event upon drop
-				$(this).data('event', {
-					title : $.trim($(this).text()), // use the element's text as the event title
-					stick : true
-				// maintain when user navigates (see docs on the renderEvent method)
+					});
+
+					/* initialize the calendar
+					-----------------------------------------------------------------*/
+
+					$('#fc-agendamento').fullCalendar(
+							{
+								header : {
+									left : 'prev,next today',
+									center : 'title',
+									right : 'month,agendaWeek,agendaDay'
+								},
+								eventClick : function(calEvent, jsEvent, view) {
+									var topLayer = $(jsEvent.currentTarget)
+											.closest("tbody");
+									topLayer.hide(); //hide the entire event layer (makes it work with multiple events)
+									var dayElement = document.elementFromPoint(
+											jsEvent.pageX, jsEvent.pageY); //get the element under the cursor (should be a day cell)
+									topLayer.show();
+									//alert($(dayElement).data("date"));
+
+									// abrir pagina de cadastro 
+									window.open(
+											'CriarAgendamento.jsp?eventDate='
+													+ $(dayElement)
+															.data("date"),
+											"_self");
+								},
+								locale : initialLocaleCode,
+								editable : true,
+								droppable : true, // this allows things to be dropped onto the calendar
+								drop : function() {
+									// is the "remove after drop" checkbox checked?
+									if ($('#drop-remove').is(':checked')) {
+										// if so, remove the element from the "Draggable Events" list
+										$(this).remove();
+									}
+								},
+								events : {
+									url : 'json/events.json'
+								}
+							});
+
 				});
-
-				// make the event draggable using jQuery UI
-				$(this).draggable({
-					zIndex : 999,
-					revert : true, // will cause the event to go back to its
-					revertDuration : 0
-				//  original position after the drag
-				});
-
-			});
-
-			/* initialize the calendar
-			-----------------------------------------------------------------*/
-
-			$('#fc-agendamento').fullCalendar({
-				header : {
-					left : 'prev,next today',
-					center : 'title',
-					right : 'month,agendaWeek,agendaDay'
-				},
-				eventClick: function (calEvent, jsEvent, view) {
-				    var topLayer = $(jsEvent.currentTarget).closest("tbody");
-				    topLayer.hide(); //hide the entire event layer (makes it work with multiple events)
-				    var dayElement = document.elementFromPoint(jsEvent.pageX, jsEvent.pageY); //get the element under the cursor (should be a day cell)
-				    topLayer.show();
-				    //alert($(dayElement).data("date"));
-				    
-				    // abrir pagina de cadastro 
-				    window.open('CriarAgendamento.jsp?eventDate='+$(dayElement).data("date"),"_self");
-				},
-				locale : initialLocaleCode,
-				editable : true,
-				droppable : true, // this allows things to be dropped onto the calendar
-				drop : function() {
-					// is the "remove after drop" checkbox checked?
-					if ($('#drop-remove').is(':checked')) {
-						// if so, remove the element from the "Draggable Events" list
-						$(this).remove();
-					}
-				},
-				events: {
-					url: 'json/events.json'
-				}
-			});
-			
-		});
 	</script>
 
 </body>

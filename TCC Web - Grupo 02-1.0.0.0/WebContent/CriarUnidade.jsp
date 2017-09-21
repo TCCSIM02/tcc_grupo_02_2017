@@ -118,7 +118,7 @@
 	<c:import url="Header.jsp" />
 	
 	<!-- Menu de navegação do Administrador -->
-	<c:import url="MenuAdministrador.jsp" />
+	<c:import url="MenuAdministrador.jsp?pagina=unidade" />
 	
 	<body>
 		
