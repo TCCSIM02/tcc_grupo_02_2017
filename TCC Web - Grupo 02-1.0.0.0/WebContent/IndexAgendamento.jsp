@@ -144,19 +144,12 @@
 									right : 'month,agendaWeek,agendaDay'
 								},
 								eventClick : function(calEvent, jsEvent, view) {
-									var topLayer = $(jsEvent.currentTarget)
-											.closest("tbody");
-									topLayer.hide(); //hide the entire event layer (makes it work with multiple events)
-									var dayElement = document.elementFromPoint(
-											jsEvent.pageX, jsEvent.pageY); //get the element under the cursor (should be a day cell)
-									topLayer.show();
-									//alert($(dayElement).data("date"));
-
-									// abrir pagina de cadastro 
+									var dt = calEvent.start;
+									var pEventDate = dt.format().substring(0, 10);
+									
 									window.open(
 											'CriarAgendamento.jsp?eventDate='
-													+ $(dayElement)
-															.data("date"),
+													+ pEventDate,
 											"_self");
 								},
 								locale : initialLocaleCode,
