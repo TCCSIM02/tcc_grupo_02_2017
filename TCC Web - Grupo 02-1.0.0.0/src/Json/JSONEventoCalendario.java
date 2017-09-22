@@ -13,9 +13,9 @@ import org.json.simple.JSONObject;
 import Model.ModelAgendamento;
 import TO.TOAgendamento;
 
-public class JSONEventoCalendário {
+public class JSONEventoCalendario {
 
-	public JSONEventoCalendário(){
+	public JSONEventoCalendario(){
 		
 	}
 	

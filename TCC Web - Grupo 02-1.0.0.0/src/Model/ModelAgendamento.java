@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import DAO.DAOAgendamento;
-import Json.JSONEventoCalendário;
-import TO.TOAgendamento;
+import Json.JSONEventoCalendario;
 import TO.TOAgendamento;
 
 public class ModelAgendamento {
@@ -179,8 +178,8 @@ public class ModelAgendamento {
 		ArrayList<TOAgendamento> lista;
 		DAOAgendamento dao = new DAOAgendamento();
 		lista = dao.listarAgendamentos();
-		JSONEventoCalendário jsonEventoCalendário = new JSONEventoCalendário();
-		jsonEventoCalendário.fillCalendario(lista);
+		JSONEventoCalendario jsonEventoCalendario = new JSONEventoCalendario();
+		jsonEventoCalendario.fillCalendario(lista);
 	}
 
 }
