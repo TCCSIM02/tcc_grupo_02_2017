@@ -106,7 +106,7 @@
 									</div>	
 									<div class="col-lg-2">
 										<input type="time" class="form-control" name="horaInicio" id="horaInicio" required
-										maxlength="5" placeholder="data de nascimento" size="16">
+										maxlength="5" placeholder="data de nascimento" size="16" >
 									</div>				  
 								</div>
 								
@@ -115,7 +115,7 @@
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Fim</label>
 									<div class="col-lg-4">
-										<input type="date" class="form-control" name="dataFim" id="dataFim" required 
+										<input type="date" class="form-control" name="dataFim" value="<%=data%>" id="dataFim" required 
 										maxlength="11" placeholder="data de nascimento" size="16">
 									</div>	
 									<div class="col-lg-2">

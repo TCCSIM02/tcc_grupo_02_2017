@@ -35,12 +35,27 @@
 		</li>
 	  
 		<% if( pagina.equals("funcionario")) {  %>
+		<li class="dropdown-submenu active">		
+		<% } else { %>
+		<li class="dropdown-submenu">
+		<% } %>
+			<a href="#"><i class="icon-user icon-xlarge"></i><span>Funcionários</span></a>
+			    <ul class="dropdown-menu">
+		          <li><a href="ListarMedico.jsp">Médico</a></li>
+		          <li><a href="ListarAtendente.jsp">Atendente</a></li>
+		          <li><a href="ListarAdministrador.jsp">Administrador</a></li>
+		        </ul>
+			<!--<a href="IndexFuncionarios.jsp"><i class="icon-user icon-xlarge"></i><span>Funcionários</span></a>-->
+		</li>
+		
+		<% if( pagina.equals("paciente")) {  %>
 		<li class="active">		
 		<% } else { %>
 		<li class="dropdown-submenu">
 		<% } %>
-			<a href="IndexFuncionarios.jsp"><i class="icon-user icon-xlarge"></i><span>Funcionários</span></a>
+			<a href="ListarPaciente.jsp"><i class="icon-user icon-xlarge"></i><span>Pacientes</span></a>
 		</li>
+		
 		
 		<% if( pagina.equals("consulta")) {  %>
 		<li class="active">		

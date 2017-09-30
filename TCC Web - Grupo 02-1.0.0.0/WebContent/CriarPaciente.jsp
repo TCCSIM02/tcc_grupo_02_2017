@@ -99,7 +99,7 @@
 	<c:import url="Header.jsp" />
 
 	<!-- Menu de navegação do Administrador -->
-	<c:import url="MenuAdministrador.jsp?pagina=funcionario" />
+	<c:import url="MenuAdministrador.jsp?pagina=paciente" />
 
 	<section id="content">
 		
