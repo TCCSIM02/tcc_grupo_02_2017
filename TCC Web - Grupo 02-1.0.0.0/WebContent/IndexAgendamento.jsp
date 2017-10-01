@@ -163,7 +163,7 @@
 									}
 								},
 								events : {
-									url : 'json/events.json'
+									url : 'fc-eventsTeste.json'
 								}
 							});
 

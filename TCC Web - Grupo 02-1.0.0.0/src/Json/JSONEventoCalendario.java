@@ -18,7 +18,7 @@ public class JSONEventoCalendario {
 	public JSONEventoCalendario(){
 		
 	}
-	
+		
 	@SuppressWarnings("unchecked")
 	public void fillCalendario(ArrayList<TOAgendamento> listaEvento) {
 		
@@ -34,14 +34,14 @@ public class JSONEventoCalendario {
 			JSONObject jsonObject = new JSONObject();
 			
 			jsonObject.put("id", listaEvento.get(i).getCodAgendamento());
-			jsonObject.put("title", "teste");
+			jsonObject.put("title", listaEvento.get(i).getDataHoraComeco().toString());
 			jsonObject.put("start", listaEvento.get(i).getDataHoraComeco());
 			jsonObject.put("end", listaEvento.get(i).getDataHoraFim());
 			
 			jsonArray.add(jsonObject);
 			
 			try{
-				writeFile = new FileWriter("WebContent/json/fc-events.json");
+				writeFile = new FileWriter("fc-eventsTeste.json");
 				//Escreve no arquivo conteudo do Objeto JSON
 				writeFile.write(jsonArray.toJSONString());
 				writeFile.close();

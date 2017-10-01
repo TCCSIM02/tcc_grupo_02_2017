@@ -70,7 +70,7 @@
 		<% } else { %>
 		<li class="dropdown-submenu">
 		<% } %>
-			<a href="IndexAgendamento.jsp"><i class="icon-calendar icon-xlarge"></i><span>Agendamento</span></a>
+			<a href="controller.do?command=IndexAgendamento"><i class="icon-calendar icon-xlarge"></i><span>Agendamento</span></a>
 		</li>
 		  
 		<% if( pagina.equals("exame")) {  %>
