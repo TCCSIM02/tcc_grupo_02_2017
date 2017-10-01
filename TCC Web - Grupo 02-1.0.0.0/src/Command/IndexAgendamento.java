@@ -1,6 +1,7 @@
 package Command;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,10 +21,20 @@ public class IndexAgendamento implements Command {
 		
 		ModelAgendamento modelAgendamento = new ModelAgendamento();
 
-		modelAgendamento.preencherCalendario();
+		try {
+			modelAgendamento.preencherCalendario();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		view = request.getRequestDispatcher("IndexAgendamento.jsp");
 	
-		request.setAttribute("jsonCalendario", modelAgendamento.jsonCalendario());
+		try {
+			request.setAttribute("jsonCalendario", modelAgendamento.jsonCalendario());
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		view.forward(request, response);
 	}

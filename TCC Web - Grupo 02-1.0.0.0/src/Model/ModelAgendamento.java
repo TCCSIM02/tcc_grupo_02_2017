@@ -1,5 +1,6 @@
 package Model;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -174,7 +175,7 @@ public class ModelAgendamento {
 		
 	}
 
-	public void preencherCalendario(){
+	public void preencherCalendario() throws ParseException{
 		ArrayList<TOAgendamento> lista;
 		DAOAgendamento dao = new DAOAgendamento();
 		lista = dao.listarAgendamentos();
@@ -182,7 +183,7 @@ public class ModelAgendamento {
 		jsonEventoCalendario.fillCalendario(lista);
 	}
 	
-	public String jsonCalendario(){
+	public String jsonCalendario() throws ParseException{
 		ArrayList<TOAgendamento> lista;
 		DAOAgendamento dao = new DAOAgendamento();
 		lista = dao.listarAgendamentos();

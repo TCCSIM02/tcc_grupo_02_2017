@@ -4,6 +4,8 @@ package Json;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,10 +37,14 @@ public class JSONEventoCalendario {
 
 			JSONObject jsonObject = new JSONObject();
 			
+			DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			
+			//format.format(format.parse(rs.getString("dataAgendamentoComeco")))
+			
 			jsonObject.put("id", String.valueOf(listaEvento.get(i).getCodAgendamento()));
-			jsonObject.put("title", listaEvento.get(i).getDataHoraComeco().toString());
-			jsonObject.put("start", listaEvento.get(i).getDataHoraComeco().toString());
-			jsonObject.put("end", listaEvento.get(i).getDataHoraFim().toString());
+			jsonObject.put("title", format.format(listaEvento.get(i).getDataHoraComeco()));
+			jsonObject.put("start", format.format(listaEvento.get(i).getDataHoraComeco()));
+			jsonObject.put("end", format.format(listaEvento.get(i).getDataHoraFim()));
 			
 			jsonArray.add(jsonObject);
 			
@@ -53,11 +59,11 @@ public class JSONEventoCalendario {
 			}
 		}
 		//Imprimne na Tela o Objeto JSON para vizualização
-		System.out.println("Json: " + jsonArray);
+		//System.out.println("Json: " + jsonArray);
 		
 		jsonCalendario = jsonArray.toJSONString();
 		
-		System.out.println("String: " + jsonCalendario);
+		//System.out.println("String: " + jsonCalendario);
 	}
 	
 }

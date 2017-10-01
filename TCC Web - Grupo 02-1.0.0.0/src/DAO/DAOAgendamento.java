@@ -7,12 +7,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement; 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList; 
 import java.util.Date;
 
 public class DAOAgendamento {
-
+	
 	public void cadastrarAgendamento(TOAgendamento toAgendamento){
 		String sqlInsert = "INSERT INTO tcc.plano (dataAgendamentoComeco,dataAgendamentoFim, statusAgendamento, flagAtivo, dataCadastro) VALUES (current_timestamp(),current_timestamp(),?,1,current_timestamp())";
 		// usando o try with resources do Java 7, que fecha o que abriu
@@ -111,23 +113,30 @@ public class DAOAgendamento {
 		return toAgendamento;
 	}
 	
-	public ArrayList<TOAgendamento> listarAgendamentos(){
+	public ArrayList<TOAgendamento> listarAgendamentos() throws ParseException{
 		TOAgendamento toAgendamento;
 		ArrayList<TOAgendamento> lista = new ArrayList<>();
-		String sqlSelect = "SELECT  codAgendamento, dataAgendamentoComeco, dataAgendamentoFim, statusAgendamento, flagAtivo, dataCadastro FROM tcc.agendamento order by codAgendamento desc";
+		String sqlSelect = "SELECT  codAgendamento, CAST(dataAgendamentoComeco AS char) as dataAgendamentoComeco, CAST(dataAgendamentoFim AS char) as dataAgendamentoFim, statusAgendamento, flagAtivo, dataCadastro FROM tcc.agendamento order by codAgendamento desc";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
 			try (ResultSet rs = stm.executeQuery();) {
 				while(rs.next()) {
 					toAgendamento = new TOAgendamento();
-								
+					
+					DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+					
 					toAgendamento.setCodAgendamento(rs.getInt("codAgendamento"));
-					toAgendamento.setDataHoraComeco(rs.getDate("dataAgendamentoComeco"));
-					toAgendamento.setDataHoraFim(rs.getDate("dataAgendamentoFim")); 
+					toAgendamento.setDataHoraComeco(format.parse(rs.getString("dataAgendamentoComeco")));
+					toAgendamento.setDataHoraFim(format.parse(rs.getString("dataAgendamentoFim"))); 
 					toAgendamento.setStatusAgendamento(rs.getString("statusAgendamento"));								
 					toAgendamento.setFlagAtivo(rs.getString("flagAtivo"));
 					toAgendamento.setDataCadastro(rs.getDate("dataCadastro"));
+					
+					format.format(format.parse(rs.getString("dataAgendamentoComeco")));
+					
+					//System.out.println("chegada: " + rs.getString("dataAgendamentoComeco") + " / " + format.parse(rs.getString("dataAgendamentoComeco")) + " / " + format.format(format.parse(rs.getString("dataAgendamentoComeco"))));
+					//System.out.println("saída: " + rs.getString("dataAgendamentoFim") + " / " + format.format(rs.getDate("dataAgendamentoFim")));
 					
 					lista.add(toAgendamento);
 				}
