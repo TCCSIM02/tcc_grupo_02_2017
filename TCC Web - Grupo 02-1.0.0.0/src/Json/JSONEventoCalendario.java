@@ -15,6 +15,8 @@ import TO.TOAgendamento;
 
 public class JSONEventoCalendario {
 
+	public String jsonCalendario;
+	
 	public JSONEventoCalendario(){
 		
 	}
@@ -33,10 +35,10 @@ public class JSONEventoCalendario {
 
 			JSONObject jsonObject = new JSONObject();
 			
-			jsonObject.put("id", listaEvento.get(i).getCodAgendamento());
+			jsonObject.put("id", String.valueOf(listaEvento.get(i).getCodAgendamento()));
 			jsonObject.put("title", listaEvento.get(i).getDataHoraComeco().toString());
-			jsonObject.put("start", listaEvento.get(i).getDataHoraComeco());
-			jsonObject.put("end", listaEvento.get(i).getDataHoraFim());
+			jsonObject.put("start", listaEvento.get(i).getDataHoraComeco().toString());
+			jsonObject.put("end", listaEvento.get(i).getDataHoraFim().toString());
 			
 			jsonArray.add(jsonObject);
 			
@@ -51,8 +53,11 @@ public class JSONEventoCalendario {
 			}
 		}
 		//Imprimne na Tela o Objeto JSON para vizualização
-		System.out.println(jsonArray);
-
+		System.out.println("Json: " + jsonArray);
+		
+		jsonCalendario = jsonArray.toJSONString();
+		
+		System.out.println("String: " + jsonCalendario);
 	}
 	
 }

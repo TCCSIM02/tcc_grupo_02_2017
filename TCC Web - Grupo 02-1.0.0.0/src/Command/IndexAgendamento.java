@@ -23,6 +23,8 @@ public class IndexAgendamento implements Command {
 		modelAgendamento.preencherCalendario();
 		view = request.getRequestDispatcher("IndexAgendamento.jsp");
 	
+		request.setAttribute("jsonCalendario", modelAgendamento.jsonCalendario());
+		
 		view.forward(request, response);
 	}
 }

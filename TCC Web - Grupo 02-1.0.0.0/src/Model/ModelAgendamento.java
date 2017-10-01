@@ -181,5 +181,15 @@ public class ModelAgendamento {
 		JSONEventoCalendario jsonEventoCalendario = new JSONEventoCalendario();
 		jsonEventoCalendario.fillCalendario(lista);
 	}
+	
+	public String jsonCalendario(){
+		ArrayList<TOAgendamento> lista;
+		DAOAgendamento dao = new DAOAgendamento();
+		lista = dao.listarAgendamentos();
+		JSONEventoCalendario jsonEventoCalendario = new JSONEventoCalendario();
+		jsonEventoCalendario.fillCalendario(lista);
+		
+		return jsonEventoCalendario.jsonCalendario;
+	}
 
 }

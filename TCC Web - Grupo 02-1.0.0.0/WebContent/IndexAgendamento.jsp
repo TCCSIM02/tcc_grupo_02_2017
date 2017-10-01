@@ -33,7 +33,6 @@
 
 </head>
 <body>
-
 	<!-- Header -->
 	<c:import url="Header.jsp" />
 
@@ -136,6 +135,7 @@
 					/* initialize the calendar
 					-----------------------------------------------------------------*/
 
+					var jsonCalendario = ${jsonCalendario};
 					$('#fc-agendamento').fullCalendar(
 							{
 								header : {
@@ -162,9 +162,7 @@
 										$(this).remove();
 									}
 								},
-								events : {
-									url : 'fc-eventsTeste.json'
-								}
+								events : jsonCalendario 
 							});
 
 				});
