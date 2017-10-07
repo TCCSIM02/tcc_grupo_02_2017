@@ -13,7 +13,7 @@ import Command.Command;
 public class ServletController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	
+	/*Comentario para commitar*/
 	protected void doExecute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
