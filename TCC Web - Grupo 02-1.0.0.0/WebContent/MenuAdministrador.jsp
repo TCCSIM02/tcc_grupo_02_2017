@@ -41,9 +41,9 @@
 		<% } %>
 			<a href="#"><i class="icon-user icon-xlarge"></i><span>Funcionários</span></a>
 			    <ul class="dropdown-menu">
-		          <li><a href="ListarMedico.jsp">Médico</a></li>
-		          <li><a href="ListarAtendente.jsp">Atendente</a></li>
-		          <li><a href="ListarAdministrador.jsp">Administrador</a></li>
+		          <li><a href="controller.do?command=ListarMedicoBuscar">Médico</a></li>
+		          <li><a href="controller.do?command=ListarAtendenteBuscar">Atendente</a></li>
+		          <li><a href="controller.do?command=ListarAdministradorBuscar">Administrador</a></li>
 		        </ul>
 			<!--<a href="IndexFuncionarios.jsp"><i class="icon-user icon-xlarge"></i><span>Funcionários</span></a>-->
 		</li>
@@ -53,7 +53,7 @@
 		<% } else { %>
 		<li class="dropdown-submenu">
 		<% } %>
-			<a href="ListarPaciente.jsp"><i class="icon-user icon-xlarge"></i><span>Pacientes</span></a>
+			<a href="controller.do?command=ListarPacienteBuscar"><i class="icon-user icon-xlarge"></i><span>Pacientes</span></a>
 		</li>
 		
 		
