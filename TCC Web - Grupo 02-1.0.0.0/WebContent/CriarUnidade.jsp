@@ -40,6 +40,30 @@
 					document.getElementById('cidade').value=(conteudo.localidade);
 					document.getElementById('uf').value=(conteudo.uf);
 					document.getElementById('pais').value="Brasil";
+					
+					//----------------------- LAT E LONG ---------------------				
+					var lat = '';
+					var lng = '';
+					var numeroEndereco = document.getElementById('numeroEndereco').value;
+					var endereco = document.getElementById('endereco').value=(conteudo.logradouro);
+					var address = endereco+" "+numeroEndereco;
+					var geocoder= new google.maps.Geocoder();
+					geocoder.geocode( { 'address': address}, function(results, status) {
+					  if (status == google.maps.GeocoderStatus.OK) {
+						 lat = results[0].geometry.location.lat();
+						 lng = results[0].geometry.location.lng();
+						 
+						 document.getElementById('latitude').value = lat;
+						 document.getElementById('longitude').value = lng;					 
+						 
+					  } else {
+						 alert("Não foi possivel obter localização: " + status);
+					  }
+					});	
+					
+					//----------------------- CEP ---------------------
+						
+					
 				} //end if.
 				else {
 					//CEP não Encontrado.
@@ -50,27 +74,7 @@
 				
 			function pesquisacep(valor) {
 
-				
-				//----------------------- LAT E LONG ---------------------				
-				var lat = '';
-				var lng = '';
-				var address = valor;
-				var geocoder= new google.maps.Geocoder();
-				geocoder.geocode( { 'address': address}, function(results, status) {
-				  if (status == google.maps.GeocoderStatus.OK) {
-					 lat = results[0].geometry.location.lat();
-					 lng = results[0].geometry.location.lng();
-					 
-					 document.getElementById('latitude').value= lat;
-					 document.getElementById('longitude').value= lng;					 
-					 
-				  } else {
-					 alert("Não foi possivel obter localização: " + status);
-				  }
-				});	
-				
-				//----------------------- CEP ---------------------
-				
+
 				//Nova variável "cep" somente com dígitos.
 				var cep = valor.replace(/\D/g, '');
 
@@ -97,7 +101,8 @@
 
 						//Insere script no documento e carrega o conteúdo.
 						document.body.appendChild(script);
-
+						
+				
 					} //end if.
 					else {
 						//cep é inválido.
@@ -109,6 +114,7 @@
 					//cep sem valor, limpa formulário.
 					limpa_formulário_cep();
 				}
+				
 			};
 
 		</script>
@@ -170,6 +176,14 @@
 									</div>
 									
 									<div class="form-group">
+										<label class="col-lg-3 control-label">Número</label>
+										<div class="col-lg-6">
+											<input type="text" class="form-control" name="numeroEndereco" id="numeroEndereco" 
+											maxlength="200" placeholder="número" size="16">
+										</div>				  
+									</div>
+									
+									<div class="form-group">
 										<label class="col-lg-3 control-label">CEP</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" name="cep" id="cep" required onblur="pesquisacep(this.value);"
@@ -207,19 +221,9 @@
 											<input type="text" class="form-control" name="pais" id="pais" required
 											maxlength="20" placeholder="país" size="16" readonly="true">
 										</div>				  
-									</div>
+									</div>									
 									
-									<div class="form-group">
-										<label class="col-lg-3 control-label">Número</label>
-										<div class="col-lg-6">
-											<input type="text" class="form-control" name="numeroEndereco" id="numeroEndereco" required
-											maxlength="200" placeholder="número" size="16">
-										</div>				  
-									</div>
-									
-	
-									<input type="hidden"name="latitude" id="latitude">
-									
+									<input type="hidden" name="latitude" id="latitude">									
 				
 									<input type="hidden" name="longitude" id="longitude">
 									
