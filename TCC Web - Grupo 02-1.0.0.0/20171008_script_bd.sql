@@ -7,6 +7,7 @@ USE `TCC` ;
 /* ATUALIZACAO 16-09-2017 - criaÃƒÂ§ÃƒÂ£o dos campos numeroEndereco, latitude e longitude na tabela Unidade*/
 /* ATUALIZACAO 17-09-2017 - criaÃ§Ã£o do campo numeroEndereco nas tabelas Medico, atendente e administrador*/
 /* ATUALIZACAO 18-09-2017 - alteracao do campo latitude longide para DECIMAL(11, 8)*/
+/* ATUALIZAÇÃO 08-10-2017 - exclusão da classe de promoção, inclusão das informações de pré-triagem no paciente */
 -- -----------------------------------------------------
 -- Table `TCC`.`Unidade`
 -- -----------------------------------------------------
@@ -182,6 +183,14 @@ CREATE TABLE IF NOT EXISTS `TCC`.`Paciente` (
   `tel1` VARCHAR(15) NOT NULL COMMENT 'Telefone 1 (principal) de contato do Paciente',
   `tel2` VARCHAR(15) NULL COMMENT 'Telefone 2 de contato do Paciente',
   `cel` VARCHAR(15) NULL COMMENT 'Celular de contato do Paciente',
+  `alergiaMedicamento` VARCHAR(1000) NULL COMMENT 'Descricao da pre-triagem (Sintomas)',
+  `alergiaAlimentares` VARCHAR(1000) NULL COMMENT 'Observacoes de alergias',
+  `peso` DECIMAL(3,2) NULL COMMENT 'Peso atual',
+  `altura` DECIMAL(3,2) NULL COMMENT 'Altura atual',
+  `medicamentoContinuo` VARCHAR(500) NULL COMMENT 'Uso de medicamentos continuos e controlados',
+  `cirurgia` VARCHAR(1000) NULL COMMENT 'Cirurgias recentes',
+  `antecedentesPessoais` VARCHAR(100) NULL COMMENT 'Se existem doencas cronicas na familia',
+  `tipoSanguineo` VARCHAR(3) NULL COMMENT 'Tipo SanguÃƒÆ’Ã‚Â­neo do paciente',  
   `flagAtivo` BIT NULL DEFAULT 1 COMMENT 'Indicador de paciente ativo',
   `dataCadastro` DATETIME NOT NULL COMMENT 'Data de cadastro do Paciente',
   PRIMARY KEY (`codPaciente`),
@@ -347,72 +356,6 @@ CREATE TABLE IF NOT EXISTS `TCC`.`Exame` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `TCC`.`Promocao`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `TCC`.`Promocao` ;
-
-CREATE TABLE IF NOT EXISTS `TCC`.`Promocao` (
-  `codPromocao` INT NOT NULL AUTO_INCREMENT COMMENT 'Chave Primaria',
-  `codUnidade` INT NULL COMMENT 'Codigo da unidade onde a promocao esta ativa',
-  `codExame` INT NULL COMMENT 'Codigo do exame que esta incluido na promocao',
-  `codPaciente` INT NULL COMMENT 'Codigo do paciente ',
-  `valorPromocao` DECIMAL(10,2) NOT NULL COMMENT 'Valor da promocao',
-  `dataInicio` DATETIME COMMENT 'Data de inicio da promocao',
-  `dataTermino` DATETIME COMMENT 'Data que a promocao termina',
-  `flagAtivo` BIT NULL DEFAULT 1 COMMENT 'Indicador se a promocao esta ativa',
-  `dataCadastro` DATETIME NOT NULL COMMENT 'Data de cadastro da promocao',
-  PRIMARY KEY (`codPromocao`),
-  INDEX `codUnidade_idx` (`codUnidade` ASC),
-  INDEX `codExame_idx` (`codExame` ASC),
-  INDEX `codPaciente_idx` (`codPaciente` ASC),
-  CONSTRAINT `codUnidade_codPromocao`
-    FOREIGN KEY (`codUnidade`)
-    REFERENCES `TCC`.`Unidade` (`codUnidade`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `codExame_codPromocao`
-    FOREIGN KEY (`codExame`)
-    REFERENCES `TCC`.`Exame` (`codExame`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `codPaciente_codPromocao`
-    FOREIGN KEY (`codPaciente`)
-    REFERENCES `TCC`.`Paciente` (`codPaciente`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `TCC`.`PreTriagem`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `TCC`.`PreTriagem` ;
-
-CREATE TABLE IF NOT EXISTS `TCC`.`PreTriagem` (
-  `codPreTriagem` INT NOT NULL AUTO_INCREMENT COMMENT 'Chave Primaria ',
-  `codPaciente` INT NULL COMMENT 'Codigo do paciente desta triagem',
-  `alergiaMedicamento` VARCHAR(1000) NOT NULL COMMENT 'Descricao da pre-triagem (Sintomas)',
-  `alergiaAlimentares` VARCHAR(1000) NOT NULL COMMENT 'Observacoes de alergias',
-  `peso` DECIMAL(3,2) NOT NULL COMMENT 'Peso atual',
-  `altura` DECIMAL(3,2) NOT NULL COMMENT 'Altura atual',
-  `medicamentoContinuo` VARCHAR(500) NOT NULL COMMENT 'Uso de medicamentos continuos e controlados',
-  `cirurgia` VARCHAR(1000) NOT NULL COMMENT 'Cirurgias recentes, vale os ultimos 2 anos',
-  `antecedentesPessoais` VARCHAR(100) NOT NULL COMMENT 'Se existem doencas cronicas na familia',
-  `flagAtivo` BIT NULL DEFAULT 1 COMMENT 'Indicador se a pre-triagem esta ativa.',
-  `dataCadastro` DATETIME NOT NULL COMMENT 'Data de cadastro da pre-triagem',
-  `tipoSanguineo` VARCHAR(3) NULL COMMENT 'Tipo SanguÃƒÆ’Ã‚Â­neo do paciente',
-  PRIMARY KEY (`codPreTriagem`),
-  INDEX `codPaciente_idx` (`codPaciente` ASC),
-  CONSTRAINT `codPaciente_codPreTriagem`
-    FOREIGN KEY (`codPaciente`)
-    REFERENCES `TCC`.`Paciente` (`codPaciente`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `TCC`.`Receituario`
