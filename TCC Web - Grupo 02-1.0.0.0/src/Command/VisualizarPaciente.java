@@ -36,17 +36,28 @@ public class VisualizarPaciente implements Command {
 		String pTel2 = request.getParameter("tel2");
 		String pCel = request.getParameter("cel");
 		String pFlagAtivo = request.getParameter("flagAtivo");
+		String pAlergiaMedicamento = request.getParameter("alergiaMedicamento");
+		String pAlergiaAlimentares = request.getParameter("alergiaAlimentares");
+		String pPeso = request.getParameter("peso");
+		String pAltura = request.getParameter("altura");
+		String pMedicamentoContinuo = request.getParameter("medicamentoContinuo");
+		String pCirurgia = request.getParameter("cirurgia");
+		String pAntecedentesPessoais = request.getParameter("antecedentesPessoais");
+		String pTipoSanguineo = request.getParameter("tipoSanguineo");
 		
 		int id = -1;
+
 		try {
 			id = Integer.parseInt(pCodPaciente);
 		} catch (NumberFormatException e) {
-
 		}
+
 		
-		/*ALTERAR ESSE NULL AQUI*/
-		ModelPaciente modelPaciente = new ModelPaciente(pNumeroEndereco,null,pNome,pCpf,null,pEstadoCivil,pEmail,pNacionalidade,pEndereco,
-				pCep,pCidade,pUf,pPais,pTel1,pTel2,pCel,pFlagAtivo,id,pNumConvenio);
+		ModelPaciente modelPaciente = new ModelPaciente(pNumeroEndereco,null,pNome,pCpf,null,
+				pEstadoCivil,pEmail,pNacionalidade,pEndereco,
+				pCep,pCidade,pUf,pPais,pTel1,pTel2,pCel,pFlagAtivo,id,pNumConvenio,
+				pAlergiaMedicamento, pAlergiaAlimentares, pMedicamentoContinuo,
+				pCirurgia, pAntecedentesPessoais, pTipoSanguineo, null, null);
 		RequestDispatcher view = null;
 		
 		try {

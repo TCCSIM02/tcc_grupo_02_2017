@@ -47,7 +47,7 @@ public class CriarPaciente implements Command {
 
 		String pEstadoCivil		= request.getParameter("estadoCivil");
 		String pNacionalidade 	= request.getParameter("nacionalidade");
-		String pLogradouro 		= request.getParameter("endereco");
+		String pEndereco 		= request.getParameter("endereco");
 		String pCep 			= request.getParameter("cep");
 		String pCidade 			= request.getParameter("cidade");
 		String pUf 				= request.getParameter("uf");				
@@ -57,31 +57,43 @@ public class CriarPaciente implements Command {
 		String pCel 			= request.getParameter("cel");		
 		String pFlagAtivo 		= request.getParameter("flagAtivo");
 		String pCodPaciente 	= request.getParameter("codPaciente"); 	
-		String pNumConvenio 	= request.getParameter("numConvenio"); 	
+		String pNumConvenio 	= request.getParameter("numConvenio"); 
+		String pAlergiaMedicamento = request.getParameter("alergiaMedicamento");
+		String pAlergiaAlimentares = request.getParameter("alergiaAlimentares");
+		String pPeso = request.getParameter("peso");
+		String pAltura = request.getParameter("altura");
+		String pMedicamentoContinuo = request.getParameter("medicamentoContinuo");
+		String pCirurgia = request.getParameter("cirurgia");
+		String pAntecedentesPessoais = request.getParameter("antecedentesPessoais");
+		String pTipoSanguineo = request.getParameter("tipoSanguineo");
 		
 		int id = -1;
+		Double peso = 0.0;
+		Double altura = 0.0;
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		java.sql.Date dataNasc = null;		
+		
 		try {
 			id = Integer.parseInt(pCodPaciente);
 		} catch (NumberFormatException e) {
-
-		}
+		}	
 		
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		java.sql.Date dataNasc = null;
+		try {
+			peso = Double.parseDouble(pPeso);
+			altura = Double.parseDouble(pAltura);
+		} catch (NumberFormatException e) {
+		}	
+		
 		try {
 			dataNasc = new java.sql.Date(format.parse(pDataNascimento).getTime());
 		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
 		}
 
-		/*ALTERAR ESSE NULL AQUI*/
-		ModelPaciente modelPaciente = new ModelPaciente(
-				pNumeroEndereco, null, pNome,
-				pCpf, dataNasc,  pEstadoCivil, pEmail,
-				pNacionalidade,  pLogradouro, pCep,  pCidade,
-				pUf,  pPais,  pTel1,  pTel2,  pCel,
-				pFlagAtivo, id,  pNumConvenio); 
+		ModelPaciente modelPaciente = new ModelPaciente(pNumeroEndereco,null,pNome,pCpf,dataNasc,
+				pEstadoCivil,pEmail,pNacionalidade,pEndereco,
+				pCep,pCidade,pUf,pPais,pTel1,pTel2,pCel,pFlagAtivo,id,pNumConvenio,
+				pAlergiaMedicamento, pAlergiaAlimentares, pMedicamentoContinuo,
+				pCirurgia, pAntecedentesPessoais, pTipoSanguineo, peso, altura);
 		
 		try {
 			modelPaciente.codLoginCadastrado = modelLogin.getCodLoginCadastrado();

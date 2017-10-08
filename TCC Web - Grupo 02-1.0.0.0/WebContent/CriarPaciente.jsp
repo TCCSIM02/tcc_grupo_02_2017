@@ -120,7 +120,7 @@
 									<label class="col-lg-3 control-label">Nome de usuário</label>
 									<div class="col-lg-6">
 										<input type="text" class="form-control" name="nomeLogin" id="nomeLogin" required
-										maxlength="20" placeholder="número do cônvenio" size="16">
+										maxlength="20" placeholder="nome do usuário" size="16">
 									</div>				  
 								</div>
 								
@@ -128,7 +128,7 @@
 									<label class="col-lg-3 control-label">Senha</label>
 									<div class="col-lg-6">
 										<input type="password" class="form-control" name="senha" id="senha" required
-										maxlength="65" placeholder="nome do paciente" size="16">
+										maxlength="65" placeholder="senha do usuário" size="16">
 									</div>				  
 								</div>
 								
@@ -264,7 +264,71 @@
 										<input type="text" class="form-control" name="cel" id="cel" 
 										maxlength="16" placeholder="telefone opcional" size="16">
 									</div>				  
-								</div>						
+								</div>
+
+								<div class="form-group">
+									<label class="col-lg-3 control-label">Alergia a algum medicamento?</label>
+									<div class="col-lg-6">
+										<input type="text" class="form-control" name="alergiaMedicamento" id="alergiaMedicamento" 
+										maxlength="100" placeholder="alergia medicamentos" size="16">
+									</div>				  
+								</div>		
+
+								<div class="form-group">
+									<label class="col-lg-3 control-label">Alergia alimentar?</label>
+									<div class="col-lg-6">
+										<input type="text" class="form-control" name="alergiaAlimentares" id="alergiaAlimentares" 
+										maxlength="100" placeholder="alergia alimentar" size="16">
+									</div>				  
+								</div>	
+
+								<div class="form-group">
+									<label class="col-lg-3 control-label">Peso</label>
+									<div class="col-lg-6">
+										<input type="number" class="form-control" name="peso" id="peso" 
+										maxlength="6" placeholder="peso" size="16">
+									</div>				  
+								</div>	
+
+								<div class="form-group">
+									<label class="col-lg-3 control-label">Altura</label>
+									<div class="col-lg-6">
+										<input type="text" class="form-control" name="altura" id="altura" 
+										maxlength="6" placeholder="Altura" size="16">
+									</div>				  
+								</div>	
+
+								<div class="form-group">
+									<label class="col-lg-3 control-label">Medicamento contínuo</label>
+									<div class="col-lg-6">
+										<input type="text" class="form-control" name="medicamentoContinuo" id="medicamentoContinuo" 
+										maxlength="100" placeholder="medicamento contínuo" size="16">
+									</div>				  
+								</div>	
+
+								<div class="form-group">
+									<label class="col-lg-3 control-label">Cirurgias</label>
+									<div class="col-lg-6">
+										<input type="text" class="form-control" name="cirurgia" id="cirurgia" 
+										maxlength="100" placeholder="cirurgia" size="16">
+									</div>				  
+								</div>	
+
+								<div class="form-group">
+									<label class="col-lg-3 control-label">Antecedentes pessoais</label>
+									<div class="col-lg-6">
+										<input type="text" class="form-control" name="antecedentesPessoais" id="antecedentesPessoais" 
+										maxlength="100" placeholder="Antecedentes Pessoais" size="16">
+									</div>				  
+								</div>	
+
+								<div class="form-group">
+									<label class="col-lg-3 control-label">Tipo sanguíneo</label>
+									<div class="col-lg-6">
+										<input type="text" class="form-control" name="tipoSanguineo" id="tipoSanguineo" 
+										maxlength="3" placeholder="Tipo sanguíneo" size="16">
+									</div>				  
+								</div>	
 						
 								<div class="form-group">
 								  <div class="col-lg-9 col-lg-offset-3">                      

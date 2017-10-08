@@ -71,7 +71,7 @@ public class DAOPaciente {
 	
 	/**/
 	public void cadastrarPaciente(TOPaciente toPaciente, int codLoginCadastrado){
-		String sqlInsert = "INSERT INTO tcc.paciente(numeroEndereco,numConvenio,nomePaciente,cPF,dataNascimento,email,estadoCivil,nacionalidade,endereco,cEP,cidade,uF,pais,tel1,tel2,cel,dataCadastro,codLogin) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,current_timestamp(),?)";
+		String sqlInsert = "INSERT INTO tcc.paciente(numeroEndereco,numConvenio,nomePaciente,cPF,dataNascimento,email,estadoCivil,nacionalidade,endereco,cEP,cidade,uF,pais,tel1,tel2,cel,dataCadastro, codLogin, alergiaMedicamento, alergiaAlimentares, peso, altura, medicamentoContinuo, cirurgia, antecedentesPessoais, tipoSanguineo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,current_timestamp(),?,?,?,?,?,?,?,?,?)";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
@@ -103,8 +103,17 @@ public class DAOPaciente {
 			stm.setString(13,toPaciente.getPais() );
 			stm.setString(14,toPaciente.getTel1()); 
 			stm.setString(15,toPaciente.getTel2()); 
-			stm.setString(16,toPaciente.getCel()) ;
-			stm.setInt(17,codLoginCadastrado) ;
+			stm.setString(16,toPaciente.getCel());
+			stm.setInt(17,codLoginCadastrado);			
+			stm.setString(18,toPaciente.getAlergiaMedicamento());
+			stm.setString(19,toPaciente.getAlergiaAlimentares());
+			stm.setDouble(20,toPaciente.getPeso());
+			stm.setDouble(21,toPaciente.getAltura());			
+			stm.setString(22,toPaciente.getMedicamentoContinuo());
+			stm.setString(23,toPaciente.getCirurgia());
+			stm.setString(24,toPaciente.getAntecedentesPessoais());
+			stm.setString(25,toPaciente.getTipoSanguineo());		
+			
 			//stm.setString(15,"1");
 			System.out.println(toPaciente.getCidade());
 			/*TOPaciente*/
@@ -131,7 +140,7 @@ public class DAOPaciente {
 	
 	
 	public void alterarPaciente(TOPaciente toPaciente){
-		String sqlUpdate = "UPDATE tcc.paciente SET numeroEndereco = ?, numConvenio = ?, nomePaciente = ?, cPF = ?, dataNascimento = ?, email = ?, estadoCivil = ?, nacionalidade = ?, endereco = ?, cEP = ?, cidade = ?, uF = ?, pais = ?, tel1 = ?, tel2 = ?, cel = ? WHERE codPaciente = ?";
+		String sqlUpdate = "UPDATE tcc.paciente SET numeroEndereco = ?, numConvenio = ?, nomePaciente = ?, cPF = ?, dataNascimento = ?, email = ?, estadoCivil = ?, nacionalidade = ?, endereco = ?, cEP = ?, cidade = ?, uF = ?, pais = ?, tel1 = ?, tel2 = ?, cel = ?, alergiaMedicamento = ?, alergiaAlimentares = ?, peso = ?, altura = ?, medicamentoContinuo = ?, cirurgia = ?, antecedentesPessoais = ?, tipoSanguineo = ? WHERE codPaciente = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 			PreparedStatement stm = conn.prepareStatement(sqlUpdate);) {		
@@ -152,9 +161,18 @@ public class DAOPaciente {
 			stm.setString(13,toPaciente.getPais() );
 			stm.setString(14,toPaciente.getTel1()); 
 			stm.setString(15,toPaciente.getTel2()); 
-			stm.setString(16,toPaciente.getCel());
-			stm.setInt(17,toPaciente.getCodPaciente());
-			
+			stm.setString(16,toPaciente.getCel());					
+			stm.setString(17,toPaciente.getAlergiaMedicamento());
+			stm.setString(18,toPaciente.getAlergiaAlimentares());
+			stm.setDouble(19,toPaciente.getPeso());
+			stm.setDouble(20,toPaciente.getAltura());
+			stm.setString(21,toPaciente.getMedicamentoContinuo());
+			stm.setString(22,toPaciente.getCirurgia());
+			stm.setString(23,toPaciente.getAntecedentesPessoais());
+			stm.setString(24,toPaciente.getTipoSanguineo());
+			stm.setInt(25,toPaciente.getCodPaciente());	
+
+			System.out.println(toPaciente.getCodPaciente());
 			
 			stm.execute();
 		} catch (Exception e) {
@@ -210,6 +228,16 @@ public class DAOPaciente {
 					toPaciente.setFlagAtivo(rs.getString("flagAtivo"));
 					toPaciente.setNumConvenio(rs.getString("numConvenio"));
 					toPaciente.setEmail(rs.getString("email"));
+					toPaciente.setAlergiaMedicamento(rs.getString("alergiaMedicamento"));
+					toPaciente.setAlergiaAlimentares(rs.getString("alergiaAlimentares"));
+					toPaciente.setPeso(rs.getDouble("peso"));
+					toPaciente.setAltura(rs.getDouble("altura"));
+					toPaciente.setMedicamentoContinuo(rs.getString("medicamentoContinuo"));
+					toPaciente.setCirurgia(rs.getString("cirurgia"));
+					toPaciente.setAntecedentesPessoais(rs.getString("antecedentesPessoais"));
+					toPaciente.setTipoSanguineo(rs.getString("tipoSanguineo"));
+				
+					
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -249,7 +277,15 @@ public class DAOPaciente {
 					toPaciente.setCel(rs.getString("cel"));
 					toPaciente.setFlagAtivo(rs.getString("flagAtivo"));
 					toPaciente.setNumConvenio(rs.getString("numConvenio"));
-					toPaciente.setEmail(rs.getString("email"));
+					toPaciente.setEmail(rs.getString("email"));					
+					toPaciente.setAlergiaMedicamento(rs.getString("alergiaMedicamento"));
+					toPaciente.setAlergiaAlimentares(rs.getString("alergiaAlimentares"));
+					toPaciente.setPeso(rs.getDouble("peso"));
+					toPaciente.setAltura(rs.getDouble("altura"));
+					toPaciente.setMedicamentoContinuo(rs.getString("medicamentoContinuo"));
+					toPaciente.setCirurgia(rs.getString("cirurgia"));
+					toPaciente.setAntecedentesPessoais(rs.getString("antecedentesPessoais"));
+					toPaciente.setTipoSanguineo(rs.getString("tipoSanguineo"));
 									
 					lista.add(toPaciente);
 				}
@@ -295,6 +331,14 @@ public class DAOPaciente {
 					toPaciente.setFlagAtivo(rs.getString("flagAtivo"));
 					toPaciente.setNumConvenio(rs.getString("numConvenio"));
 					toPaciente.setEmail(rs.getString("email"));
+					toPaciente.setAlergiaMedicamento(rs.getString("alergiaMedicamento"));
+					toPaciente.setAlergiaAlimentares(rs.getString("alergiaAlimentares"));
+					toPaciente.setPeso(rs.getDouble("peso"));
+					toPaciente.setAltura(rs.getDouble("altura"));
+					toPaciente.setMedicamentoContinuo(rs.getString("medicamentoContinuo"));
+					toPaciente.setCirurgia(rs.getString("cirurgia"));
+					toPaciente.setAntecedentesPessoais(rs.getString("antecedentesPessoais"));
+					toPaciente.setTipoSanguineo(rs.getString("tipoSanguineo"));
 									
 					lista.add(toPaciente);
 				}

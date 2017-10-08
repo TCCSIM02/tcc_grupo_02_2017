@@ -145,6 +145,62 @@
 				</p>
 				<p>${pacienteTO.cel}</p>
 			</div>
+			
+			<div class="col-md-6">
+				<p>
+					<strong>Alergia a medicamentos</strong>
+				</p>
+				<p>${pacienteTO.alergiaMedicamento}</p>
+			</div>
+			
+			<div class="col-md-6">
+				<p>
+					<strong>Alergias alimentares</strong>
+				</p>
+				<p>${pacienteTO.alergiaAlimentares}</p>
+			</div>
+			
+			<div class="col-md-6">
+				<p>
+					<strong>Peso</strong>
+				</p>
+				<p>${pacienteTO.peso}</p>
+			</div>
+			
+			<div class="col-md-6">
+				<p>
+					<strong>Altura</strong>
+				</p>
+				<p>${pacienteTO.altura}</p>
+			</div>
+			
+			<div class="col-md-6">
+				<p>
+					<strong>Medicamento contínuo</strong>
+				</p>
+				<p>${pacienteTO.medicamentoContinuo}</p>
+			</div>
+			
+			<div class="col-md-6">
+				<p>
+					<strong>Cirurgias</strong>
+				</p>
+				<p>${pacienteTO.cirurgia}</p>
+			</div>
+			
+			<div class="col-md-6">
+				<p>
+					<strong>Antecedentes pessoais</strong>
+				</p>
+				<p>${pacienteTO.antecedentesPessoais}</p>
+			</div>
+			
+			<div class="col-md-6">
+				<p>
+					<strong>Tipo sanguíneo</strong>
+				</p>
+				<p>${pacienteTO.tipoSanguineo}</p>
+			</div>
 
 
 		</div>
