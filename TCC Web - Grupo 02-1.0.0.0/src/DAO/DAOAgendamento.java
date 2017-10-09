@@ -153,7 +153,7 @@ public class DAOAgendamento {
 	public ArrayList<TOAgendamento> listarAgendamentos(String chave){
 		TOAgendamento toAgendamento;
 		ArrayList<TOAgendamento> lista = new ArrayList<>();
-		String sqlSelect = "SELECT  dataAgendamentoComeco, dataAgendamentoFim, statusAgendamento, flagAtivo, dataCadastro FROM tcc.agendamento where upper(nomeAgendamento) like '?' order by codAgendamento desc";
+		String sqlSelect = "SELECT  * FROM tcc.agendamento where upper(nomeAgendamento) like ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {

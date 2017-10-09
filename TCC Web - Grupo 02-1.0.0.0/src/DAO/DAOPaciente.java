@@ -303,7 +303,7 @@ public class DAOPaciente {
 		TOPaciente toPaciente;
 		ArrayList<TOPaciente> lista = new ArrayList<>();
 							
-		String sqlSelect = "SELECT * from  tcc.paciente where upper(nomePaciente) like '?'";
+		String sqlSelect = "SELECT * FROM  TCC.PACIENTE WHERE UPPER(nomePaciente) LIKE ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -330,7 +330,7 @@ public class DAOPaciente {
 					toPaciente.setCel(rs.getString("cel"));
 					toPaciente.setFlagAtivo(rs.getString("flagAtivo"));
 					toPaciente.setNumConvenio(rs.getString("numConvenio"));
-					toPaciente.setEmail(rs.getString("email"));
+					toPaciente.setEmail(rs.getString("email"));					
 					toPaciente.setAlergiaMedicamento(rs.getString("alergiaMedicamento"));
 					toPaciente.setAlergiaAlimentares(rs.getString("alergiaAlimentares"));
 					toPaciente.setPeso(rs.getDouble("peso"));
@@ -342,10 +342,11 @@ public class DAOPaciente {
 									
 					lista.add(toPaciente);
 				}
-			} catch (SQLException e) {
+			} catch (SQLException e) {				
 				e.printStackTrace(); 
 			}
 		} catch (SQLException e1) {
+			System.out.println("deu erro porraaaaaa");
 			System.out.print(e1.getStackTrace());
 		}
 		return lista;

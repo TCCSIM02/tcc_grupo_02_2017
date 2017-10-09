@@ -82,14 +82,17 @@
                 </div>
                 
                 
-                <div class="col-sm-4">
-                  <div class="input-group">
-                    <input type="text" class="input-sm form-control" placeholder="Pesquisar" value="Plano" >
-                    <span class="input-group-btn">
-                      <button class="btn btn-sm btn-white" type="button">Buscar</button>
-                    </span>
-                  </div>
-                </div>
+       			<form action="controller.do" method="post">
+					<div class="col-sm-4">
+						<div class="input-group">
+							<input name="data[search]" id="search" class="input-sm form-control" placeholder="Pesquisar">
+							<span class="input-group-btn">
+								<button class="btn btn-sm btn-white" type="submit" name="command" value="ListarPlanoBuscar">Buscar</button>
+							</span>
+						</div>
+					</div>
+				</form>
+                
               </div>
             </div>
            

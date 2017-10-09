@@ -185,7 +185,7 @@ public class DAOAtendente {
 		TOAtendente toAtendente;
 		ArrayList<TOAtendente> lista = new ArrayList<>();
 							
-		String sqlSelect = "SELECT * from  tcc.atendente where upper(nomeAtendente) like '?'";
+		String sqlSelect = "SELECT * from  tcc.atendente where upper(nomeAtendente) like ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {

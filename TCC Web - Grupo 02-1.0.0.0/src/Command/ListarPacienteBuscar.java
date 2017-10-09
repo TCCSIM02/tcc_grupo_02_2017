@@ -26,13 +26,11 @@ public class ListarPacienteBuscar implements Command {
 
 		HttpSession session = request.getSession();
 
-
 		if (chave != null && chave.length() > 0) {
-
+			
 			try {
 				lista = modelPaciente.listarPacientes(chave);
-			} catch (ClassNotFoundException e) {
-				
+			} catch (ClassNotFoundException e) {			
 				e.printStackTrace();
 			}
 

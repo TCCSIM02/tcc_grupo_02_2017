@@ -89,7 +89,7 @@ public class DAOEspecialidade {
 	public ArrayList<TOEspecialidade> listarEspecialidades(String chave){
 		TOEspecialidade toEspecialidade;
 		ArrayList<TOEspecialidade> lista = new ArrayList<>();
-		String sqlSelect = "select * from tcc.especialidade where upper(descricao) like '?'";
+		String sqlSelect = "select * from tcc.especialidade where upper(descricao) like ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {

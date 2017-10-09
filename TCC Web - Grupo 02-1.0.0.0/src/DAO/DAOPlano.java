@@ -146,7 +146,7 @@ public class DAOPlano {
 	public ArrayList<TOPlano> listarPlanos(String chave){
 		TOPlano toPlano;
 		ArrayList<TOPlano> lista = new ArrayList<>();
-		String sqlSelect = "SELECT codPlano, nomePlano, registroAns, tipoPlano, flagAtivo, dataCadastro FROM tcc.plano where upper(nomePlano) like '?' order by codPlano desc";
+		String sqlSelect = "SELECT * FROM tcc.plano where upper(nomePlano) like ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {

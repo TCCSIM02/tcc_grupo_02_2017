@@ -132,7 +132,7 @@ public class DAOConsulta{
 	/*public ArrayList<TOConsulta> toConsulta(String chave){
 		TOConsulta toConsulta;
 		ArrayList<TOConsulta> lista = new ArrayList<>();
-		String sqlSelect = "select * from tcc.consulta  where upper(nomeFantasia) like '?'";
+		String sqlSelect = "select * from tcc.consulta  where upper(nomeFantasia) like ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {

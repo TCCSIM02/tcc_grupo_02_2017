@@ -180,7 +180,7 @@ public class DAOUnidade {
 	public ArrayList<TOUnidade> listarUnidades(String chave){
 		TOUnidade toUnidade;
 		ArrayList<TOUnidade> lista = new ArrayList<>();
-		String sqlSelect = "SELECT * from  tcc.unidade where upper(nomeFantasia) like '?'";
+		String sqlSelect = "SELECT * from  tcc.unidade where upper(nomeFantasia) like ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {

@@ -125,7 +125,7 @@ public class DAOExame {
 	public ArrayList<TOExame> listarExames(String chave){
 		TOExame toExame;
 		ArrayList<TOExame> lista = new ArrayList<>();
-		String sqlSelect = "SELECT codExame, descricao, resultadoExame, valorExame FROM tcc.exame where upper(descricao) like '?' order by codExame desc";
+		String sqlSelect = "SELECT * FROM tcc.exame where upper(descricao) like ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {

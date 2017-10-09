@@ -191,7 +191,7 @@ public class DAOAdministrador {
 		TOAdministrador toAdministrador;
 		ArrayList<TOAdministrador> lista = new ArrayList<>();
 							
-		String sqlSelect = "SELECT * from  tcc.administrador where upper(nomeAdministrador) like '?'";
+		String sqlSelect = "SELECT * from  tcc.administrador where upper(nomeAdministrador) like ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
