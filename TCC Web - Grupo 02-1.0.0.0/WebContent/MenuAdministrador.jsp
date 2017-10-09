@@ -26,14 +26,6 @@
 			<a href="controller.do?command=ListarPlanoBuscar"><i class="icon-briefcase icon-xlarge"></i><span>Planos</span></a>
 		</li>	    
 
-        <% if( pagina.equals("promocao")) {  %>
-		<li class="active">		
-		<% } else { %>
-		<li class="dropdown-submenu">
-		<% } %>
-			<a href="controller.do?command=ListarPromocaoBuscar"><i class="icon-usd icon-xlarge"></i><span>Promoções</span></a>
-		</li>
-	  
 		<% if( pagina.equals("funcionario")) {  %>
 		<li class="dropdown-submenu active">		
 		<% } else { %>

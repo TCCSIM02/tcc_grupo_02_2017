@@ -108,14 +108,13 @@
 			<div class="clearfix">
 				<h4><i class="icon-edit"></i>Cadastrar paciente</h4>
 			</div>
+			
+			<form class="form-horizontal" action="controller.do" method="post" data-validate="parsley">  
 			  
-			<div class="row">
-				<div class="col-sm-12">
-					<section class="panel">
-						<div class="panel-body">
-						 
-							<form class="form-horizontal" action="controller.do" method="post" data-validate="parsley">      
-							
+				<div class="row">
+					<div class="col-sm-6">
+						<section class="panel">
+							<div class="panel-body">						
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Nome de usuário</label>
 									<div class="col-lg-6">
@@ -132,7 +131,7 @@
 									</div>				  
 								</div>
 								
-					
+						
 								
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Número do Convênio</label>
@@ -188,8 +187,15 @@
 										<input type="text" class="form-control" name="nacionalidade" id="nacionalidade" required
 										maxlength="35" placeholder="nacionalidade" size="16">
 									</div>				  
-								</div>
-								
+								</div>	  
+							</div>
+						</section>
+					</div>  
+					
+									
+					<div class="col-sm-6">
+						<section class="panel">
+							<div class="panel-body"> 							
 								<div class="form-group">
 									<label class="col-lg-3 control-label">CEP</label>
 									<div class="col-lg-6">
@@ -240,7 +246,7 @@
 										maxlength="200" placeholder="número" size="16">
 									</div>				  
 								</div>
-							
+								
 
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Telefone Principal</label>
@@ -264,84 +270,112 @@
 										<input type="text" class="form-control" name="cel" id="cel" 
 										maxlength="16" placeholder="telefone opcional" size="16">
 									</div>				  
-								</div>
+								</div>								  
+							</div>
+						</section>
+					</div>  				
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-12">
+						<section class="panel">
+							<div class="panel-body">			
+								<div class="panel-group">
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+												<a data-toggle="collapse" href="#collapse1">Informações históricas</a>
+											</h4>
+										</div>
+										<div id="collapse1" class="panel-collapse collapse">
+											<div class="panel-body">
+												<div class="form-group">
+													<label class="col-lg-3 control-label">Alergia a algum medicamento?</label>
+													<div class="col-lg-6">
+														<input type="text" class="form-control" name="alergiaMedicamento" id="alergiaMedicamento" 
+														maxlength="100" placeholder="alergia medicamentos" size="16">
+													</div>				  
+												</div>		
 
-								<div class="form-group">
-									<label class="col-lg-3 control-label">Alergia a algum medicamento?</label>
-									<div class="col-lg-6">
-										<input type="text" class="form-control" name="alergiaMedicamento" id="alergiaMedicamento" 
-										maxlength="100" placeholder="alergia medicamentos" size="16">
-									</div>				  
-								</div>		
+												<div class="form-group">
+													<label class="col-lg-3 control-label">Alergia alimentar?</label>
+													<div class="col-lg-6">
+														<input type="text" class="form-control" name="alergiaAlimentares" id="alergiaAlimentares" 
+														maxlength="100" placeholder="alergia alimentar" size="16">
+													</div>				  
+												</div>	
 
-								<div class="form-group">
-									<label class="col-lg-3 control-label">Alergia alimentar?</label>
-									<div class="col-lg-6">
-										<input type="text" class="form-control" name="alergiaAlimentares" id="alergiaAlimentares" 
-										maxlength="100" placeholder="alergia alimentar" size="16">
-									</div>				  
-								</div>	
+												<div class="form-group">
+													<label class="col-lg-3 control-label">Peso</label>
+													<div class="col-lg-6">
+														<input type="number" class="form-control" name="peso" id="peso" 
+														maxlength="6" placeholder="peso" size="16">
+													</div>				  
+												</div>	
 
-								<div class="form-group">
-									<label class="col-lg-3 control-label">Peso</label>
-									<div class="col-lg-6">
-										<input type="number" class="form-control" name="peso" id="peso" 
-										maxlength="6" placeholder="peso" size="16">
-									</div>				  
-								</div>	
+												<div class="form-group">
+													<label class="col-lg-3 control-label">Altura</label>
+													<div class="col-lg-6">
+														<input type="text" class="form-control" name="altura" id="altura" 
+														maxlength="6" placeholder="Altura" size="16">
+													</div>				  
+												</div>	
 
-								<div class="form-group">
-									<label class="col-lg-3 control-label">Altura</label>
-									<div class="col-lg-6">
-										<input type="text" class="form-control" name="altura" id="altura" 
-										maxlength="6" placeholder="Altura" size="16">
-									</div>				  
-								</div>	
+												<div class="form-group">
+													<label class="col-lg-3 control-label">Medicamento contínuo</label>
+													<div class="col-lg-6">
+														<input type="text" class="form-control" name="medicamentoContinuo" id="medicamentoContinuo" 
+														maxlength="100" placeholder="medicamento contínuo" size="16">
+													</div>				  
+												</div>	
 
-								<div class="form-group">
-									<label class="col-lg-3 control-label">Medicamento contínuo</label>
-									<div class="col-lg-6">
-										<input type="text" class="form-control" name="medicamentoContinuo" id="medicamentoContinuo" 
-										maxlength="100" placeholder="medicamento contínuo" size="16">
-									</div>				  
-								</div>	
+												<div class="form-group">
+													<label class="col-lg-3 control-label">Cirurgias</label>
+													<div class="col-lg-6">
+														<input type="text" class="form-control" name="cirurgia" id="cirurgia" 
+														maxlength="100" placeholder="cirurgia" size="16">
+													</div>				  
+												</div>	
 
-								<div class="form-group">
-									<label class="col-lg-3 control-label">Cirurgias</label>
-									<div class="col-lg-6">
-										<input type="text" class="form-control" name="cirurgia" id="cirurgia" 
-										maxlength="100" placeholder="cirurgia" size="16">
-									</div>				  
-								</div>	
+												<div class="form-group">
+													<label class="col-lg-3 control-label">Antecedentes pessoais</label>
+													<div class="col-lg-6">
+														<input type="text" class="form-control" name="antecedentesPessoais" id="antecedentesPessoais" 
+														maxlength="100" placeholder="Antecedentes Pessoais" size="16">
+													</div>				  
+												</div>	
 
-								<div class="form-group">
-									<label class="col-lg-3 control-label">Antecedentes pessoais</label>
-									<div class="col-lg-6">
-										<input type="text" class="form-control" name="antecedentesPessoais" id="antecedentesPessoais" 
-										maxlength="100" placeholder="Antecedentes Pessoais" size="16">
-									</div>				  
-								</div>	
-
-								<div class="form-group">
-									<label class="col-lg-3 control-label">Tipo sanguíneo</label>
-									<div class="col-lg-6">
-										<input type="text" class="form-control" name="tipoSanguineo" id="tipoSanguineo" 
-										maxlength="3" placeholder="Tipo sanguíneo" size="16">
-									</div>				  
-								</div>	
-						
-								<div class="form-group">
-								  <div class="col-lg-9 col-lg-offset-3">                      
+												<div class="form-group">
+													<label class="col-lg-3 control-label">Tipo sanguíneo</label>
+													<div class="col-lg-6">
+														<input type="text" class="form-control" name="tipoSanguineo" id="tipoSanguineo" 
+														maxlength="3" placeholder="Tipo sanguíneo" size="16">
+													</div>				  
+												</div>						
+											</div>
+											<div class="panel-footer">Informações históricas</div>
+										</div>
+									</div>
+								</div>									
+							</div>
+						</section>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-12" style="text-align:center;">
+						<section class="panel">
+							<div class="panel-body">	
+								<div class="form-group">                    
 									<a href="ListarPaciente.jsp" class="btn btn-white">Cancelar</a>
-									<button name="command" value="CriarPaciente" type="submit" class="btn btn-primary">Cadastrar</button>
-								  </div>
-								</div>
-								
-							</form>				  
-						</div>
-					</section>
-				</div>  
-			</div>
+									<button name="command" value="CriarPaciente" type="submit" class="btn btn-primary">Cadastrar</button>									
+								</div>	
+							</div>
+						</section>
+					</div>
+				</div>
+				
+			</form>		
 		</section>
 	</section>
 	  
