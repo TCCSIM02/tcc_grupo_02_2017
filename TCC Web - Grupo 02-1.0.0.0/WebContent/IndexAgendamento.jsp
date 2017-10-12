@@ -52,25 +52,17 @@
 	</div>
 	<div class="line"></div>
 	<p>Selecione o médico:</p>
-	<div id="cb-medico" class="input-group dropdown combobox m-b">
-		<input class="input-sm form-control" name="combobox" type="text">
-		<div class="input-group-btn">
-			<button type="button" style="height: 30px; width: 30px"
-				class="btn btn-sm btn-white dropdown-toggle" data-toggle="dropdown">
-				<i class="caret"></i>
-			</button>
-			<ul class="dropdown-menu pull-right">
-				<li data-value="1" data-selected="true"><a href="#">Item
-						One</a></li>
-				<li data-value="2"><a href="#">Item Two</a></li>
-				<li data-value="3" data-fizz="buzz"><a href="#">Item Three</a></li>
-				<li class="divider"></li>
-				<li data-value="4"><a href="#">Item Four</a></li>
-			</ul>
-		</div>
-	</div>
+	
+	 <select class="input-sm inline form-control" style="width:130px">
+    	<option value=""></option>
+    	<c:forEach var="to" items="${lista}">
+        	<option value="${to.codMedico}">${to.nome}</option>
+   		</c:forEach>
+	</select>
+
 	</aside> <!-- /.sidebar --> <!-- .main --> <section class="main">
 	<div class="" id="fc-agendamento"></div>
+	
 	</section> <!-- /.main --> </section>
 
 	<!-- footer -->
