@@ -10,7 +10,7 @@ import TO.TOEspecialidade;
 public class ModelEspecialidade {
 
 	private int codEspecialidade;
-	private String flagAtivo, descricao;
+	private String flagAtivo, descricao, especialidade;
 	
 	public ModelEspecialidade() {
 		// TODO Auto-generated constructor stub
@@ -28,10 +28,11 @@ public class ModelEspecialidade {
 	 * @param flagAtivo
 	 * @param descricao
 	 */
-	public ModelEspecialidade(int codEspecialidade, String flagAtivo, String descricao) {
+	public ModelEspecialidade(int codEspecialidade,String especialidade, String flagAtivo, String descricao) {
 		this.codEspecialidade = codEspecialidade;
 		this.flagAtivo = flagAtivo;
 		this.descricao = descricao;
+		this.especialidade = especialidade;
 	}
 
 	/**
@@ -55,6 +56,10 @@ public class ModelEspecialidade {
 		return descricao;
 	}
 
+	public String getEspecialidade() {
+		return especialidade;
+	}
+
 	/**
 	 * @param codEspecialidade the codEspecialidade to set
 	 */
@@ -76,12 +81,17 @@ public class ModelEspecialidade {
 		this.descricao = descricao;
 	}
 
+	public void setEspecialidade(String especialidade) {
+		this.especialidade = especialidade;
+	}
+	
 	public TOEspecialidade getTO(){
 		
 		TOEspecialidade toEspecialidade = new TOEspecialidade();
 		
 		toEspecialidade.setCodEspecialidade(codEspecialidade);
 		toEspecialidade.setDescricao(descricao);
+		toEspecialidade.setEspecialidade(especialidade);
 		toEspecialidade.setFlagAtivo(flagAtivo);
 		
 		return toEspecialidade;
@@ -102,6 +112,7 @@ public class ModelEspecialidade {
 		codEspecialidade = toEspecialidade.getCodEspecialidade();
 		descricao =  toEspecialidade.getDescricao();
 		flagAtivo = toEspecialidade.getFlagAtivo();
+		especialidade = toEspecialidade.getEspecialidade();
 	}
 	
 	public ArrayList<TOEspecialidade> listarEspecialidades() throws ClassNotFoundException{

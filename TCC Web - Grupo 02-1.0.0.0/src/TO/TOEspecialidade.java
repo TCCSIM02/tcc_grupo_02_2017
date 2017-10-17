@@ -2,7 +2,7 @@ package TO;
 
 public class TOEspecialidade {
 	private int codEspecialidade;
-	private String flagAtivo, descricao;
+	private String flagAtivo, descricao, especialidade;
 	/**
 	 * @return the codEspecialidade
 	 */
@@ -21,6 +21,11 @@ public class TOEspecialidade {
 	public String getDescricao() {
 		return descricao;
 	}
+	
+	public String getEspecialidade() {
+		return especialidade;
+	}
+	
 	/**
 	 * @param codEspecialidade the codEspecialidade to set
 	 */
@@ -38,5 +43,9 @@ public class TOEspecialidade {
 	 */
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	
+	public void setEspecialidade(String especialidade) {
+		this.especialidade = especialidade;
 	}
 }

@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Model.ModelAgendamento;
+import Model.ModelEspecialidade;
 import Model.ModelMedico;
+import TO.TOEspecialidade;
 import TO.TOMedico;
 
 public class IndexAgendamento implements Command {
@@ -34,6 +36,8 @@ public class IndexAgendamento implements Command {
 		
 		view = request.getRequestDispatcher("IndexAgendamento.jsp");
 		
+		
+		/*TUDO PARA LISTAR OS MÉDICOS NO COMBOBOX*/
 		ModelMedico modelMedico = new ModelMedico(); 
 		
 		ArrayList<TOMedico> lista = new ArrayList<>(); 
@@ -42,9 +46,26 @@ public class IndexAgendamento implements Command {
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}		
 		
 		session.setAttribute("lista", lista);	
+		/*TUDO PARA LISTAR OS MÉDICOS NO COMBOBOX*/
+		
+		
+		/*TUDO PARA LISTAR AS ESPECIALIDADES NO COMBOBOX*/
+		ModelEspecialidade modelEspecialidade = new ModelEspecialidade(); 
+		
+		ArrayList<TOEspecialidade> listaEspecialidade = new ArrayList<>(); 
+		try {
+			listaEspecialidade = modelEspecialidade.listarEspecialidades();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		
+		session.setAttribute("listaEspecialidade", listaEspecialidade);	
+		/*TUDO PARA LISTAR AS ESPECIALIDADES NO COMBOBOX*/
+		
 		
 		try {
 			session.setAttribute("jsonCalendario", modelAgendamento.jsonCalendario());

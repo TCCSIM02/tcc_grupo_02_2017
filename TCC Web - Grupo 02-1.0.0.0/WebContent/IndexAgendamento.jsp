@@ -51,6 +51,21 @@
 		</ul>
 	</div>
 	<div class="line"></div>
+
+
+	<p>Selecione a especialidade:</p>
+	
+	 <select class="input-sm inline form-control" style="width:130px">
+    	<option value=""></option>
+    	<c:forEach var="to" items="${listaEspecialidade}">
+        	<option value="${to.codEspecialidade}">${to.especialidade}</option>
+   		</c:forEach>
+	</select>
+
+
+
+
+
 	<p>Selecione o médico:</p>
 	
 	 <select class="input-sm inline form-control" style="width:130px">

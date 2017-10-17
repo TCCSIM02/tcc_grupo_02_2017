@@ -1,12 +1,13 @@
 DROP SCHEMA IF EXISTS `TCC` ;
 CREATE SCHEMA IF NOT EXISTS `TCC` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `TCC` ;
-/* ATUALIZACAO 30-08-2017 - cria√É¬ß√É¬£o dos campos cidade e numeroEndereco na tabela Paciente*/
+/* ATUALIZACAO 30-08-2017 - cria√É∆í√Ç¬ß√É∆í√Ç¬£o dos campos cidade e numeroEndereco na tabela Paciente*/
 /* ATUALIZACAO 08-09-2017 - Criacao de inserts para a tabela nivel de usuario*/
 /* ATUALIZACAO 08-09-2017 - Alteracao de limite do tamanho campo senha na tabela login*/
-/* ATUALIZACAO 16-09-2017 - cria√É¬ß√É¬£o dos campos numeroEndereco, latitude e longitude na tabela Unidade*/
-/* ATUALIZACAO 17-09-2017 - cria√ß√£o do campo numeroEndereco nas tabelas Medico, atendente e administrador*/
+/* ATUALIZACAO 16-09-2017 - cria√É∆í√Ç¬ß√É∆í√Ç¬£o dos campos numeroEndereco, latitude e longitude na tabela Unidade*/
+/* ATUALIZACAO 17-09-2017 - cria√É¬ß√É¬£o do campo numeroEndereco nas tabelas Medico, atendente e administrador*/
 /* ATUALIZACAO 18-09-2017 - alteracao do campo latitude longide para DECIMAL(11, 8)*/
+/* ATUALIZA√á√ÉO 08-10-2017 - exclus√£o da classe de promo√ß√£o, inclus√£o das informa√ß√µes de pr√©-triagem no paciente */
 /* ATUALIZACAO 13-10-2017 - criacao do campo "especialidade na tabela TCC.ESPECIALIDE e carga de especialidades"*/
 -- -----------------------------------------------------
 -- Table `TCC`.`Unidade`
@@ -45,7 +46,7 @@ DROP TABLE IF EXISTS `TCC`.`NivelUsuario` ;
 CREATE TABLE IF NOT EXISTS `TCC`.`NivelUsuario` (
   `codNivel` INT NOT NULL AUTO_INCREMENT COMMENT 'Chave Primaria',
   `nomeNivel` VARCHAR(45) NOT NULL COMMENT 'Nome do nivel de permissao do usuario',
-  `flagAtivo` BIT NULL DEFAULT 1 COMMENT 'Indicador se nivel de usuario est√É∆í√Ç¬° ativo.',
+  `flagAtivo` BIT NULL DEFAULT 1 COMMENT 'Indicador se nivel de usuario est√É∆í√Ü‚Äô√É‚Äö√Ç¬° ativo.',
   `dataCadastro` DATETIME NOT NULL COMMENT 'Data de cadastro do Nivel de usuario',
   PRIMARY KEY (`codNivel`))
 ENGINE = InnoDB;
@@ -57,7 +58,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `TCC`.`Login` ;
 
 CREATE TABLE IF NOT EXISTS `TCC`.`Login` (
-  `codLogin` INT NOT NULL AUTO_INCREMENT COMMENT 'Chave Prim√É∆í√Ç¬°ria',
+  `codLogin` INT NOT NULL AUTO_INCREMENT COMMENT 'Chave Prim√É∆í√Ü‚Äô√É‚Äö√Ç¬°ria',
   `codNivel` INT NULL COMMENT 'Codigo do nivel para este o codigo de login',
   `nomeLogin` VARCHAR(20) NOT NULL COMMENT 'Nome de login que vai ser utilizado para entrar no software',
   `senha` VARCHAR(255) NOT NULL COMMENT 'Senha que vai ser utilizada para entrar no software',
@@ -133,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `TCC`.`Medico` (
   `estadoCivil` VARCHAR(20) NOT NULL COMMENT 'Estado civil do medico',
   `nacionalidade` VARCHAR(40) NOT NULL COMMENT 'Nascionalidade do medico',
   `endereco` VARCHAR(200) NOT NULL COMMENT ' Endereco do Medico',
-  `numeroEndereco` VARCHAR(200) NOT NULL COMMENT 'numero Endereco do M√©dico',
+  `numeroEndereco` VARCHAR(200) NOT NULL COMMENT 'numero Endereco do M√É¬©dico',
   `cEP` VARCHAR(9) NOT NULL COMMENT 'CEP de residencia do medico',
   `cidade` VARCHAR(50) NOT NULL COMMENT 'Cidade de residencia do medico',
   `uF` VARCHAR(2) NOT NULL COMMENT 'UF de residencia do medico',
@@ -183,6 +184,14 @@ CREATE TABLE IF NOT EXISTS `TCC`.`Paciente` (
   `tel1` VARCHAR(15) NOT NULL COMMENT 'Telefone 1 (principal) de contato do Paciente',
   `tel2` VARCHAR(15) NULL COMMENT 'Telefone 2 de contato do Paciente',
   `cel` VARCHAR(15) NULL COMMENT 'Celular de contato do Paciente',
+  `alergiaMedicamento` VARCHAR(1000) NULL COMMENT 'Descricao da pre-triagem (Sintomas)',
+  `alergiaAlimentares` VARCHAR(1000) NULL COMMENT 'Observacoes de alergias',
+  `peso` DECIMAL(3,2) NULL COMMENT 'Peso atual',
+  `altura` DECIMAL(3,2) NULL COMMENT 'Altura atual',
+  `medicamentoContinuo` VARCHAR(500) NULL COMMENT 'Uso de medicamentos continuos e controlados',
+  `cirurgia` VARCHAR(1000) NULL COMMENT 'Cirurgias recentes',
+  `antecedentesPessoais` VARCHAR(100) NULL COMMENT 'Se existem doencas cronicas na familia',
+  `tipoSanguineo` VARCHAR(3) NULL COMMENT 'Tipo Sangu√É∆í√Ü‚Äô√É‚Äö√Ç¬≠neo do paciente',  
   `flagAtivo` BIT NULL DEFAULT 1 COMMENT 'Indicador de paciente ativo',
   `dataCadastro` DATETIME NOT NULL COMMENT 'Data de cadastro do Paciente',
   PRIMARY KEY (`codPaciente`),
@@ -349,72 +358,6 @@ CREATE TABLE IF NOT EXISTS `TCC`.`Exame` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `TCC`.`Promocao`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `TCC`.`Promocao` ;
-
-CREATE TABLE IF NOT EXISTS `TCC`.`Promocao` (
-  `codPromocao` INT NOT NULL AUTO_INCREMENT COMMENT 'Chave Primaria',
-  `codUnidade` INT NULL COMMENT 'Codigo da unidade onde a promocao esta ativa',
-  `codExame` INT NULL COMMENT 'Codigo do exame que esta incluido na promocao',
-  `codPaciente` INT NULL COMMENT 'Codigo do paciente ',
-  `valorPromocao` DECIMAL(10,2) NOT NULL COMMENT 'Valor da promocao',
-  `dataInicio` DATETIME COMMENT 'Data de inicio da promocao',
-  `dataTermino` DATETIME COMMENT 'Data que a promocao termina',
-  `flagAtivo` BIT NULL DEFAULT 1 COMMENT 'Indicador se a promocao esta ativa',
-  `dataCadastro` DATETIME NOT NULL COMMENT 'Data de cadastro da promocao',
-  PRIMARY KEY (`codPromocao`),
-  INDEX `codUnidade_idx` (`codUnidade` ASC),
-  INDEX `codExame_idx` (`codExame` ASC),
-  INDEX `codPaciente_idx` (`codPaciente` ASC),
-  CONSTRAINT `codUnidade_codPromocao`
-    FOREIGN KEY (`codUnidade`)
-    REFERENCES `TCC`.`Unidade` (`codUnidade`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `codExame_codPromocao`
-    FOREIGN KEY (`codExame`)
-    REFERENCES `TCC`.`Exame` (`codExame`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `codPaciente_codPromocao`
-    FOREIGN KEY (`codPaciente`)
-    REFERENCES `TCC`.`Paciente` (`codPaciente`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `TCC`.`PreTriagem`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `TCC`.`PreTriagem` ;
-
-CREATE TABLE IF NOT EXISTS `TCC`.`PreTriagem` (
-  `codPreTriagem` INT NOT NULL AUTO_INCREMENT COMMENT 'Chave Primaria ',
-  `codPaciente` INT NULL COMMENT 'Codigo do paciente desta triagem',
-  `alergiaMedicamento` VARCHAR(1000) NOT NULL COMMENT 'Descricao da pre-triagem (Sintomas)',
-  `alergiaAlimentares` VARCHAR(1000) NOT NULL COMMENT 'Observacoes de alergias',
-  `peso` DECIMAL(3,2) NOT NULL COMMENT 'Peso atual',
-  `altura` DECIMAL(3,2) NOT NULL COMMENT 'Altura atual',
-  `medicamentoContinuo` VARCHAR(500) NOT NULL COMMENT 'Uso de medicamentos continuos e controlados',
-  `cirurgia` VARCHAR(1000) NOT NULL COMMENT 'Cirurgias recentes, vale os ultimos 2 anos',
-  `antecedentesPessoais` VARCHAR(100) NOT NULL COMMENT 'Se existem doencas cronicas na familia',
-  `flagAtivo` BIT NULL DEFAULT 1 COMMENT 'Indicador se a pre-triagem esta ativa.',
-  `dataCadastro` DATETIME NOT NULL COMMENT 'Data de cadastro da pre-triagem',
-  `tipoSanguineo` VARCHAR(3) NULL COMMENT 'Tipo Sangu√É∆í√Ç¬≠neo do paciente',
-  PRIMARY KEY (`codPreTriagem`),
-  INDEX `codPaciente_idx` (`codPaciente` ASC),
-  CONSTRAINT `codPaciente_codPreTriagem`
-    FOREIGN KEY (`codPaciente`)
-    REFERENCES `TCC`.`Paciente` (`codPaciente`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
 -- -----------------------------------------------------
 -- Table `TCC`.`Receituario`
 -- -----------------------------------------------------
@@ -512,6 +455,7 @@ CREATE TABLE IF NOT EXISTS `TCC`.`Especialidade` (
 ENGINE = InnoDB;
 
 
+
 -- -----------------------------------------------------
 -- Table `TCC`.`AssociativaMedicoEspecialidade`
 -- -----------------------------------------------------
@@ -598,92 +542,281 @@ CREATE TABLE IF NOT EXISTS `TCC`.`AssociativaCadernetaVacina` (
 ENGINE = InnoDB;
 
 
+-- INSERTS DE UNIDADE
+INSERT INTO `TCC`.`Unidade`(
+								`codUnidade`,`razaoSocial`, `nomeFantasia`, `cNPJ`, `nomeRede`,`endereco`,
+								`cEP`, `cidade`, `uF`, `pais`,`numeroEndereco`,`latitude`, `longitude`, `representante`, `tel1`,
+								`tel2`,`cel`, `flagAtivo`, `dataCadastro`
+							) VALUES (
+								1,'Hospital S√£o Cristov√£o', 'S√£o Cristov√£o', '56.232.632/0001-35', 'S√£o Cristov√£o', 'Rua Anita Ferraz',
+								'01505-010', 'S√£o Paulo', 'SP', 'Brasil', '37', '-23.554301', '-46.6332016', 'Juan Lima', '(11)3207-2328',
+								'(11)3358-4045', '(11)98448-6531', 1, current_timestamp()
+							);
+-- INSERTS DE UNIDADE
 
-INSERT INTO `TCC`.`Plano` ( `nomePlano`, `registroAns`, `tipoPlano`, `flagAtivo`, `dataCadastro`)
-VALUES ('Dix100', 12355648, 'Premium', 1, '2017-05-20 00:00:00');
 
-insert into TCC.NivelUsuario (codNivel,nomeNivel,flagAtivo,dataCadastro) values (1,'MÈdico',1,current_timestamp());
-insert into TCC.NivelUsuario (codNivel,nomeNivel,flagAtivo,dataCadastro) values (2,'Paciente',1,current_timestamp());
-insert into TCC.NivelUsuario (codNivel,nomeNivel,flagAtivo,dataCadastro) values (3,'Atendente',1,current_timestamp());
-insert into TCC.NivelUsuario (codNivel,nomeNivel,flagAtivo,dataCadastro) values (4,'Administrador',1,current_timestamp());
 
-SELECT * FROM Tcc.Unidade;
+-- INSERTS DE N√çVEL DE USU√ÅRIO							
+INSERT INTO `TCC`.`NivelUsuario`(
+								`codNivel`, `nomeNivel`, `flagAtivo`, `dataCadastro`
+							) VALUES (
+								1, 'M√©dico', 1, '2015-08-20 00:00:00'
+							);
+							
+INSERT INTO `TCC`.`NivelUsuario`(
+								`codNivel`,`nomeNivel`, `flagAtivo`, `dataCadastro`
+							) VALUES (
+								2, 'Paciente', 1, '2015-08-20 00:00:00'
+							);
 
-insert into tcc.agendamento(codPaciente,codMedico,codUnidade,codAtendente,dataAgendamentoComeco,dataAgendamentoFim,statusAgendamento,flagAtivo,dataCadastro) 
-values (1,1,1,1,'2017-10-12 12:00:00','2017-10-12 13:00:00','agendado',1,current_timestamp());
+INSERT INTO `TCC`.`NivelUsuario`(
+								`codNivel`,`nomeNivel`, `flagAtivo`, `dataCadastro`
+							) VALUES (
+								3, 'Atendente', 1, '2015-08-20 00:00:00'
+							);
+							
+INSERT INTO `TCC`.`NivelUsuario`(
+								`codNivel`,`nomeNivel`, `flagAtivo`, `dataCadastro`
+							) VALUES (
+								4, 'Administrador', 1, '2015-08-20 00:00:00'
+							);
+-- INSERTS DE N√çVEL DE USU√ÅRIO	
 
-insert into tcc.agendamento(codPaciente,codMedico,codUnidade,codAtendente,dataAgendamentoComeco,dataAgendamentoFim,statusAgendamento,flagAtivo,dataCadastro) 
-values (1,1,1,1,'2017-10-12 13:00:00','2017-10-12 14:00:00','agendado',1,current_timestamp());
 
-insert into tcc.agendamento(codPaciente,codMedico,codUnidade,codAtendente,dataAgendamentoComeco,dataAgendamentoFim,statusAgendamento,flagAtivo,dataCadastro) 
-values (1,1,1,1,'2017-10-12 14:00:00','2017-10-12 15:00:00','agendado',1,current_timestamp());
 
-insert into tcc.agendamento(codPaciente,codMedico,codUnidade,codAtendente,dataAgendamentoComeco,dataAgendamentoFim,statusAgendamento,flagAtivo,dataCadastro) 
-values (1,1,1,1,'2017-10-12 15:00:00','2017-10-12 16:00:00','agendado',1,current_timestamp());
 
-insert into tcc.agendamento(codPaciente,codMedico,codUnidade,codAtendente,dataAgendamentoComeco,dataAgendamentoFim,statusAgendamento,flagAtivo,dataCadastro) 
-values (1,1,1,1,'2017-10-12 16:00:00','2017-10-12 17:00:00','agendado',1,current_timestamp());
 
-insert into tcc.agendamento(codPaciente,codMedico,codUnidade,codAtendente,dataAgendamentoComeco,dataAgendamentoFim,statusAgendamento,flagAtivo,dataCadastro) 
-values (1,1,1,1,'2017-10-12 17:00:00','2017-10-12 18:00:00','agendado',1,current_timestamp());
 
-/****
+-- INSERT DE LOGIN						
 
-CARGA DE ESPECIALIDADES
+INSERT INTO `TCC`.`Login`	(
+								`codLogin`, `codNivel`, `nomeLogin`, `senha`,`flagAtivo`, `dataCadastro`
+							) VALUES (
+								1, 1, 'Nilton', 'ed08c290d7e22f7bb324b15cbadce35b0b348564fd2d5f95752388d86d71bcca', 1,'2016-11-07 00:00:00'
+							);							
+	
+-- A senha desse usu√°rio √© "juan" criptografada em sha256
 
-**/
 
-insert into tcc.especialidade(especialidade,descricao) values ("Acupuntura","ramo da medicina tradicional chinesa e um mÈtodo de tratamento chamado complementar de acordo com a nova terminologia da OMS.");
-insert into tcc.especialidade(especialidade,descricao) values ("Alergia e Imunologia","diagnÛstico e tratamento das doenÁas alÈrgicas e do sistema imunolÛgico.");
-insert into tcc.especialidade(especialidade,descricao) values ("Anestesiologia","·rea da Medicina que envolve o tratamento da dor, a hipnose e o manejo intensivo do paciente sob intervenÁ„o cir˙rgica ou procedimentos.");
-insert into tcc.especialidade(especialidade,descricao) values ("Angiologia","È a ·rea da medicina que estuda o tratamento das doenÁas do aparelho circulatÛrio.");
-insert into tcc.especialidade(especialidade,descricao) values ("Cancerologia (oncologia)","È a especialidade que trata dos tumores malignos ou c‚ncer.");
-insert into tcc.especialidade(especialidade,descricao) values ("Cardiologia","aborda as doenÁas relacionadas com o coraÁ„o e sistema vascular.");
-insert into tcc.especialidade(especialidade,descricao) values ("Cirurgia Cardiovascular","tratamento cir˙rgico de doenÁas do coraÁ„o.");
-insert into tcc.especialidade(especialidade,descricao) values ("Cirurgia da M„o","sub-especialidade da Ortopedia que aborda os problemas de sa˙de relacionados as m„os.");
-insert into tcc.especialidade(especialidade,descricao) values ("Cirurgia de cabeÁa e pescoÁo","tratamento cir˙rgico de doenÁas da cabeÁa e do pescoÁo.");
-insert into tcc.especialidade(especialidade,descricao) values ("Cirurgia do Aparelho Digestivo","tratamento clÌnico e cir˙rgico dos Ûrg„os do aparelho digestÛrio, como o esÙfago, estÙmago, intestinos, fÌgado e vias biliares, e p‚ncreas.");
-insert into tcc.especialidade(especialidade,descricao) values ("Cirurgia Geral","È a ·rea que engloba todas as ·reas cir˙rgicas, sendo tambÈm subdividida.");
-insert into tcc.especialidade(especialidade,descricao) values ("Cirurgia Pedi·trica","cirurgia geral em crianÁas.");
-insert into tcc.especialidade(especialidade,descricao) values ("Cirurgia Pl·stica","correÁ„o das deformidades, malformaÁıes ou lesıes que comprometem funÁıes dos Ûrg„os atravÈs de cirurgia de car·ter reparador ou cirurgias estÈticas.");
-insert into tcc.especialidade(especialidade,descricao) values ("Cirurgia Tor·cica","atua na cirurgia da caixa tor·cica e vias aÈreas.");
-insert into tcc.especialidade(especialidade,descricao) values ("Cirurgia Vascular","tratamento das veias e artÈrias, atravÈs de cirurgia, procedimentos endovasculares ou tratamentos clÌnicos.");
-insert into tcc.especialidade(especialidade,descricao) values ("ClÌnica MÈdica (Medicina interna) ","È a ·rea que engloba todas as ·reas n„o cir˙rgicas, sendo subdividida em v·rias outras especialidades.");
-insert into tcc.especialidade(especialidade,descricao) values ("Coloproctologia","È a parte da medicina que estuda e trata os problemas do intestino grosso (cÛlon), sigmoide e doenÁas do reto, canal anal e ‚nus.");
-insert into tcc.especialidade(especialidade,descricao) values ("Dermatologia","È o estudo da pele anexos (pelos, gl‚ndulas), tratamento e prevenÁ„o das as doenÁas.");
-insert into tcc.especialidade(especialidade,descricao) values ("Endocrinologia e Metabologia","È a ·rea da Medicina respons·vel pelo cuidados aos hormÙnios, crescimento e gl‚ndulas como adrenal, tireoide, hipÛfise, p‚ncreas endÛcrino e outros.");
-insert into tcc.especialidade(especialidade,descricao) values ("Endoscopia","Esta especialidade mÈdica ocupa-se do estudo dos mecanismo fisiopatolÛgicos, diagnÛstico e tratamento de enfermidades passÌveis de abordagem por procedimentos endoscÛpicos e minimamente invasivos.");
-insert into tcc.especialidade(especialidade,descricao) values ("Gastroenterologia","È o estudo, diagnÛstico, tratamento e prevenÁ„o de doenÁas relacionadas ao aparelho digestivo, desde erros inatos do metabolismo, doenÁa do trato gastrointestinal, doenÁas do fÌgado e c‚nceres.");
-insert into tcc.especialidade(especialidade,descricao) values ("GenÈtica mÈdica","È a ·rea da respons·vel pelo estudo das doenÁas genÈticas humanas e aconselhamento genÈtico.");
-insert into tcc.especialidade(especialidade,descricao) values ("Geriatria","È a subespecialidade mÈdica que cuida dos idosos e articula seu tratamento com outras especialidades.");
-insert into tcc.especialidade(especialidade,descricao) values ("Ginecologia e obstetrÌcia","È a especialidade mÈdica que aborda de forma integral a mulher. Trata desde as doenÁas infecciosas sexuais, gestaÁ„o, alteraÁıes hormonais, reproduÁ„o.");
-insert into tcc.especialidade(especialidade,descricao) values ("Hematologia e Hemoterapia","È o estudo dos elementos figurados do sangue (hem·cias, leucÛcitos, plaquetas) e da produÁ„o desses elementos nos Ûrg„os hematopoiÈticos (medula Ûssea, baÁo, linfonÛdos), alÈm de tratar das anemias, linfomas, leucemias e outros c‚nceres, hemofilia e doenÁas da coagulaÁ„o");
-insert into tcc.especialidade(especialidade,descricao) values ("Homeopatia","È a pr·tica mÈdica baseada na Lei dos Semelhantes. (Considerada pseudociÍncia pela comunidade cientÌfica por apresentar provas cientÌficas da sua n„o-efic·cia.)");
-insert into tcc.especialidade(especialidade,descricao) values ("Infectologia","prevenÁ„o, diagnÛstico e tratamentos de infecÁıes causadas por vÌrus, bactÈrias, fungos e parasitas (helmintologia, protozoologia, entomologia e artropodologia).");
-insert into tcc.especialidade(especialidade,descricao) values ("Mastologia","subespecialidade que trata da mama, suas doenÁas, alteraÁıes benignas e estÈticas.");
-insert into tcc.especialidade(especialidade,descricao) values ("Medicina de FamÌlia e Comunidade","È a ·rea da medicina que trata do indivÌduo em seu ambiente familiar e comunit·rio, com foco na prevenÁ„o e tratamento das doenÁas mais comuns, sendo o articulador do encaminhamento aos especialistas quando necess·ria abordagem mais aprofundada das doenÁas.");
-insert into tcc.especialidade(especialidade,descricao) values ("Medicina do Trabalho","trata do processo de trabalho e da relaÁ„o deste com as doenÁas. Atua desde a prevenÁ„o dos agravos, a minimizaÁ„o dos efeitos destes e do tratamento das doenÁas do trabalho quando j· estabelecidas.");
-insert into tcc.especialidade(especialidade,descricao) values ("Medicina do Tr·fego","manutenÁ„o da sa˙de no indivÌduo que se desloca, qualquer que seja o meio, cuidando das interaÁıes deste deslocamento com o indivÌduo.");
-insert into tcc.especialidade(especialidade,descricao) values ("Medicina Esportiva","abordagem do atleta de uma forma global, desde a fisiologia do exercÌcio ‡ prevenÁ„o de lesıes, passando pelo controle de treino e resoluÁ„o de problemas de sa˙de que envolvam o praticante do exercÌcio fÌsico.");
-insert into tcc.especialidade(especialidade,descricao) values ("Medicina FÌsica e ReabilitaÁ„o","diagnÛstico e terapÍutica de diferentes entidades tais como doenÁas traum·ticas, do sistema nervoso central e perifÈrico, orto-traumatolÛgica, cardiorrespiratÛria.");
-insert into tcc.especialidade(especialidade,descricao) values ("Medicina Intensiva","È o ramo da medicina que se ocupa dos cuidados dos doentes graves ou inst·veis, que emprega maior n˙mero de recursos tecnolÛgicos e humanos no tratamento de doenÁas ou complicaÁıes de doenÁas, congregando conhecimento da maioria das especialidades mÈdicas e outras ·reas de sa˙de.");
-insert into tcc.especialidade(especialidade,descricao) values ("Medicina Legal e PerÌcia MÈdica (ou medicina forense)","È a especialidade que aplica os conhecimentos mÈdicos aos interesses da JustiÁa, na elaboraÁ„o de leis e na adequada caracterizaÁ„o dos fenÙmenos biolÛgicos que possam interessar ‡s autoridades no sentido da aplicaÁ„o das leis. Assim a Medicina Legal caracteriza a les„o corporal, a morte (sua causa, o momento em que ocorreu, que agente a produziu), a embriaguez pelo ·lcool ou pelas demais drogas, a violÍncia sexual de qualquer natureza, etc.");
-insert into tcc.especialidade(especialidade,descricao) values ("Medicina Nuclear","È o estudo imaginolÛgico ou terapia pelo uso de radiof·rmacos.");
-insert into tcc.especialidade(especialidade,descricao) values ("Medicina Preventiva e Social","se dedica especificamente ‡ prevenÁ„o de doenÁas gerais (de v·rias ·reas), porÈm n„o unicamente, j· que cada ·rea ou especialidade est· tambÈm capacitada para tal.");
-insert into tcc.especialidade(especialidade,descricao) values ("Nefrologia","È a parte da medicina que estuda e trata clinicamente as doenÁas do rim, como insuficiÍncia renal.");
-insert into tcc.especialidade(especialidade,descricao) values ("Neurocirurgia","atua no tratamento de doenÁas do sistema nervoso central e perifÈrico passÌveis de abordagem cir˙rgica.");
-insert into tcc.especialidade(especialidade,descricao) values ("Neurologia","È a parte da medicina que estuda e trata o sistema nervoso.");
-insert into tcc.especialidade(especialidade,descricao) values ("Nutrologia","diagnÛstico, prevenÁ„o e tratamento de doenÁas do comportamento alimentar.");
-insert into tcc.especialidade(especialidade,descricao) values ("ObstetrÌcia","È a ·rea da medicina atrelada ‡ Ginecologia que cuida das mulheres em relaÁ„o ao processo da gestaÁ„o (prÈ, pÛs-parto, puerpÈrio, gestaÁ„o e outros).");
-insert into tcc.especialidade(especialidade,descricao) values ("Oftalmologia","È a parte da medicina que estuda e trata os dist˙rbios dos olhos.");
-insert into tcc.especialidade(especialidade,descricao) values ("Ortopedia e Traumatologia","È a parte da medicina que estuda e trata as doenÁas do sistema osteomuscular, locomoÁ„o, crescimento, deformidades e as fraturas.");
-insert into tcc.especialidade(especialidade,descricao) values ("Otorrinolaringologia","È a parte da medicina que estuda e trata as doenÁas da orelha, nariz, seios paranasais, faringe e laringe.");
-insert into tcc.especialidade(especialidade,descricao) values ("Patologia","(derivado do grego pathos, sofrimento, doenÁa, e logia, ciÍncia, estudo) È o estudo das doenÁas em geral sob aspectos determinados. Ela envolve tanto a ciÍncia b·sica quanto a pr·tica clÌnica.");
-insert into tcc.especialidade(especialidade,descricao) values ("Patologia ClÌnica/Medicina laboratorial","No Brasil, de forma geral È uma especialidade mÈdica investigativa e atua como parte do processo diagnÛstico das doenÁas.");
-insert into tcc.especialidade(especialidade,descricao) values ("Pediatria","È a parte da medicina que estuda e trata crianÁas.");
-insert into tcc.especialidade(especialidade,descricao) values ("Pneumologia","È a parte da medicina que estuda e trata o sistema respiratÛrio.");
-insert into tcc.especialidade(especialidade,descricao) values ("Psiquiatria","È a parte da medicina que previne e trata ao transtornos mentais e comportamentais.");
-insert into tcc.especialidade(especialidade,descricao) values ("Radiologia e DiagnÛstico por Imagem","realizaÁ„o e interpretaÁ„o de exames de imagem como raio-X, ultrassonografia, Doppler colorido, Tomografia Computadorizada, Resson‚ncia MagnÈtica, entre outros.");
-insert into tcc.especialidade(especialidade,descricao) values ("Radioterapia","tratamento empregado em doenÁas v·rias, com o uso de raio X ou outra forma de energia radiante.");
-insert into tcc.especialidade(especialidade,descricao) values ("Reumatologia","È a especialidade mÈdica que trata das doenÁas do tecido conjuntivo, articulaÁıes e doenÁas autoimunes. Diferente do senso comum o reumatologista n„o trata somente reumatismo.");
-insert into tcc.especialidade(especialidade,descricao) values ("Urologia","È a parte da medicina que estuda e trata cirurgicamente e clinicamente os problemas do sistema urin·rio e do sistema reprodutor masculino e feminino.");
+
+
+
+INSERT INTO `TCC`.`Login`	(
+								`codLogin`, `codNivel`, `nomeLogin`, `senha`,`flagAtivo`, `dataCadastro`
+							) VALUES (
+								2, 2, 'Thais', 'ed08c290d7e22f7bb324b15cbadce35b0b348564fd2d5f95752388d86d71bcca', 1,'2016-11-07 00:00:00'
+							);	
+							
+-- A senha desse usu√°rio √© "juan" criptografada em sha256
+
+
+
+
+
+
+INSERT INTO `TCC`.`Login`	(
+								`codLogin`, `codNivel`, `nomeLogin`, `senha`,`flagAtivo`, `dataCadastro`
+							) VALUES (
+								3, 3, 'Douglas', 'ed08c290d7e22f7bb324b15cbadce35b0b348564fd2d5f95752388d86d71bcca', 1,'2016-11-07 00:00:00'
+							);							
+	
+-- A senha desse usu√°rio √© "juan" criptografada em sha256
+
+
+
+
+
+
+INSERT INTO `TCC`.`Login`	(
+								`codLogin`, `codNivel`, `nomeLogin`, `senha`,`flagAtivo`, `dataCadastro`
+							) VALUES (
+								4, 4, 'Juan', 'ed08c290d7e22f7bb324b15cbadce35b0b348564fd2d5f95752388d86d71bcca', 1,'2016-11-07 00:00:00'
+							);							
+	
+-- A senha desse usu√°rio √© "juan" criptografada em sha256							
+
+
+-- INSERT DE LOGIN
+
+
+
+
+
+-- INSERT DE ATENDENTE						
+INSERT INTO `TCC`.`Atendente`	(
+									codAtendente, codUnidade, codLogin, nomeAtendente,
+									cPF, dataNascimento, email, estadoCivil, nacionalidade, endereco,
+									numeroEndereco, cEP, cidade, uF, pais, tel1, tel2, cel, flagAtivo, dataCadastro
+								) VALUES (
+									1, 1, 3, 'Douglas Cortello',
+									'783.032.928-80', '1990-05-05 00:00:00','douglascortello@yahoo.com.br', 'Solteiro', 'Brasileiro', 'Rua Anita Ferraz',
+									'32', '01505-010', 'S√£o Paulo', 'SP', 'Brasil', '(11)3207-2328', null, '(11)98448-9821', 1, '2016-08-22 00:00:00'
+								);				
+
+-- INSERT DE ATENDENTE
+
+
+
+
+-- INSERT DE MEDICO						
+INSERT INTO `TCC`.`Medico`	(
+								codMedico, codUnidade, codLogin, nomeMedico,
+								cPF, cRM, cRO, dataNascimento, email, estadoCivil, nacionalidade, endereco,
+								numeroEndereco, cEP, cidade, uF, pais, tel1, tel2, cel, flagAtivo, dataCadastro
+							) VALUES (
+								1, 1, 1, 'Nilton Filho',
+								'437.222.578-40','479283', null, '1995-12-17 00:00:00','nilton.filho@netshoes.com', 'Solteiro', 'Brasileiro', 'Rua Andr√© Bacci',
+								'62', '08255-640', 'S√£o Paulo', 'SP', 'Brasil', '(11)2523-4014', null, '(11)97959-2632', 1, '2016-08-22 00:00:00'
+							);				
+
+-- INSERT DE MEDICO
+
+
+
+
+
+-- INSERT DE PACIENTE						
+INSERT INTO `TCC`.`Paciente`	(
+									codPaciente, codLogin, numConvenio, nomePaciente,
+									cPF, dataNascimento, email, estadoCivil, nacionalidade, endereco,
+									numeroEndereco, cEP, cidade, uF, pais, tel1, tel2, cel, flagAtivo, dataCadastro,
+									alergiaMedicamento, alergiaAlimentares, peso,
+									altura, medicamentoContinuo, cirurgia, antecedentesPessoais, tipoSanguineo
+								) VALUES (
+									1, 1, '84276', 'Tha√≠s Moura',
+									'460.434.510-70', '1996-01-20 00:00:00','thais.o.moura@gmail.com', 'Solteiro', 'Brasileiro', 'Rua Andr√© Bacci',
+									'62', '08255-640', 'S√£o Paulo', 'SP', 'Brasil', '(11)2523-4014', null, '(11)97959-2632', 1, '2017-10-09 00:00:00',
+									'N√£o possui.', 'N√£o possui.', null, 
+									null, 'Dexcloferamina', 'Desvio de septo', 'N√£o possui.', 'AB+'
+								);				
+
+-- INSERT DE PACIENTE
+
+
+
+-- INSERT DE MEDICO						
+INSERT INTO `TCC`.`Administrador`	(
+								codAdministrador, codUnidade, codLogin, nomeAdministrador,
+								cPF, dataNascimento, email, estadoCivil, nacionalidade, endereco,
+								numeroEndereco, cEP, cidade, uF, pais, tel1, tel2, cel, flagAtivo, dataCadastro
+							) VALUES (
+								1, 1, 4, 'Juan Lima',
+								'467.796.938-80', '1996-11-07 00:00:00','juan.almeida@netshoes.com', 'Solteiro', 'Brasileiro', 'Rua Anita Ferraz',
+								'30', '01505-010', 'S√£o Paulo', 'SP', 'Brasil', '(11)3207-2328', null, '(11)98448-9821', 1, '2016-08-22 00:00:00'
+							);				
+
+-- INSERT DE MEDICO
+
+
+
+
+
+-- INSERTS DE PLANO						
+INSERT INTO `TCC`.`Plano`	(
+								`nomePlano`, `registroAns`, `tipoPlano`, `flagAtivo`, `dataCadastro`
+							) VALUES (
+								'Dix100', 12355648, 'Premium', 1, '2017-05-20 00:00:00'
+							);
+
+-- INSERTS DE PLANO
+	
+	
+
+
+-- INSERTS DE AssociativaPlanoUnidade					
+
+-- INSERTS DE AssociativaPlanoUnidade
+
+
+
+
+-- INSERTS DE CONSULTA					
+
+-- INSERTS DE CONSULTA
+
+
+
+-- INSERTS DE EXAME					
+
+-- INSERTS DE EXAME
+
+
+
+
+-- INSERTS DE RECEITUARIO					
+
+-- INSERTS DE RECEITUARIO
+
+
+
+
+
+-- INSERTS DE AGENDAMENTO					
+
+-- INSERTS DE AGENDAMENTO
+
+
+-- INSERT DE ESPECIALIDADES
+
+insert into tcc.especialidade(especialidade,descricao) values ("Acupuntura","ramo da medicina tradicional chinesa e um m√©todo de tratamento chamado complementar de acordo com a nova terminologia da OMS.");
+insert into tcc.especialidade(especialidade,descricao) values ("Alergia e Imunologia","diagn√≥stico e tratamento das doen√ßas al√©rgicas e do sistema imunol√≥gico.");
+insert into tcc.especialidade(especialidade,descricao) values ("Anestesiologia","√°rea da Medicina que envolve o tratamento da dor, a hipnose e o manejo intensivo do paciente sob interven√ß√£o cir√∫rgica ou procedimentos.");
+insert into tcc.especialidade(especialidade,descricao) values ("Angiologia","√© a √°rea da medicina que estuda o tratamento das doen√ßas do aparelho circulat√≥rio.");
+insert into tcc.especialidade(especialidade,descricao) values ("Cancerologia (oncologia)","√© a especialidade que trata dos tumores malignos ou c√¢ncer.");
+insert into tcc.especialidade(especialidade,descricao) values ("Cardiologia","aborda as doen√ßas relacionadas com o cora√ß√£o e sistema vascular.");
+insert into tcc.especialidade(especialidade,descricao) values ("Cirurgia Cardiovascular","tratamento cir√∫rgico de doen√ßas do cora√ß√£o.");
+insert into tcc.especialidade(especialidade,descricao) values ("Cirurgia da M√£o","sub-especialidade da Ortopedia que aborda os problemas de sa√∫de relacionados as m√£os.");
+insert into tcc.especialidade(especialidade,descricao) values ("Cirurgia de cabe√ßa e pesco√ßo","tratamento cir√∫rgico de doen√ßas da cabe√ßa e do pesco√ßo.");
+insert into tcc.especialidade(especialidade,descricao) values ("Cirurgia do Aparelho Digestivo","tratamento cl√≠nico e cir√∫rgico dos √≥rg√£os do aparelho digest√≥rio, como o es√¥fago, est√¥mago, intestinos, f√≠gado e vias biliares, e p√¢ncreas.");
+insert into tcc.especialidade(especialidade,descricao) values ("Cirurgia Geral","√© a √°rea que engloba todas as √°reas cir√∫rgicas, sendo tamb√©m subdividida.");
+insert into tcc.especialidade(especialidade,descricao) values ("Cirurgia Pedi√°trica","cirurgia geral em crian√ßas.");
+insert into tcc.especialidade(especialidade,descricao) values ("Cirurgia Pl√°stica","corre√ß√£o das deformidades, malforma√ß√µes ou les√µes que comprometem fun√ß√µes dos √≥rg√£os atrav√©s de cirurgia de car√°ter reparador ou cirurgias est√©ticas.");
+insert into tcc.especialidade(especialidade,descricao) values ("Cirurgia Tor√°cica","atua na cirurgia da caixa tor√°cica e vias a√©reas.");
+insert into tcc.especialidade(especialidade,descricao) values ("Cirurgia Vascular","tratamento das veias e art√©rias, atrav√©s de cirurgia, procedimentos endovasculares ou tratamentos cl√≠nicos.");
+insert into tcc.especialidade(especialidade,descricao) values ("Cl√≠nica M√©dica (Medicina interna) ","√© a √°rea que engloba todas as √°reas n√£o cir√∫rgicas, sendo subdividida em v√°rias outras especialidades.");
+insert into tcc.especialidade(especialidade,descricao) values ("Coloproctologia","√© a parte da medicina que estuda e trata os problemas do intestino grosso (c√≥lon), sigmoide e doen√ßas do reto, canal anal e √¢nus.");
+insert into tcc.especialidade(especialidade,descricao) values ("Dermatologia","√© o estudo da pele anexos (pelos, gl√¢ndulas), tratamento e preven√ß√£o das as doen√ßas.");
+insert into tcc.especialidade(especialidade,descricao) values ("Endocrinologia e Metabologia","√© a √°rea da Medicina respons√°vel pelo cuidados aos horm√¥nios, crescimento e gl√¢ndulas como adrenal, tireoide, hip√≥fise, p√¢ncreas end√≥crino e outros.");
+insert into tcc.especialidade(especialidade,descricao) values ("Endoscopia","Esta especialidade m√©dica ocupa-se do estudo dos mecanismo fisiopatol√≥gicos, diagn√≥stico e tratamento de enfermidades pass√≠veis de abordagem por procedimentos endosc√≥picos e minimamente invasivos.");
+insert into tcc.especialidade(especialidade,descricao) values ("Gastroenterologia","√© o estudo, diagn√≥stico, tratamento e preven√ß√£o de doen√ßas relacionadas ao aparelho digestivo, desde erros inatos do metabolismo, doen√ßa do trato gastrointestinal, doen√ßas do f√≠gado e c√¢nceres.");
+insert into tcc.especialidade(especialidade,descricao) values ("Gen√©tica m√©dica","√© a √°rea da respons√°vel pelo estudo das doen√ßas gen√©ticas humanas e aconselhamento gen√©tico.");
+insert into tcc.especialidade(especialidade,descricao) values ("Geriatria","√© a subespecialidade m√©dica que cuida dos idosos e articula seu tratamento com outras especialidades.");
+insert into tcc.especialidade(especialidade,descricao) values ("Ginecologia e obstetr√≠cia","√© a especialidade m√©dica que aborda de forma integral a mulher. Trata desde as doen√ßas infecciosas sexuais, gesta√ß√£o, altera√ß√µes hormonais, reprodu√ß√£o.");
+insert into tcc.especialidade(especialidade,descricao) values ("Hematologia e Hemoterapia","√© o estudo dos elementos figurados do sangue (hem√°cias, leuc√≥citos, plaquetas) e da produ√ß√£o desses elementos nos √≥rg√£os hematopoi√©ticos (medula √≥ssea, ba√ßo, linfon√≥dos), al√©m de tratar das anemias, linfomas, leucemias e outros c√¢nceres, hemofilia e doen√ßas da coagula√ß√£o");
+insert into tcc.especialidade(especialidade,descricao) values ("Homeopatia","√© a pr√°tica m√©dica baseada na Lei dos Semelhantes. (Considerada pseudoci√™ncia pela comunidade cient√≠fica por apresentar provas cient√≠ficas da sua n√£o-efic√°cia.)");
+insert into tcc.especialidade(especialidade,descricao) values ("Infectologia","preven√ß√£o, diagn√≥stico e tratamentos de infec√ß√µes causadas por v√≠rus, bact√©rias, fungos e parasitas (helmintologia, protozoologia, entomologia e artropodologia).");
+insert into tcc.especialidade(especialidade,descricao) values ("Mastologia","subespecialidade que trata da mama, suas doen√ßas, altera√ß√µes benignas e est√©ticas.");
+insert into tcc.especialidade(especialidade,descricao) values ("Medicina de Fam√≠lia e Comunidade","√© a √°rea da medicina que trata do indiv√≠duo em seu ambiente familiar e comunit√°rio, com foco na preven√ß√£o e tratamento das doen√ßas mais comuns, sendo o articulador do encaminhamento aos especialistas quando necess√°ria abordagem mais aprofundada das doen√ßas.");
+insert into tcc.especialidade(especialidade,descricao) values ("Medicina do Trabalho","trata do processo de trabalho e da rela√ß√£o deste com as doen√ßas. Atua desde a preven√ß√£o dos agravos, a minimiza√ß√£o dos efeitos destes e do tratamento das doen√ßas do trabalho quando j√° estabelecidas.");
+insert into tcc.especialidade(especialidade,descricao) values ("Medicina do Tr√°fego","manuten√ß√£o da sa√∫de no indiv√≠duo que se desloca, qualquer que seja o meio, cuidando das intera√ß√µes deste deslocamento com o indiv√≠duo.");
+insert into tcc.especialidade(especialidade,descricao) values ("Medicina Esportiva","abordagem do atleta de uma forma global, desde a fisiologia do exerc√≠cio √† preven√ß√£o de les√µes, passando pelo controle de treino e resolu√ß√£o de problemas de sa√∫de que envolvam o praticante do exerc√≠cio f√≠sico.");
+insert into tcc.especialidade(especialidade,descricao) values ("Medicina F√≠sica e Reabilita√ß√£o","diagn√≥stico e terap√™utica de diferentes entidades tais como doen√ßas traum√°ticas, do sistema nervoso central e perif√©rico, orto-traumatol√≥gica, cardiorrespirat√≥ria.");
+insert into tcc.especialidade(especialidade,descricao) values ("Medicina Intensiva","√© o ramo da medicina que se ocupa dos cuidados dos doentes graves ou inst√°veis, que emprega maior n√∫mero de recursos tecnol√≥gicos e humanos no tratamento de doen√ßas ou complica√ß√µes de doen√ßas, congregando conhecimento da maioria das especialidades m√©dicas e outras √°reas de sa√∫de.");
+insert into tcc.especialidade(especialidade,descricao) values ("Medicina Legal e Per√≠cia M√©dica (ou medicina forense)","√© a especialidade que aplica os conhecimentos m√©dicos aos interesses da Justi√ßa, na elabora√ß√£o de leis e na adequada caracteriza√ß√£o dos fen√¥menos biol√≥gicos que possam interessar √†s autoridades no sentido da aplica√ß√£o das leis. Assim a Medicina Legal caracteriza a les√£o corporal, a morte (sua causa, o momento em que ocorreu, que agente a produziu), a embriaguez pelo √°lcool ou pelas demais drogas, a viol√™ncia sexual de qualquer natureza, etc.");
+insert into tcc.especialidade(especialidade,descricao) values ("Medicina Nuclear","√© o estudo imaginol√≥gico ou terapia pelo uso de radiof√°rmacos.");
+insert into tcc.especialidade(especialidade,descricao) values ("Medicina Preventiva e Social","se dedica especificamente √† preven√ß√£o de doen√ßas gerais (de v√°rias √°reas), por√©m n√£o unicamente, j√° que cada √°rea ou especialidade est√° tamb√©m capacitada para tal.");
+insert into tcc.especialidade(especialidade,descricao) values ("Nefrologia","√© a parte da medicina que estuda e trata clinicamente as doen√ßas do rim, como insufici√™ncia renal.");
+insert into tcc.especialidade(especialidade,descricao) values ("Neurocirurgia","atua no tratamento de doen√ßas do sistema nervoso central e perif√©rico pass√≠veis de abordagem cir√∫rgica.");
+insert into tcc.especialidade(especialidade,descricao) values ("Neurologia","√© a parte da medicina que estuda e trata o sistema nervoso.");
+insert into tcc.especialidade(especialidade,descricao) values ("Nutrologia","diagn√≥stico, preven√ß√£o e tratamento de doen√ßas do comportamento alimentar.");
+insert into tcc.especialidade(especialidade,descricao) values ("Obstetr√≠cia","√© a √°rea da medicina atrelada √† Ginecologia que cuida das mulheres em rela√ß√£o ao processo da gesta√ß√£o (pr√©, p√≥s-parto, puerp√©rio, gesta√ß√£o e outros).");
+insert into tcc.especialidade(especialidade,descricao) values ("Oftalmologia","√© a parte da medicina que estuda e trata os dist√∫rbios dos olhos.");
+insert into tcc.especialidade(especialidade,descricao) values ("Ortopedia e Traumatologia","√© a parte da medicina que estuda e trata as doen√ßas do sistema osteomuscular, locomo√ß√£o, crescimento, deformidades e as fraturas.");
+insert into tcc.especialidade(especialidade,descricao) values ("Otorrinolaringologia","√© a parte da medicina que estuda e trata as doen√ßas da orelha, nariz, seios paranasais, faringe e laringe.");
+insert into tcc.especialidade(especialidade,descricao) values ("Patologia","(derivado do grego pathos, sofrimento, doen√ßa, e logia, ci√™ncia, estudo) √© o estudo das doen√ßas em geral sob aspectos determinados. Ela envolve tanto a ci√™ncia b√°sica quanto a pr√°tica cl√≠nica.");
+insert into tcc.especialidade(especialidade,descricao) values ("Patologia Cl√≠nica/Medicina laboratorial","No Brasil, de forma geral √© uma especialidade m√©dica investigativa e atua como parte do processo diagn√≥stico das doen√ßas.");
+insert into tcc.especialidade(especialidade,descricao) values ("Pediatria","√© a parte da medicina que estuda e trata crian√ßas.");
+insert into tcc.especialidade(especialidade,descricao) values ("Pneumologia","√© a parte da medicina que estuda e trata o sistema respirat√≥rio.");
+insert into tcc.especialidade(especialidade,descricao) values ("Psiquiatria","√© a parte da medicina que previne e trata ao transtornos mentais e comportamentais.");
+insert into tcc.especialidade(especialidade,descricao) values ("Radiologia e Diagn√≥stico por Imagem","realiza√ß√£o e interpreta√ß√£o de exames de imagem como raio-X, ultrassonografia, Doppler colorido, Tomografia Computadorizada, Resson√¢ncia Magn√©tica, entre outros.");
+insert into tcc.especialidade(especialidade,descricao) values ("Radioterapia","tratamento empregado em doen√ßas v√°rias, com o uso de raio X ou outra forma de energia radiante.");
+insert into tcc.especialidade(especialidade,descricao) values ("Reumatologia","√© a especialidade m√©dica que trata das doen√ßas do tecido conjuntivo, articula√ß√µes e doen√ßas autoimunes. Diferente do senso comum o reumatologista n√£o trata somente reumatismo.");
+insert into tcc.especialidade(especialidade,descricao) values ("Urologia","√© a parte da medicina que estuda e trata cirurgicamente e clinicamente os problemas do sistema urin√°rio e do sistema reprodutor masculino e feminino.");
+
+
+-- INSERT DE ESPECIALIDADES
+
+
+-- INSERT DE AssociativaMedicoEspecialidade
+
+-- INSERT DE AssociativaMedicoEspecialidade

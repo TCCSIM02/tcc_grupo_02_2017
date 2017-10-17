@@ -20,7 +20,8 @@ public class VisualizarEspecialidade implements Command {
 		String pCodEspecialidade = request.getParameter("codEspecialidade");
 		String pFlagAtivo = request.getParameter("flagAtivo");
 		String pDescricao = request.getParameter("descricao");
-
+		String pEspecialidade = request.getParameter("especialidade");
+		
 		int id = -1;
 		try {
 			id = Integer.parseInt(pCodEspecialidade);
@@ -28,7 +29,7 @@ public class VisualizarEspecialidade implements Command {
 
 		}
 		/*ALTERAR ESSE NULL AQUI*/
-		ModelEspecialidade modelEspecialidade = new ModelEspecialidade(id, pFlagAtivo, pDescricao);
+		ModelEspecialidade modelEspecialidade = new ModelEspecialidade(id, pEspecialidade,pFlagAtivo, pDescricao);
 		RequestDispatcher view = null;
 		
 		

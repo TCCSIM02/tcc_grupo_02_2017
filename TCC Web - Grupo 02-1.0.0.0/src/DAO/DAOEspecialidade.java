@@ -11,13 +11,14 @@ import TO.TOEspecialidade;
 public class DAOEspecialidade {
 	
 	public void cadastrarEspecialidade(TOEspecialidade toEspecialidade){
-		String sqlInsert = "INSERT INTO tcc.especialidade (descricao,flagAtivo)VALUES (?,1)";
+		String sqlInsert = "INSERT INTO tcc.especialidade (especialidade, descricao, flagAtivo)VALUES (?,?,1)";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 			PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
 
-			stm.setString(1,toEspecialidade.getDescricao());
-			stm.setInt(2,Integer.parseInt(toEspecialidade.getFlagAtivo()));			
+			stm.setString(1,toEspecialidade.getEspecialidade());	
+			stm.setString(2,toEspecialidade.getDescricao());
+			stm.setInt(3,Integer.parseInt(toEspecialidade.getFlagAtivo()));			
 
 			stm.execute();
 			
@@ -47,6 +48,7 @@ public class DAOEspecialidade {
 					
 
 					//toEspecialidade.setCodEspecialidade(codEspecialidadeBusca);
+					toEspecialidade.setEspecialidade(rs.getString("especialidade"));
 					toEspecialidade.setFlagAtivo(rs.getString("flagAtivo"));
 					toEspecialidade.setDescricao(rs.getString("descricao"));
 					
@@ -72,6 +74,7 @@ public class DAOEspecialidade {
 					toEspecialidade = new TOEspecialidade();
 					
 					toEspecialidade.setCodEspecialidade(rs.getInt("codEspecialidade"));
+					toEspecialidade.setEspecialidade(rs.getString("especialidade"));
 					toEspecialidade.setFlagAtivo(rs.getString("flagAtivo"));
 					toEspecialidade.setDescricao(rs.getString("descricao"));
 					
@@ -89,7 +92,7 @@ public class DAOEspecialidade {
 	public ArrayList<TOEspecialidade> listarEspecialidades(String chave){
 		TOEspecialidade toEspecialidade;
 		ArrayList<TOEspecialidade> lista = new ArrayList<>();
-		String sqlSelect = "select * from tcc.especialidade where upper(descricao) like ?";
+		String sqlSelect = "select * from tcc.especialidade where upper(especialidade) like ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -99,6 +102,7 @@ public class DAOEspecialidade {
 					toEspecialidade = new TOEspecialidade();
 					
 					toEspecialidade.setCodEspecialidade(rs.getInt("codEspecialidade"));
+					toEspecialidade.setEspecialidade(rs.getString("especialidade"));
 					toEspecialidade.setFlagAtivo(rs.getString("flagAtivo"));
 					toEspecialidade.setDescricao(rs.getString("descricao"));
 					

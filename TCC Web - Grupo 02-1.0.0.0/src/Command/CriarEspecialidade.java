@@ -21,6 +21,7 @@ public class CriarEspecialidade implements Command {
 
 		String pCodEspecialidade = request.getParameter("codEspecialidade");
 		String pFlagAtivo = request.getParameter("flagAtivo");
+		String pEspecialidade = request.getParameter("especialidade");
 		String pDescricao = request.getParameter("descricao");
 
 		int id = -1;
@@ -31,7 +32,7 @@ public class CriarEspecialidade implements Command {
 		}
 
 		/*ALTERAR ESSE NULL AQUI*/
-		ModelEspecialidade modelEspecialidade = new ModelEspecialidade(id, pFlagAtivo, pDescricao);
+		ModelEspecialidade modelEspecialidade = new ModelEspecialidade(id, pEspecialidade,pFlagAtivo, pDescricao);
 	
 		HttpSession session = request.getSession();
 		
