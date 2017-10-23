@@ -396,4 +396,11 @@ public class ModelUnidade {
 		lista = dao.listarUnidades(chave);
 		return lista;
 	}
+	
+	public ArrayList<TOUnidade> listarUnidadePlano(String chave) throws ClassNotFoundException{
+		ArrayList<TOUnidade> lista;
+		DAOUnidade dao = new DAOUnidade();	
+		lista = dao.listarUnidadePlano(chave);
+		return lista;
+	}
 }

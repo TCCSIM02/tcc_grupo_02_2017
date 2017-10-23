@@ -1,7 +1,6 @@
 package Command;
 
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -10,11 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Model.ModelAgendamento;
 import Model.ModelEspecialidade;
-import Model.ModelMedico;
+import Model.ModelPaciente;
 import TO.TOEspecialidade;
-import TO.TOMedico;
+import TO.TOPaciente;
 
 public class IndexAgendamento implements Command {
 
@@ -24,38 +22,22 @@ public class IndexAgendamento implements Command {
 		RequestDispatcher view = null;
 		HttpSession session = request.getSession();
 		
-		ModelAgendamento modelAgendamento = new ModelAgendamento();
-
+		ModelPaciente modelPaciente = new ModelPaciente();
+		ModelEspecialidade modelEspecialidade = new ModelEspecialidade();
+		
+		
+		ArrayList<TOPaciente> listaPaciente = new ArrayList<>(); 
+		ArrayList<TOEspecialidade> listaEspecialidade = new ArrayList<>(); 
+		
+		
 		try {
-			modelAgendamento.preencherCalendario();
-		} catch (ParseException e) {
+			listaPaciente = modelPaciente.listarPacientes();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		
-		view = request.getRequestDispatcher("IndexAgendamento.jsp");
-		
-		
-		/*TUDO PARA LISTAR OS MÉDICOS NO COMBOBOX*/
-		ModelMedico modelMedico = new ModelMedico(); 
-		
-		ArrayList<TOMedico> lista = new ArrayList<>(); 
-		try {
-			lista = modelMedico.listarMedicos();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
-		
-		session.setAttribute("lista", lista);	
-		/*TUDO PARA LISTAR OS MÉDICOS NO COMBOBOX*/
-		
-		
-		/*TUDO PARA LISTAR AS ESPECIALIDADES NO COMBOBOX*/
-		ModelEspecialidade modelEspecialidade = new ModelEspecialidade(); 
-		
-		ArrayList<TOEspecialidade> listaEspecialidade = new ArrayList<>(); 
 		try {
 			listaEspecialidade = modelEspecialidade.listarEspecialidades();
 		} catch (ClassNotFoundException e) {
@@ -63,17 +45,12 @@ public class IndexAgendamento implements Command {
 			e.printStackTrace();
 		}		
 		
-		session.setAttribute("listaEspecialidade", listaEspecialidade);	
-		/*TUDO PARA LISTAR AS ESPECIALIDADES NO COMBOBOX*/
 		
+		session.setAttribute("listaPaciente", listaPaciente);
+		session.setAttribute("listaEspecialidade", listaEspecialidade);
 		
-		try {
-			session.setAttribute("jsonCalendario", modelAgendamento.jsonCalendario());
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		 
+		view = request.getRequestDispatcher("IndexAgendamento.jsp");
+		
 		view.forward(request, response);
 	}
 }
