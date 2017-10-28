@@ -268,9 +268,6 @@ public class DAOMedico {
 					toMedico.setCro(rs.getString("cRO"));
 					toMedico.setEmail(rs.getString("email"));
 									
-					System.out.println(toMedico.getNome());
-					
-					System.out.println("testeee");
 					
 					lista.add(toMedico);
 				}

@@ -116,7 +116,7 @@ public class DAOAgendamento {
 	public ArrayList<TOAgendamento> listarAgendamentos() throws ParseException{
 		TOAgendamento toAgendamento;
 		ArrayList<TOAgendamento> lista = new ArrayList<>();
-		String sqlSelect = "SELECT  codAgendamento, CAST(dataAgendamentoComeco AS char) as dataAgendamentoComeco, CAST(dataAgendamentoFim AS char) as dataAgendamentoFim, statusAgendamento, flagAtivo, dataCadastro FROM tcc.agendamento order by codAgendamento desc";
+		String sqlSelect = "SELECT  codAgendamento, CAST(dataAgendamentoComeco AS char) as dataAgendamentoComeco, CAST(dataAgendamentoFim AS char) as dataAgendamentoFim, statusAgendamento, flagAtivo, dataCadastro FROM tcc.agendamento where codAgendamento = 90 order by codAgendamento desc";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -149,26 +149,38 @@ public class DAOAgendamento {
 		return lista;
 	}
 	
-	/*
-	public ArrayList<TOAgendamento> listarAgendamentos(String chave){
+	
+	public ArrayList<TOAgendamento> listarAgendamentosMedico(String chave) throws ParseException{
+		
+		//System.out.println(chave);
+		
 		TOAgendamento toAgendamento;
 		ArrayList<TOAgendamento> lista = new ArrayList<>();
-		String sqlSelect = "SELECT  * FROM tcc.agendamento where upper(nomeAgendamento) like ?";
+		String sqlSelect = "SELECT * FROM tcc.agendamento A WHERE A.codMedico = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
-				stm.setString(1, "%" + chave.toUpperCase() + "%");
+				stm.setString(1, chave.toUpperCase());
 			try (ResultSet rs = stm.executeQuery();) {
 				while(rs.next()) {
 					toAgendamento = new TOAgendamento();
 					
+					//DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+					
 					toAgendamento.setCodAgendamento(rs.getInt("codAgendamento"));
-					toAgendamento.setNomeAgendamento(rs.getString("nomeAgendamento"));
-					toAgendamento.setRegistroAns(rs.getString("registroAns")); 
-					toAgendamento.setTipoAgendamento(rs.getString("tipoAgendamento"));								
+					toAgendamento.setDataHoraComeco(rs.getDate("dataAgendamentoComeco"));
+					toAgendamento.setDataHoraFim(rs.getDate("dataAgendamentoFim")); 
+					toAgendamento.setStatusAgendamento(rs.getString("statusAgendamento"));								
 					toAgendamento.setFlagAtivo(rs.getString("flagAtivo"));
 					toAgendamento.setDataCadastro(rs.getDate("dataCadastro"));
-									
+					
+					//System.out.println("acima o parametro, abaixo o codagendamento");
+					
+					//System.out.println(toAgendamento.getCodAgendamento());
+					
+					//System.out.println("testeee");
+					
+					
 					lista.add(toAgendamento);
 				}
 			} catch (SQLException e) {
@@ -179,5 +191,5 @@ public class DAOAgendamento {
 		}
 		return lista;
 	}	
-	*/
+
 }

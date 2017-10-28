@@ -172,7 +172,7 @@ public class ModelMedico extends ModelUsuario{
 	public ArrayList<TOMedico> listarMedicoEspecialidadeUnidade(String unidadeValor, String especialidadeValor) throws ClassNotFoundException{
 		ArrayList<TOMedico> lista;
 		DAOMedico dao = new DAOMedico();
-		System.out.println("testeee");
+		//System.out.println("testeee");
 		lista = dao.listarMedicoEspecialidadeUnidade(unidadeValor, especialidadeValor);
 		return lista;
 	}

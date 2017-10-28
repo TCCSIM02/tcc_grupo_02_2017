@@ -7,6 +7,7 @@ import java.util.Date;
 import DAO.DAOAgendamento;
 import Json.JSONEventoCalendario;
 import TO.TOAgendamento;
+import TO.TOMedico;
 
 public class ModelAgendamento {
 
@@ -191,6 +192,17 @@ public class ModelAgendamento {
 		jsonEventoCalendario.fillCalendario(lista);
 		
 		return jsonEventoCalendario.jsonCalendario;
+	}
+	
+	public String listarAgendamentosMedico(String medicoValor) throws ParseException{
+		ArrayList<TOAgendamento> lista;
+		DAOAgendamento dao = new DAOAgendamento();
+		lista = dao.listarAgendamentosMedico(medicoValor);
+		JSONEventoCalendario jsonEventoCalendario = new JSONEventoCalendario();
+		jsonEventoCalendario.fillCalendario(lista);
+		
+		return jsonEventoCalendario.jsonCalendario;	
+	
 	}
 
 }

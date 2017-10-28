@@ -49,6 +49,16 @@ public class AgendamentoCalendario implements Command {
 		
 		view = request.getRequestDispatcher("AgendamentoCalendario.jsp");
 		
+		
+		
+		try {
+			System.out.println(modelAgendamento.jsonCalendario());
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		try {
 			session.setAttribute("jsonCalendario", modelAgendamento.jsonCalendario());
 		} catch (ParseException e) {
