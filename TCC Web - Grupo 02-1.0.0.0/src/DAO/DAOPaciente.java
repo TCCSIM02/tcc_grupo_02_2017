@@ -346,7 +346,6 @@ public class DAOPaciente {
 				e.printStackTrace(); 
 			}
 		} catch (SQLException e1) {
-			System.out.println("deu erro porraaaaaa");
 			System.out.print(e1.getStackTrace());
 		}
 		return lista;

@@ -149,8 +149,7 @@
 										</select>
 									</div>				  
 								</div>
-								
-								
+													
 								
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Especialidade</label>

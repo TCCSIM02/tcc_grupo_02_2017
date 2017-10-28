@@ -4,9 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import ConnectionFactory.FabricaConexao;
 import TO.TOLogin;
+import TO.TOPaciente;
 
 public class DAOLogin {
 
@@ -70,4 +72,39 @@ public class DAOLogin {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	public ArrayList<TOLogin> buscarLogin(String usuario, String senha){
+		TOLogin toLogin;
+		ArrayList<TOLogin> lista = new ArrayList<>();
+							
+		String sqlSelect = "SELECT * FROM TCC.LOGIN WHERE nomeLogin = ? AND senha = ?";
+		// usando o try with resources do Java 7, que fecha o que abriu
+		try (Connection conn = FabricaConexao.getConexao(); 
+				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
+				stm.setString(1,"'%" + usuario + "%'");
+				stm.setString(2,"'%" + senha + "%'");
+			try (ResultSet rs = stm.executeQuery();) {
+				while(rs.next()) {
+					toLogin = new TOLogin();
+					
+					stm.setInt(1,toLogin.getCodLogin());
+					stm.setString(2,toLogin.getNomeLogin());
+					stm.setString(3,toLogin.getSenhaCriptografada());
+
+					System.out.println("teste 2");
+					System.out.println(toLogin.getNomeLogin());
+					
+					lista.add(toLogin);
+				}
+			} catch (SQLException e) {				
+				e.printStackTrace(); 
+			}
+		} catch (SQLException e1) {
+			System.out.print(e1.getStackTrace());
+		}
+		return lista;
+	}
+	
+	
 }

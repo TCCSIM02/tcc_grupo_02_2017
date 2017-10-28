@@ -32,14 +32,14 @@
 	            <header class="panel-heading text-center">
 	              Logar
 	            </header>
-	            <form action="index.html" class="panel-body">
+	            <form action="controller.do" method="post" class="panel-body">
 	              <div class="block">
 	                <label class="control-label">Nome de usuário</label>
-	                <input type="text" placeholder="TccDoc" class="form-control">
+	                <input type="text" placeholder="TccDoc" class="form-control" name="txtUsuario" id="txtUsuario">
 	              </div>
 	              <div class="block">
 	                <label class="control-label">Senha</label>
-	                <input type="password" id="inputPassword" placeholder="Senha" class="form-control">
+	                <input type="password" id="inputPassword" placeholder="Senha" name="txtSenha" id="txtSenha" class="form-control">
 	              </div>
 	              <div class="checkbox">
 	                <label>
@@ -47,7 +47,8 @@
 	                </label>
 	              </div>
 				  <a href="#" class="pull-right m-t-mini"><small>Esqueceu a senha?</small></a>
-				  <button type="submit"  name="command" value="EfetuarLogin" class="btn btn-info">Logar</button>
+				 
+				  <button name="command" value="EfetuarLogin" type="submit" class="btn btn-primary">Entrar</button>
 				  
 	            </form>
 	          </section>
