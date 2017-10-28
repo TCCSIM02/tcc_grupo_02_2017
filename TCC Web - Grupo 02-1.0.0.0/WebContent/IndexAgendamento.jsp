@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="css/plugin.css">
 		<link rel="stylesheet" href="css/landing.css">
 		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-		
+		 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		
 		<script type="text/javascript">
