@@ -82,26 +82,28 @@ public class DAOLogin {
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
-				stm.setString(1,"'%" + usuario + "%'");
-				stm.setString(2,"'%" + senha + "%'");
+				stm.setString(1,usuario);
+				stm.setString(2,senha);
+				
 			try (ResultSet rs = stm.executeQuery();) {
 				while(rs.next()) {
 					toLogin = new TOLogin();
 					
-					stm.setInt(1,toLogin.getCodLogin());
-					stm.setString(2,toLogin.getNomeLogin());
-					stm.setString(3,toLogin.getSenhaCriptografada());
+					toLogin.setNomeLogin(rs.getString("nomeLogin"));
+					toLogin.setSenha(rs.getString("senha"));
+					toLogin.setCodLogin(rs.getInt("codLogin"));
+					toLogin.setCodNivel(rs.getInt("codNivel"));
 
-					System.out.println("teste 2");
-					System.out.println(toLogin.getNomeLogin());
 					
 					lista.add(toLogin);
 				}
 			} catch (SQLException e) {				
 				e.printStackTrace(); 
+				System.out.println("teste 3");
 			}
 		} catch (SQLException e1) {
-			System.out.print(e1.getStackTrace());
+			e1.printStackTrace();
+			System.out.println("teste 4");
 		}
 		return lista;
 	}

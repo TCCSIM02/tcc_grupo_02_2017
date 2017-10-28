@@ -25,26 +25,22 @@ public class EfetuarLogin implements Command{
 		String txtSenha = request.getParameter("txtSenha");
 		
 		ModelLogin modelLogin = new ModelLogin();
-		
-		System.out.println(txtUsuario);
-		
+	
 		ArrayList<TOLogin> listaLogin = new ArrayList<>(); 		
 		
 		try {
 			listaLogin = modelLogin.buscarLogin(txtUsuario, txtSenha);
 		} catch (ClassNotFoundException | NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		//session.setAttribute("listaLogin", listaLogin);
-		
-		System.out.println(listaLogin);
+
 		
 		if(listaLogin.isEmpty()) {
 			view = request.getRequestDispatcher("erro.jsp");				
 		} else {
-			view = request.getRequestDispatcher("IndexAgendamento.jsp");	
+			session.setAttribute("nomeLogin", listaLogin.get(0).getNomeLogin());
+			session.setAttribute("nivelUsuario", listaLogin.get(0).getCodNivel());
+			view = request.getRequestDispatcher("Index.jsp");	
 		} 
 		
 		

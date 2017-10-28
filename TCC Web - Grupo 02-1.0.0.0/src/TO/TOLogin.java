@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class TOLogin {
 
-	public int codLogin;
+	public int codLogin, codNivel;
 	public String nomeLogin, email, senha, flagAtivo,senhaCriptografada;
 	/**
 	 * @return the senhaCriptografada
@@ -24,6 +24,10 @@ public class TOLogin {
 	 */
 	public int getCodLogin() {
 		return codLogin;
+	}
+	
+	public int getCodNivel() {
+		return codNivel;
 	}
 	/**
 	 * @return the nomeLogin
@@ -60,6 +64,9 @@ public class TOLogin {
 	 */
 	public void setCodLogin(int codLogin) {
 		this.codLogin = codLogin;
+	}
+	public void setCodNivel(int codNivel) {
+		this.codNivel = codNivel;
 	}
 	/**
 	 * @param nomeLogin the nomeLogin to set

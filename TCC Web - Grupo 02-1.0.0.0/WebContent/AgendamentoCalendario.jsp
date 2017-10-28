@@ -78,7 +78,7 @@
 		<option value=""></option>
 		<c:forEach var="to" items="${listaMedico}">
 			<option value="${to.codMedico}">${to.nome}</option>
-			</c:forEach>
+		</c:forEach>
 	</select>
 	
 

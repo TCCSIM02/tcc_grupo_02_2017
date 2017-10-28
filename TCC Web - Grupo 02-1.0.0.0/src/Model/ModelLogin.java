@@ -16,7 +16,7 @@ import TO.TOLogin;
 
 public class ModelLogin {
 	
-	public int codLogin;
+	public int codLogin, codNivel;
 	public String nomeLogin, email, senha, flagAtivo, senhaCriptografada;
 	public Date dataCadastro;
 	
@@ -32,10 +32,11 @@ public class ModelLogin {
 	 * @param flagAtivo
 	 * @param dataCadastro
 	 */
-	public ModelLogin(int codLogin, String nomeLogin, String email,
+	public ModelLogin(int codLogin, int codNivel, String nomeLogin, String email,
 			String senha, String flagAtivo, Date dataCadastro) {
 		super();
 		this.codLogin = codLogin;
+		this.codNivel = codNivel;
 		this.nomeLogin = nomeLogin;
 		this.email = email;
 		this.senha = senha;
@@ -60,6 +61,10 @@ public class ModelLogin {
 	 */
 	public int getCodLogin() {
 		return codLogin;
+	}
+	
+	public int getCodNivel() {
+		return codNivel;
 	}
 
 	/**
@@ -103,6 +108,10 @@ public class ModelLogin {
 	public void setCodLogin(int codLogin) {
 		this.codLogin = codLogin;
 	}
+	
+	public void setCodNivel(int codNivel) {
+		this.codNivel = codNivel;
+	}
 
 	/**
 	 * @param nomeLogin the nomeLogin to set
@@ -144,6 +153,7 @@ public class ModelLogin {
 		TOLogin toLogin = new TOLogin();
 		
 		toLogin.setCodLogin(codLogin);
+		toLogin.setCodNivel(codNivel);
 		toLogin.setDataCadastro(dataCadastro);
 		toLogin.setFlagAtivo(flagAtivo);
 		toLogin.setNomeLogin(nomeLogin);
@@ -210,7 +220,6 @@ public class ModelLogin {
 		ArrayList<TOLogin> lista;
 		DAOLogin dao = new DAOLogin();
 		String senhaCriptografada = criptografaSenha(senha).toLowerCase();
-		System.out.println("teste1");
 		lista = dao.buscarLogin(usuario, senhaCriptografada);
 		return lista;
 	}	
