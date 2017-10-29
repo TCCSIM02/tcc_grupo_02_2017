@@ -40,7 +40,7 @@
 				<section class="panel">
 					<div class="panel-body">
 					 
-						<form class="form-horizontal" action="controller.do" method="post" data-validate="parsley">      
+						<form class="form-horizontal" action="controller.do" method="get" data-validate="parsley">      
 						
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Nome do Plano</label>
@@ -65,6 +65,16 @@
 									maxlength="45" placeholder="tipo do plano" size="16">
 								</div>				  
 							</div>
+							
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Unidade</label>
+									<div class="col-lg-6">
+										<c:forEach var="to" items="${listaUnidade}">
+											<input type="checkbox" name="check${to.codUnidade}" value="${to.codUnidade}"> ${to.nomeFantasia}<br>
+										</c:forEach>
+									</div>				  
+							</div>
+							
 							
 							<!--
 							<div class="form-group">

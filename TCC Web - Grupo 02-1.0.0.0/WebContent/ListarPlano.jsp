@@ -73,7 +73,7 @@
                     <option value="3">Exportar</option>
                   </select>
                   <button class="btn btn-sm btn-white">Aplicar</button>   
-                  <a href="CriarPlano.jsp" class="btn btn-sm btn-white">Cadastrar novo plano</a>	     				  
+                  <a href="controller.do?command=PreenchePlano" class="btn btn-sm btn-white">Cadastrar novo plano</a>	     				  
                 </div>
                 
                 

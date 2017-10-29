@@ -24,8 +24,12 @@ public class CriarPlano implements Command {
 		String pRegistroAns = request.getParameter("registroAns");
 		String pTipoPlano = request.getParameter("tipoPlano");
 		String pFlagAtivo = request.getParameter("flagAtivo");
+		String pCheck = request.getParameter("check");
 		String pDataCadastro = request.getParameter("dataCadastro");
 
+		System.out.println("check");
+		System.out.println(pCheck);
+		
 		int id = -1;
 		try {
 			id = Integer.parseInt(pCodPlano);
