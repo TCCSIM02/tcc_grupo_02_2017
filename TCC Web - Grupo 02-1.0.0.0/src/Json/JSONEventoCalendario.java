@@ -41,7 +41,9 @@ public class JSONEventoCalendario {
 			
 			//format.format(format.parse(rs.getString("dataAgendamentoComeco")))
 			
-			jsonObject.put("id", String.valueOf(listaEvento.get(i).getCodAgendamento()));
+			jsonObject.put("codAgendamento", String.valueOf(listaEvento.get(i).getCodAgendamento()));
+			jsonObject.put("codMedico", String.valueOf(listaEvento.get(i).getCodMedico()));
+			jsonObject.put("codPaciente", String.valueOf(listaEvento.get(i).getCodPaciente()));
 			jsonObject.put("title", format.format(listaEvento.get(i).getDataHoraComeco()));
 			jsonObject.put("start", format.format(listaEvento.get(i).getDataHoraComeco()));
 			jsonObject.put("end", format.format(listaEvento.get(i).getDataHoraFim()));

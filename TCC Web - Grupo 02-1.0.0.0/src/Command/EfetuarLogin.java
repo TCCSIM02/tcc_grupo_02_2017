@@ -40,6 +40,7 @@ public class EfetuarLogin implements Command{
 		} else {
 			session.setAttribute("nomeLogin", listaLogin.get(0).getNomeLogin());
 			session.setAttribute("nivelUsuario", listaLogin.get(0).getCodNivel());
+			session.setAttribute("codLogin", listaLogin.get(0).getCodLogin());
 			view = request.getRequestDispatcher("Index.jsp");	
 		} 
 		

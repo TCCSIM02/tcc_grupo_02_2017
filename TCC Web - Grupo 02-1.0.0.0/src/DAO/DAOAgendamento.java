@@ -33,7 +33,6 @@ public class DAOAgendamento {
 						
 			/*stm.setDate(1,toAgendamento.getDataHoraComeco());*/
 			/*stm.setDate(2,toAgendamento.getDataHoraFim());*/
-			stm.setString(1,toAgendamento.getStatusAgendamento());
 			/*stm.setString(4,toAgendamento.getFlagAtivo());*/
 			//stm.setString(4,toAgendamento.getFlagAtivo());
 			//stm.setDate(5,dataSql);
@@ -61,9 +60,8 @@ public class DAOAgendamento {
 			
 			stm.setDate(1,(java.sql.Date) toAgendamento.getDataHoraComeco());
 			stm.setDate(2,(java.sql.Date) toAgendamento.getDataHoraFim());
-			stm.setString(3,toAgendamento.getStatusAgendamento());
-			stm.setInt(4,Integer.parseInt(toAgendamento.getFlagAtivo()));
-			stm.setInt(5,toAgendamento.getCodAgendamento());
+			stm.setInt(3,Integer.parseInt(toAgendamento.getFlagAtivo()));
+			stm.setInt(4,toAgendamento.getCodAgendamento());
 			
 			stm.execute();
 		} catch (Exception e) {
@@ -98,8 +96,7 @@ public class DAOAgendamento {
 					
 					//toAgendamento.setCodAgendamento(rs.getInt("codAgendamento"));
 					toAgendamento.setDataHoraComeco(rs.getDate("dataAgendamentoComeco"));
-					toAgendamento.setDataHoraFim(rs.getDate("dataAgendamentoFim")); 
-					toAgendamento.setStatusAgendamento(rs.getString("statusAgendamento"));								
+					toAgendamento.setDataHoraFim(rs.getDate("dataAgendamentoFim")); 							
 					toAgendamento.setFlagAtivo(rs.getString("flagAtivo"));
 					toAgendamento.setDataCadastro(rs.getDate("dataCadastro"));
 					
@@ -128,8 +125,7 @@ public class DAOAgendamento {
 					
 					toAgendamento.setCodAgendamento(rs.getInt("codAgendamento"));
 					toAgendamento.setDataHoraComeco(format.parse(rs.getString("dataAgendamentoComeco")));
-					toAgendamento.setDataHoraFim(format.parse(rs.getString("dataAgendamentoFim"))); 
-					toAgendamento.setStatusAgendamento(rs.getString("statusAgendamento"));								
+					toAgendamento.setDataHoraFim(format.parse(rs.getString("dataAgendamentoFim"))); 						
 					toAgendamento.setFlagAtivo(rs.getString("flagAtivo"));
 					toAgendamento.setDataCadastro(rs.getDate("dataCadastro"));
 					
@@ -150,7 +146,7 @@ public class DAOAgendamento {
 	}
 	
 	
-	public ArrayList<TOAgendamento> listarAgendamentosMedico(String chave) throws ParseException{
+	public ArrayList<TOAgendamento> listarAgendamentosMedico(int chave) throws ParseException{
 		
 		//System.out.println(chave);
 		
@@ -160,7 +156,7 @@ public class DAOAgendamento {
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
-				stm.setString(1, chave.toUpperCase());
+				stm.setInt(1, chave);
 			try (ResultSet rs = stm.executeQuery();) {
 				while(rs.next()) {
 					toAgendamento = new TOAgendamento();
@@ -168,9 +164,12 @@ public class DAOAgendamento {
 					//DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 					
 					toAgendamento.setCodAgendamento(rs.getInt("codAgendamento"));
+					toAgendamento.setCodPaciente(rs.getInt("codPaciente"));
+					toAgendamento.setCodMedico(rs.getInt("codMedico"));
+					toAgendamento.setCodUnidade(rs.getInt("codUnidade"));
+					toAgendamento.setCodAtendente(rs.getInt("codAtendente"));					
 					toAgendamento.setDataHoraComeco(rs.getDate("dataAgendamentoComeco"));
-					toAgendamento.setDataHoraFim(rs.getDate("dataAgendamentoFim")); 
-					toAgendamento.setStatusAgendamento(rs.getString("statusAgendamento"));								
+					toAgendamento.setDataHoraFim(rs.getDate("dataAgendamentoFim")); 					
 					toAgendamento.setFlagAtivo(rs.getString("flagAtivo"));
 					toAgendamento.setDataCadastro(rs.getDate("dataCadastro"));
 					

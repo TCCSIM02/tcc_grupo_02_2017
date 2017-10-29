@@ -18,7 +18,7 @@ public class Logoff implements Command{
 
 		session.invalidate();
 		
-		System.out.println("passei por aqui");
+		//System.out.println("passei por aqui");
 		
 		view = request.getRequestDispatcher("Login.jsp");
 		

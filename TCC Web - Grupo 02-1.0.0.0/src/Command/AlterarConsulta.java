@@ -23,8 +23,6 @@ public class AlterarConsulta implements Command {
 		String pDataHoraConsultaFinal   =	request.getParameter("dataHoraConsultaFinal");   
 		String pDataHoraConsultaInicio  =	request.getParameter("dataHoraConsultaInicio");  
 		String pDiagnostico             =	request.getParameter("diagnostico");             
-		String pStatusConsulta          =	request.getParameter("statusConsulta");          
-		String pValorConsulta			=	request.getParameter("valorConsulta");	
 
 		System.out.println("Cod a: " + pCodConsulta);
 		System.out.println("id a: " + request.getParameter("id"));
@@ -39,8 +37,7 @@ public class AlterarConsulta implements Command {
 
 		/*ALTERAR ESSE NULL AQUI*/
 		/*ALTERAR ESSE NULL AQUI*/
-		ModelConsulta modelConsulta = new ModelConsulta(id, null, null, pDiagnostico,
-				pStatusConsulta, Double.parseDouble(pValorConsulta));
+		ModelConsulta modelConsulta = new ModelConsulta(id, 0, null, null, pDiagnostico);
 		
 		RequestDispatcher view = null;
 		HttpSession session = request.getSession();

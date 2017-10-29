@@ -14,8 +14,7 @@ import Model.ModelAgendamento;
 import Model.ModelMedico;
 import TO.TOMedico;
 
-
-public class AgendamentoCalendario implements Command {
+public class ListarConsultasMedico implements Command {
 
 	@Override
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,47 +22,33 @@ public class AgendamentoCalendario implements Command {
 		RequestDispatcher view = null;
 		HttpSession session = request.getSession();
 		
-		String especialidadeValor = request.getParameter("especialidadeValor");
-		String unidadeValor = request.getParameter("unidadeValor");
+		String codLogin = session.getAttribute("codLogin").toString();	
 		
 		ModelAgendamento modelAgendamento = new ModelAgendamento();
-		ModelMedico modelMedico = new ModelMedico(); 
 
-		try {
-			modelAgendamento.preencherCalendario();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
+		view = request.getRequestDispatcher("ListarConsultasMedico.jsp");
+		
+		ModelMedico modelMedico = new ModelMedico(); 
 		
 		ArrayList<TOMedico> listaMedico = new ArrayList<>(); 
 		try {
-			listaMedico = modelMedico.listarMedicoEspecialidadeUnidade(unidadeValor, especialidadeValor);
+			listaMedico = modelMedico.listarMedicoLogado(codLogin);
 			//lista = modelMedico.listarMedicos(especialidadeValor);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 		
-		session.setAttribute("listaMedico", listaMedico);		
-		
-		view = request.getRequestDispatcher("AgendamentoCalendario.jsp");		
 		
 		try {
-			System.out.println(modelAgendamento.jsonCalendario());
+			session.setAttribute("jsonCalendario", modelAgendamento.listarAgendamentosMedico(listaMedico.get(0).getCodMedico() ) );
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		
-		try {
-			session.setAttribute("jsonCalendario", modelAgendamento.jsonCalendario());
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		 
 		view.forward(request, response);
 	}
+	
+	
 }

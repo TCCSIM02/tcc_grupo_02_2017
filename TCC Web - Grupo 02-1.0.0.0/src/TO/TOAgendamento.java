@@ -3,8 +3,8 @@ package TO;
 import java.util.Date;
 
 public class TOAgendamento {
-	private int codAgendamento;
-	private String statusAgendamento, flagAtivo;
+	private int codAgendamento, codPaciente, codMedico, codUnidade, codAtendente;
+	private String  flagAtivo;
 	private Date dataCadastro, dataHoraComeco, dataHoraFim;
 	/**
 	 * @return the codAgendamento
@@ -12,11 +12,21 @@ public class TOAgendamento {
 	public int getCodAgendamento() {
 		return codAgendamento;
 	}
-	/**
-	 * @return the statusAgendamento
-	 */
-	public String getStatusAgendamento() {
-		return statusAgendamento;
+	
+	public int getCodPaciente() {
+		return codPaciente;
+	}
+	
+	public int getCodMedico() {
+		return codMedico;
+	}
+	
+	public int getCodUnidade() {
+		return codUnidade;
+	}
+	
+	public int getCodAtendente() {
+		return codAtendente;
 	}
 	/**
 	 * @return the flagAtivo
@@ -48,11 +58,21 @@ public class TOAgendamento {
 	public void setCodAgendamento(int codAgendamento) {
 		this.codAgendamento = codAgendamento;
 	}
-	/**
-	 * @param statusAgendamento the statusAgendamento to set
-	 */
-	public void setStatusAgendamento(String statusAgendamento) {
-		this.statusAgendamento = statusAgendamento;
+	
+	public void setCodPaciente(int codPaciente) {
+		this.codPaciente = codPaciente;
+	}
+	
+	public void setCodMedico(int codMedico) {
+		this.codMedico = codMedico;
+	}
+	
+	public void setCodUnidade(int codUnidade) {
+		this.codUnidade = codUnidade;
+	}
+	
+	public void setCodAtendente(int codAtendente) {
+		this.codAtendente = codAtendente;
 	}
 	/**
 	 * @param flagAtivo the flagAtivo to set

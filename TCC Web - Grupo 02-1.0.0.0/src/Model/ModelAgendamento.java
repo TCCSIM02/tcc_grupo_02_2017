@@ -11,26 +11,21 @@ import TO.TOMedico;
 
 public class ModelAgendamento {
 
-	private int codAgendamento;
-	private String statusAgendamento, flagAtivo;
+	private int codAgendamento, codPaciente, codMedico, codUnidade, codAtendente;
+	private String flagAtivo;
 	private Date dataCadastro, dataHoraComeco, dataHoraFim;
 	
 	public ModelAgendamento() {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param codAgendamento
-	 * @param statusAgendamento
-	 * @param flagAtivo
-	 * @param dataCadastro
-	 * @param dataHoraComeco
-	 * @param dataHoraFim
-	 */
-	public ModelAgendamento(int codAgendamento, String statusAgendamento, String flagAtivo, Date dataCadastro,
+	public ModelAgendamento(int codAgendamento, int codPaciente, int codMedico, int codUnidade, int codAtendente, String flagAtivo, Date dataCadastro,
 			Date dataHoraComeco, Date dataHoraFim) {
 		this.codAgendamento = codAgendamento;
-		this.statusAgendamento = statusAgendamento;
+		this.codPaciente = codPaciente;
+		this.codMedico = codMedico;
+		this.codUnidade = codUnidade;
+		this.codAtendente = codAtendente;
 		this.flagAtivo = flagAtivo;
 		this.dataCadastro = dataCadastro;
 		this.dataHoraComeco = dataHoraComeco;
@@ -50,12 +45,21 @@ public class ModelAgendamento {
 	public int getCodAgendamento() {
 		return codAgendamento;
 	}
-
-	/**
-	 * @return the statusAgendamento
-	 */
-	public String getStatusAgendamento() {
-		return statusAgendamento;
+	
+	public int getCodPaciente() {
+		return codPaciente;
+	}
+	
+	public int getCodMedico() {
+		return codMedico;
+	}
+	
+	public int getCodUnidade() {
+		return codUnidade;
+	}
+	
+	public int getCodAtendente() {
+		return codAtendente;
 	}
 
 	/**
@@ -92,12 +96,21 @@ public class ModelAgendamento {
 	public void setCodAgendamento(int codAgendamento) {
 		this.codAgendamento = codAgendamento;
 	}
-
-	/**
-	 * @param statusAgendamento the statusAgendamento to set
-	 */
-	public void setStatusAgendamento(String statusAgendamento) {
-		this.statusAgendamento = statusAgendamento;
+	
+	public void setCodPaciente(int codPaciente) {
+		this.codPaciente = codPaciente;
+	}
+	
+	public void setCodMedico(int codMedico) {
+		this.codMedico = codMedico;
+	}
+	
+	public void setCodUnidade(int codUnidade) {
+		this.codUnidade = codUnidade;
+	}
+	
+	public void setCodAtendente(int codAtendente) {
+		this.codAtendente = codAtendente;
 	}
 
 	/**
@@ -133,11 +146,14 @@ public class ModelAgendamento {
 		TOAgendamento toAgendamento = new TOAgendamento();
 		
 		toAgendamento.setCodAgendamento(codAgendamento);
+		toAgendamento.setCodPaciente(codPaciente);
+		toAgendamento.setCodMedico(codMedico);
+		toAgendamento.setCodUnidade(codUnidade);
+		toAgendamento.setCodAtendente(codAtendente);
 		toAgendamento.setDataCadastro(dataCadastro);
 		toAgendamento.setDataHoraComeco(dataCadastro);
 		toAgendamento.setDataHoraFim(dataCadastro);
 		toAgendamento.setFlagAtivo(flagAtivo);
-		toAgendamento.setStatusAgendamento(flagAtivo);
 		
 		return toAgendamento;
 		
@@ -194,7 +210,7 @@ public class ModelAgendamento {
 		return jsonEventoCalendario.jsonCalendario;
 	}
 	
-	public String listarAgendamentosMedico(String medicoValor) throws ParseException{
+	public String listarAgendamentosMedico(int medicoValor) throws ParseException{
 		ArrayList<TOAgendamento> lista;
 		DAOAgendamento dao = new DAOAgendamento();
 		lista = dao.listarAgendamentosMedico(medicoValor);

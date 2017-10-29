@@ -9,31 +9,20 @@ import TO.TOConsulta;
 
 public class ModelConsulta {
 
-	private int codConsulta;
+	private int codConsulta, codAgendamento;
 	private Date dataHoraConsultaInicio, dataHoraConsultaFinal;
-	private String diagnostico, statusConsulta;
-	private double valorConsulta;
+	private String diagnostico;
 	
 	public ModelConsulta() {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param codConsulta
-	 * @param dataHoraConsultaInicio
-	 * @param dataHoraConsultaFinal
-	 * @param diagnostico
-	 * @param statusConsulta
-	 * @param valorConsulta
-	 */
-	public ModelConsulta(int codConsulta, Date dataHoraConsultaInicio, Date dataHoraConsultaFinal, String diagnostico,
-			String statusConsulta, double valorConsulta) {
+	public ModelConsulta(int codConsulta, int codAgendamento, Date dataHoraConsultaInicio, Date dataHoraConsultaFinal, String diagnostico) {
 		this.codConsulta = codConsulta;
+		this.codAgendamento = codAgendamento;
 		this.dataHoraConsultaInicio = dataHoraConsultaInicio;
 		this.dataHoraConsultaFinal = dataHoraConsultaFinal;
 		this.diagnostico = diagnostico;
-		this.statusConsulta = statusConsulta;
-		this.valorConsulta = valorConsulta;
 	}
 
 	/**
@@ -48,6 +37,10 @@ public class ModelConsulta {
 	 */
 	public int getCodConsulta() {
 		return codConsulta;
+	}
+	
+	public int getCodAgendamento() {
+		return codAgendamento;
 	}
 
 	/**
@@ -74,16 +67,6 @@ public class ModelConsulta {
 	/**
 	 * @return the statusConsulta
 	 */
-	public String getStatusConsulta() {
-		return statusConsulta;
-	}
-
-	/**
-	 * @return the valorConsulta
-	 */
-	public double getValorConsulta() {
-		return valorConsulta;
-	}
 
 	/**
 	 * @param codConsulta the codConsulta to set
@@ -92,6 +75,10 @@ public class ModelConsulta {
 		this.codConsulta = codConsulta;
 	}
 
+	public void setCodAgendamento(int codAgendamento) {
+		this.codAgendamento = codAgendamento;
+	}
+	
 	/**
 	 * @param dataHoraConsultaInicio the dataHoraConsultaInicio to set
 	 */
@@ -113,30 +100,15 @@ public class ModelConsulta {
 		this.diagnostico = diagnostico;
 	}
 
-	/**
-	 * @param statusConsulta the statusConsulta to set
-	 */
-	public void setStatusConsulta(String statusConsulta) {
-		this.statusConsulta = statusConsulta;
-	}
-
-	/**
-	 * @param valorConsulta the valorConsulta to set
-	 */
-	public void setValorConsulta(double valorConsulta) {
-		this.valorConsulta = valorConsulta;
-	}
-	
 	public TOConsulta getTO(){
 		
 		TOConsulta toConsulta = new TOConsulta();
 		
 		toConsulta.setCodConsulta(codConsulta);
+		toConsulta.setCodAgendamento(codAgendamento);
 		toConsulta.setDataHoraConsultaFinal(dataHoraConsultaFinal);
 		toConsulta.setDataHoraConsultaInicio(dataHoraConsultaFinal);
 		toConsulta.setDiagnostico(diagnostico);
-		toConsulta.setStatusConsulta(statusConsulta);
-		toConsulta.setValorConsulta(valorConsulta);
 		
 		return toConsulta;
 		
@@ -168,17 +140,23 @@ public class ModelConsulta {
 		TOConsulta toConsulta = dao.consultarConsultaCod(codConsulta);
 		
 		codConsulta = toConsulta.getCodConsulta();
+		codAgendamento = toConsulta.getCodAgendamento();
 		dataHoraConsultaFinal =  toConsulta.getDataHoraConsultaFinal();
 		dataHoraConsultaInicio = toConsulta.getDataHoraConsultaInicio();
 		diagnostico = toConsulta.getDiagnostico();
-		statusConsulta = toConsulta.getStatusConsulta();
-		valorConsulta = toConsulta.getValorConsulta();
 	}
 	
 	public ArrayList<TOConsulta> listarConsultas() throws ClassNotFoundException{
 		ArrayList<TOConsulta> lista;
 		DAOConsulta dao = new DAOConsulta();
 		lista = dao.listarConsultas();
+		return lista;
+	}
+	
+	public ArrayList<TOConsulta> listarConsultaCodAgendamento(String codAgendamento) throws ClassNotFoundException{
+		ArrayList<TOConsulta> lista;
+		DAOConsulta dao = new DAOConsulta();
+		lista = dao.listarConsultaCodAgendamento(codAgendamento);
 		return lista;
 	}
 	

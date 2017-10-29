@@ -21,7 +21,7 @@ public class ListarMedicoAgenda implements Command {
 		
 		
 		//String especialidadeValor = request.getParameter("especialidadeValor");
-		String medicoValor = request.getParameter("medicoValor");
+		int medicoValor = Integer.parseInt(request.getParameter("medicoValor"));
 		
 		
 		ModelAgendamento modelAgendamento = new ModelAgendamento(); 

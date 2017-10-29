@@ -32,7 +32,6 @@ public class CriarPlano implements Command {
 		} catch (NumberFormatException e) {
 
 		}
-
 		/*ALTERAR ESSE NULL AQUI*/
 		ModelPlano modelPlano = new ModelPlano(id,pNomePlano,pRegistroAns,pTipoPlano, pFlagAtivo, null);
 	

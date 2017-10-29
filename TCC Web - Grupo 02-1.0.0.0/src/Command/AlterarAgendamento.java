@@ -38,8 +38,8 @@ public class AlterarAgendamento implements Command {
 		}
 
 		/*ALTERAR ESSE NULL AQUI*/
-		ModelAgendamento modelAgendamento = new ModelAgendamento(Integer.parseInt(pCodAgendamento), pStatusAgendamento, pFlagAtivo, null,
-				null, null);
+		ModelAgendamento modelAgendamento = new ModelAgendamento(Integer.parseInt(pCodAgendamento), 0, 0, 0, 0, pFlagAtivo, null,
+				null, null); 
 		
 		RequestDispatcher view = null;
 		HttpSession session = request.getSession();

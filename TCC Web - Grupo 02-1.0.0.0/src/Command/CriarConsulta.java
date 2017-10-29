@@ -18,24 +18,21 @@ public class CriarConsulta implements Command {
 	
 	@Override
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		String pCodConsulta             =	request.getParameter("codConsulta");             
+ 
+		String pCodAgendamento          =	request.getParameter("codAgendamento");      
 		String pDataHoraConsultaFinal   =	request.getParameter("dataHoraConsultaFinal");   
 		String pDataHoraConsultaInicio  =	request.getParameter("dataHoraConsultaInicio");  
-		String pDiagnostico             =	request.getParameter("diagnostico");             
-		String pStatusConsulta          =	request.getParameter("statusConsulta");          
-		String pValorConsulta			=	request.getParameter("valorConsulta");	
+		String pDiagnostico             =	request.getParameter("diagnostico");
+
+		int codAgendamento = -1;
 		
-		int id = -1;
 		try {
-			id = Integer.parseInt(pCodConsulta);
+			codAgendamento = Integer.parseInt(pCodAgendamento);
 		} catch (NumberFormatException e) {
-
 		}
-
+		
 		/*ALTERAR ESSE NULL AQUI*/
-		ModelConsulta modelConsulta = new ModelConsulta(id, null /*new Date(pDataHoraConsultaFinal)*/, null /* new Date(pDataHoraConsultaInicio)*/,  pDiagnostico,
-				pStatusConsulta,  Double.parseDouble(pValorConsulta.replace(",",".")));
+		ModelConsulta modelConsulta = new ModelConsulta(-1, codAgendamento, null , null,  pDiagnostico);
 	
 		HttpSession session = request.getSession();
 		
@@ -50,7 +47,7 @@ public class CriarConsulta implements Command {
 		//lista.add(modelConsulta.getTO());
 		
 		session.setAttribute("lista", lista);		
-		RequestDispatcher view = request.getRequestDispatcher("ListarConsulta.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("ListarConsultasMedico.jsp");
 		view.forward(request, response);
 	}
 }

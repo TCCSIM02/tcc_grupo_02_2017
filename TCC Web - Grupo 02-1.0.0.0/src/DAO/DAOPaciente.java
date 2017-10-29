@@ -351,6 +351,58 @@ public class DAOPaciente {
 		return lista;
 	}	
 	
+	public ArrayList<TOPaciente> listarPacientesCod(String codPaciente){
+		TOPaciente toPaciente;
+		ArrayList<TOPaciente> lista = new ArrayList<>();
+							
+		String sqlSelect = "SELECT * FROM  TCC.PACIENTE WHERE codPaciente LIKE ?";
+		// usando o try with resources do Java 7, que fecha o que abriu
+		try (Connection conn = FabricaConexao.getConexao(); 
+				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
+				stm.setString(1,codPaciente);
+			try (ResultSet rs = stm.executeQuery();) {
+				while(rs.next()) {
+					toPaciente = new TOPaciente();
+					
+					toPaciente.setCodPaciente(rs.getInt("codPaciente"));
+					toPaciente.setNumeroEndereco(rs.getString("numeroEndereco"));
+					toPaciente.setDataCadastro(rs.getDate("dataCadastro"));
+					toPaciente.setNome(rs.getString("nomePaciente"));
+					toPaciente.setCpf(rs.getString("cPF"));
+					toPaciente.setDataNascimento(rs.getDate("dataNascimento"));
+					toPaciente.setEstadoCivil(rs.getString("estadoCivil"));
+					toPaciente.setNacionalidade(rs.getString("nacionalidade"));
+					toPaciente.setEndereco(rs.getString("endereco"));
+					toPaciente.setCep(rs.getString("cEP"));
+					toPaciente.setCidade(rs.getString("cidade"));
+					toPaciente.setUf(rs.getString("uF"));
+					toPaciente.setPais(rs.getString("pais"));
+					toPaciente.setTel1(rs.getString("tel1"));
+					toPaciente.setTel2(rs.getString("tel2"));
+					toPaciente.setCel(rs.getString("cel"));
+					toPaciente.setFlagAtivo(rs.getString("flagAtivo"));
+					toPaciente.setNumConvenio(rs.getString("numConvenio"));
+					toPaciente.setEmail(rs.getString("email"));					
+					toPaciente.setAlergiaMedicamento(rs.getString("alergiaMedicamento"));
+					toPaciente.setAlergiaAlimentares(rs.getString("alergiaAlimentares"));
+					toPaciente.setPeso(rs.getDouble("peso"));
+					toPaciente.setAltura(rs.getDouble("altura"));
+					toPaciente.setMedicamentoContinuo(rs.getString("medicamentoContinuo"));
+					toPaciente.setCirurgia(rs.getString("cirurgia"));
+					toPaciente.setAntecedentesPessoais(rs.getString("antecedentesPessoais"));
+					toPaciente.setTipoSanguineo(rs.getString("tipoSanguineo"));
+									
+					lista.add(toPaciente);
+				}
+			} catch (SQLException e) {				
+				e.printStackTrace(); 
+			}
+		} catch (SQLException e1) {
+			System.out.print(e1.getStackTrace());
+		}
+		return lista;
+	}	
+	
 	
 	
 	

@@ -64,15 +64,16 @@
 			<a href="controller.do?command=ListarPacienteBuscar"><i class="icon-user icon-xlarge"></i><span>Pacientes</span></a>
 		</li>
 		
-		
-		<% if( pagina.equals("consulta")) {  %>
-		<li class="active">		
-		<% } else { %>
-		<li class="dropdown-submenu">
-		<% } %>
-			<a href="controller.do?command=ListarConsultaBuscar"><i class="icon-user-md icon-xlarge"></i><span>Consulta</span></a>
-		</li>
-		  
+		<% if( nivelUsuario.equals("1")) {  %>
+			<% if( pagina.equals("consulta")) {  %>
+			<li class="active">		
+			<% } else { %>
+			<li class="dropdown-submenu">
+			<% } %>
+				<a href="controller.do?command=ListarConsultasMedico"><i class="icon-user-md icon-xlarge"></i><span>Consulta</span></a>
+			</li>
+		 <% } %>
+		 
 		<% if( pagina.equals("agendamento")) {  %>
 		<li class="active">		
 		<% } else { %>

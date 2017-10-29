@@ -187,6 +187,56 @@ public class DAOMedico {
 		return lista;
 	}
 	
+	
+	
+	public ArrayList<TOMedico> listarMedicosCod(String codMedico){
+		TOMedico toMedico;
+		ArrayList<TOMedico> lista = new ArrayList<>();
+							
+		String sqlSelect = "SELECT * FROM tcc.medico where codMedico = ?";
+		// usando o try with resources do Java 7, que fecha o que abriu
+		try (Connection conn = FabricaConexao.getConexao(); 
+				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
+				stm.setString(1, codMedico);
+			try (ResultSet rs = stm.executeQuery();) {
+				while(rs.next()) {
+					toMedico = new TOMedico();
+					
+					toMedico.setCodMedico(rs.getInt("codMedico"));
+					toMedico.setNumeroEndereco(rs.getString("numeroEndereco"));
+					toMedico.setDataCadastro(rs.getDate("dataCadastro"));
+					toMedico.setNome(rs.getString("nomeMedico"));
+					toMedico.setCpf(rs.getString("cPF"));
+					toMedico.setDataNascimento(rs.getDate("dataNascimento"));
+					toMedico.setEstadoCivil(rs.getString("estadoCivil"));
+					toMedico.setNacionalidade(rs.getString("nacionalidade"));
+					toMedico.setEndereco(rs.getString("endereco"));
+					toMedico.setCep(rs.getString("cEP"));
+					toMedico.setCidade(rs.getString("cidade"));
+					toMedico.setUf(rs.getString("uF"));
+					toMedico.setPais(rs.getString("pais"));
+					toMedico.setTel1(rs.getString("tel1"));
+					toMedico.setTel2(rs.getString("tel2"));
+					toMedico.setCel(rs.getString("cel"));
+					toMedico.setFlagAtivo(rs.getString("flagAtivo"));
+					toMedico.setCrm(rs.getString("cRM"));
+					toMedico.setCro(rs.getString("cRO"));
+					toMedico.setEmail(rs.getString("email"));
+									
+					lista.add(toMedico);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace(); 
+			}
+		} catch (SQLException e1) {
+			System.out.print(e1.getStackTrace());
+		}
+		return lista;
+	}	
+	
+	
+	
+	
 	public ArrayList<TOMedico> listarMedico(String chave){
 		TOMedico toMedico;
 		ArrayList<TOMedico> lista = new ArrayList<>();
@@ -279,6 +329,53 @@ public class DAOMedico {
 		}
 		return lista;
 	}	
+	
+	
+	public ArrayList<TOMedico> listarMedicoLogado(String codLogin){
+		TOMedico toMedico;
+		ArrayList<TOMedico> lista = new ArrayList<>();
+							
+		String sqlSelect = "SELECT * FROM TCC.Medico Where codLogin = ?";
+		// usando o try with resources do Java 7, que fecha o que abriu
+		try (Connection conn = FabricaConexao.getConexao(); 
+				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
+				stm.setString(1, codLogin);
+			try (ResultSet rs = stm.executeQuery();) {
+				while(rs.next()) {
+					toMedico = new TOMedico();
+					
+					toMedico.setCodMedico(rs.getInt("codMedico"));
+					toMedico.setNumeroEndereco(rs.getString("numeroEndereco"));
+					toMedico.setDataCadastro(rs.getDate("dataCadastro"));
+					toMedico.setNome(rs.getString("nomeMedico"));
+					toMedico.setCpf(rs.getString("cPF"));
+					toMedico.setDataNascimento(rs.getDate("dataNascimento"));
+					toMedico.setEstadoCivil(rs.getString("estadoCivil"));
+					toMedico.setNacionalidade(rs.getString("nacionalidade"));
+					toMedico.setEndereco(rs.getString("endereco"));
+					toMedico.setCep(rs.getString("cEP"));
+					toMedico.setCidade(rs.getString("cidade"));
+					toMedico.setUf(rs.getString("uF"));
+					toMedico.setPais(rs.getString("pais"));
+					toMedico.setTel1(rs.getString("tel1"));
+					toMedico.setTel2(rs.getString("tel2"));
+					toMedico.setCel(rs.getString("cel"));
+					toMedico.setFlagAtivo(rs.getString("flagAtivo"));
+					toMedico.setCrm(rs.getString("cRM"));
+					toMedico.setCro(rs.getString("cRO"));
+					toMedico.setEmail(rs.getString("email"));
+									
+					
+					lista.add(toMedico);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace(); 
+			}
+		} catch (SQLException e1) {
+			System.out.print(e1.getStackTrace());
+		}
+		return lista;
+	}
 	
 	
 	

@@ -17,6 +17,13 @@
 	<link rel="stylesheet" href="css/plugin.css">
 	<link rel="stylesheet" href="css/landing.css">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+	
+	
+	
+	
+	
+	
+	
 </head>
 <body>
 	
@@ -25,6 +32,12 @@
 	
 	<!-- Menu de navegação do Administrador -->
 	<c:import url="MenuAdministrador.jsp?pagina=consulta" />
+	
+	<%
+    	String data="";
+		data = request.getParameter("eventDate");
+	%>
+
 	
 	
 	<section id="content">
@@ -42,63 +55,63 @@
 					 
 						<form class="form-horizontal" action="controller.do" method="post" data-validate="parsley">      
 						
+						
 							<div class="form-group">
-								<label class="col-lg-3 control-label">Status</label>
+								<label class="col-lg-3 control-label">Codigo do agendamento</label>
 								<div class="col-lg-6">
-									<input type="text" class="form-control" name="statusConsulta" id="statusConsulta" required
-									maxlength="45" placeholder="agendada" size="16">
+									<input type="text" class="form-control" name="codAgendamento" id="codAgendamento" required
+									maxlength="200" placeholder="" size="16"  readonly="true" value="${codAgendamento}">
+								</div>				  
+							</div>
+
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Paciente</label>
+								<div class="col-lg-6">
+									<input type="text" class="form-control" name="nomePaciente" id="nomePaciente" required
+									maxlength="200" placeholder="" size="16"  readonly="true" value="${nomePaciente}">
 								</div>				  
 							</div>
 							
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Medico</label>
+								<div class="col-lg-6">
+									<input type="text" class="form-control" name="nomeMedico" id="nomeMedico" required
+									maxlength="200" placeholder="" size="16"  readonly="true" value="${nomeMedico}">
+								</div>				  
+							</div>
+						
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Diagnóstico</label>
 								<div class="col-lg-6">
-									<input type="text" class="form-control" name="diagnostico" id="diagnostico" required
-									maxlength="200" placeholder="não consultado" size="16">
-								</div>				  
+									<textarea class="form-control" name="diagnostico" id="diagnostico" required rows="10" cols="40"
+									maxlength="200" placeholder="não consultado" style="overflow:auto;resize:none" ></textarea>
+								</div>											  
+							</div>					
+			
+							<div class="container">
+							    <div class='col-md-5'>
+							        <div class="form-group">
+							            <div class='input-group date' id='datetimepicker6'>
+							                <input type='text' class="form-control" />
+							                <span class="input-group-addon">
+							                    <span class="glyphicon glyphicon-calendar"></span>
+							                </span>
+							            </div>
+							        </div>
+							    </div>
+							    <div class='col-md-5'>
+							        <div class="form-group">
+							            <div class='input-group date' id='datetimepicker7'>
+							                <input type='text' class="form-control" />
+							                <span class="input-group-addon">
+							                    <span class="glyphicon glyphicon-calendar"></span>
+							                </span>
+							            </div>
+							        </div>
+							    </div>
 							</div>
 							
-							<div class="form-group">
-								<label class="col-lg-3 control-label">Data de inicio</label>
-								<div class="col-lg-6">
-									<input type="date" class="form-control" name="dataHoraConsultaInicio" id="dataHoraConsultaInicio" required
-									maxlength="10" placeholder="01/01/1900 00:00" size="16">
-								</div>				  
-							</div>
 							
-							<div class="form-group">
-								<label class="col-lg-3 control-label">Data de conclusão</label>
-								<div class="col-lg-6">
-									<input type="date" class="form-control" name="dataHoraConsultaFinal" id="dataHoraConsultaFinal" required
-									maxlength="10" placeholder="31/12/2000 00:00" size="16">
-								</div>				  
-							</div>
-							
-							<div class="form-group">
-								<label class="col-lg-3 control-label">Valor</label>
-								<div class="col-lg-6">
-									<input type="text" class="form-control" name="valorConsulta" id="valorConsulta" required
-									maxlength="45" placeholder="00,00" size="16">
-								</div>				  
-							</div>
-							<!--
-							<div class="form-group">
-								<label class="col-lg-3 control-label">Flag ativo</label>
-								<div class="col-lg-6">
-									<input type="text" class="form-control" name="flagAtivo" id="flagAtivo"
-									maxlength="100" placeholder="Flag Ativo" size="16">
-								</div>				  
-							</div>
-							
-							<div class="form-group">
-								<label class="col-lg-3 control-label">Data cadastro</label>
-								<div class="col-lg-6">
-									<input type="text" class="form-control" name="dataCadastro" id="dataCadastro"
-									maxlength="100" placeholder="Data Cadastro" size="16">
-								</div>				  
-							</div>
-							-->
-								
 							<div class="form-group">
 							  <div class="col-lg-9 col-lg-offset-3">                      
 								<a href="ListarConsulta.jsp" class="btn btn-white">Cancelar</a>
@@ -114,8 +127,25 @@
 	</section>
 	
 	
-	<!-- Footer -->
-	<c:import url="Footer.jsp" />
 	
+	
+	<!-- Footer -->
+	<c:import url="Footer.jsp"/>
+	
+	
+	<script type="text/javascript">
+	    $(function () {
+	        $('#datetimepicker6').datetimepicker();
+	        $('#datetimepicker7').datetimepicker({
+	            useCurrent: false //Important! See issue #1075
+	        });
+	        $("#datetimepicker6").on("dp.change", function (e) {
+	            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+	        });
+	        $("#datetimepicker7").on("dp.change", function (e) {
+	            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+	        });
+	    });
+	</script>	
 </body>
 </html>

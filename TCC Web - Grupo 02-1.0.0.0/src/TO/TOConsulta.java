@@ -3,16 +3,20 @@ package TO;
 import java.util.Date;
 
 public class TOConsulta {
-	private int codConsulta;
+	private int codConsulta, codAgendamento;
 	private Date dataHoraConsultaInicio, dataHoraConsultaFinal;
-	private String diagnostico, statusConsulta;
-	private double valorConsulta;
+	private String diagnostico;
 	/**
 	 * @return the codConsulta
 	 */
 	public int getCodConsulta() {
 		return codConsulta;
 	}
+	
+	public int getCodAgendamento() {
+		return codAgendamento;
+	}
+
 	/**
 	 * @return the dataHoraConsultaInicio
 	 */
@@ -31,24 +35,17 @@ public class TOConsulta {
 	public String getDiagnostico() {
 		return diagnostico;
 	}
-	/**
-	 * @return the statusConsulta
-	 */
-	public String getStatusConsulta() {
-		return statusConsulta;
-	}
-	/**
-	 * @return the valorConsulta
-	 */
-	public double getValorConsulta() {
-		return valorConsulta;
-	}
+
 	/**
 	 * @param codConsulta the codConsulta to set
 	 */
 	public void setCodConsulta(int codConsulta) {
 		this.codConsulta = codConsulta;
 	}
+	public void setCodAgendamento(int codAgendamento) {
+		this.codAgendamento = codAgendamento;
+	}
+	
 	/**
 	 * @param dataHoraConsultaInicio the dataHoraConsultaInicio to set
 	 */
@@ -67,16 +64,5 @@ public class TOConsulta {
 	public void setDiagnostico(String diagnostico) {
 		this.diagnostico = diagnostico;
 	}
-	/**
-	 * @param statusConsulta the statusConsulta to set
-	 */
-	public void setStatusConsulta(String statusConsulta) {
-		this.statusConsulta = statusConsulta;
-	}
-	/**
-	 * @param valorConsulta the valorConsulta to set
-	 */
-	public void setValorConsulta(double valorConsulta) {
-		this.valorConsulta = valorConsulta;
-	}
+
 }
