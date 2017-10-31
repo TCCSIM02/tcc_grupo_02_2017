@@ -35,7 +35,7 @@ public class CriarAgendamento implements Command {
 		}
 
 		/*ALTERAR ESSE NULL AQUI*/
-		ModelAgendamento modelAgendamento = new ModelAgendamento(Integer.parseInt(pCodAgendamento), 0,0,0,0, pFlagAtivo, null,
+		ModelAgendamento modelAgendamento = new ModelAgendamento(Integer.parseInt(pCodAgendamento), 0,0,0,0,0, pFlagAtivo, null,
 				null, null);
 	
 		HttpSession session = request.getSession();

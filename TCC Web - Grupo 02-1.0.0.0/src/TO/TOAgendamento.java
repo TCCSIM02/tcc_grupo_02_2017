@@ -3,7 +3,7 @@ package TO;
 import java.util.Date;
 
 public class TOAgendamento {
-	private int codAgendamento, codPaciente, codMedico, codUnidade, codAtendente;
+	private int codAgendamento, codPaciente, codMedico, codUnidade, codAtendente, codEspecialidade;
 	private String  flagAtivo;
 	private Date dataCadastro, dataHoraComeco, dataHoraFim;
 	/**
@@ -27,6 +27,10 @@ public class TOAgendamento {
 	
 	public int getCodAtendente() {
 		return codAtendente;
+	}
+	
+	public int getCodEspecialidade() {
+		return codEspecialidade;
 	}
 	/**
 	 * @return the flagAtivo
@@ -74,6 +78,10 @@ public class TOAgendamento {
 	public void setCodAtendente(int codAtendente) {
 		this.codAtendente = codAtendente;
 	}
+	
+	public void setCodEspecialidade(int codEspecialidade) {
+		this.codEspecialidade = codEspecialidade;
+	}	
 	/**
 	 * @param flagAtivo the flagAtivo to set
 	 */

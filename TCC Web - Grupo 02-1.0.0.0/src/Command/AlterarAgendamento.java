@@ -26,8 +26,7 @@ public class AlterarAgendamento implements Command {
 		String pFlagAtivo = request.getParameter("flagAtivo");
 		String pDataHoraFim = request.getParameter("dataCadastro");
 		
-		System.out.println("Cod a: " + pCodAgendamento);
-		System.out.println("id a: " + request.getParameter("id"));
+
 		
 		
 		int id = -1;
@@ -38,7 +37,7 @@ public class AlterarAgendamento implements Command {
 		}
 
 		/*ALTERAR ESSE NULL AQUI*/
-		ModelAgendamento modelAgendamento = new ModelAgendamento(Integer.parseInt(pCodAgendamento), 0, 0, 0, 0, pFlagAtivo, null,
+		ModelAgendamento modelAgendamento = new ModelAgendamento(Integer.parseInt(pCodAgendamento), 0, 0, 0, 0, 0, pFlagAtivo, null,
 				null, null); 
 		
 		RequestDispatcher view = null;

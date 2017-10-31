@@ -11,7 +11,7 @@ import TO.TOMedico;
 
 public class ModelAgendamento {
 
-	private int codAgendamento, codPaciente, codMedico, codUnidade, codAtendente;
+	private int codAgendamento, codPaciente, codMedico, codUnidade, codAtendente, codEspecialidade;
 	private String flagAtivo;
 	private Date dataCadastro, dataHoraComeco, dataHoraFim;
 	
@@ -19,13 +19,14 @@ public class ModelAgendamento {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ModelAgendamento(int codAgendamento, int codPaciente, int codMedico, int codUnidade, int codAtendente, String flagAtivo, Date dataCadastro,
+	public ModelAgendamento(int codAgendamento, int codPaciente, int codMedico, int codUnidade, int codAtendente, int codEspecialidade, String flagAtivo, Date dataCadastro,
 			Date dataHoraComeco, Date dataHoraFim) {
 		this.codAgendamento = codAgendamento;
 		this.codPaciente = codPaciente;
 		this.codMedico = codMedico;
 		this.codUnidade = codUnidade;
 		this.codAtendente = codAtendente;
+		this.codEspecialidade = codEspecialidade;
 		this.flagAtivo = flagAtivo;
 		this.dataCadastro = dataCadastro;
 		this.dataHoraComeco = dataHoraComeco;
@@ -61,7 +62,10 @@ public class ModelAgendamento {
 	public int getCodAtendente() {
 		return codAtendente;
 	}
-
+	
+	public int getCodEspecialidade() {
+		return codEspecialidade;
+	}
 	/**
 	 * @return the flagAtivo
 	 */
@@ -112,6 +116,10 @@ public class ModelAgendamento {
 	public void setCodAtendente(int codAtendente) {
 		this.codAtendente = codAtendente;
 	}
+	
+	public void setCodEspecialidade(int codEspecialidade) {
+		this.codEspecialidade = codEspecialidade;
+	}
 
 	/**
 	 * @param flagAtivo the flagAtivo to set
@@ -150,6 +158,7 @@ public class ModelAgendamento {
 		toAgendamento.setCodMedico(codMedico);
 		toAgendamento.setCodUnidade(codUnidade);
 		toAgendamento.setCodAtendente(codAtendente);
+		toAgendamento.setCodEspecialidade(codEspecialidade);
 		toAgendamento.setDataCadastro(dataCadastro);
 		toAgendamento.setDataHoraComeco(dataCadastro);
 		toAgendamento.setDataHoraFim(dataCadastro);
