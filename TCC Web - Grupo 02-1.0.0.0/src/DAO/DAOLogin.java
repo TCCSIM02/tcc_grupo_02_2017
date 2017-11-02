@@ -78,7 +78,7 @@ public class DAOLogin {
 		TOLogin toLogin;
 		ArrayList<TOLogin> lista = new ArrayList<>();
 							
-		String sqlSelect = "SELECT * FROM TCC.LOGIN WHERE nomeLogin = ? AND senha = ?";
+		String sqlSelect = "SELECT * FROM TCC.LOGIN WHERE nomeLogin = ? AND senha = ? and flagAtivo = 1";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {

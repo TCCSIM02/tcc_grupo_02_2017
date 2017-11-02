@@ -92,7 +92,10 @@ public class DAOAdministrador {
 	
 	
 	public void excluirAdministrador(TOAdministrador toAdministrador){
-		String sqlDelete = "UPDATE tcc.administrador SET flagAtivo = 0 WHERE codAdministrador = ?";
+		String sqlDelete = "UPDATE login AS lg \r\n" + 
+				"INNER JOIN administrador AS adm ON adm.codLogin = lg.codLogin \r\n" + 
+				"SET lg.flagAtivo = 0, adm.FlagAtivo = 0\r\n" + 
+				"WHERE adm.codAdministrador = ? and (lg.flagAtivo = 1 or adm.FlagAtivo = 1)";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlDelete);) {
