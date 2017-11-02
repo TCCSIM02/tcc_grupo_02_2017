@@ -22,7 +22,7 @@ public class AlterarPlano implements Command {
 		String pNomePlano = request.getParameter("nomePlano");
 		String pRegistroAns = request.getParameter("registroAns");
 		String pTipoPlano = request.getParameter("tipoPlano");
-		String pFlagAtivo = request.getParameter("flagAtivo");
+		String pFlagAtivo       = request.getParameter("flagAtivo");  
 		String pDataCadastro = request.getParameter("dataCadastro");
 
 		int id = -1;

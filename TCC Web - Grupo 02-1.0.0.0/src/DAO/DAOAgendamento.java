@@ -16,7 +16,7 @@ import java.util.Date;
 public class DAOAgendamento {
 	
 	public void cadastrarAgendamento(TOAgendamento toAgendamento){
-		String sqlInsert = "INSERT INTO tcc.plano (dataAgendamentoComeco,dataAgendamentoFim, statusAgendamento, flagAtivo, dataCadastro) VALUES (current_timestamp(),current_timestamp(),?,1,current_timestamp())";
+		String sqlInsert = "INSERT INTO tcc.plano (dataAgendamentoComeco,dataAgendamentoFim, statusAgendamento, dataCadastro) VALUES (current_timestamp(),current_timestamp(),?,current_timestamp())";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
@@ -53,15 +53,15 @@ public class DAOAgendamento {
 	}
 	
 	public void alterarAgendamento(TOAgendamento toAgendamento){
-		String sqlUpdate = "UPDATE tcc.agendamento SET dataAgendamentoComeco = ?, dataAgendamentoFim = ?, statusAgendamento = ?, flagAtivo = ?, dataCadastro = ? WHERE codAgendamento = ?";
+		String sqlUpdate = "UPDATE tcc.agendamento SET dataAgendamentoComeco = ?, dataAgendamentoFim = ?, statusAgendamento = ?, dataCadastro = ? WHERE codAgendamento = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 			PreparedStatement stm = conn.prepareStatement(sqlUpdate);) {
 			
 			stm.setDate(1,(java.sql.Date) toAgendamento.getDataHoraComeco());
 			stm.setDate(2,(java.sql.Date) toAgendamento.getDataHoraFim());
-			stm.setInt(3,Integer.parseInt(toAgendamento.getFlagAtivo()));
-			stm.setInt(4,toAgendamento.getCodAgendamento());
+			//stm.setInt(3,Integer.parseInt(toAgendamento.getFlagAtivo()));
+			stm.setInt(3,toAgendamento.getCodAgendamento());
 			
 			stm.execute();
 		} catch (Exception e) {
@@ -86,7 +86,7 @@ public class DAOAgendamento {
 	public TOAgendamento consultarAgendamentoCod(int codAgendamentoBusca){
 		TOAgendamento toAgendamento = new TOAgendamento();
 		toAgendamento.setCodAgendamento(codAgendamentoBusca);
-		String sqlSelect = "SELECT  dataAgendamentoComeco, dataAgendamentoFim, statusAgendamento, flagAtivo, dataCadastro FROM tcc.agendamento where codAgendamento = ?";
+		String sqlSelect = "SELECT  dataAgendamentoComeco, dataAgendamentoFim, statusAgendamento, dataCadastro FROM tcc.agendamento where codAgendamento = ? and flagAtivo = 1";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -97,7 +97,6 @@ public class DAOAgendamento {
 					//toAgendamento.setCodAgendamento(rs.getInt("codAgendamento"));
 					toAgendamento.setDataHoraComeco(rs.getDate("dataAgendamentoComeco"));
 					toAgendamento.setDataHoraFim(rs.getDate("dataAgendamentoFim")); 							
-					toAgendamento.setFlagAtivo(rs.getString("flagAtivo"));
 					toAgendamento.setDataCadastro(rs.getDate("dataCadastro"));
 					
 				}
@@ -113,7 +112,7 @@ public class DAOAgendamento {
 	public ArrayList<TOAgendamento> listarAgendamentos() throws ParseException{
 		TOAgendamento toAgendamento;
 		ArrayList<TOAgendamento> lista = new ArrayList<>();
-		String sqlSelect = "SELECT  codAgendamento, CAST(dataAgendamentoComeco AS char) as dataAgendamentoComeco, CAST(dataAgendamentoFim AS char) as dataAgendamentoFim, statusAgendamento, flagAtivo, dataCadastro FROM tcc.agendamento where codAgendamento = 90 order by codAgendamento desc";
+		String sqlSelect = "SELECT codAgendamento, CAST(dataAgendamentoComeco AS char) as dataAgendamentoComeco, CAST(dataAgendamentoFim AS char) as dataAgendamentoFim, statusAgendamento, dataCadastro FROM tcc.agendamento where flagAtivo = 1 order by codAgendamento desc";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -126,7 +125,6 @@ public class DAOAgendamento {
 					toAgendamento.setCodAgendamento(rs.getInt("codAgendamento"));
 					toAgendamento.setDataHoraComeco(format.parse(rs.getString("dataAgendamentoComeco")));
 					toAgendamento.setDataHoraFim(format.parse(rs.getString("dataAgendamentoFim"))); 						
-					toAgendamento.setFlagAtivo(rs.getString("flagAtivo"));
 					toAgendamento.setDataCadastro(rs.getDate("dataCadastro"));
 					
 					format.format(format.parse(rs.getString("dataAgendamentoComeco")));
@@ -152,7 +150,7 @@ public class DAOAgendamento {
 		
 		TOAgendamento toAgendamento;
 		ArrayList<TOAgendamento> lista = new ArrayList<>();
-		String sqlSelect = "SELECT * FROM tcc.agendamento A WHERE A.codMedico = ?";
+		String sqlSelect = "SELECT * FROM tcc.agendamento A WHERE A.codMedico = ? AND flagAtivo = 1";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -170,7 +168,6 @@ public class DAOAgendamento {
 					toAgendamento.setCodAtendente(rs.getInt("codAtendente"));					
 					toAgendamento.setDataHoraComeco(rs.getDate("dataAgendamentoComeco"));
 					toAgendamento.setDataHoraFim(rs.getDate("dataAgendamentoFim")); 					
-					toAgendamento.setFlagAtivo(rs.getString("flagAtivo"));
 					toAgendamento.setDataCadastro(rs.getDate("dataCadastro"));
 					
 					//System.out.println("acima o parametro, abaixo o codagendamento");

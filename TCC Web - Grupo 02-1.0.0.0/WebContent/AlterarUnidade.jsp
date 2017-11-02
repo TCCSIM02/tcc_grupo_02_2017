@@ -128,7 +128,7 @@
 			<section class="main padder">
 			  
 				<div class="clearfix">
-					<h4><i class="icon-edit"></i>Alterar unidade</h4>
+					<h4><i class="icon-edit"></i>Alterar Unidade</h4>
 				</div>
 			  
 			  <div class="row">
@@ -176,7 +176,7 @@
 									<label class="col-lg-3 control-label">CEP</label>
 									<div class="col-lg-6">
 										<input type="text" class="form-control" name="cep" id="cep" required onblur="pesquisacep(this.value);"
-										maxlength="9" placeholder="cep" size="16" value="${unidadeTO.cep}">
+										maxlength="9" placeholder="CEP" size="16" value="${unidadeTO.cep}">
 									</div>				  
 								</div>
 								
@@ -184,7 +184,7 @@
 									<label class="col-lg-3 control-label">Endereço</label>
 									<div class="col-lg-6">
 										<input type="text" class="form-control" name="endereco" id="endereco" required
-										maxlength="200" placeholder="endereco" size="16" readonly="true" value="${unidadeTO.endereco}">
+										maxlength="200" placeholder="Endereço" size="16" readonly="true" value="${unidadeTO.endereco}">
 									</div>				  
 								</div>
 
@@ -192,7 +192,7 @@
 									<label class="col-lg-3 control-label">Cidade</label>
 									<div class="col-lg-6">
 										<input type="text" class="form-control" name="cidade" id="cidade" required
-										maxlength="9" placeholder="cep" size="16" readonly="true" value="${unidadeTO.cidade}">
+										maxlength="9" placeholder="Cidade" size="16" readonly="true" value="${unidadeTO.cidade}">
 									</div>				  
 								</div>
 								
@@ -200,7 +200,7 @@
 									<label class="col-lg-3 control-label">UF</label>
 									<div class="col-lg-6">
 										<input type="text" class="form-control" name="uf" id="uf" required
-										maxlength="2" placeholder="uf" size="16" readonly="true" value="${unidadeTO.uf}">
+										maxlength="2" placeholder="UF" size="16" readonly="true" value="${unidadeTO.uf}">
 									</div>				  
 								</div>
 								
@@ -208,7 +208,7 @@
 									<label class="col-lg-3 control-label">País</label>
 									<div class="col-lg-6">
 										<input type="text" class="form-control" name="pais" id="pais" required
-										maxlength="20" placeholder="país" size="16" readonly="true" value="${unidadeTO.pais}">
+										maxlength="20" placeholder="País" size="16" readonly="true" value="${unidadeTO.pais}">
 									</div>				  
 								</div>
 								
@@ -216,7 +216,7 @@
 										<label class="col-lg-3 control-label">Número</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" name="numeroEndereco" id="numeroEndereco" required
-											maxlength="200" placeholder="número" size="16" value="${unidadeTO.numeroEndereco}">
+											maxlength="200" placeholder="Número" size="16" value="${unidadeTO.numeroEndereco}">
 										</div>				  
 									</div>
 									
@@ -230,7 +230,7 @@
 									<label class="col-lg-3 control-label">Representante</label>
 									<div class="col-lg-6">
 										<input type="text" class="form-control" name="representante" id="representante" required
-										maxlength="45" placeholder="País" size="16" value="${unidadeTO.representante}">
+										maxlength="45" placeholder="Representante" size="16" value="${unidadeTO.representante}">
 									</div>				  
 								</div>
 								
@@ -257,19 +257,12 @@
 										maxlength="16" placeholder="Celular" size="16" value="${unidadeTO.tel2}">
 									</div>				  
 								</div>
-								
-								<div class="form-group">
-									<label class="col-lg-3 control-label">Flag ativo</label>
-									<div class="col-lg-6">
-										<input type="text" class="form-control" name="flagAtivo" id="flagAtivo"
-										maxlength="1" placeholder="Flag Ativo" size="16" value="${unidadeTO.flagAtivo}">
-									</div>				  
-								</div>
-		
+							
+				
 								<div class="form-group">
 								  <div class="col-lg-9 col-lg-offset-3">                      
-									<a href="ListarUnidade.jsp" class="btn btn-white">Cancelar</a>
-									<button name="command" value="AlterarUnidade" type="submit" class="btn btn-primary">Cadastrar</button>
+								  	<button name="command" value="AlterarUnidade" type="submit" class="btn btn-primary">Salvar</button>
+									<a href="ListarUnidade.jsp" class="btn btn-white">Cancelar</a>									
 								  </div>
 								</div>
 								

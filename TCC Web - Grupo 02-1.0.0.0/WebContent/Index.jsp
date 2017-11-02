@@ -1,7 +1,14 @@
 <%
+
+	//String nomeLogin;
+
+	//nomeLogin = session.getAttribute("nomeLogin").toString();	
 	
-	//if (  ){
-	//	request.getRequestDispatcher("Login.jsp").forward(request,response);  
+	//System.out.println(session.toString());
+	
+	//if (session.){
+		//request.getRequestDispatcher("Login.jsp").forward(request,response);  
+	//	System.out.println("aaa");
 	//}
 
 %>
@@ -13,7 +20,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>TCC - grupo 02 SI</title>
+		<title>Consult.me</title>
 
 		<meta name="description" content="mobile first, app, web app, responsive, admin dashboard, flat, flat ui">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">	
@@ -50,7 +57,8 @@
 			 
 			
 			Bem-vindo, ${nomeLogin} e ${nivelUsuario} 
-
+			
+			
 				
 
 		</section>

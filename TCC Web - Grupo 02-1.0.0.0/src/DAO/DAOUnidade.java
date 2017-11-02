@@ -12,7 +12,7 @@ import ConnectionFactory.FabricaConexao;
 public class DAOUnidade {
 	
 	public void cadastrarUnidade(TOUnidade toUnidade){
-		String sqlInsert = "INSERT INTO tcc.unidade (razaoSocial,nomeFantasia,cNPJ,nomeRede,endereco,cEP,cidade,uF,pais,numeroEndereco,representante,tel1,tel2,cel,flagAtivo,dataCadastro,latitude,longitude) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,1,current_timestamp(),?,?)";
+		String sqlInsert = "INSERT INTO tcc.unidade (razaoSocial,nomeFantasia,cNPJ,nomeRede,endereco,cEP,cidade,uF,pais,numeroEndereco,representante,tel1,tel2,cel,dataCadastro,latitude,longitude) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,1,current_timestamp(),?,?)";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
@@ -50,7 +50,7 @@ public class DAOUnidade {
 	}
 	
 	public void alterarUnidade(TOUnidade toUnidade){
-		String sqlUpdate = "UPDATE tcc.unidade SET razaoSocial = ?, nomeFantasia = ?, cNPJ = ?, nomeRede = ?, endereco = ?, cEP = ?, cidade = ?, uF = ?, pais = ?, numeroEndereco = ?, representante = ?, tel1 = ?, tel2 = ?, cel = ?, flagAtivo = ?, latitude = ?, longitude = ? WHERE codUnidade = ?";
+		String sqlUpdate = "UPDATE tcc.unidade SET razaoSocial = ?, nomeFantasia = ?, cNPJ = ?, nomeRede = ?, endereco = ?, cEP = ?, cidade = ?, uF = ?, pais = ?, numeroEndereco = ?, representante = ?, tel1 = ?, tel2 = ?, cel = ?, latitude = ?, longitude = ? WHERE codUnidade = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 			PreparedStatement stm = conn.prepareStatement(sqlUpdate);) {
@@ -69,10 +69,9 @@ public class DAOUnidade {
 			stm.setString(12,toUnidade.getTel1());
 			stm.setString(13,toUnidade.getTel2());
 			stm.setString(14,toUnidade.getCel());
-			stm.setInt(15,Integer.parseInt(toUnidade.getFlagAtivo()));
-			stm.setDouble(16,toUnidade.getLatitude());
-			stm.setDouble(17,toUnidade.getLongitude());
-			stm.setInt(18,toUnidade.getCodUnidade());	
+			stm.setDouble(15,toUnidade.getLatitude());
+			stm.setDouble(16,toUnidade.getLongitude());
+			stm.setInt(17,toUnidade.getCodUnidade());	
 			
 			stm.execute();
 		} catch (Exception e) {
@@ -81,7 +80,7 @@ public class DAOUnidade {
 	}
 	
 	public void excluirUnidade(TOUnidade toUnidade){
-		String sqlDelete = "DELETE FROM tcc.unidade WHERE codUnidade =?";
+		String sqlDelete = "UPDATE tcc.unidade SET flagAtivo = 0 Where codUnidade = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlDelete);) {
@@ -97,7 +96,7 @@ public class DAOUnidade {
 	public TOUnidade consultarUnidadeCod(int codUnidadeBusca){
 		TOUnidade toUnidade = new TOUnidade();
 		toUnidade.setCodUnidade(codUnidadeBusca);
-		String sqlSelect = "SELECT * FROM tcc.unidade where codUnidade = ?";
+		String sqlSelect = "SELECT * FROM tcc.unidade where codUnidade = ? and flagAtivo = 1";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -138,7 +137,7 @@ public class DAOUnidade {
 	public ArrayList<TOUnidade> listarUnidades(){
 		TOUnidade toUnidade;
 		ArrayList<TOUnidade> lista = new ArrayList<>();
-		String sqlSelect = "SELECT * FROM tcc.unidade order by codUnidade desc";
+		String sqlSelect = "SELECT * FROM tcc.unidade where flagAtivo = 1 order by codUnidade desc";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -180,7 +179,7 @@ public class DAOUnidade {
 	public ArrayList<TOUnidade> listarUnidades(String chave){
 		TOUnidade toUnidade;
 		ArrayList<TOUnidade> lista = new ArrayList<>();
-		String sqlSelect = "SELECT * from  tcc.unidade where upper(nomeFantasia) like ?";
+		String sqlSelect = "SELECT * from  tcc.unidade where upper(nomeFantasia) like ? and flagAtivo = 1";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -223,7 +222,7 @@ public class DAOUnidade {
 	public ArrayList<TOUnidade> listarUnidadePlano(String chave){
 		TOUnidade toUnidade;
 		ArrayList<TOUnidade> lista = new ArrayList<>();
-		String sqlSelect = "SELECT * FROM Unidade U INNER JOIN AssociativaPlanoUnidade APU ON U.codUnidade = APU.codUnidade INNER JOIN Plano P ON APU.codPlano = P.codPlano INNER JOIN Paciente PC ON P.codPlano = PC.codPlano WHERE PC.codPaciente = ?;";
+		String sqlSelect = "SELECT * FROM Unidade U INNER JOIN AssociativaPlanoUnidade APU ON U.codUnidade = APU.codUnidade INNER JOIN Plano P ON APU.codPlano = P.codPlano INNER JOIN Paciente PC ON P.codPlano = PC.codPlano WHERE PC.codPaciente = ? and U.flagAtivo = 1";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {

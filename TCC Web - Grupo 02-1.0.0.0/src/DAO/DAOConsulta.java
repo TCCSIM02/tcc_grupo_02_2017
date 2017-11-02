@@ -20,9 +20,6 @@ public class DAOConsulta{
 
 			stm.setInt(1,toConsulta.getCodAgendamento());
 			stm.setString(2,toConsulta.getDiagnostico());	
-			//stm.setDate(4,(Date) toConsulta.getDataHoraConsultaInicio());
-			//stm.setDate(5,(Date) toConsulta.getDataHoraConsultaFinal());
-		
 			stm.execute();
 			
 			String sqlSelect = "SELECT LAST_INSERT_ID()";
@@ -56,7 +53,7 @@ public class DAOConsulta{
 	}
 	
 	public void excluirConsulta(TOConsulta toConsulta){
-		String sqlDelete = "DELETE FROM tcc.consulta WHERE codConsulta =?";
+		String sqlDelete = "UPDATE tcc.consulta SET flagAtivo = 0 WHERE codConsulta = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlDelete);) {

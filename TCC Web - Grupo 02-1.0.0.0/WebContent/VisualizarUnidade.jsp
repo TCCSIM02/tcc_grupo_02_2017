@@ -125,13 +125,7 @@
 					<p>${unidadeTO.cel}</p>
 				</div>
 			
-				<div class="col-md-6">
-					<p>
-						<strong>Flag ativo</strong>
-					</p>
-					<p>${unidadeTO.flagAtivo}</p>
-				</div>
-				
+			
 				<div class="col-md-6">
 					<p>
 						<strong>Data cadastro</strong>
@@ -140,53 +134,12 @@
 				</div>	
 				
 		
-			</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+			</div>		
 			
 			<div id="actions" class="row">
 				<div class="col-md-12">
 					<a href="controller.do?command=EditarUnidade&id=${unidadeTO.codUnidade}"
-						class="btn btn-primary">Editar</a> <a href="#"
+						class="btn btn-primary">Alterar</a> <a href="#"
 						class="btn btn-danger" data-toggle="modal"
 						data-target="#delete-modal">Excluir</a> <a
 						href="ListarUnidade.jsp" class="btn btn-default">Voltar</a>

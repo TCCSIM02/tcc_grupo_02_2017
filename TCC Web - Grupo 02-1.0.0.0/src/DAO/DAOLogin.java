@@ -35,7 +35,7 @@ public class DAOLogin {
 	}
 	
 	public void cadastrarLogin(TOLogin toLogin){
-		String sqlInsert = "INSERT INTO tcc.login (codNivel,nomeLogin,senha,flagAtivo,dataCadastro) VALUES (?,?,?,1,current_timestamp())";
+		String sqlInsert = "INSERT INTO tcc.login (codNivel,nomeLogin,senha,dataCadastro) VALUES (?,?,?,current_timestamp())";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
@@ -99,11 +99,9 @@ public class DAOLogin {
 				}
 			} catch (SQLException e) {				
 				e.printStackTrace(); 
-				System.out.println("teste 3");
 			}
 		} catch (SQLException e1) {
 			e1.printStackTrace();
-			System.out.println("teste 4");
 		}
 		return lista;
 	}

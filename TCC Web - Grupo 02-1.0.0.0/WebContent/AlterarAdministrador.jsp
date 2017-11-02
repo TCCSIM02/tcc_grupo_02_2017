@@ -238,12 +238,13 @@
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="cel" id="cel" 
 									maxlength="16" placeholder="telefone opcional" size="16" value="${administradorTO.cel}">
-								</div>				  
+								</div>
+							</div>			  
 								
 							<div class="form-group">
 							  <div class="col-lg-9 col-lg-offset-3"> 
-								<a href="ListarAdministrador.jsp" class="btn btn-white">Cancelar</a>
 								<button name="command" value="AlterarAdministrador" type="submit" class="btn btn-primary">Salvar</button>
+								<a href="ListarAdministrador.jsp" class="btn btn-white">Cancelar</a>								
 							  </div>
 							</div>
 							

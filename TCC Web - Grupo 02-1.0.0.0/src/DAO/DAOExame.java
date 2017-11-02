@@ -54,7 +54,7 @@ public class DAOExame {
 	}
 	
 	public void excluirExame(TOExame toExame){
-		String sqlDelete = "DELETE FROM tcc.exame WHERE codExame = ?";
+		String sqlDelete = "UPDATE tcc.exame SET flagAtivo = 0 WHERE codExame = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlDelete);) {
@@ -70,7 +70,7 @@ public class DAOExame {
 	public TOExame consultarExameCod(int codExameBusca){
 		TOExame toExame = new TOExame();
 		toExame.setCodExame(codExameBusca);
-		String sqlSelect = "SELECT descricao, resultadoExame, valorExame FROM tcc.exame where codExame = ?";
+		String sqlSelect = "SELECT descricao, resultadoExame, valorExame FROM tcc.exame where codExame = ? and flagAtivo = 1";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -97,7 +97,7 @@ public class DAOExame {
 	public ArrayList<TOExame> listarExames(){
 		TOExame toExame;
 		ArrayList<TOExame> lista = new ArrayList<>();
-		String sqlSelect = "SELECT codExame, descricao, resultadoExame, valorExame FROM tcc.exame order by codExame desc";
+		String sqlSelect = "SELECT codExame, descricao, resultadoExame, valorExame FROM tcc.exame where flagAtivo = 1 order by codExame desc";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -125,7 +125,7 @@ public class DAOExame {
 	public ArrayList<TOExame> listarExames(String chave){
 		TOExame toExame;
 		ArrayList<TOExame> lista = new ArrayList<>();
-		String sqlSelect = "SELECT * FROM tcc.exame where upper(descricao) like ?";
+		String sqlSelect = "SELECT * FROM tcc.exame where upper(descricao) like ? and flagAtivo = 1";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {

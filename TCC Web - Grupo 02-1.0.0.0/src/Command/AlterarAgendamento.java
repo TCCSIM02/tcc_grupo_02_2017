@@ -23,7 +23,7 @@ public class AlterarAgendamento implements Command {
 		String pStatusAgendamento = request.getParameter("nomeAgendamento");
 		String pDataCadastro = request.getParameter("registroAns");
 		String pDataHoraComeco = request.getParameter("tipoAgendamento");
-		String pFlagAtivo = request.getParameter("flagAtivo");
+		String pFlagAtivo       = request.getParameter("flagAtivo");  
 		String pDataHoraFim = request.getParameter("dataCadastro");
 		
 

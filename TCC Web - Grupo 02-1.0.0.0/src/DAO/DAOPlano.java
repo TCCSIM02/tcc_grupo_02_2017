@@ -17,7 +17,7 @@ import java.util.Date;
 public class DAOPlano {
 
 	public void cadastrarPlano(TOPlano toPlano){
-		String sqlInsert = "INSERT INTO tcc.plano (nomePlano,registroAns,tipoPlano,flagAtivo,dataCadastro) VALUES (?,?,?,1,current_timestamp())";
+		String sqlInsert = "INSERT INTO tcc.plano (nomePlano,registroAns,tipoPlano,dataCadastro) VALUES (?,?,?,current_timestamp())";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
@@ -54,7 +54,7 @@ public class DAOPlano {
 	}
 	
 	public void alterarPlano(TOPlano toPlano){
-		String sqlUpdate = "UPDATE tcc.plano SET nomePlano = ?, registroAns = ?, tipoPlano = ?, flagAtivo = ? WHERE codPlano = ?";
+		String sqlUpdate = "UPDATE tcc.plano SET nomePlano = ?, registroAns = ?, tipoPlano = ?, WHERE codPlano = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 			PreparedStatement stm = conn.prepareStatement(sqlUpdate);) {
@@ -62,8 +62,7 @@ public class DAOPlano {
 			stm.setString(1,toPlano.getNomePlano());
 			stm.setString(2,toPlano.getRegistroAns());
 			stm.setString(3,toPlano.getTipoPlano());
-			stm.setInt(4,Integer.parseInt(toPlano.getFlagAtivo()));
-			stm.setInt(5,toPlano.getCodPlano());
+			stm.setInt(4,toPlano.getCodPlano());
 			
 			stm.execute();
 		} catch (Exception e) {
@@ -72,7 +71,7 @@ public class DAOPlano {
 	}
 	
 	public void excluirPlano(TOPlano toPlano){
-		String sqlDelete = "DELETE FROM tcc.plano WHERE codPlano = ?";
+		String sqlDelete = "UPDATE tcc.plano SET flagAtivo = 0 WHERE codPlano = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlDelete);) {
@@ -88,7 +87,7 @@ public class DAOPlano {
 	public TOPlano consultarPlanoCod(int codPlanoBusca){
 		TOPlano toPlano = new TOPlano();
 		toPlano.setCodPlano(codPlanoBusca);
-		String sqlSelect = "SELECT nomePlano, registroAns, tipoPlano, flagAtivo, dataCadastro FROM tcc.plano where codPlano = ?";
+		String sqlSelect = "SELECT nomePlano, registroAns, tipoPlano, flagAtivo, dataCadastro FROM tcc.plano where codPlano = ? and flagAtivo = 1";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -116,7 +115,7 @@ public class DAOPlano {
 	public ArrayList<TOPlano> listarPlanos(){
 		TOPlano toPlano;
 		ArrayList<TOPlano> lista = new ArrayList<>();
-		String sqlSelect = "SELECT codPlano, nomePlano, registroAns, tipoPlano, flagAtivo, dataCadastro FROM tcc.plano order by codPlano desc";
+		String sqlSelect = "SELECT codPlano, nomePlano, registroAns, tipoPlano, flagAtivo, dataCadastro FROM tcc.plano where flagAtivo = 1 order by codPlano desc";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -146,7 +145,7 @@ public class DAOPlano {
 	public ArrayList<TOPlano> listarPlanos(String chave){
 		TOPlano toPlano;
 		ArrayList<TOPlano> lista = new ArrayList<>();
-		String sqlSelect = "SELECT * FROM tcc.plano where upper(nomePlano) like ?";
+		String sqlSelect = "SELECT * FROM tcc.plano where upper(nomePlano) like ? and flagAtivo = 1";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {

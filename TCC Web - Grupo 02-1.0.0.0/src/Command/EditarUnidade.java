@@ -6,6 +6,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Model.ModelUnidade;
 
@@ -38,12 +39,7 @@ public class EditarUnidade implements Command{
 		Double latitude = 0.0;
 		Double longitude = 0.0;
 		
-		/*try {
-			latitude = Double.parseDouble(pLatitude);
-			longitude = Double.parseDouble(pLongitude);
-		} catch (NumberFormatException e){
-						
-		}*/
+
 
 		int id = -1;
 		try {
@@ -66,8 +62,9 @@ public class EditarUnidade implements Command{
 		
 			e.printStackTrace();
 		}
-			
+		
 		request.setAttribute("unidadeTO", modelUnidade.getTO());
+		//request.setAttribute("unidadeTO", modelUnidade.getTO());
 		view = request.getRequestDispatcher("AlterarUnidade.jsp");
 		
 		view.forward(request, response);

@@ -133,7 +133,7 @@
 			<section class="main padder">
 			  
 				<div class="clearfix">
-					<h4><i class="icon-edit"></i>Cadastrar unidade</h4>
+					<h4><i class="icon-edit"></i>Cadastrar Unidade</h4>
 				</div>
 				  
 				<div class="row">
@@ -179,7 +179,7 @@
 										<label class="col-lg-3 control-label">Número</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" name="numeroEndereco" id="numeroEndereco" 
-											maxlength="200" placeholder="número" size="16">
+											maxlength="200" placeholder="Número" size="16">
 										</div>				  
 									</div>
 									
@@ -187,7 +187,7 @@
 										<label class="col-lg-3 control-label">CEP</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" name="cep" id="cep" required onblur="pesquisacep(this.value);"
-											maxlength="9" placeholder="cep" size="16">
+											maxlength="9" placeholder="Cep" size="16">
 										</div>				  
 									</div>
 									
@@ -195,7 +195,7 @@
 										<label class="col-lg-3 control-label">Endereço</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" name="endereco" id="endereco" required
-											maxlength="200" placeholder="endereco" size="16" readonly="true">
+											maxlength="200" placeholder="Endereço" size="16" readonly="true">
 										</div>				  
 									</div>
 
@@ -203,7 +203,7 @@
 										<label class="col-lg-3 control-label">Cidade</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" name="cidade" id="cidade" required
-											maxlength="9" placeholder="cep" size="16" readonly="true">
+											maxlength="9" placeholder="CEP" size="16" readonly="true">
 										</div>				  
 									</div>
 									
@@ -211,7 +211,7 @@
 										<label class="col-lg-3 control-label">UF</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" name="uf" id="uf" required
-											maxlength="2" placeholder="uf" size="16" readonly="true">
+											maxlength="2" placeholder="UF" size="16" readonly="true">
 										</div>				  
 									</div>
 									
@@ -219,7 +219,7 @@
 										<label class="col-lg-3 control-label">País</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" name="pais" id="pais" required
-											maxlength="20" placeholder="país" size="16" readonly="true">
+											maxlength="20" placeholder="País" size="16" readonly="true">
 										</div>				  
 									</div>									
 									
@@ -231,7 +231,7 @@
 										<label class="col-lg-3 control-label">Representante</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" name="representante" id="representante" required
-											maxlength="45" placeholder="País" size="16">
+											maxlength="45" placeholder="Representante" size="16">
 										</div>				  
 									</div>
 									
@@ -261,8 +261,8 @@
 				
 									<div class="form-group">
 									  <div class="col-lg-9 col-lg-offset-3">                      
-										<a href="ListarUnidade.jsp" class="btn btn-white">Cancelar</a>
-										<button name="command" value="CriarUnidade" type="submit" class="btn btn-primary">Cadastrar</button>
+									  	<button name="command" value="CriarUnidade" type="submit" class="btn btn-primary">Cadastrar</button>
+										<a href="ListarUnidade.jsp" class="btn btn-white">Cancelar</a>										
 									  </div>
 									</div>
 									

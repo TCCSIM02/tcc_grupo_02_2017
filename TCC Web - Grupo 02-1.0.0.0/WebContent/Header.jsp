@@ -4,7 +4,7 @@
   <!-- header -->
 	<header id="header" class="navbar">
   
-	<ul class="nav navbar-nav navbar-avatar pull-right">
+	<ul class="nav navbar-nav  pull-right">
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">            
           <span class="hidden-xs-only">${nomeLogin}</span>
@@ -19,7 +19,9 @@
       </li>
     </ul>
 	
-    <a class="navbar-brand" href="Index.jsp" style="font-family: 'Ubuntu', sans-serif;">TCC</a>
+    <img src="images/map_icon_cor.png" width="48" height="48" class="navbar-brand" href="Index.jsp">
+    
+    
 
 	</header>
   <!-- / header -->

@@ -38,7 +38,7 @@ public class AlterarAdministrador implements Command {
 		String pTel1 = request.getParameter("tel1");
 		String pTel2 = request.getParameter("tel2");
 		String pCel = request.getParameter("cel");
-		String pFlagAtivo = request.getParameter("flagAtivo");
+		String pFlagAtivo       = request.getParameter("flagAtivo");  
 		
 		int id = -1;
 		try {

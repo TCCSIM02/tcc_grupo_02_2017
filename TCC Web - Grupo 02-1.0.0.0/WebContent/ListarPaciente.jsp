@@ -68,12 +68,6 @@
             <div class="panel-body">
               <div class="row text-small">
                 <div class="col-sm-4 m-b-mini">
-                  <select class="input-sm inline form-control" style="width:130px">
-                    <option value="0">Visualizar</option>
-                    <option value="1">Alterar</option>
-                    <option value="3">Exportar</option>
-                  </select>
-                  <button class="btn btn-sm btn-white">Aplicar</button>   
                   <a href="CriarPaciente.jsp" class="btn btn-sm btn-white">Cadastrar novo paciente</a>	     				  
                 </div>
                 

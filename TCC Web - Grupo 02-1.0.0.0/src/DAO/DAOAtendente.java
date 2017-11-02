@@ -87,7 +87,7 @@ public class DAOAtendente {
 	}
 	
 	public void excluirAtendente(TOAtendente toAtendente){
-		String sqlDelete = "DELETE FROM tcc.atendente WHERE codAtendente = ?";
+		String sqlDelete = "UPDATE tcc.atendente SET flagAtivo = 0 WHERE codAtendente = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlDelete);) {
@@ -104,7 +104,7 @@ public class DAOAtendente {
 	public TOAtendente consultarAtendenteCod(int codAtendenteBusca){
 		TOAtendente toAtendente = new TOAtendente();
 		toAtendente.setCodAtendente(codAtendenteBusca);
-		String sqlSelect = "SELECT * FROM tcc.atendente where codAtendente = ?";
+		String sqlSelect = "SELECT * FROM tcc.atendente where codAtendente = ? AND flagAtivo = 1";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -142,7 +142,7 @@ public class DAOAtendente {
 	public ArrayList<TOAtendente> listarAtendentes(){
 		TOAtendente toAtendente;
 		ArrayList<TOAtendente> lista = new ArrayList<>();
-		String sqlSelect = "SELECT * FROM tcc.atendente order by codAtendente desc";
+		String sqlSelect = "SELECT * FROM tcc.atendente WHERE flagAtivo = 1 order by codAtendente desc";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {

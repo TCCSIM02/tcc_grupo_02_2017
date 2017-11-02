@@ -67,13 +67,7 @@
             <div class="panel-body">
               <div class="row text-small">
                 <div class="col-sm-4 m-b-mini">
-                  <select class="input-sm inline form-control" style="width:130px">
-                    <option value="0">Visualizar</option>
-                    <option value="1">Alterar</option>
-                    <option value="3">Exportar</option>
-                  </select>
-                  <button class="btn btn-sm btn-white">Aplicar</button>   
-                  <a href="CriarUnidade.jsp" class="btn btn-sm btn-white">Nova Unidade</a>	     				  
+                  <a href="CriarUnidade.jsp" class="btn btn-sm btn-white">Cadastrar Unidade</a>	     				  
                 </div>
                 
                 
@@ -103,11 +97,11 @@
 						<thead>
 							<tr>
 								<th>Código</th>
-								<th>Razão Social</th>
+								<th>Nome fantasia</th>
 								<th>CNPJ</th>
+								<th>CEP</th>
 								<th>Cidade</th>
-								<th>UF</th>
-								<th>Data cadastro</th>
+								<th>Telefone</th>
 
 								<th class="actions">Ações</th>
 							</tr>
@@ -117,15 +111,15 @@
 						
 						<tr>
 							<td>${to.codUnidade}</td>
-							<td>${to.razaoSocial}</td>
+							<td>${to.nomeFantasia}</td>
 							<td>${to.cnpj}</td>
+							<td>${to.cep}</td>
 							<td>${to.cidade}</td>
-							<td>${to.uf}</td>
-							<td>${to.dataCadastro}</td>
+							<td>${to.tel1}</td>
 							
 							   <td class="actions">
                                                 <a class="btn btn-success btn-xs" href="controller.do?command=VisualizarUnidade&id=${to.codUnidade}">Visualizar</a>
-                                                <a class="btn btn-warning btn-xs" href="controller.do?command=EditarUnidade&id=${to.codUnidade}">Editar</a>
+                                                <a class="btn btn-warning btn-xs" href="controller.do?command=EditarUnidade&id=${to.codUnidade}">Alterar</a>
                                                 <button id="btn${to.codUnidade}" type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal" data-cliente="${to.codUnidade}">Excluir</button>
                                             </td>
                                         </tr>
@@ -139,40 +133,14 @@
                 <!-- /#list -->
 
                 <div id="bottom" class="row">
-                    <div class="col-md-12">
-                        <!-- paginação ainda não foi implementada -->
-                        <ul class="pagination">
-                            <li class="disabled"><a>&lt; Anterior</a>
-                            </li>
-                            <li class="disabled"><a>1</a>
-                            </li>
-                            <li><a href="#">2</a>
-                            </li>
-                            <li><a href="#">3</a>
-                            </li>
-                            <li class="next"><a href="#" rel="next">Próximo &gt;</a>
-                            </li>
-                        </ul>
-                        <!-- /.pagination -->
-                    </div>
                 </div>
                 </c:if>
             <footer class="panel-footer">
               <div class="row">
 				<div class="col-sm-4 text-center"></div>
                 <div class="col-sm-3 text-center">
-                  <small class="text-muted inline m-t-small m-b-small">mostrando 10-20 de 43 itens</small>
                 </div>
                 <div class="col-sm-5 text-right text-center-sm">                
-                  <ul class="pagination pagination-small m-t-none m-b-none">
-                    <li><a href="#"><i class="icon-chevron-left"></i></a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#"><i class="icon-chevron-right"></i></a></li>
-                  </ul>
                 </div>
               </div>
             </footer>

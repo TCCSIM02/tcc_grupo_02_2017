@@ -92,7 +92,7 @@ public class DAOAdministrador {
 	
 	
 	public void excluirAdministrador(TOAdministrador toAdministrador){
-		String sqlDelete = "DELETE FROM tcc.administrador WHERE codAdministrador = ?";
+		String sqlDelete = "UPDATE tcc.administrador SET flagAtivo = 0 WHERE codAdministrador = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlDelete);) {
@@ -110,7 +110,7 @@ public class DAOAdministrador {
 	public TOAdministrador consultarAdministradorCod(int codAdministradorBusca){
 		TOAdministrador toAdministrador = new TOAdministrador();
 		toAdministrador.setCodAdministrador(codAdministradorBusca);
-		String sqlSelect = "SELECT * FROM tcc.administrador where codAdministrador = ?";
+		String sqlSelect = "SELECT * FROM tcc.administrador where codAdministrador = ? and flagAtivo = 1";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -148,7 +148,7 @@ public class DAOAdministrador {
 	public ArrayList<TOAdministrador> listarAdministradores(){
 		TOAdministrador toAdministrador;
 		ArrayList<TOAdministrador> lista = new ArrayList<>();
-		String sqlSelect = "SELECT * FROM tcc.administrador order by codAdministrador desc";
+		String sqlSelect = "SELECT * FROM tcc.administrador where flagAtivo = 1 order by codAdministrador desc";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -191,7 +191,7 @@ public class DAOAdministrador {
 		TOAdministrador toAdministrador;
 		ArrayList<TOAdministrador> lista = new ArrayList<>();
 							
-		String sqlSelect = "SELECT * from  tcc.administrador where upper(nomeAdministrador) like ?";
+		String sqlSelect = "SELECT * from  tcc.administrador where upper(nomeAdministrador) like ? and flagAtivo = 1";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {

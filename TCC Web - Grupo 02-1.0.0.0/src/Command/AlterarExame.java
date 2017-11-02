@@ -21,6 +21,7 @@ public class AlterarExame implements Command {
 		String pValorExame 		= 	request.getParameter("valorExame");
 		String pDescricao	 	= 	request.getParameter("descricao");
 		String pResultadoExame	=	request.getParameter("resultadoExame");
+		
 
 		int id = -1;
 		try {

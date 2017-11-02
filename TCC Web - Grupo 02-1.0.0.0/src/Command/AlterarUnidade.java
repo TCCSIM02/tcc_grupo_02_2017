@@ -28,7 +28,7 @@ public class AlterarUnidade implements Command {
 		String pCnpj            = request.getParameter("cnpj");   
 		String pDataCadastro    = request.getParameter("dataCadastro");  
 		String pEndereco        = request.getParameter("endereco");      
-		String pFlagAtivo       = request.getParameter("flagAtivo");        
+		String pFlagAtivo       = request.getParameter("flagAtivo");     
 		String pNomeFantasia    = request.getParameter("nomeFantasia");    
 		String pNomeRede        = request.getParameter("nomeRede");       
 		String pPais            = request.getParameter("pais");  

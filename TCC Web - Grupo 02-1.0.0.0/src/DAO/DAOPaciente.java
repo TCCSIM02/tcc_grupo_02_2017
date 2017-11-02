@@ -183,7 +183,7 @@ public class DAOPaciente {
 	
 	
 	public void excluirPaciente(TOPaciente toPaciente){
-		String sqlDelete = "DELETE FROM tcc.paciente WHERE codPaciente = ?";
+		String sqlDelete = "UPDATE tcc.paciente SET flagAtivo = 0 WHERE codPaciente = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlDelete);) {
@@ -201,7 +201,7 @@ public class DAOPaciente {
 	public TOPaciente consultarPacienteCod(int codPacienteBusca){
 		TOPaciente toPaciente = new TOPaciente();
 		toPaciente.setCodPaciente(codPacienteBusca);
-		String sqlSelect = "SELECT * FROM tcc.paciente where codPaciente = ?";
+		String sqlSelect = "SELECT * FROM tcc.paciente where codPaciente = ? and flagAtivo = 1";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -251,7 +251,7 @@ public class DAOPaciente {
 	public ArrayList<TOPaciente> listarPacientes(){
 		TOPaciente toPaciente;
 		ArrayList<TOPaciente> lista = new ArrayList<>();
-		String sqlSelect = "SELECT * FROM tcc.paciente order by codPaciente desc";
+		String sqlSelect = "SELECT * FROM tcc.paciente where flagAtivo = 1 order by codPaciente desc";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -303,7 +303,7 @@ public class DAOPaciente {
 		TOPaciente toPaciente;
 		ArrayList<TOPaciente> lista = new ArrayList<>();
 							
-		String sqlSelect = "SELECT * FROM  TCC.PACIENTE WHERE UPPER(nomePaciente) LIKE ?";
+		String sqlSelect = "SELECT * FROM  TCC.PACIENTE WHERE UPPER(nomePaciente) LIKE ? and flagAtivo = 1";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -355,7 +355,7 @@ public class DAOPaciente {
 		TOPaciente toPaciente;
 		ArrayList<TOPaciente> lista = new ArrayList<>();
 							
-		String sqlSelect = "SELECT * FROM  TCC.PACIENTE WHERE codPaciente LIKE ?";
+		String sqlSelect = "SELECT * FROM  TCC.PACIENTE WHERE codPaciente LIKE ? and flagAtivo = 1";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {

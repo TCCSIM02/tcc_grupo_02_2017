@@ -91,7 +91,7 @@ public class DAOMedico {
 	}
 	
 	public void excluirMedico(TOMedico toMedico){
-		String sqlDelete = "DELETE FROM tcc.medico WHERE codMedico = ?";
+		String sqlDelete = "UPDATE tcc.medico SET flagAtivo = 0 WHERE codMedico = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlDelete);) {
@@ -107,7 +107,7 @@ public class DAOMedico {
 	public TOMedico consultarMedicoCod(int codMedicoBusca){
 		TOMedico toMedico = new TOMedico();
 		toMedico.setCodMedico(codMedicoBusca);
-		String sqlSelect = "SELECT * FROM tcc.medico where codMedico = ?";
+		String sqlSelect = "SELECT * FROM tcc.medico where codMedico = ? and flagAtivo = 1";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -147,7 +147,7 @@ public class DAOMedico {
 	public ArrayList<TOMedico> listarMedicos(){
 		TOMedico toMedico;
 		ArrayList<TOMedico> lista = new ArrayList<>();
-		String sqlSelect = "SELECT * FROM tcc.medico order by codMedico desc";
+		String sqlSelect = "SELECT * FROM tcc.medico where flagAtivo = 1 order by codMedico desc";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -193,7 +193,7 @@ public class DAOMedico {
 		TOMedico toMedico;
 		ArrayList<TOMedico> lista = new ArrayList<>();
 							
-		String sqlSelect = "SELECT * FROM tcc.medico where codMedico = ?";
+		String sqlSelect = "SELECT * FROM tcc.medico where codMedico = ? and and flagAtivo = 1";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -241,7 +241,7 @@ public class DAOMedico {
 		TOMedico toMedico;
 		ArrayList<TOMedico> lista = new ArrayList<>();
 							
-		String sqlSelect = "SELECT * from tcc.medico where upper(nomeMedico) like ?";
+		String sqlSelect = "SELECT * from tcc.medico where upper(nomeMedico) like ? and flagAtivo = 1";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -287,7 +287,7 @@ public class DAOMedico {
 		TOMedico toMedico;
 		ArrayList<TOMedico> lista = new ArrayList<>();
 							
-		String sqlSelect = "SELECT M.* FROM Medico M INNER JOIN Unidade U ON M.codUnidade = U.codUnidade INNER JOIN AssociativaMedicoEspecialidade AME ON M.codMedico = AME.codMedico INNER JOIN Especialidade E ON AME.codEspecialidade = E.codEspecialidade WHERE U.codUnidade = ? AND E.codEspecialidade = ?";
+		String sqlSelect = "SELECT M.* FROM Medico M INNER JOIN Unidade U ON M.codUnidade = U.codUnidade INNER JOIN AssociativaMedicoEspecialidade AME ON M.codMedico = AME.codMedico INNER JOIN Especialidade E ON AME.codEspecialidade = E.codEspecialidade WHERE U.codUnidade = ? AND E.codEspecialidade = ? and m.flagAtivo = 1";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -335,7 +335,7 @@ public class DAOMedico {
 		TOMedico toMedico;
 		ArrayList<TOMedico> lista = new ArrayList<>();
 							
-		String sqlSelect = "SELECT * FROM TCC.Medico Where codLogin = ?";
+		String sqlSelect = "SELECT * FROM TCC.Medico Where codLogin = ? and flagAtivo = 1";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
