@@ -76,6 +76,16 @@
 								</div>				  
 							</div>
 							
+							
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Unidade</label>
+									<div class="col-lg-6">
+										<c:forEach var="to" items="${listaUnidade}">
+											<input type="checkbox" name="check" value="${to.codUnidade}">${to.nomeFantasia}<br>
+										</c:forEach>
+									</div>				  
+							</div>
+							
 							<!--
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Data cadastro</label>

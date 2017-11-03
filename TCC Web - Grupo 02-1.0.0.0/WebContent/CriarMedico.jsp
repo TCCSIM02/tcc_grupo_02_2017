@@ -270,7 +270,16 @@
 										<input type="text" class="form-control" name="cel" id="cel" 
 										maxlength="16" placeholder="telefone opcional" size="16">
 									</div>				  
-								</div>						
+								</div>
+								
+								<div class="form-group">
+								<label class="col-lg-3 control-label">Especialidade</label>
+									<div class="col-lg-6">
+										<c:forEach var="to" items="${listaEspecialidade}">
+											<input type="checkbox" name="check" value="${to.codEspecialidade}">${to.especialidade}<br>
+										</c:forEach>
+									</div>				  
+							</div>						
 						
 								<div class="form-group">
 								  <div class="col-lg-9 col-lg-offset-3">                      

@@ -111,6 +111,13 @@ public class ModelMedico extends ModelUsuario{
 		this.codMedico = toMedico.getCodMedico();
 		
 	}
+	
+	public void cadastrarMedicoEspecialidade(int codMedico, String codEspecialidade){
+		
+		DAOMedico dao = new DAOMedico();		
+		dao.cadastrarMedicoEspecialidade(codMedico,codEspecialidade);
+		
+	}
 
 	public void alterarMedico(){
 		DAOMedico dao = new DAOMedico();		

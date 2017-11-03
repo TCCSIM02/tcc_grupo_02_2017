@@ -12,7 +12,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">	
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/font.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/plugin.css">
 	<link rel="stylesheet" href="css/landing.css">
@@ -70,7 +69,7 @@
 								<label class="col-lg-3 control-label">Unidade</label>
 									<div class="col-lg-6">
 										<c:forEach var="to" items="${listaUnidade}">
-											<input type="checkbox" name="check${to.codUnidade}" value="${to.codUnidade}"> ${to.nomeFantasia}<br>
+											<input type="checkbox" name="check" value="${to.codUnidade}">${to.nomeFantasia}<br>
 										</c:forEach>
 									</div>				  
 							</div>

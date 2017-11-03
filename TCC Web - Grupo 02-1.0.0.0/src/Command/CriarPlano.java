@@ -24,11 +24,8 @@ public class CriarPlano implements Command {
 		String pRegistroAns = request.getParameter("registroAns");
 		String pTipoPlano = request.getParameter("tipoPlano");
 		String pFlagAtivo = request.getParameter("flagAtivo");
-		String pCheck = request.getParameter("check");
+		String[] pCheck = request.getParameterValues("check");
 		String pDataCadastro = request.getParameter("dataCadastro");
-
-		System.out.println("check");
-		System.out.println(pCheck);
 		
 		int id = -1;
 		try {
@@ -42,7 +39,14 @@ public class CriarPlano implements Command {
 		HttpSession session = request.getSession();
 		
 		modelPlano.cadastrarPlano();
+		
+		for(int i = 0 ; i < pCheck.length ; i++ ){
+			modelPlano.cadastrarPlanoUnidade(modelPlano.getCodPlano(), pCheck[i]);		
+		}
+
+		
 		ArrayList<TOPlano> lista = new ArrayList<>(); 
+		
 		try {
 			lista = modelPlano.listarPlanos();
 		} catch (ClassNotFoundException e) {

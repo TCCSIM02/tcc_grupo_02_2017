@@ -57,6 +57,19 @@ public class DAOMedico {
 	}
 	
 	
+	public void cadastrarMedicoEspecialidade(int codMedico, String codEspecialidade){
+		String sqlInsert = "INSERT INTO tcc.associativaMedicoEspecialidade(codMedico, codEspecialidade) VALUES ("+codMedico+","+codEspecialidade+")";
+		// usando o try with resources do Java 7, que fecha o que abriu
+		try (Connection conn = FabricaConexao.getConexao(); 
+				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
+			stm.execute();
+	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 	
 	public void alterarMedico(TOMedico toMedico){
 		String sqlUpdate = "UPDATE tcc.medico SET numeroEndereco = ?, crm = ?, cro = ?, nomeMedico = ?, cPF = ?, dataNascimento = ?, email = ?, estadoCivil = ?, nacionalidade = ?, endereco = ?, cEP = ?, cidade = ?, uF = ?, pais = ?, tel1 = ?, tel2 = ?, cel = ? WHERE codMedico = ?";

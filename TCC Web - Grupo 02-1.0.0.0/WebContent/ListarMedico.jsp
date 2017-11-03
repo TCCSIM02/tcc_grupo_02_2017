@@ -68,7 +68,7 @@
             <div class="panel-body">
               <div class="row text-small">
                 <div class="col-sm-4 m-b-mini">
-                  <a href="CriarMedico.jsp" class="btn btn-sm btn-white">Cadastrar novo medico</a>	     				  
+                  <a href="controller.do?command=PreencheMedico" class="btn btn-sm btn-white">Cadastrar novo medico</a>	     				  
                 </div>
                 
                 

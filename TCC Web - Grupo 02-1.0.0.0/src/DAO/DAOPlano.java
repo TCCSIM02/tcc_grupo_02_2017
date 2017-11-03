@@ -53,6 +53,19 @@ public class DAOPlano {
 		}
 	}
 	
+	public void cadastrarPlano(int codPlano, String codUnidade){
+		String sqlInsert = "INSERT INTO tcc.associativaPlanoUnidade (codPlano,codUnidade) VALUES ("+codPlano+","+codUnidade+")";
+		// usando o try with resources do Java 7, que fecha o que abriu
+		try (Connection conn = FabricaConexao.getConexao(); 
+				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
+
+			stm.execute();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void alterarPlano(TOPlano toPlano){
 		String sqlUpdate = "UPDATE tcc.plano SET nomePlano = ?, registroAns = ?, tipoPlano = ?, WHERE codPlano = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
@@ -162,6 +175,27 @@ public class DAOPlano {
 					toPlano.setDataCadastro(rs.getDate("dataCadastro"));
 									
 					lista.add(toPlano);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace(); 
+			}
+		} catch (SQLException e1) {
+			System.out.print(e1.getStackTrace());
+		}
+		return lista;
+	}	
+	
+	public ArrayList<Integer> listarPlanosUnidade(int codPlano){
+		ArrayList<Integer> lista = new ArrayList<>();
+		String sqlSelect = "SELECT * FROM tcc.associativaPlanoUnidade where codPlano = ?";
+		// usando o try with resources do Java 7, que fecha o que abriu
+		try (Connection conn = FabricaConexao.getConexao(); 
+				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
+				stm.setInt(1, codPlano);
+			try (ResultSet rs = stm.executeQuery();) {
+				while(rs.next()) {
+														
+					lista.add(rs.getInt("codPlano"));
 				}
 			} catch (SQLException e) {
 				e.printStackTrace(); 

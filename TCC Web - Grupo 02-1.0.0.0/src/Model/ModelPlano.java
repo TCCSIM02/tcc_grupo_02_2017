@@ -152,6 +152,13 @@ public class ModelPlano {
 		
 	}
 	
+	public void cadastrarPlanoUnidade(int codPlano, String codUnidade){
+		
+		DAOPlano dao = new DAOPlano();		
+		dao.cadastrarPlano(codPlano, codUnidade); 
+		
+	}
+	
 	public void alterarPlano(){
 		DAOPlano dao = new DAOPlano();		
 		TOPlano toPlano = getTO();
@@ -192,5 +199,12 @@ public class ModelPlano {
 		lista = dao.listarPlanos(chave);
 		return lista;
 	}	
+	
+	public ArrayList<Integer> listarPlanosUnidade(int codPlano) throws ClassNotFoundException{
+		ArrayList<Integer> lista;
+		DAOPlano dao = new DAOPlano();
+		lista = dao.listarPlanosUnidade(codPlano);
+		return lista;
+	}
 	
 }

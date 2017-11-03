@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import Model.ModelLogin;
 import Model.ModelMedico;
 import TO.TOMedico;
+import TO.TOPlano;
 
 public class CriarMedico implements Command {
 	
@@ -56,13 +57,14 @@ public class CriarMedico implements Command {
 		String pCodMedico 		= request.getParameter("codMedico"); 	
 		String pCrm 			= request.getParameter("crm"); 
 		String pCro 			= request.getParameter("cro"); 
+		String[] pCheck = request.getParameterValues("check");
 		
 		int id = -1;
 		try {
 			id = Integer.parseInt(pCodMedico);
 		} catch (NumberFormatException e) {
 	
-		}
+		}	
 		
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		java.sql.Date dataNasc = null;
@@ -91,6 +93,10 @@ public class CriarMedico implements Command {
 		HttpSession session = request.getSession();
 		
 		modelMedico.cadastrarMedico();
+		
+		for(int i = 0 ; i < pCheck.length ; i++ ){
+			modelMedico.cadastrarMedicoEspecialidade(modelMedico.getCodMedico(), pCheck[i]);		
+		}			
 		ArrayList<TOMedico> lista = new ArrayList<>(); 
 		try {
 			lista = modelMedico.listarMedicos();
