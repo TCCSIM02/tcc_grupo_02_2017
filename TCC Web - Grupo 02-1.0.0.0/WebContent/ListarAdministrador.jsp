@@ -68,7 +68,7 @@
             <div class="panel-body">
               <div class="row text-small">
                 <div class="col-sm-4 m-b-mini">
-                  <a href="CriarAdministrador.jsp" class="btn btn-sm btn-white">Cadastrar novo Administrador</a>	     				  
+                  <a href="CriarAdministrador.jsp" class="btn btn-sm btn-white">Cadastrar Administrador</a>	     				  
                 </div>
                 
                 
@@ -100,51 +100,25 @@
 							<tr>
 								<th>Código Administrador</th>
 								<th>Nome Administrador</th>
-								<th>CPF</th>
-								<!-- <th>Data Nascimento</th>-->
-								<th>Data Cadastro</th>
+								<th>CPF</th>								
 								<th>Email</th>
-								<!-- <th>Estado Cívil</th>
-								<th>Nacionalidade</th>
-								<th>Endereço</th>
-								<th>Número</th>
-								<th>CEP</th>
-								<th>UF</th>
-								<th>Cidade</th>
-								<th>País</th>
-								<th>Telefone Principal</th>
-								<th>Telefone Opcional</th>
-								<th>Celular</th>-->
-								<th>Flag ativo</th> 
+								<th>Data de Cadastro</th>
 								<th class="actions">Ações</th>
 							</tr>
 						</thead>
 						<tbody>
 						<c:forEach var="to" items="${lista}">
 						
-						<tr>
 							<td>${to.codAdministrador}</td>
 							<td>${to.nome}</td>
-							<td>${to.cpf}</td>
-							<!-- <td>${to.dataNascimento}</td>-->
-							<td><fmt:formatDate pattern="dd/MM/yyyy HH:mm:ss" value="${to.dataCadastro}" /></td>
+							<td>${to.cpf}</td>							
 							<td>${to.email}</td>
-							<!-- <td>${to.estadoCivil}</td>
-							<td>${to.nacionalidade}</td>
-							<td>${to.endereco}</td>
-							<td>${to.numeroEndereco}</td>
-							<td>${to.cep}</td>
-							<td>${to.cidade}</td>
-							<td>${to.uf}</td>
-							<td>${to.pais}</td>
-							<td>${to.tel1}</td>
-							<td>${to.tel2}</td>
-							<td>${to.cel}</td>-->
-							<td>${to.flagAtivo}</td>
+							<td><fmt:formatDate pattern="dd/MM/yyyy" value="${to.dataCadastro}" /></td>
+
 							
 							   <td class="actions">
                                                 <a class="btn btn-success btn-xs" href="controller.do?command=VisualizarAdministrador&id=${to.codAdministrador}">Visualizar</a>
-                                                <a class="btn btn-warning btn-xs" href="controller.do?command=EditarAdministrador&id=${to.codAdministrador}">Editar</a>
+                                                <a class="btn btn-warning btn-xs" href="controller.do?command=EditarAdministrador&id=${to.codAdministrador}">Alterar</a>
                                                 <button id="btn${to.codAdministrador}" type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal" data-cliente="${to.codAdministrador}">Excluir</button>
                                             </td>
                                         </tr>

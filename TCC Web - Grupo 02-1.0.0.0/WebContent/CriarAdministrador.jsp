@@ -106,7 +106,7 @@
 			<section class="main padder">
 			  
 				<div class="clearfix">
-					<h4><i class="icon-edit"></i>Cadastrar administrador</h4>
+					<h4><i class="icon-edit"></i>Cadastrar Administrador</h4>
 				</div>
 				  
 				<div class="row">
@@ -120,7 +120,7 @@
 										<label class="col-lg-3 control-label">Nome de usuário</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" name="nomeLogin" id="nomeLogin" required
-											maxlength="20" placeholder="número do cônvenio" size="16">
+											maxlength="20" placeholder="Nome de usuário" size="16">
 										</div>				  
 									</div>
 									
@@ -128,16 +128,16 @@
 										<label class="col-lg-3 control-label">Senha</label>
 										<div class="col-lg-6">
 											<input type="password" class="form-control" name="senha" id="senha" required
-											maxlength="65" placeholder="nome do administrador" size="16">
+											maxlength="65" placeholder="Senha" size="16">
 										</div>				  
 									</div>
 				
 									
 									<div class="form-group">
-										<label class="col-lg-3 control-label">Nome administrador</label>
+										<label class="col-lg-3 control-label">Nome</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" name="nome" id="nome" required
-											maxlength="65" placeholder="nome do administrador" size="16">
+											maxlength="65" placeholder="Nome" size="16">
 										</div>				  
 									</div>
 									
@@ -145,31 +145,31 @@
 										<label class="col-lg-3 control-label">CPF</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" name="cpf" id="cpf" required
-											maxlength="14" placeholder="cpf" size="16">
+											maxlength="14" placeholder="CPF" size="16">
 										</div>				  
 									</div>
 									
 									<div class="form-group">
-										<label class="col-lg-3 control-label">Data Nascimento</label>
+										<label class="col-lg-3 control-label">Data de nascimento</label>
 										<div class="col-lg-6">
 											<input type="date" class="form-control" name="dataNascimento" id="dataNascimento" required
-											maxlength="11" placeholder="data de nascimento" size="16">
+											maxlength="11" placeholder="Data de nascimento" size="16">
 										</div>				  
 									</div>
 									
 									<div class="form-group">
 										<label class="col-lg-3 control-label">Email</label>
 										<div class="col-lg-6">
-											<input type="text" class="form-control" name="email" id="email" required
-											maxlength="100" placeholder="email" size="16">
+											<input type="email" class="form-control" name="email" id="email" required
+											maxlength="100" placeholder="Email" size="16">
 										</div>				  
 									</div>
 									
 									<div class="form-group">
-										<label class="col-lg-3 control-label">Estado Cívil</label>
+										<label class="col-lg-3 control-label">Estado Civil</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" name="estadoCivil" id="estadoCivil" 
-											maxlength="20" placeholder="estado civil" size="16">
+											maxlength="20" placeholder="Estado civil" size="16">
 										</div>				  
 									</div>
 									
@@ -177,7 +177,7 @@
 										<label class="col-lg-3 control-label">Nacionalidade</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" name="nacionalidade" id="nacionalidade" required
-											maxlength="35" placeholder="nacionalidade" size="16">
+											maxlength="35" placeholder="Nacionalidade" size="16">
 										</div>				  
 									</div>
 									
@@ -185,7 +185,7 @@
 										<label class="col-lg-3 control-label">CEP</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" name="cep" id="cep" required onblur="pesquisacep(this.value);"
-											maxlength="9" placeholder="cep" size="16">
+											maxlength="9" placeholder="CEP" size="16">
 										</div>				  
 									</div>
 
@@ -194,7 +194,7 @@
 										<label class="col-lg-3 control-label">Endereço</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" name="endereco" id="endereco" required
-											maxlength="200" placeholder="endereco" size="16" readonly="true">
+											maxlength="200" placeholder="Endereço" size="16" readonly="true">
 										</div>				  
 									</div>
 
@@ -202,7 +202,7 @@
 										<label class="col-lg-3 control-label">Cidade</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" name="cidade" id="cidade" required
-											maxlength="9" placeholder="cep" size="16" readonly="true">
+											maxlength="9" placeholder="Cidade" size="16" readonly="true">
 										</div>				  
 									</div>
 									
@@ -210,7 +210,7 @@
 										<label class="col-lg-3 control-label">País</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" name="pais" id="pais" required
-											maxlength="20" placeholder="país" size="16" readonly="true">
+											maxlength="20" placeholder="País" size="16" readonly="true">
 										</div>				  
 									</div>
 									
@@ -218,7 +218,7 @@
 										<label class="col-lg-3 control-label">UF</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" name="uf" id="uf" required
-											maxlength="2" placeholder="uf" size="16" readonly="true">
+											maxlength="2" placeholder="UF" size="16" readonly="true">
 										</div>				  
 									</div>
 
@@ -228,7 +228,7 @@
 										<label class="col-lg-3 control-label">Número</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" name="numeroEndereco" id="numeroEndereco" required
-											maxlength="200" placeholder="número" size="16">
+											maxlength="200" placeholder="Número" size="16">
 										</div>				  
 									</div>
 								
@@ -237,7 +237,7 @@
 										<label class="col-lg-3 control-label">Telefone Principal</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" name="tel1" id="tel1" required
-											maxlength="16" placeholder="telefone principal" size="16">
+											maxlength="16" placeholder="Telefone principal" size="16">
 										</div>				  
 									</div>
 									
@@ -245,7 +245,7 @@
 										<label class="col-lg-3 control-label">Telefone Opcional</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" name="tel2" id="tel2" 
-											maxlength="16" placeholder="telefone opcional" size="16">
+											maxlength="16" placeholder="Telefone opcional" size="16">
 										</div>				  
 									</div>
 									
@@ -253,7 +253,7 @@
 										<label class="col-lg-3 control-label">Celular</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" name="cel" id="cel" 
-											maxlength="16" placeholder="telefone opcional" size="16">
+											maxlength="16" placeholder="Celular" size="16">
 										</div>				  
 									</div>						
 							
@@ -281,7 +281,9 @@
 				//$('#tel1').mask('(00) 00000-0000');
 				//$('#tel2').mask('(00) 00000-0000');
 				//$('#cel').mask('(00) 00000-0000');
-					
+				
+				$('#cpf').mask('000.000.000-00');
+				
 				$('#tel1').mask('(00) 0000-00009');
 				$('#tel1').blur(function(event) {
 				   if($(this).val().length == 15){ // Celular com 9 dígitos + 2 dígitos DDD e 4 da máscara

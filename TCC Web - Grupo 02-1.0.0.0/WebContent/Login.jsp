@@ -41,15 +41,11 @@
 	                <label class="control-label">Senha</label>
 	                <input type="password" id="inputPassword" placeholder="Senha" name="txtSenha" id="txtSenha" class="form-control">
 	              </div>
-	              <div class="checkbox">
-	                <label>
-	                  <input type="checkbox"> Me manter logado
-	                </label>
-	              </div>
-				  <a href="#" class="pull-right m-t-mini"><small>Esqueceu a senha?</small></a>
-				 
+
+
+				 <div align="center">
 				  <button name="command" value="EfetuarLogin" type="submit" class="btn btn-primary">Entrar</button>
-				  
+				  </div>
 	            </form>
 	          </section>
 	        </div>

@@ -193,7 +193,7 @@ public class DAOMedico {
 		TOMedico toMedico;
 		ArrayList<TOMedico> lista = new ArrayList<>();
 							
-		String sqlSelect = "SELECT * FROM tcc.medico where codMedico = ? and and flagAtivo = 1";
+		String sqlSelect = "SELECT * FROM tcc.medico where codMedico = ? and flagAtivo = 1";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {

@@ -16,7 +16,7 @@ import java.util.Date;
 public class DAOAgendamento {
 	
 	public void cadastrarAgendamento(TOAgendamento toAgendamento){
-		String sqlInsert = "INSERT INTO tcc.plano (dataAgendamentoComeco,dataAgendamentoFim, statusAgendamento, dataCadastro) VALUES (current_timestamp(),current_timestamp(),?,current_timestamp())";
+		String sqlInsert = "INSERT INTO tcc.agendamento (dataAgendamentoComeco,dataAgendamentoFim, statusAgendamento, dataCadastro) VALUES (current_timestamp(),current_timestamp(),?,current_timestamp())";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
@@ -150,7 +150,7 @@ public class DAOAgendamento {
 		
 		TOAgendamento toAgendamento;
 		ArrayList<TOAgendamento> lista = new ArrayList<>();
-		String sqlSelect = "SELECT * FROM tcc.agendamento A WHERE A.codMedico = ? AND flagAtivo = 1";
+		String sqlSelect = "SELECT * FROM tcc.agendamento a inner join paciente p on a.codPaciente = p.codPaciente where p.flagAtivo = 1 and a.codMedico = ? and a.flagAtivo = 1; ";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {

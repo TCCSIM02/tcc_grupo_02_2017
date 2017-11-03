@@ -176,7 +176,7 @@
 								<div class="form-group">
 								  <div class="col-lg-9 col-lg-offset-3">                      
 									<!-- <a href="ListarAdministrador.jsp" class="btn btn-white">Cancelar</a> -->
-									<button name="command" type="submit" class="btn btn-primary">Cadastrar</button>
+									<button name="command" type="submit" class="btn btn-primary">Avançar</button>
 								  </div>
 								</div>
 								

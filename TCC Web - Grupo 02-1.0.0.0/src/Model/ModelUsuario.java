@@ -1,19 +1,15 @@
 package Model;
 
-import java.util.ArrayList;
+
 import java.util.Date;
 
-import DAO.DAOPaciente;
-import TO.TOPaciente;
 
 public class ModelUsuario {
 
 	private String numeroEndereco;
 	private Date dataCadastro, dataNascimento;
 	private String nome, email, cpf, estadoCivil, nacionalidade, endereco, cep, cidade, uf, pais, tel1, tel2, cel, flagAtivo;
-	
-	/* Possiveis mudanças */
-	private String nivelUsuario , senha, nomeLogin;
+
 	
 	public ModelUsuario() {
 		// TODO Auto-generated constructor stub

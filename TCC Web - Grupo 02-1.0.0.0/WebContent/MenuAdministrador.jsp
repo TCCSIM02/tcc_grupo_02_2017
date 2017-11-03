@@ -81,26 +81,7 @@
 		<% } %>
 			<a href="controller.do?command=IndexAgendamento"><i class="icon-calendar icon-xlarge"></i><span>Agendamento</span></a>
 		</li>
-		  
-		<!-- <% if( pagina.equals("exame")) {  %>
-		<li class="active">		
-		<% } else { %>
-		<li class="dropdown-submenu">
-		<% } %>
-			<a href="controller.do?command=ListarExameBuscar"><i class="icon-file icon-xlarge"></i><span>Exame</span></a>
-		</li>
-		 -->
-		
-		  
-		<!-- <% if( pagina.equals("receituario")) {  %>
-		<li class="active">		
-		<% } else { %>
-		<li class="dropdown-submenu">
-		<% } %>
-			<a href="IndexReceituario.jsp"><i class="icon-edit icon-xlarge"></i><span>Receituário</span></a>
-		</li>
-		 -->
-		  
+	  
     </ul>
   </nav>
   <!-- / nav -->

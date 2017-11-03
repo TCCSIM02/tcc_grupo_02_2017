@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%> 
     
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -52,7 +53,7 @@
 				<p>
 					<strong>Data Nascimento</strong>
 				</p>
-				<p>${administradorTO.dataNascimento}</p>
+				<p><fmt:formatDate pattern="dd/MM/yyyy" value="${administradorTO.dataNascimento}" /></p>
 			</div>
 
 			<div class="col-md-6">
@@ -137,6 +138,14 @@
 					<strong>Celular</strong>
 				</p>
 				<p>${administradorTO.cel}</p>
+			</div>
+			
+			<div class="col-md-6">
+				<p>
+					<strong>Data de Cadastro</strong>
+				</p>
+				<p><fmt:formatDate pattern="dd/MM/yyyy" value="${administradorTO.dataCadastro}" /></p>
+				
 			</div>
 
 

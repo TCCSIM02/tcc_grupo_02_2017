@@ -105,6 +105,12 @@
 									maxlength="5" placeholder="" size="16">
 								</div>				  
 							</div>
+							
+							<div id="actions" class="row">
+								<div class="col-md-12">
+				 					<a	href="ListarAtendente.jsp" class="btn btn-default">Voltar</a>
+								</div>
+							</div>
 						
 						</form>				  
 					</div>
