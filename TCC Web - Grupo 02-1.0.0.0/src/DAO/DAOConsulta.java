@@ -5,6 +5,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import ConnectionFactory.FabricaConexao;
@@ -12,14 +14,23 @@ import TO.TOConsulta;
 
 public class DAOConsulta{
 	public void cadastrarConsulta(TOConsulta toConsulta){
-		String sqlInsert = "INSERT INTO tcc.consulta (codAgendamento, diagnostico)VALUES (?,?)";
+		String sqlInsert = "INSERT INTO tcc.consulta (codAgendamento, diagnostico, dataConsultaInicio, dataConsultaFim)VALUES (?,?,?,?)";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
 
-
-			stm.setInt(1,toConsulta.getCodAgendamento());
-			stm.setString(2,toConsulta.getDiagnostico());	
+		
+		
+			
+			
+			java.sql.Timestamp dataHoraInicio = new java.sql.Timestamp(toConsulta.getDataHoraConsultaInicio().getTime());
+			java.sql.Timestamp dataHoraFinal = new java.sql.Timestamp(toConsulta.getDataHoraConsultaFinal().getTime());
+			
+			
+			stm.setInt(1, toConsulta.getCodAgendamento());
+			stm.setString(2, toConsulta.getDiagnostico());	
+			stm.setTimestamp(3, dataHoraInicio);
+			stm.setTimestamp(4, dataHoraFinal);
 			stm.execute();
 			
 			String sqlSelect = "SELECT LAST_INSERT_ID()";

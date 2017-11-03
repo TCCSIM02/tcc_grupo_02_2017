@@ -11,18 +11,21 @@ public class ModelConsulta {
 
 	private int codConsulta, codAgendamento;
 	private Date dataHoraConsultaInicio, dataHoraConsultaFinal;
-	private String diagnostico;
+	private String diagnostico, exames, receituario;
 	
 	public ModelConsulta() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ModelConsulta(int codConsulta, int codAgendamento, Date dataHoraConsultaInicio, Date dataHoraConsultaFinal, String diagnostico) {
+	public ModelConsulta(int codConsulta, int codAgendamento, Date dataHoraConsultaInicio, Date dataHoraConsultaFinal, String diagnostico,
+			String exames, String receituario) {
 		this.codConsulta = codConsulta;
 		this.codAgendamento = codAgendamento;
 		this.dataHoraConsultaInicio = dataHoraConsultaInicio;
 		this.dataHoraConsultaFinal = dataHoraConsultaFinal;
 		this.diagnostico = diagnostico;
+		this.exames = exames;
+		this.receituario = receituario;
 	}
 
 	/**
@@ -63,6 +66,14 @@ public class ModelConsulta {
 	public String getDiagnostico() {
 		return diagnostico;
 	}
+	
+	public String getExames() {
+		return exames;
+	}
+	
+	public String getReceituario() {
+		return receituario;
+	}
 
 	/**
 	 * @return the statusConsulta
@@ -100,6 +111,14 @@ public class ModelConsulta {
 		this.diagnostico = diagnostico;
 	}
 
+	public void setExames(String exames) {
+		this.exames = exames;
+	}
+	
+	public void setReceituario(String receituario) {
+		this.receituario = receituario;
+	}
+	
 	public TOConsulta getTO(){
 		
 		TOConsulta toConsulta = new TOConsulta();
@@ -109,6 +128,9 @@ public class ModelConsulta {
 		toConsulta.setDataHoraConsultaFinal(dataHoraConsultaFinal);
 		toConsulta.setDataHoraConsultaInicio(dataHoraConsultaFinal);
 		toConsulta.setDiagnostico(diagnostico);
+		toConsulta.setExames(exames);
+		toConsulta.setReceituario(receituario);
+		
 		
 		return toConsulta;
 		
@@ -144,6 +166,8 @@ public class ModelConsulta {
 		dataHoraConsultaFinal =  toConsulta.getDataHoraConsultaFinal();
 		dataHoraConsultaInicio = toConsulta.getDataHoraConsultaInicio();
 		diagnostico = toConsulta.getDiagnostico();
+		exames = toConsulta.getExames();
+		receituario = toConsulta.getReceituario();
 	}
 	
 	public ArrayList<TOConsulta> listarConsultas() throws ClassNotFoundException{

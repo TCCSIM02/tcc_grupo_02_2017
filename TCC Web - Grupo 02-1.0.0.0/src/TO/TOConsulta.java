@@ -5,7 +5,7 @@ import java.util.Date;
 public class TOConsulta {
 	private int codConsulta, codAgendamento;
 	private Date dataHoraConsultaInicio, dataHoraConsultaFinal;
-	private String diagnostico;
+	private String diagnostico, exames, receituario;
 	/**
 	 * @return the codConsulta
 	 */
@@ -35,6 +35,14 @@ public class TOConsulta {
 	public String getDiagnostico() {
 		return diagnostico;
 	}
+	
+	public String getExames() {
+		return exames;
+	}
+	
+	public String getReceituario() {
+		return receituario;
+	}
 
 	/**
 	 * @param codConsulta the codConsulta to set
@@ -63,6 +71,14 @@ public class TOConsulta {
 	 */
 	public void setDiagnostico(String diagnostico) {
 		this.diagnostico = diagnostico;
+	}
+	
+	public void setExames(String exames) {
+		this.exames = exames;
+	}
+	
+	public void setReceituario(String receituario) {
+		this.receituario = receituario;
 	}
 
 }

@@ -18,13 +18,17 @@
 	<link rel="stylesheet" href="css/landing.css">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 	
-	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="js/moment.js"></script>
-	
-	
-	
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script>
+	$( function() {
+		$( "#dataInicio" ).datepicker({ dateFormat: "dd/mm/yy" }).val();
+		$( "#dataFim" ).datepicker({ dateFormat: "dd/mm/yy" }).val();
+	} );
+	</script>
+
 	
 </head>
 <body>
@@ -55,7 +59,7 @@
 				<section class="panel">
 					<div class="panel-body">
 					 
-						<form class="form-horizontal" action="controller.do" method="post" data-validate="parsley">      
+						<form class="form-horizontal" action="controller.do" method="get" data-validate="parsley">      
 						
 						
 							<div class="form-group">
@@ -88,31 +92,84 @@
 									<textarea class="form-control" name="diagnostico" id="diagnostico" required rows="10" cols="40"
 									maxlength="200" placeholder="não consultado" style="overflow:auto;resize:none" ></textarea>
 								</div>											  
-							</div>					
-			
-							<div class="container">
-							    <div class='col-md-5'>
-							        <div class="form-group">
-							            <div class='input-group date' id='datetimepicker6'>
-							                <input type='text' class="form-control" />
-							                <span class="input-group-addon">
-							                    <span class="glyphicon glyphicon-calendar"></span>
-							                </span>
-							            </div>
-							        </div>
-							    </div>
-							    <div class='col-md-5'>
-							        <div class="form-group">
-							            <div class='input-group date' id='datetimepicker7'>
-							                <input type='text' class="form-control" />
-							                <span class="input-group-addon">
-							                    <span class="glyphicon glyphicon-calendar"></span>
-							                </span>
-							            </div>
-							        </div>
-							    </div>
 							</div>
 							
+											
+							
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Data início:</label>
+								<div class="col-lg-3">
+									<input type="text" id="dataInicio" name="dataInicio" size="10"  class="form-control">
+								</div>
+								<div class="col-lg-3">
+										<select id="horaInicio" name="horaInicio" class="input-sm inline form-control"  style="width:100%">
+											<option value="00:00:00">00:00</option>	
+											<option value="01:00:00">01:00</option>	
+											<option value="02:00:00">02:00</option>	
+											<option value="03:00:00">03:00</option>	
+											<option value="04:00:00">04:00</option>	
+											<option value="05:00:00">05:00</option>	
+											<option value="06:00:00">06:00</option>	
+											<option value="07:00:00">07:00</option>	
+											<option value="08:00:00">08:00</option>	
+											<option value="09:00:00">09:00</option>	
+											<option value="10:00:00">10:00</option>	
+											<option value="11:00:00">11:00</option>	
+											<option value="12:00:00">12:00</option>	
+											<option value="13:00:00">13:00</option>	
+											<option value="14:00:00">14:00</option>	
+											<option value="15:00:00">15:00</option>
+											<option value="16:00:00">16:00</option>	
+											<option value="17:00:00">17:00</option>	
+											<option value="18:00:00">18:00</option>	
+											<option value="19:00:00">19:00</option>	
+											<option value="20:00:00">20:00</option>	
+											<option value="21:00:00">21:00</option>	
+											<option value="22:00:00">22:00</option>	
+											<option value="23:00:00">23:00</option>											
+										</select>
+									</div>													  
+							</div>
+							
+							
+							
+							
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Data conclusão:</label>
+								<div class="col-lg-3">
+									<input type="text" id="dataFim" name="dataFim" size="10"  class="form-control">
+								</div>
+								<div class="col-lg-3">
+										<select id="horaFim" name="horaFim" class="input-sm inline form-control"  style="width:100%">
+											<option value="00:00:00">00:00</option>	
+											<option value="01:00:00">01:00</option>	
+											<option value="02:00:00">02:00</option>	
+											<option value="03:00:00">03:00</option>	
+											<option value="04:00:00">04:00</option>	
+											<option value="05:00:00">05:00</option>	
+											<option value="06:00:00">06:00</option>	
+											<option value="07:00:00">07:00</option>	
+											<option value="08:00:00">08:00</option>	
+											<option value="09:00:00">09:00</option>	
+											<option value="10:00:00">10:00</option>	
+											<option value="11:00:00">11:00</option>	
+											<option value="12:00:00">12:00</option>	
+											<option value="13:00:00">13:00</option>	
+											<option value="14:00:00">14:00</option>	
+											<option value="15:00:00">15:00</option>
+											<option value="16:00:00">16:00</option>	
+											<option value="17:00:00">17:00</option>	
+											<option value="18:00:00">18:00</option>	
+											<option value="19:00:00">19:00</option>	
+											<option value="20:00:00">20:00</option>	
+											<option value="21:00:00">21:00</option>	
+											<option value="22:00:00">22:00</option>	
+											<option value="23:00:00">23:00</option>											
+										</select>
+									</div>																  
+							</div>	
+							
+												
 							
 							<div class="form-group">
 							  <div class="col-lg-9 col-lg-offset-3">                      
@@ -134,20 +191,14 @@
 	<!-- Footer -->
 	<c:import url="Footer.jsp"/>
 	
+	  <script>
+        <!-- Formata os campos -->
+        $(document).ready(function(){
+        	$('#dataInicio').mask('00/00/0000');
+        	$('#dataFim').mask('00/00/0000');
+        });
+      </script>
 	
-	<script type="text/javascript">
-	    $(function () {
-	        $('#datetimepicker6').datetimepicker();
-	        $('#datetimepicker7').datetimepicker({
-	            useCurrent: false //Important! See issue #1075
-	        });
-	        $("#datetimepicker6").on("dp.change", function (e) {
-	            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
-	        });
-	        $("#datetimepicker7").on("dp.change", function (e) {
-	            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
-	        });
-	    });
-	</script>	
+
 </body>
 </html>

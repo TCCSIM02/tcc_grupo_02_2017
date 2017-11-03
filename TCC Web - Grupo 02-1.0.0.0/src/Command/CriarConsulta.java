@@ -1,8 +1,9 @@
 package Command;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,10 +20,14 @@ public class CriarConsulta implements Command {
 	@Override
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
  
-		String pCodAgendamento          =	request.getParameter("codAgendamento");      
-		String pDataHoraConsultaFinal   =	request.getParameter("dataHoraConsultaFinal");   
-		String pDataHoraConsultaInicio  =	request.getParameter("dataHoraConsultaInicio");  
-		String pDiagnostico             =	request.getParameter("diagnostico");
+		String pCodAgendamento          =	request.getParameter("codAgendamento");  
+		String pDiagnostico             =	request.getParameter("diagnostico");		
+		String pDataInicio   =	request.getParameter("dataInicio");
+		String pHoraInicio   =	request.getParameter("horaInicio");
+		String pDataFim   =	request.getParameter("dataFim");
+		String pHoraFim   =	request.getParameter("horaFim");
+		String pExames = request.getParameter("exames");
+		String pReceituario = request.getParameter("receituario");
 
 		int codAgendamento = -1;
 		
@@ -30,9 +35,27 @@ public class CriarConsulta implements Command {
 			codAgendamento = Integer.parseInt(pCodAgendamento);
 		} catch (NumberFormatException e) {
 		}
+
+		String dataHoraInicio = pDataInicio+" "+pHoraInicio;
+		String dataHoraFim = pDataFim+" "+pHoraFim;
+		
+		String pattern = "dd/MM/yyyy hh:mm:ss";
+		SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+		
+		
+		java.util.Date dataHoraInicioFinal = new java.util.Date();
+		java.util.Date dataHoraFimFinal =  new java.util.Date();
+		try {
+			dataHoraInicioFinal = sdf.parse(dataHoraInicio);
+			dataHoraFimFinal = sdf.parse(dataHoraFim);
+			System.out.println(dataHoraInicioFinal);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}	
 		
 		/*ALTERAR ESSE NULL AQUI*/
-		ModelConsulta modelConsulta = new ModelConsulta(-1, codAgendamento, null , null,  pDiagnostico);
+		ModelConsulta modelConsulta = new ModelConsulta(-1, codAgendamento, dataHoraInicioFinal , dataHoraFimFinal,  pDiagnostico, pExames, pReceituario);
 	
 		HttpSession session = request.getSession();
 		
