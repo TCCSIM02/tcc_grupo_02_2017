@@ -14,14 +14,10 @@ import TO.TOConsulta;
 
 public class DAOConsulta{
 	public void cadastrarConsulta(TOConsulta toConsulta){
-		String sqlInsert = "INSERT INTO tcc.consulta (codAgendamento, diagnostico, dataConsultaInicio, dataConsultaFim)VALUES (?,?,?,?)";
+		String sqlInsert = "INSERT INTO tcc.consulta (codAgendamento, diagnostico, dataConsultaInicio, dataConsultaFim, exames, receituario)VALUES (?,?,?,?,?,?)";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
-				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
-
-		
-		
-			
+				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {		
 			
 			java.sql.Timestamp dataHoraInicio = new java.sql.Timestamp(toConsulta.getDataHoraConsultaInicio().getTime());
 			java.sql.Timestamp dataHoraFinal = new java.sql.Timestamp(toConsulta.getDataHoraConsultaFinal().getTime());
@@ -31,6 +27,8 @@ public class DAOConsulta{
 			stm.setString(2, toConsulta.getDiagnostico());	
 			stm.setTimestamp(3, dataHoraInicio);
 			stm.setTimestamp(4, dataHoraFinal);
+			stm.setString(5, toConsulta.getExames());
+			stm.setString(6, toConsulta.getReceituario());
 			stm.execute();
 			
 			String sqlSelect = "SELECT LAST_INSERT_ID()";
@@ -145,9 +143,10 @@ public class DAOConsulta{
 					
 					toConsulta.setCodConsulta(rs.getInt("codConsulta"));
 					toConsulta.setDiagnostico(rs.getString("diagnostico"));
-					toConsulta.setDataHoraConsultaInicio(rs.getDate("dataConsultaInicio"));
-					toConsulta.setDataHoraConsultaFinal(rs.getDate("dataConsultaFim"));
-					
+					toConsulta.setDataHoraConsultaInicio(rs.getTimestamp("dataConsultaInicio"));
+					toConsulta.setDataHoraConsultaFinal(rs.getTimestamp("dataConsultaFim"));
+					toConsulta.setExames(rs.getString("exames"));
+					toConsulta.setReceituario(rs.getString("receituario"));
 					
 					
 					lista.add(toConsulta);

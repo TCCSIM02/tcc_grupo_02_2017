@@ -125,8 +125,8 @@ public class ModelConsulta {
 		
 		toConsulta.setCodConsulta(codConsulta);
 		toConsulta.setCodAgendamento(codAgendamento);
+		toConsulta.setDataHoraConsultaInicio(dataHoraConsultaInicio);
 		toConsulta.setDataHoraConsultaFinal(dataHoraConsultaFinal);
-		toConsulta.setDataHoraConsultaInicio(dataHoraConsultaFinal);
 		toConsulta.setDiagnostico(diagnostico);
 		toConsulta.setExames(exames);
 		toConsulta.setReceituario(receituario);

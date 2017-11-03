@@ -1,4 +1,3 @@
-/*fuelux*/
 .radio-custom, .checkbox-custom{margin-left: -20px}
 .radio-custom input[type=radio], .checkbox-custom input[type=checkbox]{position: absolute;left: -9999em;}
 .radio-custom > i:before, .checkbox-custom > i:before{font-size: 1.333em;vertical-align: -10%;margin-left:0;margin-right: 4px;color: #ddd}

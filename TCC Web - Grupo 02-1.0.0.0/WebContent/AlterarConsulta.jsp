@@ -81,30 +81,96 @@
 							
 							
 							<div class="form-group">
-								<label class="col-lg-3 control-label">Data de inicio</label>
-								<div class="col-lg-4">
-									<input  type="date" class="form-control" name="dataHoraConsultaInicio" id="dataHoraConsultaInicio" required
-									maxlength="11" placeholder="" size="16" value="">
-								</div>	
-								<div class="col-lg-2">
-									<input type="time" class="form-control" name="horaInicio" id="horaInicio" required
-									maxlength="5" placeholder="" size="16" >
-								</div>				  
+								<label class="col-lg-3 control-label">Data de início</label>
+								<div class="col-lg-3">
+									<input type="text" id="dataInicio" name="dataInicio" size="10" readonly="true" value="${dataHoraConsultaInicio}" class="form-control">
+								</div>
+								<div class="col-lg-3">
+										<select id="horaInicio" name="horaInicio" class="input-sm inline form-control"  style="width:100%">
+											<option value="00:00:00">00:00</option>	
+											<option value="01:00:00">01:00</option>	
+											<option value="02:00:00">02:00</option>	
+											<option value="03:00:00">03:00</option>	
+											<option value="04:00:00">04:00</option>	
+											<option value="05:00:00">05:00</option>	
+											<option value="06:00:00">06:00</option>	
+											<option value="07:00:00">07:00</option>	
+											<option value="08:00:00">08:00</option>	
+											<option value="09:00:00">09:00</option>	
+											<option value="10:00:00">10:00</option>	
+											<option value="11:00:00">11:00</option>	
+											<option value="12:00:00">12:00</option>	
+											<option value="13:00:00">13:00</option>	
+											<option value="14:00:00">14:00</option>	
+											<option value="15:00:00">15:00</option>
+											<option value="16:00:00">16:00</option>	
+											<option value="17:00:00">17:00</option>	
+											<option value="18:00:00">18:00</option>	
+											<option value="19:00:00">19:00</option>	
+											<option value="20:00:00">20:00</option>	
+											<option value="21:00:00">21:00</option>	
+											<option value="22:00:00">22:00</option>	
+											<option value="23:00:00">23:00</option>											
+										</select>
+									</div>													  
 							</div>
 							
-
+							
+							
 							
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Data de conclusão</label>
-								<div class="col-lg-4">
-									<input type="date" class="form-control" name="dataFim" value="" id="dataFim" required 
-									maxlength="11" placeholder="" size="16">
-								</div>	
-								<div class="col-lg-2">
-									<input type="time" class="form-control" name="horaFim" id="horaFim" required
-									maxlength="5" placeholder="" size="16">
-								</div>				  
+								<div class="col-lg-3"> 
+									<input type="text" id="dataFim" name="dataFim" size="10" readonly="true" value="${dataHoraConsultaFinal}"  class="form-control">
+								</div>
+								<div class="col-lg-3">
+										<select id="horaFim" name="horaFim" class="input-sm inline form-control"  style="width:100%">
+											<option value="00:00:00">00:00</option>	
+											<option value="01:00:00">01:00</option>	
+											<option value="02:00:00">02:00</option>	
+											<option value="03:00:00">03:00</option>	
+											<option value="04:00:00">04:00</option>	
+											<option value="05:00:00">05:00</option>	
+											<option value="06:00:00">06:00</option>	
+											<option value="07:00:00">07:00</option>	
+											<option value="08:00:00">08:00</option>	
+											<option value="09:00:00">09:00</option>	
+											<option value="10:00:00">10:00</option>	
+											<option value="11:00:00">11:00</option>	
+											<option value="12:00:00">12:00</option>	
+											<option value="13:00:00">13:00</option>	
+											<option value="14:00:00">14:00</option>	
+											<option value="15:00:00">15:00</option>
+											<option value="16:00:00">16:00</option>	
+											<option value="17:00:00">17:00</option>	
+											<option value="18:00:00">18:00</option>	
+											<option value="19:00:00">19:00</option>	
+											<option value="20:00:00">20:00</option>	
+											<option value="21:00:00">21:00</option>	
+											<option value="22:00:00">22:00</option>	
+											<option value="23:00:00">23:00</option>											
+										</select>
+									</div>																  
 							</div>
+							
+							
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Exames</label>
+								<div class="col-lg-6">
+									<textarea class="form-control" name="exames" id="exames" readonly="true" rows="5" cols="20"
+									maxlength="600" placeholder="Exames" style="overflow:auto;resize:none" >${exames}</textarea>
+								</div>											  
+							</div>
+							
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Receituário</label>
+								<div class="col-lg-6">
+									<textarea class="form-control" name="receituario" id="receituario" readonly="true"  rows="5" cols="20"
+									maxlength="600" placeholder="Receituário" style="overflow:auto;resize:none" >${receituario}</textarea>
+								</div>											  
+							</div>
+							
+							
 							
 							<div id="actions" class="row">
 								<div class="col-md-12">

@@ -48,7 +48,7 @@ public class CriarConsulta implements Command {
 		try {
 			dataHoraInicioFinal = sdf.parse(dataHoraInicio);
 			dataHoraFimFinal = sdf.parse(dataHoraFim);
-			System.out.println(dataHoraInicioFinal);
+			System.out.println(dataHoraFimFinal);
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

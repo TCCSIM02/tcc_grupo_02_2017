@@ -20,8 +20,8 @@ public class DAOAdministrador {
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
 
-			java.util.Date dataUtil = new java.util.Date();
-			java.sql.Date dataSql = new java.sql.Date(dataUtil.getTime());
+			//java.util.Date dataUtil = new java.util.Date();
+			//java.sql.Date dataSql = new java.sql.Date(dataUtil.getTime());
 
 			
 			stm.setString(1,toAdministrador.getNumeroEndereco() );

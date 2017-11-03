@@ -90,14 +90,14 @@
 								<label class="col-lg-3 control-label">Diagnóstico</label>
 								<div class="col-lg-6">
 									<textarea class="form-control" name="diagnostico" id="diagnostico" required rows="10" cols="40"
-									maxlength="200" placeholder="não consultado" style="overflow:auto;resize:none" ></textarea>
+									maxlength="200" placeholder="Diagnóstico" style="overflow:auto;resize:none" ></textarea>
 								</div>											  
 							</div>
 							
 											
 							
 							<div class="form-group">
-								<label class="col-lg-3 control-label">Data início:</label>
+								<label class="col-lg-3 control-label">Data de início</label>
 								<div class="col-lg-3">
 									<input type="text" id="dataInicio" name="dataInicio" size="10"  class="form-control">
 								</div>
@@ -135,7 +135,7 @@
 							
 							
 							<div class="form-group">
-								<label class="col-lg-3 control-label">Data conclusão:</label>
+								<label class="col-lg-3 control-label">Data de conclusão</label>
 								<div class="col-lg-3">
 									<input type="text" id="dataFim" name="dataFim" size="10"  class="form-control">
 								</div>
@@ -169,6 +169,22 @@
 									</div>																  
 							</div>	
 							
+							
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Exames</label>
+								<div class="col-lg-6">
+									<textarea class="form-control" name="exames" id="exames" rows="5" cols="20"
+									maxlength="600" placeholder="Exames" style="overflow:auto;resize:none" ></textarea>
+								</div>											  
+							</div>
+							
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Receituário</label>
+								<div class="col-lg-6">
+									<textarea class="form-control" name="receituario" id="receituario" rows="5" cols="20"
+									maxlength="600" placeholder="Receituário" style="overflow:auto;resize:none" ></textarea>
+								</div>											  
+							</div>
 												
 							
 							<div class="form-group">

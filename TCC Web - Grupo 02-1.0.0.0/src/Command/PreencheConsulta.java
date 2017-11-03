@@ -66,7 +66,12 @@ public class PreencheConsulta  implements Command {
 		if(listaConsulta.isEmpty()) {		
 			view = request.getRequestDispatcher("CriarConsulta.jsp");
 		} else {
-			session.setAttribute("diagnostico", listaConsulta.get(0).getDiagnostico());			
+			session.setAttribute("diagnostico", listaConsulta.get(0).getDiagnostico());
+			session.setAttribute("dataHoraConsultaInicio", listaConsulta.get(0).getDataHoraConsultaInicio());
+			session.setAttribute("dataHoraConsultaFinal", listaConsulta.get(0).getDataHoraConsultaFinal());
+			session.setAttribute("exames", listaConsulta.get(0).getExames());
+			session.setAttribute("receituario", listaConsulta.get(0).getReceituario());
+			
 			view = request.getRequestDispatcher("AlterarConsulta.jsp");
 		}
 		
