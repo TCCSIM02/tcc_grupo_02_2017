@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import DAO.DAOAgendamento;
+import DAO.DAOConsulta;
 import Json.JSONEventoCalendario;
 import TO.TOAgendamento;
+import TO.TOConsulta;
 import TO.TOMedico;
 
 public class ModelAgendamento {
@@ -160,24 +162,20 @@ public class ModelAgendamento {
 		toAgendamento.setCodAtendente(codAtendente);
 		toAgendamento.setCodEspecialidade(codEspecialidade);
 		toAgendamento.setDataCadastro(dataCadastro);
-		toAgendamento.setDataHoraComeco(dataCadastro);
-		toAgendamento.setDataHoraFim(dataCadastro);
+		toAgendamento.setDataHoraComeco(dataHoraComeco);
+		toAgendamento.setDataHoraFim(dataHoraFim);
 		toAgendamento.setFlagAtivo(flagAtivo);
 		
 		return toAgendamento;
 		
 	}
 	
-	public void agendarConsulta(){
-		
-	}
-	
-	public void cancelarConsulta(){
-		
-	}
 
 	public void cadastrarAgendamento() {
-		// TODO Auto-generated method stub
+		DAOAgendamento dao = new DAOAgendamento();		
+		TOAgendamento toAgendamento = getTO();
+		dao.cadastrarAgendamento(toAgendamento); 
+		this.codAgendamento = toAgendamento.getCodAgendamento();
 		
 	}
 

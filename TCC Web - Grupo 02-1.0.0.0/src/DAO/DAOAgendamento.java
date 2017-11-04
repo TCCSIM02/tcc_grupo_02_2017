@@ -16,26 +16,24 @@ import java.util.Date;
 public class DAOAgendamento {
 	
 	public void cadastrarAgendamento(TOAgendamento toAgendamento){
-		String sqlInsert = "INSERT INTO tcc.agendamento (dataAgendamentoComeco,dataAgendamentoFim, statusAgendamento, dataCadastro) VALUES (current_timestamp(),current_timestamp(),?,current_timestamp())";
+		String sqlInsert = "INSERT INTO tcc.agendamento (codPaciente, codMedico, codUnidade, codEspecialidade, dataAgendamentoComeco, dataAgendamentoFim, dataCadastro) VALUES (?, ?, ?, ?, ?, ?, current_timestamp())";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
 
-			//java.util.Date dataUtil = new java.util.Date();
-			//SimpleDateFormat inputdate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-
-			//String strDate = inputdate.format(dataUtil);
+			System.out.println(toAgendamento.getDataHoraComeco());
+			java.sql.Timestamp dataHoraInicio = new java.sql.Timestamp(toAgendamento.getDataHoraComeco().getTime());
+			java.sql.Timestamp dataHoraFinal = new java.sql.Timestamp(toAgendamento.getDataHoraFim().getTime());
 			
-			//long longDate = Long.valueOf(strDate);
-			
-			//java.sql.Date dataSql = new java.sql.Date(dataUtil.getTime());
-			//java.sql.Date dataSql = new java.sql.Date(longDate);
 						
-			/*stm.setDate(1,toAgendamento.getDataHoraComeco());*/
-			/*stm.setDate(2,toAgendamento.getDataHoraFim());*/
-			/*stm.setString(4,toAgendamento.getFlagAtivo());*/
-			//stm.setString(4,toAgendamento.getFlagAtivo());
-			//stm.setDate(5,dataSql);
+			stm.setInt(1,toAgendamento.getCodPaciente());
+			stm.setInt(2,toAgendamento.getCodMedico());
+			stm.setInt(3,toAgendamento.getCodUnidade());
+			stm.setInt(4,toAgendamento.getCodEspecialidade());
+			stm.setTimestamp(5, dataHoraInicio);
+			stm.setTimestamp(6, dataHoraFinal);
+			
+
 			
 			stm.execute();
 			

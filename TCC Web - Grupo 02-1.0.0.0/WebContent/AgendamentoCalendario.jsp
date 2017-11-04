@@ -49,6 +49,17 @@
         <script src="js/fullcalendar/fullcalendar.min.js" cache="false"></script>
         <script src='js/fullcalendar/locale-all.js'></script>
         
+		<%
+			String pacienteValor="";
+			pacienteValor = request.getParameter("pacienteValor");
+			
+			String especialidadeValor="";
+			especialidadeValor = request.getParameter("especialidadeValor");
+			
+			String unidadeValor="";
+			unidadeValor = request.getParameter("unidadeValor");
+		%>
+		
         
         
     </head>
@@ -59,42 +70,46 @@
     <!-- Menu de navegação do Administrador -->
     <c:import url="MenuAdministrador.jsp?pagina=agendamento" />
  
-    <section id="content" class="content-sidebar bg-white"> <!-- .sidebar -->
-    <aside class="sidebar bg-lighter padder clearfix">
- 
-    <h5>Arraste para um novo agendamento</h5>
-    <div class="line"></div>
-    <div id="external-events"
-                   class="pillbox clearfix m-b no-border no-padder">
-                   <ul>
-                                   <li class="fc-event">Novo agendamento</li>
-                   </ul>
-    </div>
-    <div class="line"></div>
+    <section id="content" class="content-sidebar bg-white">
     
-    <p>Selecione o médico:</p>
-    
-    <select id="medico" class="input-sm inline form-control" style="width:130px">
-                   <option value=""></option>
-                   <c:forEach var="to" items="${listaMedico}">
-                                   <option value="${to.codMedico}">${to.nome}</option>
-                   </c:forEach>
-    </select>
-    
- 
-    </aside> <!-- /.sidebar --> <!-- .main --> <section class="main">
-    <div class="" id="fc-agendamento"></div>
-    
-    </section> <!-- /.main --> </section>
+		<aside class="sidebar bg-lighter padder clearfix">
+	 
+			<h5>Arraste para um novo agendamento</h5>
+			
+			<div class="line"></div>
+			
+			<div id="external-events" class="pillbox clearfix m-b no-border no-padder">
+				<ul>
+					<li class="fc-event">Novo agendamento</li>
+				</ul>
+			</div>
+			
+			<div class="line"></div>
+			
+			<p>Selecione o médico:</p>
+			
+			<select id="medico" class="input-sm inline form-control" style="width:130px">
+				<c:forEach var="to" items="${listaMedico}">
+					<option value="${to.codMedico}">${to.nome}</option>
+				</c:forEach>
+			</select>
+		
+	 
+		</aside>
+		
+		<section class="main">
+			<div class="" id="fc-agendamento"></div>		
+		</section>
+		
+	</section>
  
     <!-- footer -->
-    <footer id="footer">
-    
-    <div class="text-center padder clearfix">
-                   <p>
-                                   <small>&copy; TCC - Grupo 2</small><br> <br>
-                   </p>
-    </div>
+    <footer id="footer">    
+		<div class="text-center padder clearfix">
+			<p>
+				<small>&copy; TCC - Grupo 2</small><br> <br>
+		   </p>
+		</div>
     </footer>
     
  
@@ -102,8 +117,19 @@
     <script type="text/javascript">
  
         $(document).ready(
-              function() {
+			
+
+            function() {
  
+            	
+            	var pacienteValor = ${pacienteValor};
+    			var especialidadeValor = ${especialidadeValor};
+    			var unidadeValor = ${unidadeValor};
+    			
+				 comboMedico = document.getElementById("medico");
+				medicoValor = comboMedico.options[comboMedico.selectedIndex].value;
+            	
+            	
                   var initialLocaleCode = 'pt-br';
  
                   /* initialize the external events
@@ -132,7 +158,6 @@
                   -----------------------------------------------------------------*/
  
                   var jsonCalendario = ${jsonCalendario};
-                  alert(jsonCalendario);
                   $('#fc-agendamento').fullCalendar(
                     {
                          header : {
@@ -145,9 +170,9 @@
                                          var pEventDate = dt.format().substring(0, 10);
                                         
                                          window.open(
-                                                                        'CriarAgendamento.jsp?eventDate='
-                                                                                                        + pEventDate,
-                                                                        "_self");
+                                        		 'controller.do?command=PreencheAgendamento&eventDate='+ pEventDate + '&pacienteValor=' + pacienteValor + 
+												 '&especialidadeValor='+ especialidadeValor + '&unidadeValor=' + unidadeValor + '&medicoValor=' + medicoValor,
+												 "_self");
                          },
                          locale : initialLocaleCode,
                          editable : true,
@@ -168,7 +193,8 @@
               $('#medico').change( function(){
              
                 comboMedico = document.getElementById("medico");
- 
+				medicoValor = comboMedico.options[comboMedico.selectedIndex].value;
+				
                 var events = {
                     url: "controller.do?command=ListarMedicoAgenda",
                     type: 'POST',

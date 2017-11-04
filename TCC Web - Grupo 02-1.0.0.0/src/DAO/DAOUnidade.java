@@ -219,6 +219,50 @@ public class DAOUnidade {
 		return lista;
 	} 
 	
+	public ArrayList<TOUnidade> listarUnidadeCod(String codUnidade){
+		TOUnidade toUnidade;
+		ArrayList<TOUnidade> lista = new ArrayList<>();
+		String sqlSelect = "SELECT * from  tcc.unidade where codUnidade = ?";
+		// usando o try with resources do Java 7, que fecha o que abriu
+		try (Connection conn = FabricaConexao.getConexao(); 
+				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
+				stm.setString(1, codUnidade);
+			try (ResultSet rs = stm.executeQuery();) {
+				while(rs.next()) {
+					toUnidade = new TOUnidade();
+					
+					toUnidade.setCodUnidade(rs.getInt("codUnidade"));
+					toUnidade.setRazaoSocial(rs.getString("razaoSocial"));
+					toUnidade.setNomeFantasia(rs.getString("nomeFantasia"));
+					toUnidade.setCnpj(rs.getString("cNPJ"));
+					toUnidade.setNomeRede(rs.getString("nomeRede"));
+					toUnidade.setEndereco(rs.getString("endereco"));
+					toUnidade.setCep(rs.getString("cEP"));
+					toUnidade.setCidade(rs.getString("cidade"));
+					toUnidade.setUf(rs.getString("uF"));
+					toUnidade.setPais(rs.getString("pais"));
+					toUnidade.setNumeroEndereco(rs.getString("numeroEndereco"));
+					toUnidade.setRepresentante(rs.getString("representante"));
+					toUnidade.setTel1(rs.getString("tel1"));
+					toUnidade.setTel2(rs.getString("tel2"));
+					toUnidade.setCel(rs.getString("cel"));
+					toUnidade.setFlagAtivo(rs.getString("flagAtivo"));
+					toUnidade.setDataCadastro(rs.getDate("dataCadastro"));					
+					toUnidade.setLatitude(rs.getDouble("latitude"));	
+					toUnidade.setLongitude(rs.getDouble("longitude"));	
+					
+					lista.add(toUnidade);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace(); 
+			}
+		} catch (SQLException e1) {
+			System.out.print(e1.getStackTrace());
+		}
+		return lista;
+	} 
+	
+	
 	public ArrayList<TOUnidade> listarUnidadePlano(String chave){
 		TOUnidade toUnidade;
 		ArrayList<TOUnidade> lista = new ArrayList<>();

@@ -20,6 +20,17 @@
 		<link rel="stylesheet" href="css/landing.css">
 		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 		
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link rel="stylesheet" href="/resources/demos/style.css">
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script>
+		$( function() {
+			$( "#dataInicio" ).datepicker({ dateFormat: "dd/mm/yy" }).val();
+			$( "#dataFim" ).datepicker({ dateFormat: "dd/mm/yy" }).val();
+		} );
+		</script>
+		
 
 		
 	</head>
@@ -30,7 +41,7 @@
 		%>
 
 
-	<body onload="carregaData()">
+	<body>
 
 		<!-- Header -->
 	<c:import url="Header.jsp" />
@@ -53,93 +64,120 @@
 						 
 							<form class="form-horizontal" action="controller.do" method="post" data-validate="parsley">      
 							
-								<div class="form-group">
-									<label class="col-lg-3 control-label">Selecione o paciente:</label>
-										<div id="cb-medico" class="col-lg-6 input-group dropdown combobox m-b">
-											<input class="input-sm form-control" name="combobox" type="text">
-											<div class="input-group-btn">
-												<button type="button" style="height: 30px; width: 30px"
-													class="btn btn-sm btn-white dropdown-toggle" data-toggle="dropdown">
-												</button>
-												<ul class="dropdown-menu pull-right">
-													<li data-value="1" data-selected="true"><a href="#">Item
-															One</a></li>
-													<li data-value="2"><a href="#">Item Two</a></li>
-													<li data-value="3" data-fizz="buzz"><a href="#">Item Three</a></li>
-													<li class="divider"></li>
-													<li data-value="4"><a href="#">Item Four</a></li>
-												</ul>
-											</div>
-									</div>
-								</div>
-								
-								<div class="form-group">
-									<label class="col-lg-3 control-label">Médico</label>
-									<div class="col-lg-6">
-										<input type="text" class="form-control" name="medico" id="medico" required
-										maxlength="200" placeholder="" size="16" readonly="true" value="">
-									</div>				  
-								</div>
+							
+							<input type="hidden"  name="codPaciente" id="codPaciente" readonly="true" value="${codPaciente}">
+							
+							<input type="hidden"  name="codUnidade" id="codUnidade" readonly="true" value="${codUnidade}">
+							
+							<input type="hidden"  name="codMedico" id="codMedico" readonly="true" value="${codMedico}">
+							
+							<input type="hidden"  name="codEspecialidade" id="codEspecialidade" readonly="true" value="${codEspecialidade}">
+							
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Paciente</label>
+								<div class="col-lg-6">
+									<input type="text" class="form-control" name="nomePaciente" id="nomePaciente" required
+									maxlength="200" placeholder="" size="16"  readonly="true" value="${nomePaciente}">
+								</div>				  
+							</div>
+							
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Unidade</label>
+								<div class="col-lg-6">
+									<input type="text" class="form-control" name="nomeUnidade" id="nomeUnidade" required
+									maxlength="200" placeholder="" size="16"  readonly="true" value="${nomeUnidade}">
+								</div>				  
+							</div>
+							
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Medico</label>
+								<div class="col-lg-6">
+									<input type="text" class="form-control" name="nomeMedico" id="nomeMedico" required
+									maxlength="200" placeholder="" size="16"  readonly="true" value="${nomeMedico}">
+								</div>				  
+							</div>		
 
-								<div class="form-group">
-									<label class="col-lg-3 control-label">Unidade</label>
-									<div id="cb-medico" class="col-lg-6 input-group dropdown combobox m-b">
-										<input class="input-sm form-control" name="combobox" type="text">
-										<div class="input-group-btn">
-											<button type="button" style="height: 30px; width: 30px"
-												class="btn btn-sm btn-white dropdown-toggle" data-toggle="dropdown">
-											</button>
-											<ul class="dropdown-menu pull-right">
-												<li data-value="1" data-selected="true"><a href="#">Mooca</a></li>
-												<li data-value="2"><a href="#">Vergueiro</a></li>
-												<li data-value="3" data-fizz="buzz"><a href="#">Itaquera</a></li>
-											</ul>
-									</div>
-								</div>	
-								</div>
-								
-								<div class="form-group">
-									<label class="col-lg-3 control-label">Inicio</label>
-									<div class="col-lg-4">
-										<input  type="date" class="form-control" name="dataInicio" id="dataInicio" required
-										maxlength="11" placeholder="data de nascimento" size="16" value="<%=data%>">
-									</div>	
-									<div class="col-lg-2">
-										<input type="time" class="form-control" name="horaInicio" id="horaInicio" required
-										maxlength="5" placeholder="data de nascimento" size="16" >
-									</div>				  
-								</div>
-								
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Especialidade</label>
+								<div class="col-lg-6">
+									<input type="text" class="form-control" name="nomeEspecialidade" id="nomeEspecialidade" required
+									maxlength="200" placeholder="" size="16"  readonly="true" value="${nomeEspecialidade}">
+								</div>				  
+							</div>	
 
-								
-								<div class="form-group">
-									<label class="col-lg-3 control-label">Fim</label>
-									<div class="col-lg-4">
-										<input type="date" class="form-control" name="dataFim" value="<%=data%>" id="dataFim" required 
-										maxlength="11" placeholder="data de nascimento" size="16">
-									</div>	
-									<div class="col-lg-2">
-										<input type="time" class="form-control" name="horaFim" id="horaFim" required
-										maxlength="5" placeholder="data de nascimento" size="16">
-									</div>				  
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Data de início</label>
+								<div class="col-lg-3">
+									<input type="text" id="dataInicio" name="dataInicio" size="10"  class="form-control">
 								</div>
-								
-								<div class="form-group">
-									<label class="col-lg-3 control-label">Status</label>
-									<div id="cb-medico" class="col-lg-6 input-group dropdown combobox m-b">
-										<input class="input-sm form-control" name="combobox" type="text">
-										<div class="input-group-btn">
-											<button type="button" style="height: 30px; width: 30px"
-												class="btn btn-sm btn-white dropdown-toggle" data-toggle="dropdown">
-											</button>
-											<ul class="dropdown-menu pull-right">
-												<li data-value="1" data-selected="true"><a href="#">Agendada</a></li>
-												<li data-value="2"><a href="#">Cancelada</a></li>
-												<li data-value="3" data-fizz="buzz"><a href="#">Confirmada</a></li>
-											</ul>
-									</div>
-								</div>	
-								</div>				
+								<div class="col-lg-3">
+										<select id="horaInicio" name="horaInicio" class="input-sm inline form-control"  style="width:100%">
+											<option value="00:00:00">00:00</option>	
+											<option value="01:00:00">01:00</option>	
+											<option value="02:00:00">02:00</option>	
+											<option value="03:00:00">03:00</option>	
+											<option value="04:00:00">04:00</option>	
+											<option value="05:00:00">05:00</option>	
+											<option value="06:00:00">06:00</option>	
+											<option value="07:00:00">07:00</option>	
+											<option value="08:00:00">08:00</option>	
+											<option value="09:00:00">09:00</option>	
+											<option value="10:00:00">10:00</option>	
+											<option value="11:00:00">11:00</option>	
+											<option value="12:00:00">12:00</option>	
+											<option value="13:00:00">13:00</option>	
+											<option value="14:00:00">14:00</option>	
+											<option value="15:00:00">15:00</option>
+											<option value="16:00:00">16:00</option>	
+											<option value="17:00:00">17:00</option>	
+											<option value="18:00:00">18:00</option>	
+											<option value="19:00:00">19:00</option>	
+											<option value="20:00:00">20:00</option>	
+											<option value="21:00:00">21:00</option>	
+											<option value="22:00:00">22:00</option>	
+											<option value="23:00:00">23:00</option>											
+										</select>
+									</div>													  
+							</div>
+							
+							
+							
+							
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Data de conclusão</label>
+								<div class="col-lg-3">
+									<input type="text" id="dataFim" name="dataFim" size="10"  class="form-control">
+								</div>
+								<div class="col-lg-3">
+										<select id="horaFim" name="horaFim" class="input-sm inline form-control"  style="width:100%">
+											<option value="00:00:00">00:00</option>	
+											<option value="01:00:00">01:00</option>	
+											<option value="02:00:00">02:00</option>	
+											<option value="03:00:00">03:00</option>	
+											<option value="04:00:00">04:00</option>	
+											<option value="05:00:00">05:00</option>	
+											<option value="06:00:00">06:00</option>	
+											<option value="07:00:00">07:00</option>	
+											<option value="08:00:00">08:00</option>	
+											<option value="09:00:00">09:00</option>	
+											<option value="10:00:00">10:00</option>	
+											<option value="11:00:00">11:00</option>	
+											<option value="12:00:00">12:00</option>	
+											<option value="13:00:00">13:00</option>	
+											<option value="14:00:00">14:00</option>	
+											<option value="15:00:00">15:00</option>
+											<option value="16:00:00">16:00</option>	
+											<option value="17:00:00">17:00</option>	
+											<option value="18:00:00">18:00</option>	
+											<option value="19:00:00">19:00</option>	
+											<option value="20:00:00">20:00</option>	
+											<option value="21:00:00">21:00</option>	
+											<option value="22:00:00">22:00</option>	
+											<option value="23:00:00">23:00</option>											
+										</select>
+									</div>																  
+							</div>
+							
 						
 								<div class="form-group">
 								  <div class="col-lg-9 col-lg-offset-3">                      
@@ -158,22 +196,7 @@
 
 	  	
 	<script type="text/javascript" >
-	/*
-			function carregaData() {	
-				//alert("carregou");
-			    var query = location.search.slice(1);
-			    var partes = query.split('&');
-			    var data = {};
-			    partes.forEach(function (parte) {
-			        var chaveValor = parte.split('=');
-			        var chave = chaveValor[0];
-			        var valor = chaveValor[1];
-			        data[chave] = valor;
-			    });
-			    			
-			    document.getElementById('dataInicio').value=(data["eventDate"]);
-			}
-	*/
+
 			
 	</script>
 	  

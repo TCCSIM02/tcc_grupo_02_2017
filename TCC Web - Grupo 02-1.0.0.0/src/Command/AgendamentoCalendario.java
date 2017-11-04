@@ -25,6 +25,7 @@ public class AgendamentoCalendario implements Command {
 		
 		String especialidadeValor = request.getParameter("especialidadeValor");
 		String unidadeValor = request.getParameter("unidadeValor");
+		String pacienteValor = request.getParameter("pacienteValor");
 		
 		ModelAgendamento modelAgendamento = new ModelAgendamento();
 		ModelMedico modelMedico = new ModelMedico(); 
@@ -46,6 +47,10 @@ public class AgendamentoCalendario implements Command {
 		}	
 		
 		session.setAttribute("listaMedico", listaMedico);		
+		session.setAttribute("especialidadeValor", especialidadeValor);
+		session.setAttribute("unidadeValor", unidadeValor);
+		session.setAttribute("pacienteValor", pacienteValor);
+		
 		
 		view = request.getRequestDispatcher("AgendamentoCalendario.jsp");		
 		

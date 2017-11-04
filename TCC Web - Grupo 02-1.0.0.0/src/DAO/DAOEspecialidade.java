@@ -114,5 +114,34 @@ public class DAOEspecialidade {
 			System.out.print(e1.getStackTrace());
 		}
 		return lista;
-	}   
+	} 
+	
+	public ArrayList<TOEspecialidade> listarEspecialidadesCod(String codEspecialidade){
+		TOEspecialidade toEspecialidade;
+		ArrayList<TOEspecialidade> lista = new ArrayList<>();
+		String sqlSelect = "select * from tcc.especialidade where codEspecialidade = ?";
+		// usando o try with resources do Java 7, que fecha o que abriu
+		try (Connection conn = FabricaConexao.getConexao(); 
+				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
+				stm.setString(1, codEspecialidade);
+			try (ResultSet rs = stm.executeQuery();) {
+				while(rs.next()) {
+					toEspecialidade = new TOEspecialidade();
+					
+					toEspecialidade.setCodEspecialidade(rs.getInt("codEspecialidade"));
+					toEspecialidade.setEspecialidade(rs.getString("especialidade"));
+					toEspecialidade.setFlagAtivo(rs.getString("flagAtivo"));
+					toEspecialidade.setDescricao(rs.getString("descricao"));
+					
+					lista.add(toEspecialidade);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (SQLException e1) {
+			System.out.print(e1.getStackTrace());
+		}
+		return lista;
+	} 
+	
 }

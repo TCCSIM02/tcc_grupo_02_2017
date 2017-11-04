@@ -1,6 +1,8 @@
 package Command;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -21,22 +23,50 @@ public class CriarAgendamento implements Command {
 
 
 		String pCodAgendamento = request.getParameter("codAgendamento");
-		String pStatusAgendamento = request.getParameter("nomeAgendamento");
-		String pDataCadastro = request.getParameter("registroAns");
-		String pDataHoraComeco = request.getParameter("tipoAgendamento");
-		String pFlagAtivo = request.getParameter("flagAtivo");
-		String pDataHoraFim = request.getParameter("dataCadastro");
-
-		int id = -1;
+		String pCodPaciente = request.getParameter("codPaciente");
+		String pCodUnidade = request.getParameter("codUnidade");
+		String pCodMedico = request.getParameter("codMedico");
+		String pCodEspecialidade = request.getParameter("codEspecialidade");
+		
+		String pDataInicio   =	request.getParameter("dataInicio");
+		String pHoraInicio   =	request.getParameter("horaInicio");
+		String pDataFim   =	request.getParameter("dataFim");
+		String pHoraFim   =	request.getParameter("horaFim");
+		
+		int codMedico = -1;
+		int codPaciente = -1;
+		int codUnidade = -1;
+		int codEspecialidade = -1;
+		
 		try {
-			id = Integer.parseInt(pCodAgendamento);
+			codMedico = Integer.parseInt(pCodMedico);
+			codPaciente = Integer.parseInt(pCodPaciente);
+			codUnidade = Integer.parseInt(pCodUnidade);
+			codEspecialidade = Integer.parseInt(pCodEspecialidade);
 		} catch (NumberFormatException e) {
 
 		}
+		
+		String dataHoraInicio = pDataInicio+" "+pHoraInicio;
+		String dataHoraFim = pDataFim+" "+pHoraFim;
+		
+		String pattern = "dd/MM/yyyy hh:mm:ss";
+		SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+		
+		
+		java.util.Date dataHoraInicioFinal = new java.util.Date();
+		java.util.Date dataHoraFimFinal =  new java.util.Date();
+		try {
+			dataHoraInicioFinal = sdf.parse(dataHoraInicio);
+			dataHoraFimFinal = sdf.parse(dataHoraFim);
+			//System.out.println(dataHoraFimFinal);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}	
 
 		/*ALTERAR ESSE NULL AQUI*/
-		ModelAgendamento modelAgendamento = new ModelAgendamento(Integer.parseInt(pCodAgendamento), 0,0,0,0,0, pFlagAtivo, null,
-				null, null);
+		ModelAgendamento modelAgendamento = new ModelAgendamento(-1,codPaciente, codMedico, codUnidade, 0, codEspecialidade, null, null, dataHoraInicioFinal, dataHoraFimFinal);
 	
 		HttpSession session = request.getSession();
 		
@@ -45,7 +75,7 @@ public class CriarAgendamento implements Command {
 		lista = modelAgendamento.listarAgendamentos();
 		
 		session.setAttribute("lista", lista);		
-		RequestDispatcher view = request.getRequestDispatcher("ListarAgendamento.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("Index.jsp");
 		view.forward(request, response);
 	}
 }

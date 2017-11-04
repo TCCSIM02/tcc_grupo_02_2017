@@ -122,6 +122,14 @@ public class ModelEspecialidade {
 		return lista;
 	}
 	
+	public ArrayList<TOEspecialidade> listarEspecialidadesCod(String codEspecialidade) throws ClassNotFoundException{
+		ArrayList<TOEspecialidade> lista;
+		DAOEspecialidade dao = new DAOEspecialidade();
+		lista = dao.listarEspecialidadesCod(codEspecialidade);
+		return lista;
+	}
+	
+	
 	public ArrayList<TOEspecialidade> listarEspecialidades(String chave) throws ClassNotFoundException{
 		ArrayList<TOEspecialidade> lista;
 		DAOEspecialidade dao = new DAOEspecialidade();
