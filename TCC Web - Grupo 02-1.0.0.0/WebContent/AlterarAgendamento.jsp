@@ -5,62 +5,76 @@
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-  	<meta charset="utf-8">
-  	<title>TCC - grupo 02 SI</title>
-  	<meta name="description" content="mobile first, app, web app, responsive, admin dashboard, flat, flat ui">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">	
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/font.css">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/plugin.css">
-	<link rel="stylesheet" href="css/landing.css">
-	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-	      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-</head>
-<body>
+	<head>
+		<meta charset="utf-8">
+		<title>TCC - grupo 02 SI</title>
+
+		<meta name="description" content="mobile first, app, web app, responsive, admin dashboard, flat, flat ui">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">	
+
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/font.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/plugin.css">
+		<link rel="stylesheet" href="css/landing.css">
+		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+		
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link rel="stylesheet" href="/resources/demos/style.css">
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script>
+		$( function() {
+			$( "#dataInicio" ).datepicker({ dateFormat: "dd/mm/yy" }).val();
+			$( "#dataFim" ).datepicker({ dateFormat: "dd/mm/yy" }).val();
+		} );
+		</script>
+		
+
+		
+	</head>
+
+	<body>
 	
+
 	<!-- Header -->
 	<c:import url="Header.jsp" />
-	
-	<!-- Menu de navegação do Administrador -->
-	<c:import url="MenuAdministrador.jsp?pagina=consulta" />
-	
-	<%
-    	String data="";
-		data = request.getParameter("eventDate");
-	%>
 
-	
-	
+	<!-- Menu de navegação do Administrador -->
+	<c:import url="MenuAdministrador.jsp?pagina=agendamento" />
+
 	<section id="content">
 		
 		<section class="main padder">
 		  
 			<div class="clearfix">
-				<h4><i class="icon-edit"></i>Visualizar consulta</h4>
+				<h4><i class="icon-edit"></i>Cadastrar agendamento</h4>
 			</div>
-		  
-		  <div class="row">
-			<div class="col-sm-12">
-				<section class="panel">
-					<div class="panel-body">
-					
-						<input type="hidden"  name="txtHoraComeco" id="txtHoraComeco" readonly="true" value="${horaComeco}">
-						
-						<input type="hidden"  name="txtHoraFim" id="txtHoraFim" readonly="true" value="${horaFim}">
-					 
-						<form class="form-horizontal" action="controller.do" method="post" data-validate="parsley">      
-							<div class="form-group">
-								<label class="col-lg-3 control-label">Codigo do agendamento</label>
-								<div class="col-lg-6">
-									<input type="text" class="form-control" name="codAgendamento" id="codAgendamento" required
-									maxlength="200" placeholder="" size="16"  readonly="true" value="${codAgendamento}">
-								</div>				  
-							</div>
-
+			  
+			<div class="row">
+				<div class="col-sm-12">
+					<section class="panel">
+						<div class="panel-body">
+						 
+							<form class="form-horizontal" action="controller.do" method="post" data-validate="parsley">   
+							
+							<input type="hidden"  name="codAgendamento" id="codAgendamento" readonly="true" value="${codAgendamento}">
+							
+							<input type="hidden"  name="txtFlagAtivo" id="txtFlagAtivo" readonly="true" value="${flagAtivo}">
+							
+							<input type="hidden"  name="codPaciente" id="codPaciente" readonly="true" value="${codPaciente}">
+							
+							<input type="hidden"  name="txtHoraComeco" id="txtHoraComeco" readonly="true" value="${horaComeco}">
+							
+							<input type="hidden"  name="txtHoraFim" id="txtHoraFim" readonly="true" value="${horaFim}">
+							
+							<input type="hidden"  name="codUnidade" id="codUnidade" readonly="true" value="${codUnidade}">
+							
+							<input type="hidden"  name="codMedico" id="codMedico" readonly="true" value="${codMedico}">
+							
+							<input type="hidden"  name="codEspecialidade" id="codEspecialidade" readonly="true" value="${codEspecialidade}">
+							
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Paciente</label>
 								<div class="col-lg-6">
@@ -70,29 +84,36 @@
 							</div>
 							
 							<div class="form-group">
+								<label class="col-lg-3 control-label">Unidade</label>
+								<div class="col-lg-6">
+									<input type="text" class="form-control" name="nomeUnidade" id="nomeUnidade" required
+									maxlength="200" placeholder="" size="16"  readonly="true" value="${nomeUnidade}">
+								</div>				  
+							</div>
+							
+							<div class="form-group">
 								<label class="col-lg-3 control-label">Medico</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="nomeMedico" id="nomeMedico" required
 									maxlength="200" placeholder="" size="16"  readonly="true" value="${nomeMedico}">
 								</div>				  
-							</div>
-						
+							</div>		
+
 							<div class="form-group">
-								<label class="col-lg-3 control-label">Diagnóstico</label>
+								<label class="col-lg-3 control-label">Especialidade</label>
 								<div class="col-lg-6">
-									<textarea class="form-control" name="diagnostico" id="diagnostico" rows="10" cols="40"
-									maxlength="200" placeholder="não consultado" readonly="true" style="overflow:resize:none">${diagnostico}</textarea>
-								</div>											  
-							</div>
-							
-							
+									<input type="text" class="form-control" name="nomeEspecialidade" id="nomeEspecialidade" required
+									maxlength="200" placeholder="" size="16"  readonly="true" value="${nomeEspecialidade}">
+								</div>				  
+							</div>	
+
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Data de início</label>
 								<div class="col-lg-3">
-									<input type="text" id="dataInicio" name="dataInicio" size="10" readonly="true" value="${dataComeco}" class="form-control">
+									<input type="text" id="dataInicio" name="dataInicio" size="10"  class="form-control" value="${dataComeco}">
 								</div>
 								<div class="col-lg-3">
-										<select id="horaInicio" name="horaInicio" readonly="true" class="input-sm inline form-control"  style="width:100%">
+										<select id="horaInicio" name="horaInicio" class="input-sm inline form-control" value="${horaComeco}" style="width:100%">
 											<option value="00:00">00:00</option>	
 											<option value="01:00">01:00</option>	
 											<option value="02:00">02:00</option>	
@@ -116,7 +137,7 @@
 											<option value="20:00">20:00</option>	
 											<option value="21:00">21:00</option>	
 											<option value="22:00">22:00</option>	
-											<option value="23:00">23:00</option>									
+											<option value="23:00">23:00</option>										
 										</select>
 									</div>													  
 							</div>
@@ -126,11 +147,11 @@
 							
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Data de conclusão</label>
-								<div class="col-lg-3"> 
-									<input type="text" id="dataFim" name="dataFim" size="10" readonly="true" value="${dataFim}"  class="form-control">
+								<div class="col-lg-3">
+									<input type="text" id="dataFim" name="dataFim" size="10"  class="form-control" value="${dataFim}">
 								</div>
 								<div class="col-lg-3">
-										<select id="horaFim" name="horaFim" class="input-sm inline form-control" readonly="true" style="width:100%">
+										<select id="horaFim" name="horaFim" class="input-sm inline form-control" value="${horaFim}" style="width:100%">
 											<option value="00:00">00:00</option>	
 											<option value="01:00">01:00</option>	
 											<option value="02:00">02:00</option>	
@@ -159,44 +180,40 @@
 									</div>																  
 							</div>
 							
-							
 							<div class="form-group">
-								<label class="col-lg-3 control-label">Exames</label>
-								<div class="col-lg-6">
-									<textarea class="form-control" name="exames" id="exames" readonly="true" rows="5" cols="20"
-									maxlength="600" placeholder="Exames" style="overflow:auto;resize:none" >${exames}</textarea>
-								</div>											  
+								<label class="col-lg-3 control-label">Ativo?</label>
+									<div class="col-lg-6">
+										<input type="checkbox" name="flagAtivo" id="flagAtivo">Ativo<br>
+									</div>				  
 							</div>
 							
-							<div class="form-group">
-								<label class="col-lg-3 control-label">Receituário</label>
-								<div class="col-lg-6">
-									<textarea class="form-control" name="receituario" id="receituario" readonly="true"  rows="5" cols="20"
-									maxlength="600" placeholder="Receituário" style="overflow:auto;resize:none" >${receituario}</textarea>
-								</div>											  
-							</div>
-							
-							
-							
-							<div id="actions" class="row">
-								<div class="col-md-12">
-				 					<a	href="ListarAtendente.jsp" class="btn btn-default">Voltar</a>
-								</div>
-							</div>
 						
-						</form>				  
-					</div>
-				</section>
-			</div>  
-		</div>
+							<div class="form-group">
+							  <div class="col-lg-9 col-lg-offset-3">                      
+								<a href="Index" class="btn btn-white">Cancelar</a>
+								<button name="command" value="AlterarAgendamento" type="submit" class="btn btn-primary">Cadastrar</button>
+							  </div>
+							</div>
+								
+							</form>				  
+						</div>
+					</section>
+				</div>  
+			</div>
+		</section>
 	</section>
-	
-	
+
+	  	
 	<script type="text/javascript" >
 		$(document).ready(
 			function() { 
 				var horaComeco = document.getElementById("txtHoraComeco").value;
 				var horaFim = document.getElementById("txtHoraFim").value;
+
+				var flagAtivo = document.getElementById("txtFlagAtivo").value;
+				
+				document.getElementById("flagAtivo").checked = true;
+
 				
 				comboComeco = document.getElementById("horaInicio");
 				comboFim = document.getElementById("horaFim");
@@ -213,12 +230,18 @@
 					}									
 				}
 				
+				if (flagAtivo == 1){
+					checkFlagAtivo.checked = true;
+				}
+				
 				
 		});
 	</script>
-	
+	  
+	  
 	<!-- Footer -->
-	<c:import url="Footer.jsp"/>
-	
-</body>
+	<c:import url="Footer.jsp" />
+	    
+	</body>
+
 </html>

@@ -51,16 +51,7 @@ public class AgendamentoCalendario implements Command {
 		session.setAttribute("unidadeValor", unidadeValor);
 		session.setAttribute("pacienteValor", pacienteValor);
 		
-		
-		view = request.getRequestDispatcher("AgendamentoCalendario.jsp");		
-		
-		try {
-			System.out.println(modelAgendamento.jsonCalendario());
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		view = request.getRequestDispatcher("AgendamentoCalendario.jsp");	
 		
 		try {
 			session.setAttribute("jsonCalendario", modelAgendamento.jsonCalendario());

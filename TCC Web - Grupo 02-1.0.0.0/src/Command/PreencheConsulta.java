@@ -1,6 +1,7 @@
 package Command;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -67,8 +68,14 @@ public class PreencheConsulta  implements Command {
 			view = request.getRequestDispatcher("CriarConsulta.jsp");
 		} else {
 			session.setAttribute("diagnostico", listaConsulta.get(0).getDiagnostico());
-			session.setAttribute("dataHoraConsultaInicio", listaConsulta.get(0).getDataHoraConsultaInicio());
-			session.setAttribute("dataHoraConsultaFinal", listaConsulta.get(0).getDataHoraConsultaFinal());
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm");
+			
+			
+			session.setAttribute("dataComeco", sdf.format(listaConsulta.get(0).getDataHoraConsultaInicio()));	
+			session.setAttribute("horaComeco", sdf2.format(listaConsulta.get(0).getDataHoraConsultaInicio()));
+			session.setAttribute("dataFim", sdf.format(listaConsulta.get(0).getDataHoraConsultaFinal()));	
+			session.setAttribute("horaFim", sdf2.format(listaConsulta.get(0).getDataHoraConsultaFinal()));
 			session.setAttribute("exames", listaConsulta.get(0).getExames());
 			session.setAttribute("receituario", listaConsulta.get(0).getReceituario());
 			

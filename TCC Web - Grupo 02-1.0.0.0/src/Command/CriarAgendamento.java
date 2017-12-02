@@ -72,7 +72,7 @@ public class CriarAgendamento implements Command {
 		
 		modelAgendamento.cadastrarAgendamento();
 		ArrayList<TOAgendamento> lista = new ArrayList<>(); 
-		lista = modelAgendamento.listarAgendamentos();
+
 		
 		session.setAttribute("lista", lista);		
 		RequestDispatcher view = request.getRequestDispatcher("Index.jsp");

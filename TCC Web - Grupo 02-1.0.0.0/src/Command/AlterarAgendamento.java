@@ -1,6 +1,8 @@
 package Command;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -20,56 +22,76 @@ public class AlterarAgendamento implements Command {
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String pCodAgendamento = request.getParameter("codAgendamento");
-		String pStatusAgendamento = request.getParameter("nomeAgendamento");
-		String pDataCadastro = request.getParameter("registroAns");
-		String pDataHoraComeco = request.getParameter("tipoAgendamento");
-		String pFlagAtivo       = request.getParameter("flagAtivo");  
-		String pDataHoraFim = request.getParameter("dataCadastro");
+		String pCodPaciente = request.getParameter("codPaciente");
+		String pCodUnidade = request.getParameter("codUnidade");
+		String pCodMedico = request.getParameter("codMedico");
+		String pCodEspecialidade = request.getParameter("codEspecialidade");
+		String pFlagAtivo = request.getParameter("flagAtivo");
 		
-
+		String pDataInicio   =	request.getParameter("dataInicio");
+		String pHoraInicio   =	request.getParameter("horaInicio");
+		String pDataFim   =	request.getParameter("dataFim");
+		String pHoraFim   =	request.getParameter("horaFim");
 		
+	
+		String flagAtivo = "1";
 		
-		int id = -1;
+		if (pFlagAtivo == null){
+			flagAtivo = "0";
+		}else{
+			flagAtivo = "1";
+		}
+		
+		int codAgendamento = -1;
+		int codMedico = -1;
+		int codPaciente = -1;
+		int codUnidade = -1;
+		int codEspecialidade = -1;
+		
 		try {
-			id = Integer.parseInt(pCodAgendamento);
+			codMedico = Integer.parseInt(pCodMedico);
+			codPaciente = Integer.parseInt(pCodPaciente);
+			codUnidade = Integer.parseInt(pCodUnidade);
+			codEspecialidade = Integer.parseInt(pCodEspecialidade);
 		} catch (NumberFormatException e) {
 
 		}
+		
+		try {
+			codAgendamento = Integer.parseInt(pCodAgendamento);
+		} catch (NumberFormatException e) {
+
+		}
+		
+		String dataHoraInicio = pDataInicio+" "+pHoraInicio;
+		String dataHoraFim = pDataFim+" "+pHoraFim;
+		
+		String pattern = "dd/MM/yyyy hh:mm";
+		SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+		
+		
+		java.util.Date dataHoraInicioFinal = new java.util.Date();
+		java.util.Date dataHoraFimFinal =  new java.util.Date();
+		try {
+			dataHoraInicioFinal = sdf.parse(dataHoraInicio);
+			dataHoraFimFinal = sdf.parse(dataHoraFim);
+			//System.out.println(dataHoraFimFinal);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			System.out.println("tp aq");
+		}
 
 		/*ALTERAR ESSE NULL AQUI*/
-		ModelAgendamento modelAgendamento = new ModelAgendamento(Integer.parseInt(pCodAgendamento), 0, 0, 0, 0, 0, pFlagAtivo, null,
-				null, null); 
-		
+		ModelAgendamento modelAgendamento = new ModelAgendamento(codAgendamento,codPaciente, codMedico, codUnidade, 0, codEspecialidade, flagAtivo, null, dataHoraInicioFinal, dataHoraFimFinal);
+				
 		RequestDispatcher view = null;
-		HttpSession session = request.getSession();
 		
 		modelAgendamento.alterarAgendamento();
-		@SuppressWarnings("unchecked")
-		ArrayList<TOAgendamento> lista = (ArrayList<TOAgendamento>)session.getAttribute("lista");
-		
-		int pos = busca(modelAgendamento, lista);
-		lista.remove(pos);
-		lista.add(pos, modelAgendamento.getTO());
-		
-		lista = modelAgendamento.listarAgendamentos();
-		
-		session.setAttribute("lista", lista);
-		request.setAttribute("consultaTO", modelAgendamento.getTO());
-		view = request.getRequestDispatcher("VisualizarAgendamento.jsp");
+
+		view = request.getRequestDispatcher("Index.jsp");
 	
 		view.forward(request, response);
 	}
-	
-	public int busca(ModelAgendamento modelAgendamento, ArrayList<TOAgendamento> lista) {
-		TOAgendamento toAgendamento;
-		for(int i = 0; i < lista.size(); i++){
-			toAgendamento = lista.get(i);
-			if(toAgendamento.getCodAgendamento() == toAgendamento.getCodAgendamento()){
-				return i;
-			}
-		}
-		return -1;
-	}
-
 	
 }

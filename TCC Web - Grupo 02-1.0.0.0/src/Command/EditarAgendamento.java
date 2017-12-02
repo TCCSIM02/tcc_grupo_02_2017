@@ -36,7 +36,6 @@ public class EditarAgendamento implements Command{
 		ModelAgendamento modelAgendamento = new ModelAgendamento(id);
 		RequestDispatcher view = null;
 		
-		modelAgendamento.consultarAgendamentoCod();
 			
 		request.setAttribute("consultaTO", modelAgendamento.getTO());
 		view = request.getRequestDispatcher("AlterarAgendamento.jsp");

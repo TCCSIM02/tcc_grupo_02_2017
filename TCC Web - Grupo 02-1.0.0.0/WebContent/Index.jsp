@@ -53,9 +53,7 @@
 			<div class="clearfix">
 				<h4><i class="icon-edit"></i>Agendamento</h4>
 			</div>
-			  
-			 
-			
+			 			
 			Bem-vindo, ${nomeLogin} e ${nivelUsuario} 
 			
 			

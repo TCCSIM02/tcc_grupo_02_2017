@@ -59,20 +59,18 @@
 	<!-- Menu de navegação do Administrador -->
 	<c:import url="MenuAdministrador.jsp?pagina=consulta" />
 
-	<section id="content" class="content-sidebar bg-white"> <!-- .sidebar -->
-	<aside class="sidebar bg-lighter padder clearfix">
-
-	</aside> <!-- /.sidebar --> <!-- .main --> <section class="main">
-	<div class="" id="fc-agendamento"></div>
-	
-	</section> <!-- /.main --> </section>
+	<section id="content" class="content-sidebar bg-white">
+		<section class="main">	
+			<div class="" id="fc-agendamento"></div>	
+		</section> 
+	</section>
 
 	<!-- footer -->
 	<footer id="footer">
 	
 	<div class="text-center padder clearfix">
 		<p>
-			<small>&copy; TCC - Grupo 2</small><br> <br>
+			<small>&copy; Consult.Me</small><br> <br>
 		</p>
 	</div>
 	</footer>

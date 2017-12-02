@@ -21,7 +21,7 @@ public class DAOAgendamento {
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
 
-			System.out.println(toAgendamento.getDataHoraComeco());
+	
 			java.sql.Timestamp dataHoraInicio = new java.sql.Timestamp(toAgendamento.getDataHoraComeco().getTime());
 			java.sql.Timestamp dataHoraFinal = new java.sql.Timestamp(toAgendamento.getDataHoraFim().getTime());
 			
@@ -51,15 +51,19 @@ public class DAOAgendamento {
 	}
 	
 	public void alterarAgendamento(TOAgendamento toAgendamento){
-		String sqlUpdate = "UPDATE tcc.agendamento SET dataAgendamentoComeco = ?, dataAgendamentoFim = ?, statusAgendamento = ?, dataCadastro = ? WHERE codAgendamento = ?";
+		String sqlUpdate = "UPDATE tcc.agendamento SET dataAgendamentoComeco = ?, dataAgendamentoFim = ?, flagAtivo = ? WHERE codAgendamento = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 			PreparedStatement stm = conn.prepareStatement(sqlUpdate);) {
 			
-			stm.setDate(1,(java.sql.Date) toAgendamento.getDataHoraComeco());
-			stm.setDate(2,(java.sql.Date) toAgendamento.getDataHoraFim());
-			//stm.setInt(3,Integer.parseInt(toAgendamento.getFlagAtivo()));
-			stm.setInt(3,toAgendamento.getCodAgendamento());
+			java.sql.Timestamp dataHoraInicio = new java.sql.Timestamp(toAgendamento.getDataHoraComeco().getTime());
+			java.sql.Timestamp dataHoraFinal = new java.sql.Timestamp(toAgendamento.getDataHoraFim().getTime());
+			
+			
+			stm.setTimestamp(1, dataHoraInicio);
+			stm.setTimestamp(2, dataHoraFinal);
+			stm.setInt(3,Integer.parseInt(toAgendamento.getFlagAtivo()));
+			stm.setInt(4,toAgendamento.getCodAgendamento());
 			
 			stm.execute();
 		} catch (Exception e) {
@@ -84,7 +88,7 @@ public class DAOAgendamento {
 	public TOAgendamento consultarAgendamentoCod(int codAgendamentoBusca){
 		TOAgendamento toAgendamento = new TOAgendamento();
 		toAgendamento.setCodAgendamento(codAgendamentoBusca);
-		String sqlSelect = "SELECT  dataAgendamentoComeco, dataAgendamentoFim, statusAgendamento, dataCadastro FROM tcc.agendamento where codAgendamento = ? and flagAtivo = 1";
+		String sqlSelect = "SELECT * FROM tcc.agendamento where codAgendamento = ? and flagAtivo = 1";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -110,7 +114,7 @@ public class DAOAgendamento {
 	public ArrayList<TOAgendamento> listarAgendamentos() throws ParseException{
 		TOAgendamento toAgendamento;
 		ArrayList<TOAgendamento> lista = new ArrayList<>();
-		String sqlSelect = "SELECT codAgendamento, CAST(dataAgendamentoComeco AS char) as dataAgendamentoComeco, CAST(dataAgendamentoFim AS char) as dataAgendamentoFim, statusAgendamento, dataCadastro FROM tcc.agendamento where flagAtivo = 1 order by codAgendamento desc";
+		String sqlSelect = "SELECT * FROM tcc.agendamento where flagAtivo = 1 order by codAgendamento desc";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -118,18 +122,44 @@ public class DAOAgendamento {
 				while(rs.next()) {
 					toAgendamento = new TOAgendamento();
 					
-					DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+					toAgendamento.setCodAgendamento(rs.getInt("codAgendamento"));
+					toAgendamento.setDataHoraComeco(rs.getTimestamp("dataAgendamentoComeco"));
+					toAgendamento.setDataHoraFim(rs.getTimestamp("dataAgendamentoFim")); 						
+					toAgendamento.setDataCadastro(rs.getDate("dataCadastro"));
+			
+					lista.add(toAgendamento);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (SQLException e1) {
+			System.out.print(e1.getStackTrace());
+		}
+		return lista;
+	}
+	
+	
+	public ArrayList<TOAgendamento> listarAgendamentosCod(String codAgendamento) throws ParseException{
+		TOAgendamento toAgendamento;
+		ArrayList<TOAgendamento> lista = new ArrayList<>();
+		
+		String sqlSelect = "SELECT * FROM tcc.agendamento where codAgendamento = ? AND flagAtivo = 1 order by codAgendamento desc";
+		// usando o try with resources do Java 7, que fecha o que abriu
+		try (Connection conn = FabricaConexao.getConexao(); 
+				PreparedStatement stm = conn.prepareStatement(sqlSelect);){
+				stm.setString(1, codAgendamento);
+		
+			try (ResultSet rs = stm.executeQuery();) {
+				while(rs.next()) {
+					toAgendamento = new TOAgendamento();
+					
 					
 					toAgendamento.setCodAgendamento(rs.getInt("codAgendamento"));
-					toAgendamento.setDataHoraComeco(format.parse(rs.getString("dataAgendamentoComeco")));
-					toAgendamento.setDataHoraFim(format.parse(rs.getString("dataAgendamentoFim"))); 						
+					toAgendamento.setDataHoraComeco(rs.getTimestamp("dataAgendamentoComeco"));
+					toAgendamento.setDataHoraFim(rs.getTimestamp("dataAgendamentoFim")); 						
 					toAgendamento.setDataCadastro(rs.getDate("dataCadastro"));
-					
-					format.format(format.parse(rs.getString("dataAgendamentoComeco")));
-					
-					//System.out.println("chegada: " + rs.getString("dataAgendamentoComeco") + " / " + format.parse(rs.getString("dataAgendamentoComeco")) + " / " + format.format(format.parse(rs.getString("dataAgendamentoComeco"))));
-					//System.out.println("saída: " + rs.getString("dataAgendamentoFim") + " / " + format.format(rs.getDate("dataAgendamentoFim")));
-					
+					toAgendamento.setFlagAtivo(rs.getString("flagAtivo"));
+			
 					lista.add(toAgendamento);
 				}
 			} catch (SQLException e) {

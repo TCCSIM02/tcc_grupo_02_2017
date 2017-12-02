@@ -6,7 +6,7 @@
   
 	<ul class="nav navbar-nav  pull-right">
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">            
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">            
           <span class="hidden-xs-only">${nomeLogin}</span>
           <b class="caret hidden-xs-only"></b>
         </a>

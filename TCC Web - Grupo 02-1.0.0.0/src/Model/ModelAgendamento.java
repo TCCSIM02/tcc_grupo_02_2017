@@ -4,12 +4,11 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import DAO.DAOAdministrador;
 import DAO.DAOAgendamento;
-import DAO.DAOConsulta;
 import Json.JSONEventoCalendario;
+import TO.TOAdministrador;
 import TO.TOAgendamento;
-import TO.TOConsulta;
-import TO.TOMedico;
 
 public class ModelAgendamento {
 
@@ -179,25 +178,19 @@ public class ModelAgendamento {
 		
 	}
 
-	public ArrayList<TOAgendamento> listarAgendamentos() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public void alterarAgendamento() {
-		// TODO Auto-generated method stub
-		
+		DAOAgendamento dao = new DAOAgendamento();		
+		TOAgendamento toAgendamento = getTO();
+		dao.alterarAgendamento(toAgendamento);
 	}
-
-	public void consultarAgendamentoCod() {
-		// TODO Auto-generated method stub
-		
+	
+	public ArrayList<TOAgendamento> listarAgendamentosCod(String codAgendamento) throws ClassNotFoundException, ParseException{
+		ArrayList<TOAgendamento> lista;
+		DAOAgendamento dao = new DAOAgendamento();
+		lista = dao.listarAgendamentosCod(codAgendamento);
+		return lista;
 	}
-
-	public void excluirAgendamento() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	public void preencherCalendario() throws ParseException{
 		ArrayList<TOAgendamento> lista;
