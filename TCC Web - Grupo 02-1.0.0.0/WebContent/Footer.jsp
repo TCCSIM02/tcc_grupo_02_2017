@@ -4,7 +4,7 @@
   <footer id="footer">
     <div class="text-center padder clearfix">
       <p>
-        <small>&copy; TCC - Grupo 2</small><br><br>
+        <small>&copy; Consult.me</small><br><br>
       </p>
     </div>
   </footer>

@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 import Model.ModelLogin;
 import Model.ModelMedico;
 import TO.TOMedico;
-import TO.TOPlano;
 
 public class CriarMedico implements Command {
 	
@@ -39,7 +38,6 @@ public class CriarMedico implements Command {
 		
 		
 		String pNumeroEndereco 	= request.getParameter("numeroEndereco"); 	
-		String pDataCadastro 	= request.getParameter("dataCadastro");	
 		String pNome 			= request.getParameter("nome");	
 		String pCpf 			= request.getParameter("cpf");
 		String pDataNascimento 	= request.getParameter("dataNascimento");	
@@ -75,7 +73,6 @@ public class CriarMedico implements Command {
 			e1.printStackTrace();
 		}
 	
-		/*ALTERAR ESSE NULL AQUI*/
 		ModelMedico modelMedico = new ModelMedico(
 				pNumeroEndereco, null, pNome,
 				pCpf, dataNasc,  pEstadoCivil, pEmail,

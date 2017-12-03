@@ -22,7 +22,6 @@ public class AlterarPaciente implements Command {
 		String pCodPaciente = request.getParameter("codPaciente");
 		String pNumConvenio = request.getParameter("numConvenio");
 		String pNumeroEndereco = request.getParameter("numeroEndereco");
-		String pDataCadastro = request.getParameter("dataCadastro");
 		String pNome = request.getParameter("nome");
 		String pCpf = request.getParameter("cpf");
 		String pDataNascimento = request.getParameter("dataNascimento");

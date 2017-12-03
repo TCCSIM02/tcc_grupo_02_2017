@@ -2,8 +2,6 @@ package Command;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -19,11 +17,7 @@ public class VisualizarConsulta implements Command {
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String pCodConsulta             =	request.getParameter("id");             
-		String pDataHoraConsultaFinal   =	request.getParameter("dataHoraConsultaFinal");   
-		String pDataHoraConsultaInicio  =	request.getParameter("dataHoraConsultaInicio");  
-		String pDiagnostico             =	request.getParameter("diagnostico");             
-		String pStatusConsulta          =	request.getParameter("statusConsulta");          
-		String pValorConsulta			=	request.getParameter("valorConsulta");	
+
 
 		int id = -1;
 		try {
@@ -31,7 +25,7 @@ public class VisualizarConsulta implements Command {
 		} catch (NumberFormatException e) {
 
 		}
-		/*ALTERAR ESSE NULL AQUI*/
+
 		ModelConsulta modelConsulta = new ModelConsulta(id);
 		RequestDispatcher view = null;
 		

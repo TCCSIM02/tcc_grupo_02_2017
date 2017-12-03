@@ -22,7 +22,6 @@ public class AlterarAtendente implements Command {
 	
 		String pCodAtendente = request.getParameter("codAtendente");
 		String pNumeroEndereco = request.getParameter("numeroEndereco");
-		String pDataCadastro = request.getParameter("dataCadastro");
 		String pNome = request.getParameter("nome");
 		String pCpf = request.getParameter("cpf");
 		String pDataNascimento = request.getParameter("dataNascimento");
@@ -55,8 +54,6 @@ public class AlterarAtendente implements Command {
 			e1.printStackTrace();
 		}
 
-		
-		/*ALTERAR ESSE NULL AQUI*/
 		ModelAtendente modelAtendente = new ModelAtendente(pNumeroEndereco,null,pNome,pCpf,dataNasc,pEstadoCivil,pEmail,pNacionalidade,pEndereco,
 				pCep,pCidade,pUf,pPais,pTel1,pTel2,pCel,pFlagAtivo,id);
 		RequestDispatcher view = null;

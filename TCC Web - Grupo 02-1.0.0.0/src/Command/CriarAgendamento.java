@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,8 +20,6 @@ public class CriarAgendamento implements Command {
 	@Override
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-		String pCodAgendamento = request.getParameter("codAgendamento");
 		String pCodPaciente = request.getParameter("codPaciente");
 		String pCodUnidade = request.getParameter("codUnidade");
 		String pCodMedico = request.getParameter("codMedico");
@@ -59,13 +56,10 @@ public class CriarAgendamento implements Command {
 		try {
 			dataHoraInicioFinal = sdf.parse(dataHoraInicio);
 			dataHoraFimFinal = sdf.parse(dataHoraFim);
-			//System.out.println(dataHoraFimFinal);
 		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}	
 
-		/*ALTERAR ESSE NULL AQUI*/
 		ModelAgendamento modelAgendamento = new ModelAgendamento(-1,codPaciente, codMedico, codUnidade, 0, codEspecialidade, null, null, dataHoraInicioFinal, dataHoraFimFinal);
 	
 		HttpSession session = request.getSession();

@@ -10,18 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import Model.ModelMedico;
 import Model.ModelUnidade;
-import TO.TOMedico;
 import TO.TOUnidade;
 
 public class ListarUnidadePlano implements Command {
 
 	@Override
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		//String especialidadeValor = request.getParameter("especialidadeValor");
+
 		String pacienteValor = request.getParameter("pacienteValor");
 	
 		ModelUnidade modelUnidade = new ModelUnidade(); 
@@ -29,7 +25,6 @@ public class ListarUnidadePlano implements Command {
 		ArrayList<TOUnidade> lista = new ArrayList<>(); 
 		try {
 			lista = modelUnidade.listarUnidadePlano(pacienteValor);
-			//lista = modelMedico.listarMedicos(especialidadeValor);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

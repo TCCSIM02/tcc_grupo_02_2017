@@ -25,7 +25,6 @@ public class CriarPlano implements Command {
 		String pTipoPlano = request.getParameter("tipoPlano");
 		String pFlagAtivo = request.getParameter("flagAtivo");
 		String[] pCheck = request.getParameterValues("check");
-		String pDataCadastro = request.getParameter("dataCadastro");
 		
 		int id = -1;
 		try {
@@ -33,7 +32,7 @@ public class CriarPlano implements Command {
 		} catch (NumberFormatException e) {
 
 		}
-		/*ALTERAR ESSE NULL AQUI*/
+
 		ModelPlano modelPlano = new ModelPlano(id,pNomePlano,pRegistroAns,pTipoPlano, pFlagAtivo, null);
 	
 		HttpSession session = request.getSession();

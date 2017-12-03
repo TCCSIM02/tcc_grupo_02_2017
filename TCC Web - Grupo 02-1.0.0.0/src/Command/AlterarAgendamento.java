@@ -3,17 +3,16 @@ package Command;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
 
 import Model.ModelAgendamento;
-import TO.TOAgendamento;
+
 
 
 public class AlterarAgendamento implements Command {
@@ -75,14 +74,12 @@ public class AlterarAgendamento implements Command {
 		try {
 			dataHoraInicioFinal = sdf.parse(dataHoraInicio);
 			dataHoraFimFinal = sdf.parse(dataHoraFim);
-			//System.out.println(dataHoraFimFinal);
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 			System.out.println("tp aq");
 		}
 
-		/*ALTERAR ESSE NULL AQUI*/
 		ModelAgendamento modelAgendamento = new ModelAgendamento(codAgendamento,codPaciente, codMedico, codUnidade, 0, codEspecialidade, flagAtivo, null, dataHoraInicioFinal, dataHoraFimFinal);
 				
 		RequestDispatcher view = null;

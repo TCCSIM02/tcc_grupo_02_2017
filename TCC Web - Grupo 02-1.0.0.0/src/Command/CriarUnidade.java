@@ -2,7 +2,6 @@ package Command;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,8 +21,7 @@ public class CriarUnidade implements Command{
 		String pCep             = request.getParameter("cep");          
 		String pCidade          = request.getParameter("cidade");        
 		String pCnpj            = request.getParameter("cnpj");       
-		String pCodUnidade      = request.getParameter("codUnidade");    
-		String pDataCadastro    = request.getParameter("dataCadastro");  
+		String pCodUnidade      = request.getParameter("codUnidade");   
 		String pEndereco        = request.getParameter("endereco");      
 		String pFlagAtivo       = request.getParameter("flagAtivo");        
 		String pNomeFantasia    = request.getParameter("nomeFantasia");    
@@ -55,12 +53,11 @@ public class CriarUnidade implements Command{
 			
 		}
 
-		/*ALTERAR ESSE NULL AQUI*/
 		ModelUnidade modelUnidade = new ModelUnidade( id, pRazaoSocial,
 				pNomeFantasia,  pCnpj,  pNomeRede,  pEndereco,
 				pCep,  pCidade,  pUf,
 				pPais, pNumeroEndereco,  pRepresentante,  pTel1,  pTel2,
-				pCel,  pFlagAtivo, null /*new Date(pDataCadastro)*/, latitude, longitude);
+				pCel,  pFlagAtivo, null, latitude, longitude);
 	
 		HttpSession session = request.getSession();
 		

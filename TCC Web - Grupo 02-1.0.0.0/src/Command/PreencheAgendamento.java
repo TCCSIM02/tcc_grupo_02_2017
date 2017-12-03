@@ -30,8 +30,7 @@ public class PreencheAgendamento  implements Command {
 		
 		RequestDispatcher view = null;
 		HttpSession session = request.getSession();
-		
-		String pEventDate = request.getParameter("eventDate");
+
 		String pAgendamentoValor =	request.getParameter("agendamentoValor");
 		String pPacienteValor =	request.getParameter("pacienteValor");
 		String pEspecialidadeValor =	request.getParameter("especialidadeValor");

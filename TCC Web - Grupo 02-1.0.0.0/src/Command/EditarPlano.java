@@ -23,7 +23,6 @@ public class EditarPlano implements Command{
 		String pRegistroAns = request.getParameter("registroAns");
 		String pTipoPlano = request.getParameter("tipoPlano");
 		String pFlagAtivo = request.getParameter("flagAtivo");
-		String pDataCadastro = request.getParameter("dataCadastro");
 
 		ArrayList<Integer> listaPlanosUnidade = new ArrayList<>();
 		
@@ -34,7 +33,6 @@ public class EditarPlano implements Command{
 
 		}
 
-		/*ALTERAR ESSE NULL AQUI*/
 		ModelPlano modelPlano = new ModelPlano(id,pNomePlano,pRegistroAns,pTipoPlano, pFlagAtivo, null);
 		RequestDispatcher view = null;
 		

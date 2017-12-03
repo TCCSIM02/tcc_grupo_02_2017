@@ -23,7 +23,6 @@ public class AlterarMedico implements Command {
 		String pCrm = request.getParameter("crm");
 		String pCro = request.getParameter("cro");
 		String pNumeroEndereco = request.getParameter("numeroEndereco");
-		String pDataCadastro = request.getParameter("dataCadastro");
 		String pNome = request.getParameter("nome");
 		String pCpf = request.getParameter("cpf");
 		String pDataNascimento = request.getParameter("dataNascimento");
@@ -56,8 +55,6 @@ public class AlterarMedico implements Command {
 			e1.printStackTrace();
 		}
 
-		
-		/*ALTERAR ESSE NULL AQUI*/
 		ModelMedico modelMedico = new ModelMedico(pNumeroEndereco,null,pNome,pCpf,dataNasc,pEstadoCivil,pEmail,pNacionalidade,pEndereco,
 				pCep,pCidade,pUf,pPais,pTel1,pTel2,pCel,pFlagAtivo,id, pCrm, pCro);
 		RequestDispatcher view = null; 

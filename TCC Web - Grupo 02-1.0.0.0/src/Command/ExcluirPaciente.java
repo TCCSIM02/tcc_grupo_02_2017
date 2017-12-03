@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Model.ModelPaciente;
-import Model.ModelPlano;
 import TO.TOPaciente;
-import TO.TOPlano;
 
 public class ExcluirPaciente implements Command {
 
@@ -23,10 +21,8 @@ public class ExcluirPaciente implements Command {
 		String pCodPaciente = request.getParameter("id");
 		String pNumConvenio = request.getParameter("numConvenio");
 		String pNumeroEndereco = request.getParameter("numeroEndereco");
-		String pDataCadastro = request.getParameter("dataCadastro");
 		String pNome = request.getParameter("nome");
 		String pCpf = request.getParameter("cpf");
-		String pDataNascimento = request.getParameter("dataNascimento");
 		String pEstadoCivil = request.getParameter("estadoCivil");
 		String pEmail = request.getParameter("email");
 		String pNacionalidade = request.getParameter("nacionalidade");

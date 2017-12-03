@@ -28,6 +28,7 @@ public class CriarConsulta implements Command {
 		String pHoraFim   =	request.getParameter("horaFim");
 		String pExames = request.getParameter("exames");
 		String pReceituario = request.getParameter("receituario");
+		String pCid = request.getParameter("cid");
 
 		int codAgendamento = -1;
 		
@@ -55,7 +56,7 @@ public class CriarConsulta implements Command {
 		}	
 		
 		/*ALTERAR ESSE NULL AQUI*/
-		ModelConsulta modelConsulta = new ModelConsulta(-1, codAgendamento, dataHoraInicioFinal , dataHoraFimFinal,  pDiagnostico, pExames, pReceituario);
+		ModelConsulta modelConsulta = new ModelConsulta(-1, codAgendamento, dataHoraInicioFinal , dataHoraFimFinal,  pDiagnostico, pExames, pReceituario, pCid);
 	
 		HttpSession session = request.getSession();
 		

@@ -21,10 +21,8 @@ public class ExcluirAdministrador implements Command {
 	
 		String pCodAdministrador = request.getParameter("id");
 		String pNumeroEndereco = request.getParameter("numeroEndereco");
-		String pDataCadastro = request.getParameter("dataCadastro");
 		String pNome = request.getParameter("nome");
 		String pCpf = request.getParameter("cpf");
-		String pDataNascimento = request.getParameter("dataNascimento");
 		String pEstadoCivil = request.getParameter("estadoCivil");
 		String pEmail = request.getParameter("email");
 		String pNacionalidade = request.getParameter("nacionalidade");
@@ -44,8 +42,7 @@ public class ExcluirAdministrador implements Command {
 		} catch (NumberFormatException e) {
 
 		}
-		
-		/*ALTERAR ESSE NULL AQUI*/
+
 		ModelAdministrador modelAdministrador = new ModelAdministrador(pNumeroEndereco,null,pNome,pCpf,null,pEstadoCivil,pEmail,pNacionalidade,pEndereco,
 				pCep,pCidade,pUf,pPais,pTel1,pTel2,pCel,pFlagAtivo,id);
 		RequestDispatcher view = null;

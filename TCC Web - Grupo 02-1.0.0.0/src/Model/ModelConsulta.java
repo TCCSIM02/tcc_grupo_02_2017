@@ -11,14 +11,14 @@ public class ModelConsulta {
 
 	private int codConsulta, codAgendamento;
 	private Date dataHoraConsultaInicio, dataHoraConsultaFinal;
-	private String diagnostico, exames, receituario;
+	private String diagnostico, exames, receituario, cid;
 	
 	public ModelConsulta() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public ModelConsulta(int codConsulta, int codAgendamento, Date dataHoraConsultaInicio, Date dataHoraConsultaFinal, String diagnostico,
-			String exames, String receituario) {
+			String exames, String receituario, String cid) {
 		this.codConsulta = codConsulta;
 		this.codAgendamento = codAgendamento;
 		this.dataHoraConsultaInicio = dataHoraConsultaInicio;
@@ -26,6 +26,7 @@ public class ModelConsulta {
 		this.diagnostico = diagnostico;
 		this.exames = exames;
 		this.receituario = receituario;
+		this.cid = cid;
 	}
 
 	/**
@@ -75,6 +76,10 @@ public class ModelConsulta {
 		return receituario;
 	}
 
+	public String getCid() {
+		return cid;
+	}
+	
 	/**
 	 * @return the statusConsulta
 	 */
@@ -119,6 +124,10 @@ public class ModelConsulta {
 		this.receituario = receituario;
 	}
 	
+	public void setCid(String cid) {
+		this.cid = cid;
+	}
+	
 	public TOConsulta getTO(){
 		
 		TOConsulta toConsulta = new TOConsulta();
@@ -130,6 +139,7 @@ public class ModelConsulta {
 		toConsulta.setDiagnostico(diagnostico);
 		toConsulta.setExames(exames);
 		toConsulta.setReceituario(receituario);
+		toConsulta.setCid(cid);
 		
 		
 		return toConsulta;
@@ -168,6 +178,7 @@ public class ModelConsulta {
 		diagnostico = toConsulta.getDiagnostico();
 		exames = toConsulta.getExames();
 		receituario = toConsulta.getReceituario();
+		cid = toConsulta.getCid();
 	}
 	
 	public ArrayList<TOConsulta> listarConsultas() throws ClassNotFoundException{

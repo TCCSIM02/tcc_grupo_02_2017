@@ -39,8 +39,7 @@ public class CriarAtendente implements Command {
 		/*FIMLOGIN*/
 		
 		
-		String pNumeroEndereco 	= request.getParameter("numeroEndereco"); 	
-		String pDataCadastro 	= request.getParameter("dataCadastro");	
+		String pNumeroEndereco 	= request.getParameter("numeroEndereco"); 
 		String pNome 			= request.getParameter("nome");	
 		String pCpf 			= request.getParameter("cpf");
 		String pDataNascimento 	= request.getParameter("dataNascimento");
@@ -73,7 +72,6 @@ public class CriarAtendente implements Command {
 			e1.printStackTrace();
 		}
 
-		/*ALTERAR ESSE NULL AQUI*/
 		ModelAtendente modelAtendente = new ModelAtendente(
 				pNumeroEndereco, null, pNome,
 				pCpf, dataNasc,  pEstadoCivil, pEmail,

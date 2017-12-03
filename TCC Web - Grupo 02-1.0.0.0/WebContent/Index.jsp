@@ -49,15 +49,8 @@
 	<section id="content">
 		
 		<section class="main padder">
-		  
-			<div class="clearfix">
-				<h4><i class="icon-edit"></i>Agendamento</h4>
-			</div>
 			 			
-			Bem-vindo, ${nomeLogin} e ${nivelUsuario} 
-			
-			
-				
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 		</section>
 	</section>

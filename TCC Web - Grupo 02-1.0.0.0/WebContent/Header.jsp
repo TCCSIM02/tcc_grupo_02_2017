@@ -19,8 +19,9 @@
       </li>
     </ul>
 	
-    <img src="images/map_icon_cor.png" width="48" height="48" class="navbar-brand" href="Index.jsp">
+    <!-- <img src="images/map_icon_cor.png" style="padding-left: 20px !important;" width="48" height="48"  href="Index.jsp"> -->
     
+	<a class="navbar-brand" href="Index.jsp" style="font-family: 'Ubuntu', sans-serif; font-size: 15px;">Consult.me</a>
     
 
 	</header>

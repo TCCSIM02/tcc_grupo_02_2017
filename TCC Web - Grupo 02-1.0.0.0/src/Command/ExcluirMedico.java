@@ -22,10 +22,8 @@ public class ExcluirMedico implements Command {
 		String pCrm = request.getParameter("crm");
 		String pCro = request.getParameter("cro");
 		String pNumeroEndereco = request.getParameter("numeroEndereco");
-		String pDataCadastro = request.getParameter("dataCadastro");
 		String pNome = request.getParameter("nome");
 		String pCpf = request.getParameter("cpf");
-		String pDataNascimento = request.getParameter("dataNascimento");
 		String pEstadoCivil = request.getParameter("estadoCivil");
 		String pEmail = request.getParameter("email");
 		String pNacionalidade = request.getParameter("nacionalidade");
@@ -45,8 +43,7 @@ public class ExcluirMedico implements Command {
 		} catch (NumberFormatException e) {
 
 		}
-		
-		/*ALTERAR ESSE NULL AQUI*/
+
 		ModelMedico modelMedico = new ModelMedico(pNumeroEndereco,null,pNome,pCpf,null,pEstadoCivil,pEmail,pNacionalidade,pEndereco,
 				pCep,pCidade,pUf,pPais,pTel1,pTel2,pCel,pFlagAtivo,id,pCrm,pCro);
 		RequestDispatcher view = null;

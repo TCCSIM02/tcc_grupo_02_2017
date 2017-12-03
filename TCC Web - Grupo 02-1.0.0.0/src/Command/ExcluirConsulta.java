@@ -18,16 +18,8 @@ public class ExcluirConsulta implements Command {
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String pCodConsulta             =	request.getParameter("id");             
-		String pDataHoraConsultaFinal   =	request.getParameter("dataHoraConsultaFinal");   
-		String pDataHoraConsultaInicio  =	request.getParameter("dataHoraConsultaInicio");  
-		String pDiagnostico             =	request.getParameter("diagnostico");             
-		String pStatusConsulta          =	request.getParameter("statusConsulta");          
-		String pValorConsulta			=	request.getParameter("valorConsulta");	
 		
 		int id = -1;
-		System.out.println("id: "+pCodConsulta );
-		System.out.println("CodConsulta: "+request.getParameter("codConsulta"));
-		
 		
 		try {
 			id = Integer.parseInt(pCodConsulta);
@@ -35,7 +27,6 @@ public class ExcluirConsulta implements Command {
 
 		}
 
-		/*ALTERAR ESSE NULL AQUI*/
 		ModelConsulta modelConsulta = new ModelConsulta(id);
 		RequestDispatcher view = null;
 		HttpSession session = request.getSession();

@@ -5,7 +5,7 @@ import java.util.Date;
 public class TOConsulta {
 	private int codConsulta, codAgendamento;
 	private Date dataHoraConsultaInicio, dataHoraConsultaFinal;
-	private String diagnostico, exames, receituario;
+	private String diagnostico, exames, receituario, cid;
 	/**
 	 * @return the codConsulta
 	 */
@@ -44,6 +44,10 @@ public class TOConsulta {
 		return receituario;
 	}
 
+	public String getCid() {
+		return cid;
+	}
+
 	/**
 	 * @param codConsulta the codConsulta to set
 	 */
@@ -79,6 +83,10 @@ public class TOConsulta {
 	
 	public void setReceituario(String receituario) {
 		this.receituario = receituario;
+	}
+	
+	public void setCid(String cid) {
+		this.cid = cid;
 	}
 
 }

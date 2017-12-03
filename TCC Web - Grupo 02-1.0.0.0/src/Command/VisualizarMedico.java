@@ -21,10 +21,8 @@ public class VisualizarMedico implements Command {
 		String pCrm = request.getParameter("crm");
 		String pCro = request.getParameter("cro");
 		String pNumeroEndereco = request.getParameter("numeroEndereco");
-		String pDataCadastro = request.getParameter("dataCadastro");
 		String pNome = request.getParameter("nome");
 		String pCpf = request.getParameter("cpf");
-		String pDataNascimento = request.getParameter("dataNascimento");
 		String pEstadoCivil = request.getParameter("estadoCivil");
 		String pEmail = request.getParameter("email");
 		String pNacionalidade = request.getParameter("nacionalidade");

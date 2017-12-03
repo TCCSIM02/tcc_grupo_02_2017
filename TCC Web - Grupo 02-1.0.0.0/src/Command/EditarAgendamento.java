@@ -15,16 +15,7 @@ public class EditarAgendamento implements Command{
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String pCodAgendamento             =	request.getParameter("id");             
-		String pDataHoraAgendamentoFinal   =	request.getParameter("dataHoraAgendamentoFinal");   
-		String pDataHoraAgendamentoInicio  =	request.getParameter("dataHoraAgendamentoInicio");  
-		String pDiagnostico             =	request.getParameter("diagnostico");             
-		String pStatusAgendamento          =	request.getParameter("statusAgendamento");          
-		String pValorAgendamento			=	request.getParameter("valorAgendamento");	
-		
-		
-		System.out.println("Cod: " + pCodAgendamento);
-		System.out.println("id: " + request.getParameter("id"));
-		
+	
 		int id = -1;
 		try {
 			id = Integer.parseInt(pCodAgendamento);
@@ -32,7 +23,6 @@ public class EditarAgendamento implements Command{
 
 		}
 
-		/*ALTERAR ESSE NULL AQUI*/
 		ModelAgendamento modelAgendamento = new ModelAgendamento(id);
 		RequestDispatcher view = null;
 		

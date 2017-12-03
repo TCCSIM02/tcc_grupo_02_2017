@@ -2,7 +2,6 @@ package Command;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,8 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Model.ModelUnidade;
-import Model.ModelUnidade;
-import TO.TOUnidade;
 import TO.TOUnidade;
 
 public class AlterarUnidade implements Command {
@@ -26,7 +23,6 @@ public class AlterarUnidade implements Command {
 		String pCep             = request.getParameter("cep");          
 		String pCidade          = request.getParameter("cidade");        
 		String pCnpj            = request.getParameter("cnpj");   
-		String pDataCadastro    = request.getParameter("dataCadastro");  
 		String pEndereco        = request.getParameter("endereco");      
 		String pFlagAtivo       = request.getParameter("flagAtivo");     
 		String pNomeFantasia    = request.getParameter("nomeFantasia");    

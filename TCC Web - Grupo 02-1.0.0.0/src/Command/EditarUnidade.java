@@ -6,8 +6,6 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import Model.ModelUnidade;
 
 public class EditarUnidade implements Command{
@@ -21,7 +19,6 @@ public class EditarUnidade implements Command{
 		String pCep             = request.getParameter("cep");          
 		String pCidade          = request.getParameter("cidade");        
 		String pCnpj            = request.getParameter("cnpj");
-		String pDataCadastro    = request.getParameter("dataCadastro");  
 		String pEndereco        = request.getParameter("endereco");      
 		String pFlagAtivo       = request.getParameter("flagAtivo");        
 		String pNomeFantasia    = request.getParameter("nomeFantasia");    
@@ -33,14 +30,10 @@ public class EditarUnidade implements Command{
 		String pTel1            = request.getParameter("tel1");            
 		String pTel2            = request.getParameter("tel2");           
 		String pUf				= request.getParameter("uf");
-		String pLatitude		= request.getParameter("latitude");
-		String pLongitude		= request.getParameter("longitude");
 		
 		Double latitude = 0.0;
 		Double longitude = 0.0;
 		
-
-
 		int id = -1;
 		try {
 			id = Integer.parseInt(pCodUnidade);
@@ -48,12 +41,11 @@ public class EditarUnidade implements Command{
 
 		}
 
-		/*ALTERAR ESSE NULL AQUI*/
 		ModelUnidade modelUnidade = new ModelUnidade( id, pRazaoSocial,
 				pNomeFantasia,  pCnpj,  pNomeRede,  pEndereco,
 				pCep,  pCidade,  pUf,
 				pPais, pNumeroEndereco,  pRepresentante,  pTel1,  pTel2,
-				pCel,  pFlagAtivo, null /*new Date(pDataCadastro)*/, latitude, longitude);;
+				pCel,  pFlagAtivo, null, latitude, longitude);;
 		RequestDispatcher view = null;
 		
 		try {
@@ -64,7 +56,6 @@ public class EditarUnidade implements Command{
 		}
 		
 		request.setAttribute("unidadeTO", modelUnidade.getTO());
-		//request.setAttribute("unidadeTO", modelUnidade.getTO());
 		view = request.getRequestDispatcher("AlterarUnidade.jsp");
 		
 		view.forward(request, response);

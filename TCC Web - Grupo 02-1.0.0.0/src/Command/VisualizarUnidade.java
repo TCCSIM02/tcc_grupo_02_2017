@@ -2,7 +2,6 @@ package Command;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,7 +23,6 @@ public class VisualizarUnidade implements Command {
 		String pCep             = request.getParameter("cep");          
 		String pCidade          = request.getParameter("cidade");        
 		String pCnpj            = request.getParameter("cnpj");   
-		String pDataCadastro    = request.getParameter("dataCadastro");  
 		String pEndereco        = request.getParameter("endereco");      
 		String pFlagAtivo       = request.getParameter("flagAtivo");        
 		String pNomeFantasia    = request.getParameter("nomeFantasia");    
@@ -36,8 +34,7 @@ public class VisualizarUnidade implements Command {
 		String pTel1            = request.getParameter("tel1");            
 		String pTel2            = request.getParameter("tel2");           
 		String pUf				= request.getParameter("uf");
-		String pLatitude		= request.getParameter("latitude");
-		String pLongitude		= request.getParameter("longitude");
+
 
 		int id = -1;
 		try {
@@ -49,19 +46,12 @@ public class VisualizarUnidade implements Command {
 		Double latitude = 0.0;
 		Double longitude = 0.0;
 		
-		/*try {
-			latitude = Double.parseDouble(pLatitude);
-			longitude = Double.parseDouble(pLongitude);
-		} catch (NumberFormatException e){
-						
-		}*/
 
-		/*ALTERAR ESSE NULL AQUI*/
 		ModelUnidade modelUnidade = new ModelUnidade( id, pRazaoSocial,
 				pNomeFantasia,  pCnpj,  pNomeRede,  pEndereco,
 				pCep,  pCidade,  pUf,
 				pPais, pNumeroEndereco,  pRepresentante,  pTel1,  pTel2,
-				pCel,  pFlagAtivo, null /*new Date(pDataCadastro)*/, latitude, longitude);
+				pCel,  pFlagAtivo, null, latitude, longitude);
 		RequestDispatcher view = null;
 		
 		try {

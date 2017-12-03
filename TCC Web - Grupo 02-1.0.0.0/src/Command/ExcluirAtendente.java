@@ -20,10 +20,8 @@ public class ExcluirAtendente implements Command{
 	
 		String pCodAtendente = request.getParameter("id");
 		String pNumeroEndereco = request.getParameter("numeroEndereco");
-		String pDataCadastro = request.getParameter("dataCadastro");
 		String pNome = request.getParameter("nome");
 		String pCpf = request.getParameter("cpf");
-		String pDataNascimento = request.getParameter("dataNascimento");
 		String pEstadoCivil = request.getParameter("estadoCivil");
 		String pEmail = request.getParameter("email");
 		String pNacionalidade = request.getParameter("nacionalidade");
@@ -43,8 +41,7 @@ public class ExcluirAtendente implements Command{
 		} catch (NumberFormatException e) {
 
 		}
-		
-		/*ALTERAR ESSE NULL AQUI*/
+
 		ModelAtendente modelAtendente = new ModelAtendente(pNumeroEndereco,null,pNome,pCpf,null,pEstadoCivil,pEmail,pNacionalidade,pEndereco,
 				pCep,pCidade,pUf,pPais,pTel1,pTel2,pCel,pFlagAtivo,id);
 		RequestDispatcher view = null;

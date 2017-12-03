@@ -37,10 +37,8 @@ public class CriarPaciente implements Command {
 			e2.printStackTrace();
 		}
 		/*FIMLOGIN*/
-		
-		
+
 		String pNumeroEndereco 	= request.getParameter("numeroEndereco"); 	
-		String pDataCadastro 	= request.getParameter("dataCadastro");	
 		String pNome 			= request.getParameter("nome");	
 		String pCpf 			= request.getParameter("cpf");
 		String pDataNascimento 	= request.getParameter("dataNascimento");

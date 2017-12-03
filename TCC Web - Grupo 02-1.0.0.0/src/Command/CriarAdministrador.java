@@ -20,8 +20,6 @@ public class CriarAdministrador implements Command {
 
 	@Override
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		
 		/*LOGIN*/
 		
 		String pEmail			= request.getParameter("email");
@@ -38,8 +36,7 @@ public class CriarAdministrador implements Command {
 		/*FIMLOGIN*/
 		
 		
-		String pNumeroEndereco 	= request.getParameter("numeroEndereco"); 	
-		String pDataCadastro 	= request.getParameter("dataCadastro");	
+		String pNumeroEndereco 	= request.getParameter("numeroEndereco"); 
 		String pNome 			= request.getParameter("nome");	
 		String pCpf 			= request.getParameter("cpf");
 		String pDataNascimento 	= request.getParameter("dataNascimento");
@@ -73,7 +70,6 @@ public class CriarAdministrador implements Command {
 			e1.printStackTrace();
 		}
 
-		/*ALTERAR ESSE NULL AQUI*/
 		ModelAdministrador modelAdministrador = new ModelAdministrador(
 				pNumeroEndereco, null, pNome,
 				pCpf, dataNasc,  pEstadoCivil, pEmail,

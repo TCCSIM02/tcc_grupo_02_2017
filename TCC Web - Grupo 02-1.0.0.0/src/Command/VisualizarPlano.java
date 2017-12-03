@@ -2,7 +2,6 @@ package Command;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +20,6 @@ public class VisualizarPlano implements Command {
 		String pRegistroAns = request.getParameter("registroAns");
 		String pTipoPlano = request.getParameter("tipoPlano");
 		String pFlagAtivo = request.getParameter("flagAtivo");
-		String pDataCadastro = request.getParameter("dataCadastro");
 
 		int id = -1;
 		try {
@@ -29,7 +27,7 @@ public class VisualizarPlano implements Command {
 		} catch (NumberFormatException e) {
 
 		}
-		/*ALTERAR ESSE NULL AQUI*/
+
 		ModelPlano modelPlano = new ModelPlano(id,pNomePlano,pRegistroAns,pTipoPlano, pFlagAtivo, null);
 		RequestDispatcher view = null;
 		

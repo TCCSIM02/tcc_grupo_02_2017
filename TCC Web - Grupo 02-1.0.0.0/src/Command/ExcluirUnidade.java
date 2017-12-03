@@ -22,8 +22,7 @@ public class ExcluirUnidade implements Command {
 		String pCel             = request.getParameter("cel");          
 		String pCep             = request.getParameter("cep");          
 		String pCidade          = request.getParameter("cidade");        
-		String pCnpj            = request.getParameter("cnpj");   
-		String pDataCadastro    = request.getParameter("dataCadastro");  
+		String pCnpj            = request.getParameter("cnpj");    
 		String pEndereco        = request.getParameter("endereco");      
 		String pFlagAtivo       = request.getParameter("flagAtivo");        
 		String pNomeFantasia    = request.getParameter("nomeFantasia");    
@@ -35,8 +34,6 @@ public class ExcluirUnidade implements Command {
 		String pTel1            = request.getParameter("tel1");            
 		String pTel2            = request.getParameter("tel2");           
 		String pUf				= request.getParameter("uf");
-		String pLatitude		= request.getParameter("latitude");
-		String pLongitude		= request.getParameter("longitude");
 		
 		int id = -1;
 		try {
@@ -47,20 +44,12 @@ public class ExcluirUnidade implements Command {
 
 		Double latitude = 0.0;
 		Double longitude = 0.0;
-		
-		/*try {
-			latitude = Double.parseDouble(pLatitude);
-			longitude = Double.parseDouble(pLongitude);
-		} catch (NumberFormatException e){
-						
-		}*/
-		
-		/*ALTERAR ESSE NULL AQUI*/
+
 		ModelUnidade modelUnidade = new ModelUnidade( id, pRazaoSocial,
 				pNomeFantasia,  pCnpj,  pNomeRede,  pEndereco,
 				pCep,  pCidade,  pUf,
 				pPais, pNumeroEndereco,  pRepresentante,  pTel1,  pTel2,
-				pCel,  pFlagAtivo, null /*new Date(pDataCadastro)*/, latitude, longitude);
+				pCel,  pFlagAtivo, null, latitude, longitude);
 		RequestDispatcher view = null;
 		HttpSession session = request.getSession();
 		

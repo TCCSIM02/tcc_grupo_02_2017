@@ -2,7 +2,6 @@ package Command;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,15 +19,10 @@ public class AlterarConsulta implements Command {
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String pCodConsulta             =	request.getParameter("codConsulta");             
-		String pDataHoraConsultaFinal   =	request.getParameter("dataHoraConsultaFinal");   
-		String pDataHoraConsultaInicio  =	request.getParameter("dataHoraConsultaInicio");  
 		String pDiagnostico             =	request.getParameter("diagnostico");      
 		String pExames = request.getParameter("exames");
 		String pReceituario = request.getParameter("receituario");
-
-		System.out.println("Cod a: " + pCodConsulta);
-		System.out.println("id a: " + request.getParameter("id"));
-		
+		String pCid = request.getParameter("cid");
 		
 		int id = -1;
 		try {
@@ -37,9 +31,7 @@ public class AlterarConsulta implements Command {
 
 		}
 
-		/*ALTERAR ESSE NULL AQUI*/
-
-		ModelConsulta modelConsulta = new ModelConsulta(id, 0, null, null, pDiagnostico, pExames, pReceituario);
+		ModelConsulta modelConsulta = new ModelConsulta(id, 0, null, null, pDiagnostico, pExames, pReceituario, pCid);
 		
 		RequestDispatcher view = null;
 		HttpSession session = request.getSession();
