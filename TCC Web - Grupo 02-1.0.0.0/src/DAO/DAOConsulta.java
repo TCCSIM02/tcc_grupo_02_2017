@@ -14,7 +14,7 @@ import TO.TOConsulta;
 
 public class DAOConsulta{
 	public void cadastrarConsulta(TOConsulta toConsulta){
-		String sqlInsert = "INSERT INTO tcc.consulta (codAgendamento, diagnostico, dataConsultaInicio, dataConsultaFim, exames, receituario)VALUES (?,?,?,?,?,?)";
+		String sqlInsert = "INSERT INTO tcc.consulta (codAgendamento, diagnostico, dataConsultaInicio, dataConsultaFim, exames, receituario, cid)VALUES (?,?,?,?,?,?,?)";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {		
@@ -29,6 +29,8 @@ public class DAOConsulta{
 			stm.setTimestamp(4, dataHoraFinal);
 			stm.setString(5, toConsulta.getExames());
 			stm.setString(6, toConsulta.getReceituario());
+			stm.setString(7, toConsulta.getCid());
+			
 			stm.execute();
 			
 			String sqlSelect = "SELECT LAST_INSERT_ID()";
@@ -147,6 +149,7 @@ public class DAOConsulta{
 					toConsulta.setDataHoraConsultaFinal(rs.getTimestamp("dataConsultaFim"));
 					toConsulta.setExames(rs.getString("exames"));
 					toConsulta.setReceituario(rs.getString("receituario"));
+					toConsulta.setCid(rs.getString("cid"));
 					
 					
 					lista.add(toConsulta);

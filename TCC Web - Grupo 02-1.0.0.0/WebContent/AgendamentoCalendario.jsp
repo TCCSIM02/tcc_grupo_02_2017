@@ -65,6 +65,7 @@
             <div class="line"></div>
             <p>Selecione o médico:</p>
             <select id="medico" class="input-sm inline form-control" style="width:130px">
+               <option value="">Selecione um médico</option>
                <c:forEach var="to" items="${listaMedico}">
                   <option value="${to.codMedico}">${to.nome}</option>
                </c:forEach>
@@ -161,6 +162,8 @@
               
 					comboMedico = document.getElementById("medico");
 					medicoValor = comboMedico.options[comboMedico.selectedIndex].value;
+					
+					alert(medicoValor);
          
 					var events = {
 						 url: "controller.do?command=ListarMedicoAgenda",
@@ -171,7 +174,7 @@
 					}
 			 
                    $('#fc-agendamento').fullCalendar( 'removeEventSource', events);
-                   $('#fc-agendamento').fullCalendar( 'addEventSource', events);        
+				   $('#fc-agendamento').fullCalendar( 'addEventSource', events);        
                    $('#fc-agendamento').fullCalendar( 'refetchEvents' );
                }).change();
               

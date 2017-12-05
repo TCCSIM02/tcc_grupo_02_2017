@@ -116,6 +116,8 @@
 						 
 							<form class="form-horizontal" action="controller.do" method="post" data-validate="parsley">      
 							
+							<input type="hidden"  name="codNivel" id="codNivel" readonly="true" value="3">
+							
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Nome de usuário</label>
 									<div class="col-lg-6">

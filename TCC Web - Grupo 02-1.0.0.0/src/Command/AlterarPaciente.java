@@ -72,7 +72,7 @@ public class AlterarPaciente implements Command {
 
 		ModelPaciente modelPaciente = new ModelPaciente(pNumeroEndereco,null,pNome,pCpf,dataNasc,
 				pEstadoCivil,pEmail,pNacionalidade,pEndereco,
-				pCep,pCidade,pUf,pPais,pTel1,pTel2,pCel,pFlagAtivo,id,pNumConvenio,
+				pCep,pCidade,pUf,pPais,pTel1,pTel2,pCel,pFlagAtivo,id, 0,pNumConvenio,
 				pAlergiaMedicamento, pAlergiaAlimentares, pMedicamentoContinuo,
 				pCirurgia, pAntecedentesPessoais, pTipoSanguineo, peso, altura);
 		

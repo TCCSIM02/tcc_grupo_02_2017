@@ -111,6 +111,10 @@
 			
 			<form class="form-horizontal" action="controller.do" method="post" data-validate="parsley">  
 			  
+			  
+			  <input type="hidden"  name="codNivel" id="codNivel" readonly="true" value="2">
+			  
+			  
 				<div class="row">
 					<div class="col-sm-6">
 						<section class="panel">
@@ -270,7 +274,19 @@
 										<input type="text" class="form-control" name="cel" id="cel" 
 										maxlength="16" placeholder="telefone opcional" size="16">
 									</div>				  
-								</div>								  
+								</div>	
+
+								<div class="form-group">
+									<label class="col-lg-3 control-label">Plano</label>
+									<div class="col-lg-6">
+										<select id="codPlano" name="codPlano"  class="input-sm inline form-control" required  style="width:100%">
+											<c:forEach var="to" items="${listaPlano}">
+												<option value="${to.codPlano}">${to.nomePlano}</option>
+											</c:forEach>
+										</select>
+									</div>				  
+								</div>
+								
 							</div>
 						</section>
 					</div>  				
@@ -407,6 +423,7 @@
         	   }
         	});
          	
+        	$('#cpf').mask('000.000.000-00');
         	$('#cel').mask('(00) 0000-00009');
         	$('#cel').blur(function(event) {
         	   if($(this).val().length == 15){ // Celular com 9 dígitos + 2 dígitos DDD e 4 da máscara

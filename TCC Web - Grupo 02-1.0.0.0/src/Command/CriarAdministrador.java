@@ -24,9 +24,17 @@ public class CriarAdministrador implements Command {
 		
 		String pEmail			= request.getParameter("email");
 		String pNomeLogin 		= request.getParameter("nomeLogin"); 	
-		String pSenha 			= request.getParameter("senha");	
+		String pSenha 			= request.getParameter("senha");
+		String pCodNivel = request.getParameter("codNivel");
 		
-		ModelLogin modelLogin = new ModelLogin(pNomeLogin, pEmail, pSenha);
+		int codNivel = -1;
+		
+		try {
+			codNivel = Integer.parseInt(pCodNivel);
+		} catch (NumberFormatException e) {
+		}
+		
+		ModelLogin modelLogin = new ModelLogin(pNomeLogin, pEmail, pSenha, codNivel);
 		try {
 			modelLogin.cadastrarLogin();
 		} catch (NoSuchAlgorithmException e2) {

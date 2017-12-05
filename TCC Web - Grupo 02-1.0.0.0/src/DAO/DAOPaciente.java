@@ -71,25 +71,13 @@ public class DAOPaciente {
 	
 	/**/
 	public void cadastrarPaciente(TOPaciente toPaciente, int codLoginCadastrado){
-		String sqlInsert = "INSERT INTO tcc.paciente(numeroEndereco,numConvenio,nomePaciente,cPF,dataNascimento,email,estadoCivil,nacionalidade,endereco,cEP,cidade,uF,pais,tel1,tel2,cel,dataCadastro, codLogin, alergiaMedicamento, alergiaAlimentares, peso, altura, medicamentoContinuo, cirurgia, antecedentesPessoais, tipoSanguineo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,current_timestamp(),?,?,?,?,?,?,?,?,?)";
+		String sqlInsert = "INSERT INTO tcc.paciente(numeroEndereco,numConvenio,nomePaciente,cPF,dataNascimento,email,estadoCivil,nacionalidade,endereco,cEP,cidade,uF,pais,tel1,tel2,cel,dataCadastro, codLogin, alergiaMedicamento, alergiaAlimentares, peso, altura, medicamentoContinuo, cirurgia, antecedentesPessoais, tipoSanguineo, codPlano) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,current_timestamp(),?,?,?,?,?,?,?,?,?,?)";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
-
-			java.util.Date dataUtil = new java.util.Date();
-			//SimpleDateFormat inputdate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-
-			//String strDate = inputdate.format(dataUtil);
-			
-			//long longDate = Long.valueOf(strDate);
-			
-			java.sql.Date dataSql = new java.sql.Date(dataUtil.getTime());
-			//java.sql.Date dataSql = new java.sql.Date(longDate);
-						
 			
 			stm.setString(1,toPaciente.getNumeroEndereco() );
 			stm.setString(2,toPaciente.getNumConvenio());
-			//stm.setDate(2,toPaciente.getDataCadastro() ) ;
 			stm.setString(3,toPaciente.getNome());
 			stm.setString(4,toPaciente.getCpf());
 			stm.setDate(5,(Date) toPaciente.getDataNascimento() );
@@ -112,14 +100,9 @@ public class DAOPaciente {
 			stm.setString(22,toPaciente.getMedicamentoContinuo());
 			stm.setString(23,toPaciente.getCirurgia());
 			stm.setString(24,toPaciente.getAntecedentesPessoais());
-			stm.setString(25,toPaciente.getTipoSanguineo());		
-			
-			//stm.setString(15,"1");
-			System.out.println(toPaciente.getCidade());
-			/*TOPaciente*/
-	
-			//stm.setString(4,toPaciente.getFlagAtivo());
-			//stm.setDate(5,dataSql);
+			stm.setString(25,toPaciente.getTipoSanguineo());
+			stm.setInt(26,toPaciente.getCodPlano());
+
 			
 			stm.execute();
 			

@@ -40,7 +40,6 @@ public class AgendamentoCalendario implements Command {
 		ArrayList<TOMedico> listaMedico = new ArrayList<>(); 
 		try {
 			listaMedico = modelMedico.listarMedicoEspecialidadeUnidade(unidadeValor, especialidadeValor);
-			//lista = modelMedico.listarMedicos(especialidadeValor);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -54,7 +53,7 @@ public class AgendamentoCalendario implements Command {
 		view = request.getRequestDispatcher("AgendamentoCalendario.jsp");	
 		
 		try {
-			session.setAttribute("jsonCalendario", modelAgendamento.jsonCalendario());
+			session.setAttribute("jsonCalendario", modelAgendamento.listarAgendamentosMedico(-1));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

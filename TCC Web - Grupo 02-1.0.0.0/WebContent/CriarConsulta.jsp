@@ -169,6 +169,14 @@
 									</div>																  
 							</div>	
 							
+							<div class="form-group">
+								<label class="col-lg-3 control-label">CID</label>
+								<div class="col-lg-6">
+									<input type="text" class="form-control" name="cid" id="cid" 
+									maxlength="20" placeholder="Classificação Internacional de Doenças" size="16">
+								</div>				  
+							</div>
+							
 							
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Exames</label>

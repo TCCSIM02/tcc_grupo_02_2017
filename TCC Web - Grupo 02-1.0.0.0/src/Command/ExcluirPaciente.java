@@ -54,7 +54,7 @@ public class ExcluirPaciente implements Command {
 		
 		ModelPaciente modelPaciente = new ModelPaciente(pNumeroEndereco,null,pNome,pCpf,null,
 				pEstadoCivil,pEmail,pNacionalidade,pEndereco,
-				pCep,pCidade,pUf,pPais,pTel1,pTel2,pCel,pFlagAtivo,id,pNumConvenio,
+				pCep,pCidade,pUf,pPais,pTel1,pTel2,pCel,pFlagAtivo,id, 0,pNumConvenio,
 				pAlergiaMedicamento, pAlergiaAlimentares, pMedicamentoContinuo,
 				pCirurgia, pAntecedentesPessoais, pTipoSanguineo, null, null);
 		RequestDispatcher view = null;

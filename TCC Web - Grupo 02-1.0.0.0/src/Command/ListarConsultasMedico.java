@@ -33,7 +33,6 @@ public class ListarConsultasMedico implements Command {
 		ArrayList<TOMedico> listaMedico = new ArrayList<>(); 
 		try {
 			listaMedico = modelMedico.listarMedicoLogado(codLogin);
-			//lista = modelMedico.listarMedicos(especialidadeValor);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

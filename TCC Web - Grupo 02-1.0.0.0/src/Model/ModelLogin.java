@@ -49,11 +49,12 @@ public class ModelLogin {
 	 * @param senha
 	 * @param email
 	 */
-	public ModelLogin(String nomeLogin, String email, String senha) {
+	public ModelLogin(String nomeLogin, String email, String senha, int codNivel) {
 		super();
 		this.nomeLogin = nomeLogin;
 		this.senha = senha;
 		this.email = email;
+		this.codNivel = codNivel;
 	}
 
 	/**
@@ -158,7 +159,7 @@ public class ModelLogin {
 		toLogin.setFlagAtivo(flagAtivo);
 		toLogin.setNomeLogin(nomeLogin);
 		toLogin.setEmail(email);
-		toLogin.setSenhaCriptografada(getSenhaCriptografada());
+		toLogin.setSenhaCriptografada(getSenhaCriptografada().toLowerCase());
 		
 		return toLogin;
 	}
@@ -174,10 +175,8 @@ public class ModelLogin {
 		}
 		
 		String senhaCriptografada = hexString.toString();
-		
-		System.out.print(senhaCriptografada);
-		
-		return senhaCriptografada;
+
+		return senhaCriptografada.toLowerCase();
 	}
 	
 	public void cadastrarLogin() throws NoSuchAlgorithmException, UnsupportedEncodingException{

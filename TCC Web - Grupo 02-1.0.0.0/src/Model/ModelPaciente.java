@@ -8,7 +8,7 @@ import TO.TOPaciente;
 
 public class ModelPaciente extends ModelUsuario{
 
-	private int codPaciente;
+	private int codPaciente, codPlano;
 	public int codLoginCadastrado;
 	private String numConvenio, alergiaMedicamento, alergiaAlimentares, medicamentoContinuo, cirurgia, antecedentesPessoais, tipoSanguineo;
 	private Double peso, altura;
@@ -17,10 +17,11 @@ public class ModelPaciente extends ModelUsuario{
 		// TODO Auto-generated constructor stub
 	}
 
-	public ModelPaciente(int codPaciente, String numConvenio, String alergiaMedicamento, String alergiaAlimentares, String medicamentoContinuo,
+	public ModelPaciente(int codPaciente, int codPlano, String numConvenio, String alergiaMedicamento, String alergiaAlimentares, String medicamentoContinuo,
 				String cirurgia, String antecedentesPessoais, String tipoSanguineo, Double peso, Double altura) {
 		super();
 		this.codPaciente = codPaciente;
+		this.codPlano = codPlano;
 		this.numConvenio = numConvenio;
 		this.alergiaMedicamento = alergiaMedicamento;
 		this.alergiaAlimentares = alergiaAlimentares;
@@ -38,12 +39,13 @@ public class ModelPaciente extends ModelUsuario{
 			String cpf, Date dataNascimento, String estadoCivil, String email,
 			String nacionalidade, String endereco, String cep, String cidade,
 			String uf, String pais, String tel1, String tel2, String cel,
-			String flagAtivo, int codPaciente, String numConvenio, String alergiaMedicamento,String alergiaAlimentares, String medicamentoContinuo,
+			String flagAtivo, int codPaciente, int codPlano, String numConvenio, String alergiaMedicamento,String alergiaAlimentares, String medicamentoContinuo,
 			String cirurgia, String antecedentesPessoais, String tipoSanguineo, Double peso, Double altura) {
 		super(numeroEndereco, dataCadastro, nome, cpf, dataNascimento,
 				estadoCivil, email, nacionalidade, endereco, cep, cidade, uf, pais,
 				tel1, tel2, cel, flagAtivo);
 		this.codPaciente = codPaciente;
+		this.codPlano = codPlano;
 		this.numConvenio = numConvenio;
 		this.alergiaMedicamento = alergiaMedicamento;
 		this.alergiaAlimentares = alergiaAlimentares;
@@ -65,6 +67,10 @@ public class ModelPaciente extends ModelUsuario{
 
 	public int getCodPaciente() {
 		return codPaciente;
+	}
+	
+	public int getCodPlano() {
+		return codPlano;
 	}
 
 
@@ -108,6 +114,10 @@ public class ModelPaciente extends ModelUsuario{
 	
 	public void setCodPaciente(int codPaciente) {
 		this.codPaciente = codPaciente;
+	}
+	
+	public void setCodPlano(int codPlano) {
+		this.codPlano = codPlano;
 	}
 
 
@@ -174,6 +184,7 @@ public class ModelPaciente extends ModelUsuario{
 		
 		/*TOPaciente*/
 		toPaciente.setCodPaciente(getCodPaciente());
+		toPaciente.setCodPlano(getCodPlano());
 		toPaciente.setNumConvenio(getNumConvenio());
 		toPaciente.setAlergiaMedicamento(getAlergiaMedicamento());
 		toPaciente.setAlergiaAlimentares(getAlergiaAlimentares());
@@ -217,6 +228,7 @@ public class ModelPaciente extends ModelUsuario{
 		TOPaciente toPaciente = dao.consultarPacienteCod(codPaciente);
 
 		codPaciente = toPaciente.getCodPaciente();
+		codPlano = toPaciente.getCodPlano();
 		numConvenio = toPaciente.getNumConvenio();
 		alergiaMedicamento = toPaciente.getAlergiaMedicamento();
 		alergiaAlimentares = toPaciente.getAlergiaAlimentares();

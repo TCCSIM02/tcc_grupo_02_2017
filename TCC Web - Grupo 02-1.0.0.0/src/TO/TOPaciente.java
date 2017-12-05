@@ -2,7 +2,7 @@ package TO;
 
 public class TOPaciente extends TOUsuario {
 
-	private int codPaciente;
+	private int codPaciente, codPlano;
 	private String numConvenio, alergiaMedicamento, alergiaAlimentares, medicamentoContinuo, cirurgia, antecedentesPessoais, tipoSanguineo;
 	private Double peso, altura;
 	/**
@@ -10,6 +10,10 @@ public class TOPaciente extends TOUsuario {
 	 */
 	public int getCodPaciente() {
 		return codPaciente;
+	}
+	
+	public int getCodPlano() {
+		return codPlano;
 	}
 	/**
 	 * @return the numConvenio
@@ -55,6 +59,10 @@ public class TOPaciente extends TOUsuario {
 	 */
 	public void setCodPaciente(int codPaciente) {
 		this.codPaciente = codPaciente;
+	}
+	
+	public void setCodPlano(int codPlano) {
+		this.codPlano = codPlano;
 	}
 	/**
 	 * @param numConvenio the numConvenio to set

@@ -78,6 +78,7 @@ public class PreencheConsulta  implements Command {
 			session.setAttribute("horaFim", sdf2.format(listaConsulta.get(0).getDataHoraConsultaFinal()));
 			session.setAttribute("exames", listaConsulta.get(0).getExames());
 			session.setAttribute("receituario", listaConsulta.get(0).getReceituario());
+			session.setAttribute("cid", listaConsulta.get(0).getCid());
 			
 			view = request.getRequestDispatcher("AlterarConsulta.jsp");
 		}

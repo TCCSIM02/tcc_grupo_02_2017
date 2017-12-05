@@ -39,10 +39,13 @@ public class CriarPlano implements Command {
 		
 		modelPlano.cadastrarPlano();
 		
-		for(int i = 0 ; i < pCheck.length ; i++ ){
-			modelPlano.cadastrarPlanoUnidade(modelPlano.getCodPlano(), pCheck[i]);		
+		if (pCheck != null){
+				
+			for(int i = 0 ; i < pCheck.length ; i++ ){
+				modelPlano.cadastrarPlanoUnidade(modelPlano.getCodPlano(), pCheck[i]);		
+			}
+		
 		}
-
 		
 		ArrayList<TOPlano> lista = new ArrayList<>(); 
 		

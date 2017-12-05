@@ -158,43 +158,9 @@
                 </div>
                 <!-- /#list -->
 
-                <div id="bottom" class="row">
-                    <div class="col-md-12">
-                        <!-- paginação ainda não foi implementada -->
-                        <ul class="pagination">
-                            <li class="disabled"><a>&lt; Anterior</a>
-                            </li>
-                            <li class="disabled"><a>1</a>
-                            </li>
-                            <li><a href="#">2</a>
-                            </li>
-                            <li><a href="#">3</a>
-                            </li>
-                            <li class="next"><a href="#" rel="next">Próximo &gt;</a>
-                            </li>
-                        </ul>
-                        <!-- /.pagination -->
-                    </div>
-                </div>
                 </c:if>
             <footer class="panel-footer">
-              <div class="row">
-				<div class="col-sm-4 text-center"></div>
-                <div class="col-sm-3 text-center">
-                  <small class="text-muted inline m-t-small m-b-small">mostrando 10-20 de 43 itens</small>
-                </div>
-                <div class="col-sm-5 text-right text-center-sm">                
-                  <ul class="pagination pagination-small m-t-none m-b-none">
-                    <li><a href="#"><i class="icon-chevron-left"></i></a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#"><i class="icon-chevron-right"></i></a></li>
-                  </ul>
-                </div>
-              </div>
+ 
             </footer>
           </section>
         </div>

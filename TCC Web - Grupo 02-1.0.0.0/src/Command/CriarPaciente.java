@@ -27,9 +27,17 @@ public class CriarPaciente implements Command {
 		
 		String pEmail			= request.getParameter("email");
 		String pNomeLogin 		= request.getParameter("nomeLogin"); 	
-		String pSenha 			= request.getParameter("senha");	
+		String pSenha 			= request.getParameter("senha");
+		String pCodNivel = request.getParameter("codNivel");
+	
+		int codNivel = -1;
 		
-		ModelLogin modelLogin = new ModelLogin(pNomeLogin, pEmail, pSenha);
+		try {
+			codNivel = Integer.parseInt(pCodNivel);
+		} catch (NumberFormatException e) {
+		}
+		
+		ModelLogin modelLogin = new ModelLogin(pNomeLogin, pEmail, pSenha, codNivel);
 		try {
 			modelLogin.cadastrarLogin();
 		} catch (NoSuchAlgorithmException e2) {
@@ -64,8 +72,10 @@ public class CriarPaciente implements Command {
 		String pCirurgia = request.getParameter("cirurgia");
 		String pAntecedentesPessoais = request.getParameter("antecedentesPessoais");
 		String pTipoSanguineo = request.getParameter("tipoSanguineo");
+		String pCodPlano = request.getParameter("codPlano");
 		
 		int id = -1;
+		int codPlano = -1;
 		Double peso = 0.0;
 		Double altura = 0.0;
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -73,6 +83,11 @@ public class CriarPaciente implements Command {
 		
 		try {
 			id = Integer.parseInt(pCodPaciente);
+		} catch (NumberFormatException e) {
+		}	
+		
+		try {
+			codPlano = Integer.parseInt(pCodPlano);
 		} catch (NumberFormatException e) {
 		}	
 		
@@ -89,7 +104,7 @@ public class CriarPaciente implements Command {
 
 		ModelPaciente modelPaciente = new ModelPaciente(pNumeroEndereco,null,pNome,pCpf,dataNasc,
 				pEstadoCivil,pEmail,pNacionalidade,pEndereco,
-				pCep,pCidade,pUf,pPais,pTel1,pTel2,pCel,pFlagAtivo,id,pNumConvenio,
+				pCep,pCidade,pUf,pPais,pTel1,pTel2,pCel,pFlagAtivo,id, codPlano,pNumConvenio,
 				pAlergiaMedicamento, pAlergiaAlimentares, pMedicamentoContinuo,
 				pCirurgia, pAntecedentesPessoais, pTipoSanguineo, peso, altura);
 		
@@ -110,7 +125,6 @@ public class CriarPaciente implements Command {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//lista.add(modelPaciente.getTO());
 		
 		session.setAttribute("lista", lista);		
 		RequestDispatcher view = request.getRequestDispatcher("ListarPaciente.jsp");
