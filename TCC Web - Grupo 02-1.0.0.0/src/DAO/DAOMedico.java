@@ -13,15 +13,11 @@ import TO.TOMedico;
 public class DAOMedico {
 	
 	public void cadastrarMedico(TOMedico toMedico, int codLoginCadastrado){
-		String sqlInsert = "INSERT INTO tcc.medico(numeroEndereco,cRM,cRO,nomeMedico,cPF,dataNascimento,email,estadoCivil,nacionalidade,endereco,cEP,cidade,uF,pais,tel1,tel2,cel,dataCadastro,codLogin) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,current_timestamp(),?)";
+		String sqlInsert = "INSERT INTO tcc.medico(numeroEndereco,cRM,cRO,nomeMedico,cPF,dataNascimento,email,estadoCivil,nacionalidade,endereco,cEP,cidade,uF,pais,tel1,tel2,cel,dataCadastro,codLogin, codUnidade) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,current_timestamp(),?,?)";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
 
-			java.util.Date dataUtil = new java.util.Date();
-
-			java.sql.Date dataSql = new java.sql.Date(dataUtil.getTime());
-		
 			stm.setString(1,toMedico.getNumeroEndereco());
 			stm.setString(2,toMedico.getCrm());
 			stm.setString(3,toMedico.getCro());
@@ -40,7 +36,8 @@ public class DAOMedico {
 			stm.setString(16,toMedico.getTel2()); 
 			stm.setString(17,toMedico.getCel()) ;
 			stm.setInt(18,codLoginCadastrado);
-
+			stm.setInt(19,toMedico.getCodUnidade());
+			
 			stm.execute();
 			
 			String sqlSelect = "SELECT LAST_INSERT_ID()";
@@ -72,7 +69,7 @@ public class DAOMedico {
 	
 	
 	public void alterarMedico(TOMedico toMedico){
-		String sqlUpdate = "UPDATE tcc.medico SET numeroEndereco = ?, crm = ?, cro = ?, nomeMedico = ?, cPF = ?, dataNascimento = ?, email = ?, estadoCivil = ?, nacionalidade = ?, endereco = ?, cEP = ?, cidade = ?, uF = ?, pais = ?, tel1 = ?, tel2 = ?, cel = ? WHERE codMedico = ?";
+		String sqlUpdate = "UPDATE tcc.medico SET numeroEndereco = ?, crm = ?, cro = ?, nomeMedico = ?, cPF = ?, dataNascimento = ?, email = ?, estadoCivil = ?, nacionalidade = ?, endereco = ?, cEP = ?, cidade = ?, uF = ?, pais = ?, tel1 = ?, tel2 = ?, cel = ?, codUnidade = ? WHERE codMedico = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 			PreparedStatement stm = conn.prepareStatement(sqlUpdate);) {		
@@ -94,7 +91,8 @@ public class DAOMedico {
 			stm.setString(15,toMedico.getTel1()); 
 			stm.setString(16,toMedico.getTel2()); 
 			stm.setString(17,toMedico.getCel()) ;
-			stm.setInt(18,toMedico.getCodMedico());
+			stm.setInt(18,toMedico.getCodUnidade());
+			stm.setInt(19,toMedico.getCodMedico());
 			
 			
 			stm.execute();
@@ -147,6 +145,7 @@ public class DAOMedico {
 					toMedico.setCrm(rs.getString("cRM"));
 					toMedico.setCro(rs.getString("cRO"));
 					toMedico.setEmail(rs.getString("email"));
+					toMedico.setCodUnidade(rs.getInt("codUnidade"));
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -188,6 +187,7 @@ public class DAOMedico {
 					toMedico.setCrm(rs.getString("cRM"));
 					toMedico.setCro(rs.getString("cRO"));
 					toMedico.setEmail(rs.getString("email"));
+					toMedico.setCodUnidade(rs.getInt("codUnidade"));
 									
 					lista.add(toMedico);
 				}
@@ -235,6 +235,7 @@ public class DAOMedico {
 					toMedico.setCrm(rs.getString("cRM"));
 					toMedico.setCro(rs.getString("cRO"));
 					toMedico.setEmail(rs.getString("email"));
+					toMedico.setCodUnidade(rs.getInt("codUnidade"));
 									
 					lista.add(toMedico);
 				}
@@ -283,6 +284,7 @@ public class DAOMedico {
 					toMedico.setCrm(rs.getString("cRM"));
 					toMedico.setCro(rs.getString("cRO"));
 					toMedico.setEmail(rs.getString("email"));
+					toMedico.setCodUnidade(rs.getInt("codUnidade"));
 									
 					lista.add(toMedico);
 				}
@@ -330,7 +332,8 @@ public class DAOMedico {
 					toMedico.setCrm(rs.getString("cRM"));
 					toMedico.setCro(rs.getString("cRO"));
 					toMedico.setEmail(rs.getString("email"));
-									
+					toMedico.setCodUnidade(rs.getInt("codUnidade"));				
+					
 					
 					lista.add(toMedico);
 				}
@@ -377,6 +380,7 @@ public class DAOMedico {
 					toMedico.setCrm(rs.getString("cRM"));
 					toMedico.setCro(rs.getString("cRO"));
 					toMedico.setEmail(rs.getString("email"));
+					toMedico.setCodUnidade(rs.getInt("codUnidade"));
 									
 					
 					lista.add(toMedico);

@@ -8,7 +8,7 @@ import TO.TOMedico;
 
 public class ModelMedico extends ModelUsuario{
 
-	private int codMedico;
+	private int codMedico, codUnidade;
 	public int codLoginCadastrado;
 	private String crm, cro;
 	
@@ -20,18 +20,20 @@ public class ModelMedico extends ModelUsuario{
 			String cpf, Date dataNascimento, String estadoCivil, String email,
 			String nacionalidade, String endereco, String cep, String cidade,
 			String uf, String pais, String tel1, String tel2, String cel,
-			String flagAtivo, int codMedico, String crm, String cro) {
+			String flagAtivo, int codMedico, int codUnidade, String crm, String cro) {
 		super(numeroEndereco, dataCadastro, nome, cpf, dataNascimento,
 				estadoCivil, email, nacionalidade, endereco, cep, cidade, uf, pais,
 				tel1, tel2, cel, flagAtivo);
 		this.codMedico = codMedico;
+		this.codUnidade = codUnidade;
 		this.crm = crm;
 		this.cro = cro;
 	}
 
-	public ModelMedico(int codMedico, String crm, String cro) {
+	public ModelMedico(int codMedico,int codUnidade, String crm, String cro) {
 		super();
 		this.codMedico = codMedico;
+		this.codUnidade = codUnidade;
 		this.crm = crm;
 		this.cro = cro;
 	}
@@ -43,6 +45,10 @@ public class ModelMedico extends ModelUsuario{
 
 	public int getCodMedico() {
 		return codMedico;
+	}
+	
+	public int getCodUnidade() {
+		return codUnidade;
 	}
 
 
@@ -58,6 +64,10 @@ public class ModelMedico extends ModelUsuario{
 
 	public void setCodMedico(int codMedico) {
 		this.codMedico = codMedico;
+	}
+
+	public void setCodUnidade(int codUnidade) {
+		this.codUnidade = codUnidade;
 	}
 
 
@@ -96,6 +106,7 @@ public class ModelMedico extends ModelUsuario{
 		
 		/*TOMedico*/
 		toMedico.setCodMedico(codMedico);
+		toMedico.setCodUnidade(codUnidade);
 		toMedico.setCrm(crm);
 		toMedico.setCro(cro);
 
@@ -139,6 +150,7 @@ public class ModelMedico extends ModelUsuario{
 		TOMedico toMedico = dao.consultarMedicoCod(codMedico);
 
 		codMedico = toMedico.getCodMedico();
+		codUnidade = toMedico.getCodUnidade();
 		crm = toMedico.getCrm();
 		cro = toMedico.getCro();
 		super.setNumeroEndereco(toMedico.getNumeroEndereco()); 

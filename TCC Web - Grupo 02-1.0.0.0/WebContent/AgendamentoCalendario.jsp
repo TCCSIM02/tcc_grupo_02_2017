@@ -163,8 +163,6 @@
 					comboMedico = document.getElementById("medico");
 					medicoValor = comboMedico.options[comboMedico.selectedIndex].value;
 					
-					alert(medicoValor);
-         
 					var events = {
 						 url: "controller.do?command=ListarMedicoAgenda",
 						 type: 'POST',

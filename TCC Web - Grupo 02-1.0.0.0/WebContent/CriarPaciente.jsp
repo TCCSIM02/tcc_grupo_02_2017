@@ -19,11 +19,16 @@
 		<link rel="stylesheet" href="css/plugin.css">
 		<link rel="stylesheet" href="css/landing.css">
 		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 
 		<!-- Adicionando Javascript -->
 		<script type="text/javascript" >
+		
+		$( function() {
+			$( "#dataNascimento" ).datepicker({ dateFormat: "dd/mm/yy" }).val();
+		} );
 
 			function limpa_formulário_cep() {
 					//Limpa valores do formulário de cep.
@@ -162,9 +167,9 @@
 								</div>
 								
 								<div class="form-group">
-									<label class="col-lg-3 control-label">Data Nascimento</label>
+									<label class="col-lg-3 control-label">Data de nascimento</label>
 									<div class="col-lg-6">
-										<input type="date" class="form-control" name="dataNascimento" id="dataNascimento" required
+										<input type="text" class="form-control" name="dataNascimento" id="dataNascimento" required
 										maxlength="11" placeholder="data de nascimento" size="16">
 									</div>				  
 								</div>
@@ -404,7 +409,9 @@
         	//$('#tel1').mask('(00) 00000-0000');
         	//$('#tel2').mask('(00) 00000-0000');
         	//$('#cel').mask('(00) 00000-0000');
-             	
+            
+        	$('#dataNascimento').mask('00/00/0000');
+        	
         	$('#tel1').mask('(00) 0000-00009');
         	$('#tel1').blur(function(event) {
         	   if($(this).val().length == 15){ // Celular com 9 dígitos + 2 dígitos DDD e 4 da máscara

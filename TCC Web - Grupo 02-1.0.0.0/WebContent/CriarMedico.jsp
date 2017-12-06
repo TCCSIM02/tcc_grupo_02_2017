@@ -275,13 +275,25 @@
 								</div>
 								
 								<div class="form-group">
+									<label class="col-lg-3 control-label">Unidade</label>
+									<div class="col-lg-6">
+										<select id="codUnidade" name="codUnidade"  class="input-sm inline form-control" required  style="width:100%">
+											<c:forEach var="to" items="${listaUnidade}">
+												<option value="${to.codUnidade}">${to.nomeFantasia}</option>
+											</c:forEach>
+										</select>
+									</div>				  
+								</div>
+								
+								<div class="form-group">
 								<label class="col-lg-3 control-label">Especialidade</label>
 									<div class="col-lg-6">
 										<c:forEach var="to" items="${listaEspecialidade}">
 											<input type="checkbox" name="check" value="${to.codEspecialidade}">${to.especialidade}<br>
 										</c:forEach>
 									</div>				  
-							</div>						
+								</div>							
+														
 						
 								<div class="form-group">
 								  <div class="col-lg-9 col-lg-offset-3">                      

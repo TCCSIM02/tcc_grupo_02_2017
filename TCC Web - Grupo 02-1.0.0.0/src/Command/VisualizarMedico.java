@@ -18,6 +18,7 @@ public class VisualizarMedico implements Command {
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		String pCodMedico = request.getParameter("id");
+		String pCodUnidade = request.getParameter("codUnidade");
 		String pCrm = request.getParameter("crm");
 		String pCro = request.getParameter("cro");
 		String pNumeroEndereco = request.getParameter("numeroEndereco");
@@ -43,9 +44,16 @@ public class VisualizarMedico implements Command {
 
 		}
 		
+		int codUnidade = -1;
+		try {
+			codUnidade = Integer.parseInt(pCodUnidade);
+		} catch (NumberFormatException e) {
+	
+		}
+		
 		/*ALTERAR ESSE NULL AQUI*/
 		ModelMedico modelMedico = new ModelMedico(pNumeroEndereco,null,pNome,pCpf,null,pEstadoCivil,pEmail,pNacionalidade,pEndereco,
-				pCep,pCidade,pUf,pPais,pTel1,pTel2,pCel,pFlagAtivo,id,pCrm, pCro);
+				pCep,pCidade,pUf,pPais,pTel1,pTel2,pCel,pFlagAtivo,id, codUnidade, pCrm, pCro);
 		RequestDispatcher view = null;
 		
 		try {

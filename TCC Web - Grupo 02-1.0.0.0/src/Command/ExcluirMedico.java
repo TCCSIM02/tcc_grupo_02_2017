@@ -19,6 +19,7 @@ public class ExcluirMedico implements Command {
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		String pCodMedico = request.getParameter("id");
+		String pCodUnidade = request.getParameter("codUnidade");
 		String pCrm = request.getParameter("crm");
 		String pCro = request.getParameter("cro");
 		String pNumeroEndereco = request.getParameter("numeroEndereco");
@@ -43,9 +44,16 @@ public class ExcluirMedico implements Command {
 		} catch (NumberFormatException e) {
 
 		}
+		
+		int codUnidade = -1;
+		try {
+			codUnidade = Integer.parseInt(pCodUnidade);
+		} catch (NumberFormatException e) {
+	
+		}	
 
 		ModelMedico modelMedico = new ModelMedico(pNumeroEndereco,null,pNome,pCpf,null,pEstadoCivil,pEmail,pNacionalidade,pEndereco,
-				pCep,pCidade,pUf,pPais,pTel1,pTel2,pCel,pFlagAtivo,id,pCrm,pCro);
+				pCep,pCidade,pUf,pPais,pTel1,pTel2,pCel,pFlagAtivo,id, codUnidade, pCrm,pCro);
 		RequestDispatcher view = null;
 		HttpSession session = request.getSession();
 		
@@ -53,7 +61,7 @@ public class ExcluirMedico implements Command {
 		
 		@SuppressWarnings("unchecked")
 		ArrayList<TOMedico> lista = (ArrayList<TOMedico>)session.getAttribute("lista");
-				
+		
 		lista.remove(busca(modelMedico, lista));
 		
 		try {

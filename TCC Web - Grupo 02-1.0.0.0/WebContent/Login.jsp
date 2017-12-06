@@ -7,7 +7,7 @@
 <html>
 <head>
   	<meta charset="utf-8">
-  	<title>TCC - grupo 02 SI</title>
+  	<title>Consult.me</title>
   	<meta name="description" content="mobile first, app, web app, responsive, admin dashboard, flat, flat ui">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">	
 	<link rel="stylesheet" href="css/bootstrap.css">
@@ -35,7 +35,7 @@
 	            <form action="controller.do" method="post" class="panel-body">
 	              <div class="block">
 	                <label class="control-label">Nome de usuário</label>
-	                <input type="text" placeholder="TccDoc" class="form-control" name="txtUsuario" id="txtUsuario">
+	                <input type="text" placeholder="Usuário" class="form-control" name="txtUsuario" id="txtUsuario">
 	              </div>
 	              <div class="block">
 	                <label class="control-label">Senha</label>

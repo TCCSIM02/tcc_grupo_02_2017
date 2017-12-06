@@ -63,11 +63,19 @@ public class CriarMedico implements Command {
 		String pCodMedico 		= request.getParameter("codMedico"); 	
 		String pCrm 			= request.getParameter("crm"); 
 		String pCro 			= request.getParameter("cro"); 
-		String[] pCheck = request.getParameterValues("check");
+		String[] pCheck 		= request.getParameterValues("check");
+		String pCodUnidade		= request.getParameter("codUnidade");
 		
 		int id = -1;
 		try {
 			id = Integer.parseInt(pCodMedico);
+		} catch (NumberFormatException e) {
+	
+		}	
+		
+		int codUnidade = -1;
+		try {
+			codUnidade = Integer.parseInt(pCodUnidade);
 		} catch (NumberFormatException e) {
 	
 		}	
@@ -86,7 +94,7 @@ public class CriarMedico implements Command {
 				pCpf, dataNasc,  pEstadoCivil, pEmail,
 				pNacionalidade,  pEndereco, pCep,  pCidade,
 				pUf,  pPais,  pTel1,  pTel2,  pCel,
-				pFlagAtivo, id,  pCrm, pCro); 
+				pFlagAtivo, id, codUnidade,  pCrm, pCro); 
 		
 		try {
 			modelMedico.codLoginCadastrado = modelLogin.getCodLoginCadastrado();

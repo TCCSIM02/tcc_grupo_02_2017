@@ -114,7 +114,7 @@
 
 							<input type="hidden" name="codMedico" id="codMedico" value="${medicoTO.codMedico}" /> 
 		
-				
+							<input type="hidden"  name="numUnidade" id="numUnidade" readonly="true" value="${medicoTO.codUnidade}">
 							
 							<div class="form-group">
 								<label class="col-lg-3 control-label">CRM</label>
@@ -254,7 +254,29 @@
 								<div class="col-lg-6">
 									<input type="text" class="form-control" name="cel" id="cel" 
 									maxlength="16" placeholder="telefone opcional" size="16" value="${medicoTO.cel}">
+								</div>	
+							</div>
+							
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Unidade</label>
+								<div class="col-lg-6">
+									<select id="codUnidade" name="codUnidade"  class="input-sm inline form-control" required  style="width:100%">
+										<c:forEach var="to" items="${listaUnidade}">
+											<option value="${to.codUnidade}">${to.nomeFantasia}</option>
+										</c:forEach>
+									</select>
 								</div>				  
+							</div>
+								
+							<div class="form-group">
+							<label class="col-lg-3 control-label">Especialidade</label>
+								<div class="col-lg-6">
+									<c:forEach var="to" items="${listaEspecialidade}">
+										<input type="checkbox" name="check" value="${to.codEspecialidade}">${to.especialidade}<br>
+									</c:forEach>
+								</div>				  
+							</div>							
+
 								
 							<div class="form-group">
 							  <div class="col-lg-9 col-lg-offset-3"> 
@@ -273,6 +295,24 @@
 	
 	<!-- Footer -->
 	<c:import url="Footer.jsp" />
+	
+	<script type="text/javascript" >
+		$(document).ready(
+			function() { 
+				var numUnidade = document.getElementById("numUnidade").value;
+				
+				comboUnidade = document.getElementById("codUnidade");
+				
+				for ( i =0; i < comboUnidade.length; i++){
+					if (comboUnidade[i].value == numUnidade){
+						comboUnidade[i].selected = true;	
+					}									
+				}
+				
+			
+				
+		});
+	</script>
 	
 	
 </body>

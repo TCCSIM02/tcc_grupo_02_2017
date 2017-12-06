@@ -1,13 +1,17 @@
 package TO;
 
 public class TOMedico extends TOUsuario {
-	private int codMedico;
+	private int codMedico, codUnidade;
 	private String crm, cro;
 	/**
 	 * @return the codMedico
 	 */
 	public int getCodMedico() {
 		return codMedico;
+	}
+	
+	public int getCodUnidade() {
+		return codUnidade;
 	}
 	/**
 	 * @return the crm
@@ -26,6 +30,10 @@ public class TOMedico extends TOUsuario {
 	 */
 	public void setCodMedico(int codMedico) {
 		this.codMedico = codMedico;
+	}
+	
+	public void setCodUnidade(int codUnidade) {
+		this.codUnidade = codUnidade;
 	}
 	/**
 	 * @param crm the crm to set

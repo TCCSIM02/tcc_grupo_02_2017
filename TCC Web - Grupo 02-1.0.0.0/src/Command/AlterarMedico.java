@@ -20,6 +20,7 @@ public class AlterarMedico implements Command {
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		String pCodMedico = request.getParameter("codMedico");
+		String pCodUnidade = request.getParameter("codUnidade");
 		String pCrm = request.getParameter("crm");
 		String pCro = request.getParameter("cro");
 		String pNumeroEndereco = request.getParameter("numeroEndereco");
@@ -46,6 +47,13 @@ public class AlterarMedico implements Command {
 
 		}
 		
+		int codUnidade = -1;
+		try {
+			codUnidade = Integer.parseInt(pCodUnidade);
+		} catch (NumberFormatException e) {
+	
+		}	
+		
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		java.sql.Date dataNasc = null;
 		try {
@@ -56,7 +64,7 @@ public class AlterarMedico implements Command {
 		}
 
 		ModelMedico modelMedico = new ModelMedico(pNumeroEndereco,null,pNome,pCpf,dataNasc,pEstadoCivil,pEmail,pNacionalidade,pEndereco,
-				pCep,pCidade,pUf,pPais,pTel1,pTel2,pCel,pFlagAtivo,id, pCrm, pCro);
+				pCep,pCidade,pUf,pPais,pTel1,pTel2,pCel,pFlagAtivo,id, codUnidade, pCrm, pCro);
 		RequestDispatcher view = null; 
 		HttpSession session = request.getSession();
 		
