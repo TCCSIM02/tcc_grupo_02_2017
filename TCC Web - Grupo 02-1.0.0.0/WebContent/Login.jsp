@@ -17,6 +17,8 @@
 	<link rel="stylesheet" href="css/plugin.css">
 	<link rel="stylesheet" href="css/landing.css">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+			<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
 	
@@ -32,6 +34,9 @@
 	            <header class="panel-heading text-center">
 	              Logar
 	            </header>
+	            
+	            <input type="hidden"  name="login" id="login" readonly="true" value="${login}">
+	            
 	            <form action="controller.do" method="post" class="panel-body">
 	              <div class="block">
 	                <label class="control-label">Nome de usuário</label>
@@ -52,6 +57,8 @@
 	      </div>
 	    </div>
   	</section>
+	
+
 
 	<!-- Footer -->
 	<c:import url="FooterLogin.jsp" />	

@@ -106,17 +106,21 @@
 		<section class="main padder">
 		  
 			<div class="clearfix">
-				<h4><i class="icon-edit"></i>Cadastrar paciente</h4>
+				<h4><i class="icon-edit"></i>Alterar paciente</h4>
 			</div>
 			
 			<form class="form-horizontal" action="controller.do" method="post" data-validate="parsley">  
 			  
 				<div class="row">
-					<div class="col-sm-6">
+					<div class="col-sm-6">	
 						<section class="panel">
 							<div class="panel-body">						
 								
 								<input type="hidden" name="codPaciente" id="codPaciente" value="${pacienteTO.codPaciente}" /> 
+								
+								<input type="hidden" name="numPlano" id="numPlano" value="${pacienteTO.codPlano}" /> 
+								
+								<input type="hidden"  name="codNivel" id="codNivel" readonly="true" value="2">
 								
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Número do Convênio</label>
@@ -172,7 +176,21 @@
 										<input type="text" class="form-control" name="nacionalidade" id="nacionalidade" required
 										maxlength="35" placeholder="nacionalidade" size="16" value="${pacienteTO.nacionalidade}">
 									</div>				  
-								</div>	  
+								</div>	
+
+								<div class="form-group">
+									<label class="col-lg-3 control-label">Plano</label>
+									<div class="col-lg-6">
+										<select id="codPlano" name="codPlano"  class="input-sm inline form-control" required  style="width:100%">
+											<c:forEach var="to" items="${listaPlano}">
+												<option value="${to.codPlano}">${to.nomePlano}</option>
+											</c:forEach>
+										</select>
+									</div>				  
+								</div>
+
+
+								
 							</div>
 						</section>
 					</div>  
@@ -368,12 +386,20 @@
 	<c:import url="Footer.jsp" />
     
     <script>
+	
         <!-- Formata os campos -->
         $(document).ready(function(){
-        	//$('#tel1').mask('(00) 00000-0000');
-        	//$('#tel2').mask('(00) 00000-0000');
-        	//$('#cel').mask('(00) 00000-0000');
-             	
+
+			var numPlano = document.getElementById("numPlano").value;
+				
+			comboPlano = document.getElementById("codPlano");
+				
+			for ( i =0; i < comboPlano.length; i++){
+				if (comboPlano[i].value == numPlano){
+					comboPlano[i].selected = true;	
+				}									
+			}
+
         	$('#tel1').mask('(00) 0000-00009');
         	$('#tel1').blur(function(event) {
         	   if($(this).val().length == 15){ // Celular com 9 dígitos + 2 dígitos DDD e 4 da máscara

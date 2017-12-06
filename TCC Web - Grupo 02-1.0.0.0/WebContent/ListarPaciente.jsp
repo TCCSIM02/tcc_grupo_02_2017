@@ -68,7 +68,7 @@
             <div class="panel-body">
               <div class="row text-small">
                 <div class="col-sm-4 m-b-mini">
-                  <a href="controller.do?command=PreenchePaciente" class="btn btn-sm btn-white">Cadastrar novo paciente</a>	     				  
+                  <a href="controller.do?command=PreenchePaciente" class="btn btn-sm btn-white">Cadastrar Paciente</a>	     				  
                 </div>
                 
                 
@@ -98,7 +98,6 @@
 						<thead>
 							<tr>
 								<th>Número do Convênio</th>
-								<th>Código paciente</th>
 								<th>Nome paciente</th>
 								<th>CPF</th>
 								<!-- <th>Data Nascimento</th>-->
@@ -115,7 +114,6 @@
 								<th>Telefone Principal</th>
 								<th>Telefone Opcional</th>
 								<th>Celular</th>-->
-								<th>Flag ativo</th> 
 								<th class="actions">Ações</th>
 							</tr>
 						</thead>
@@ -124,11 +122,10 @@
 						
 						<tr>
 							<td>${to.numConvenio}</td>
-							<td>${to.codPaciente}</td>
 							<td>${to.nome}</td>
 							<td>${to.cpf}</td>
 							<!-- <td>${to.dataNascimento}</td>-->
-							<td><fmt:formatDate pattern="dd/MM/yyyy HH:mm:ss" value="${to.dataCadastro}" /></td>
+							<td><fmt:formatDate pattern="dd/MM/yyyy" value="${to.dataCadastro}" /></td>
 							<td>${to.email}</td>
 							<!-- <td>${to.estadoCivil}</td>
 							<td>${to.nacionalidade}</td>
@@ -141,7 +138,6 @@
 							<td>${to.tel1}</td>
 							<td>${to.tel2}</td>
 							<td>${to.cel}</td>-->
-							<td>${to.flagAtivo}</td>
 							
 							   <td class="actions">
                                                 <a class="btn btn-success btn-xs" href="controller.do?command=VisualizarPaciente&id=${to.codPaciente}">Visualizar</a>

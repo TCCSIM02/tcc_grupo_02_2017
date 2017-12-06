@@ -108,7 +108,7 @@
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Data de início</label>
 								<div class="col-lg-3">
-									<input type="text" id="dataInicio" name="dataInicio" size="10"  class="form-control">
+									<input type="text" id="dataInicio" name="dataInicio" size="10" value="${data}" class="form-control">
 								</div>
 								<div class="col-lg-3">
 										<select id="horaInicio" name="horaInicio" class="input-sm inline form-control"  style="width:100%">
@@ -146,7 +146,7 @@
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Data de conclusão</label>
 								<div class="col-lg-3">
-									<input type="text" id="dataFim" name="dataFim" size="10"  class="form-control">
+									<input type="text" id="dataFim" name="dataFim" size="10" value="${data}" class="form-control">
 								</div>
 								<div class="col-lg-3">
 										<select id="horaFim" name="horaFim" class="input-sm inline form-control"  style="width:100%">
@@ -195,10 +195,12 @@
 	</section>
 
 	  	
-	<script type="text/javascript" >
-
-			
-	</script>
+	 <script>
+        <!-- Formata os campos -->
+        $(document).ready(function(){
+			$('#dataNascimento').mask('00/00/0000');
+        });
+    </script>
 	  
 	  
 	<!-- Footer -->

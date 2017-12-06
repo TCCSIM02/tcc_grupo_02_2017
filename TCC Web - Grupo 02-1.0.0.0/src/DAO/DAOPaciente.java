@@ -123,7 +123,7 @@ public class DAOPaciente {
 	
 	
 	public void alterarPaciente(TOPaciente toPaciente){
-		String sqlUpdate = "UPDATE tcc.paciente SET numeroEndereco = ?, numConvenio = ?, nomePaciente = ?, cPF = ?, dataNascimento = ?, email = ?, estadoCivil = ?, nacionalidade = ?, endereco = ?, cEP = ?, cidade = ?, uF = ?, pais = ?, tel1 = ?, tel2 = ?, cel = ?, alergiaMedicamento = ?, alergiaAlimentares = ?, peso = ?, altura = ?, medicamentoContinuo = ?, cirurgia = ?, antecedentesPessoais = ?, tipoSanguineo = ? WHERE codPaciente = ?";
+		String sqlUpdate = "UPDATE tcc.paciente SET numeroEndereco = ?, numConvenio = ?, nomePaciente = ?, cPF = ?, dataNascimento = ?, email = ?, estadoCivil = ?, nacionalidade = ?, endereco = ?, cEP = ?, cidade = ?, uF = ?, pais = ?, tel1 = ?, tel2 = ?, cel = ?, alergiaMedicamento = ?, alergiaAlimentares = ?, peso = ?, altura = ?, medicamentoContinuo = ?, cirurgia = ?, antecedentesPessoais = ?, tipoSanguineo = ?, codPlano= ? WHERE codPaciente = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = FabricaConexao.getConexao(); 
 			PreparedStatement stm = conn.prepareStatement(sqlUpdate);) {		
@@ -153,7 +153,8 @@ public class DAOPaciente {
 			stm.setString(22,toPaciente.getCirurgia());
 			stm.setString(23,toPaciente.getAntecedentesPessoais());
 			stm.setString(24,toPaciente.getTipoSanguineo());
-			stm.setInt(25,toPaciente.getCodPaciente());	
+			stm.setInt(25,toPaciente.getCodPlano());	
+			stm.setInt(26,toPaciente.getCodPaciente());	
 
 			System.out.println(toPaciente.getCodPaciente());
 			
@@ -193,6 +194,7 @@ public class DAOPaciente {
 				if (rs.next()) {
 					
 					//toPaciente.setCodPaciente(rs.getInt("codPaciente"));
+					toPaciente.setCodPlano(rs.getInt("codPlano"));
 					toPaciente.setNumeroEndereco(rs.getString("numeroEndereco"));
 					toPaciente.setDataCadastro(rs.getDate("dataCadastro"));
 					toPaciente.setNome(rs.getString("nomePaciente"));

@@ -20,6 +20,7 @@ public class AlterarPaciente implements Command {
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		String pCodPaciente = request.getParameter("codPaciente");
+		String pCodPlano = request.getParameter("codPlano");
 		String pNumConvenio = request.getParameter("numConvenio");
 		String pNumeroEndereco = request.getParameter("numeroEndereco");
 		String pNome = request.getParameter("nome");
@@ -48,6 +49,7 @@ public class AlterarPaciente implements Command {
 		
 		
 		int id = -1;
+		int codPlano = -1;
 		Double peso = 0.0;
 		Double altura = 0.0;
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -57,6 +59,11 @@ public class AlterarPaciente implements Command {
 			id = Integer.parseInt(pCodPaciente);
 		} catch (NumberFormatException e) {
 		}	
+		
+		try {
+			codPlano = Integer.parseInt(pCodPlano);
+		} catch (NumberFormatException e) {
+		}
 		
 		try {
 			peso = Double.parseDouble(pPeso);
@@ -72,7 +79,7 @@ public class AlterarPaciente implements Command {
 
 		ModelPaciente modelPaciente = new ModelPaciente(pNumeroEndereco,null,pNome,pCpf,dataNasc,
 				pEstadoCivil,pEmail,pNacionalidade,pEndereco,
-				pCep,pCidade,pUf,pPais,pTel1,pTel2,pCel,pFlagAtivo,id, 0,pNumConvenio,
+				pCep,pCidade,pUf,pPais,pTel1,pTel2,pCel,pFlagAtivo,id, codPlano,pNumConvenio,
 				pAlergiaMedicamento, pAlergiaAlimentares, pMedicamentoContinuo,
 				pCirurgia, pAntecedentesPessoais, pTipoSanguineo, peso, altura);
 		

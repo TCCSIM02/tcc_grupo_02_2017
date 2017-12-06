@@ -68,7 +68,7 @@
             <div class="panel-body">
               <div class="row text-small">
                 <div class="col-sm-4 m-b-mini">
-                  <a href="CriarAtendente.jsp" class="btn btn-sm btn-white">Cadastrar novo atendente</a>	     				  
+                  <a href="CriarAtendente.jsp" class="btn btn-sm btn-white">Cadastrar Atendente</a>	     				  
                 </div>
                 
                 
@@ -128,7 +128,7 @@
 							<td>${to.nome}</td>
 							<td>${to.cpf}</td>
 							<!-- <td>${to.dataNascimento}</td>-->
-							<td><fmt:formatDate pattern="dd/MM/yyyy HH:mm:ss" value="${to.dataCadastro}" /></td>
+							<td><fmt:formatDate pattern="dd/MM/yyyy" value="${to.dataCadastro}" /></td>
 							<td>${to.email}</td>
 							<!-- <td>${to.estadoCivil}</td>
 							<td>${to.nacionalidade}</td>

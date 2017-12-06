@@ -67,7 +67,7 @@
             <div class="panel-body">
               <div class="row text-small">
                 <div class="col-sm-4 m-b-mini">
-                  <a href="controller.do?command=PreenchePlano" class="btn btn-sm btn-white">Cadastrar novo plano</a>	     				  
+                  <a href="controller.do?command=PreenchePlano" class="btn btn-sm btn-white">Cadastrar Plano</a>	     				  
                 </div>
                 
                 

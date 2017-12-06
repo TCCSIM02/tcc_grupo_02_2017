@@ -1,20 +1,25 @@
 package Command;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Model.ModelPaciente;
 import Model.ModelPlano;
+import TO.TOPlano;
 
 public class EditarPaciente implements Command{
 
 	@Override
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		HttpSession session = request.getSession();
+		
 		String pCodPaciente = request.getParameter("id");
 		String pNumConvenio = request.getParameter("numConvenio");
 		String pNumeroEndereco = request.getParameter("numeroEndereco");
@@ -65,7 +70,21 @@ public class EditarPaciente implements Command{
 		
 			e.printStackTrace();
 		}
+		
+		ModelPlano modelPlano = new ModelPlano();
+		
+		ArrayList<TOPlano> listaPlano = new ArrayList<>(); 
+		
+		try {
+			listaPlano = modelPlano.listarPlanos();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		session.setAttribute("listaPlano", listaPlano);
 			
+		
 		request.setAttribute("pacienteTO", modelPaciente.getTO());
 		view = request.getRequestDispatcher("AlterarPaciente.jsp");
 		

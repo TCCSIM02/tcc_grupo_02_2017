@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -36,7 +37,18 @@ public class PreencheAgendamento  implements Command {
 		String pEspecialidadeValor =	request.getParameter("especialidadeValor");
 		String pUnidadeValor =	request.getParameter("unidadeValor");
 		String pMedicoValor =	request.getParameter("medicoValor");
+		String pData        =	request.getParameter("eventDate");
 				
+		
+		SimpleDateFormat formato = new SimpleDateFormat("yy-MM-dd");
+		
+		Date data = null;
+		try {
+			 data = formato.parse(pData);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		ModelAgendamento modelAgendamento = new ModelAgendamento();
 		ModelMedico modelMedico = new ModelMedico();
@@ -77,9 +89,12 @@ public class PreencheAgendamento  implements Command {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
-
 		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm");
+
+		session.setAttribute("data", sdf.format(data));		
+
 		session.setAttribute("nomePaciente", listaPaciente.get(0).getNome());	
 		session.setAttribute("codPaciente", listaPaciente.get(0).getCodPaciente());	
 		
@@ -104,8 +119,7 @@ public class PreencheAgendamento  implements Command {
 				e.printStackTrace();
 			}
 			
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm");
+			
 			
 			session.setAttribute("codAgendamento", listaAgendamento.get(0).getCodAgendamento());
 			

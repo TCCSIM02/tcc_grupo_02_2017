@@ -19,6 +19,13 @@
 		<link rel="stylesheet" href="css/plugin.css">
 		<link rel="stylesheet" href="css/landing.css">
 		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+				<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script>
+		$( function() {
+			$( "#dataNascimento" ).datepicker({ dateFormat: "dd/mm/yy" }).val();
+		} );
+		</script>
 
 
 
@@ -138,7 +145,7 @@
 									<label class="col-lg-3 control-label">CRM</label>
 									<div class="col-lg-6">
 										<input type="text" class="form-control" name="crm" id="crm" required
-										maxlength="20" placeholder="número do crm" size="16">
+										maxlength="10" placeholder="número do crm" size="16">
 									</div>				  
 								</div>
 								
@@ -146,7 +153,7 @@
 									<label class="col-lg-3 control-label">CRO</label>
 									<div class="col-lg-6">
 										<input type="text" class="form-control" name="cro" id="cro" required
-										maxlength="20" placeholder="número do cro" size="16">
+										maxlength="10" placeholder="número do cro" size="16">
 									</div>				  
 								</div>
 								
@@ -169,7 +176,7 @@
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Data Nascimento</label>
 									<div class="col-lg-6">
-										<input type="date" class="form-control" name="dataNascimento" id="dataNascimento" required
+										<input type="text" class="form-control" name="dataNascimento" id="dataNascimento" required
 										maxlength="11" placeholder="data de nascimento" size="16">
 									</div>				  
 								</div>
@@ -270,7 +277,7 @@
 									<label class="col-lg-3 control-label">Celular</label>
 									<div class="col-lg-6">
 										<input type="text" class="form-control" name="cel" id="cel" 
-										maxlength="16" placeholder="telefone opcional" size="16">
+										maxlength="16" placeholder="Celular" size="16">
 									</div>				  
 								</div>
 								
@@ -317,10 +324,12 @@
         <!-- Formata os campos -->
         $(document).ready(function(){
         	$('#tel1').mask('(00) 00000-0000');
+			$('#cpf').mask('000.000.000-00');
         	$('#tel2').mask('(00) 00000-0000');
         	$('#cel').mask('(00) 00000-0000');
 			$('#cnpj').mask('00.000.000/0000-00');
-			$('#cep').mask('00000-000');			
+			$('#cep').mask('00000-000');
+			$('#dataNascimento').mask('00/00/0000');
         });
     </script>
 

@@ -1,8 +1,10 @@
 package Command;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,7 +31,18 @@ public class PreencheConsulta  implements Command {
 		String pCodMedico             =	request.getParameter("codMedico");
 		String pCodPaciente           =	request.getParameter("codPaciente");
 		String pCodAgendamento        =	request.getParameter("codAgendamento");
+		String pData        =	request.getParameter("eventDate");
 				
+		
+		SimpleDateFormat formato = new SimpleDateFormat("yy-MM-dd");
+		
+		Date data = null;
+		try {
+			 data = formato.parse(pData);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		ModelMedico modelMedico = new ModelMedico();
 		ModelPaciente modelPaciente = new ModelPaciente();
@@ -60,18 +73,19 @@ public class PreencheConsulta  implements Command {
 			e.printStackTrace();
 		}		
 		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm");
+		
+		
 		session.setAttribute("codAgendamento", pCodAgendamento);
+		session.setAttribute("data", sdf.format(data));		
 		session.setAttribute("nomePaciente", listaPaciente.get(0).getNome());		
 		session.setAttribute("nomeMedico", listaMedico.get(0).getNome());
 		
 		if(listaConsulta.isEmpty()) {		
 			view = request.getRequestDispatcher("CriarConsulta.jsp");
 		} else {
-			session.setAttribute("diagnostico", listaConsulta.get(0).getDiagnostico());
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm");
-			
-			
+			session.setAttribute("diagnostico", listaConsulta.get(0).getDiagnostico());			
 			session.setAttribute("dataComeco", sdf.format(listaConsulta.get(0).getDataHoraConsultaInicio()));	
 			session.setAttribute("horaComeco", sdf2.format(listaConsulta.get(0).getDataHoraConsultaInicio()));
 			session.setAttribute("dataFim", sdf.format(listaConsulta.get(0).getDataHoraConsultaFinal()));	

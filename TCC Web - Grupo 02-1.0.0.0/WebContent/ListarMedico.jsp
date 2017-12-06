@@ -68,7 +68,7 @@
             <div class="panel-body">
               <div class="row text-small">
                 <div class="col-sm-4 m-b-mini">
-                  <a href="controller.do?command=PreencheMedico" class="btn btn-sm btn-white">Cadastrar novo medico</a>	     				  
+                  <a href="controller.do?command=PreencheMedico" class="btn btn-sm btn-white">Cadastrar Médico</a>	     				  
                 </div>
                 
                 
@@ -130,7 +130,7 @@
 							<td>${to.nome}</td>
 							<td>${to.cpf}</td>
 							<!-- <td>${to.dataNascimento}</td>-->
-							<td><fmt:formatDate pattern="dd/MM/yyyy HH:mm:ss" value="${to.dataCadastro}" /></td>
+							<td><fmt:formatDate pattern="dd/MM/yyyy" value="${to.dataCadastro}" /></td>
 							<td>${to.email}</td>
 							<!-- <td>${to.estadoCivil}</td>
 							<td>${to.nacionalidade}</td>

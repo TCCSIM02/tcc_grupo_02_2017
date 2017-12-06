@@ -36,7 +36,8 @@ public class EfetuarLogin implements Command{
 
 		
 		if(listaLogin.isEmpty()) {
-			view = request.getRequestDispatcher("erro.jsp");				
+			session.setAttribute("login", "incorreto");
+			view = request.getRequestDispatcher("Login.jsp");				
 		} else {
 			session.setAttribute("nomeLogin", listaLogin.get(0).getNomeLogin());
 			session.setAttribute("nivelUsuario", listaLogin.get(0).getCodNivel());
